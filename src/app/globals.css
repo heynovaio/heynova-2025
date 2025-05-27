@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @theme {
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -11,7 +8,7 @@
 
 
 @layer base {
-  body {
+  /* body {
     @apply md:text-lg text-base font-body text-white bg-black;
   }
   h1 {
@@ -25,15 +22,15 @@
   }
   h4 {
     @apply font-body md:text-h4 text-xl font-normal leading-h2;
-  }
+  } */
   p,
   b {
-    @apply font-body leading-p;
+    /* @apply font-body leading-p; */
   }
 
-  .tagline {
+  /* .tagline {
     @apply text-accent font-bold;
-  }
+  } */
 
   ul,
   ol {
@@ -53,16 +50,16 @@
     @apply underline-offset-4 underline;
   }
 
-  .btn:hover {
+  /* .btn:hover {
     @apply bg-tertiary
     border-tertiary
     text-black;
-  }
+  } */
 
-  a:focus,
+  /* a:focus,
   button:focus {
     @apply outline-none ring-4 ring-tertiary outline;
-  }
+  } */
 
   .btn:disabled {
     opacity: 0.5;
@@ -77,7 +74,7 @@
     transition-all duration-300;
   }
 
-  .btn-primary {
+  /* .btn-primary {
     @apply text-center
     text-white 
     bg-accent
@@ -87,16 +84,16 @@
       @apply bg-black
       text-white;
     }
-  }
+  } */
 
   .btn-secondary {
     @apply text-center
     text-white
-    border border-accent;
+    /* border border-accent; */
 
-    &:disabled {
+    /* &:disabled {
       @apply bg-black
       text-white;
-    }
+    } */
   }
 }
