@@ -1,0 +1,109 @@
+{
+  "id": "content_column",
+  "type": "SharedSlice",
+  "name": "ContentColumn",
+  "description": "ContentColumn",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "None"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "strong,em,preformatted,paragraph,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "tile_color": {
+          "type": "Select",
+          "config": {
+            "label": "Content Tile Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Light",
+              "Dark",
+              "Outline",
+              "No Border"
+            ],
+            "default_value": "Default"
+          }
+        },
+        "show_icon": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Icon",
+            "placeholder_false": "Hide",
+            "placeholder_true": "Show",
+            "default_value": true
+          }
+        },
+        "content": {
+          "type": "Group",
+          "config": {
+            "label": "Content",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading3,heading4"
+                }
+              },
+              "body": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Body",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

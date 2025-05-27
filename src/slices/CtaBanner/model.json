@@ -1,0 +1,145 @@
+{
+  "id": "cta_banner",
+  "type": "SharedSlice",
+  "name": "CtaBanner",
+  "description": "CtaBanner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
+          }
+        },
+        "buttons": {
+          "type": "Link",
+          "config": {
+            "label": "Buttons",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ]
+          }
+        },
+        "inner_background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Inner Background Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "Default"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "ctaBannerWithForm",
+      "name": "CtaBanner - With Form",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ]
+          }
+        },
+        "inner_background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Inner Background Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "Default"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
+          }
+        },
+        "buttons": {
+          "type": "Link",
+          "config": {
+            "label": "Buttons",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "form": {
+          "type": "Embed",
+          "config": {
+            "label": "Form",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Selection"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation do est veniam anim anim cupidatat do do laborum."
+						}
+					}
+				]
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "imageTextWithStats",
+		"primary": {
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Hospital"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit laboris sunt in sint ullamco dolore deserunt pariatur ut tempor. Ex dolore tempor magna. Laborum incididunt adipisicing irure commodo sunt sit nulla nulla Lorem Lorem commodo consectetur ipsum eiusmod cillum."
+						}
+					}
+				]
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "party",
+									"type": "Text"
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Magna incididunt cupidatat aliquip. Occaecat velit ea magna enim adipisicing ex ad ut velit quis tempor ea adipisicing irure. Aliqua et et qui incididunt in esse esse irure cillum non exercitation elit laborum sint velit."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

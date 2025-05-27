@@ -1,0 +1,91 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"menu_display": {
+				"__TYPE__": "FieldContent",
+				"value": "soon",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Thousand"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Do exercitation irure reprehenderit dolor consectetur eu tempor cillum esse commodo est ea do ex. Veniam in amet deserunt ea. Laborum qui anim mollit voluptate fugiat."
+						}
+					}
+				]
+			},
+			"columns": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"links": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "a4d3da5e-b025-45f5-b9b0-ec9d44ed01f7",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://google.com",
+							"text": "mathematics"
+						}
+					}
+				]
+			},
+			"link_with_paragraph": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"key": "e2c4a733-b2c4-4455-ae00-2b2145b9d60b",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "night"
+									}
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ad tempor adipisicing sit sunt pariatur ut commodo do."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
