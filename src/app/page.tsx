@@ -9,6 +9,7 @@ import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
 import { TeamCard } from "@/components/Cards/TeamCard";
+import { IconCard } from "@/components/Cards/IconCard";
 
 type Params = { lang: string };
 
@@ -51,7 +52,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const locales = await getLocales(page, client);
 
   return (
-    <div className="bg-black">
+    <div className="bg-black p-20">
       <p className="font-sans">Hello</p>
       <SliceZone
         slices={page.data.slices}
@@ -60,25 +61,10 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       />
       {/** Just in for testing */}
       <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
-        <TeamCard
-          name="Test Name"
-          position="test position"
+        <IconCard
+          title="test title"
           image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name"
-          position="test position"
-          image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name Longer"
-          position="test position"
-          image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name"
-          position="test position"
-          image={page.data.image}
+          content="Test Content"
         />
       </div>
     </div>
