@@ -1511,6 +1511,41 @@ export interface ContentColumnSliceDefaultPrimaryContentItem {
 }
 
 /**
+ * Item in *ContentColumn → ContentColumn with Cards → Primary → Content*
+ */
+export interface ContentColumnSliceContentColumnWithCardsPrimaryContentItem {
+  /**
+   * Icon field in *ContentColumn → ContentColumn with Cards → Primary → Content*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ContentColumn → ContentColumn with Cards → Primary → Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentColumn → ContentColumn with Cards → Primary → Content*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
  * Primary content in *ContentColumn → Default → Primary*
  */
 export interface ContentColumnSliceDefaultPrimary {
@@ -1597,9 +1632,98 @@ export type ContentColumnSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ContentColumn → ContentColumn with Cards → Primary*
+ */
+export interface ContentColumnSliceContentColumnWithCardsPrimary {
+  /**
+   * Background Color field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Title field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Content Tile Color field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Default
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.tile_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  tile_color: prismic.SelectField<
+    "Default" | "Light" | "Dark" | "Outline" | "No Border",
+    "filled"
+  >;
+
+  /**
+   * Show Icon field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.show_icon
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  show_icon: prismic.BooleanField;
+
+  /**
+   * Content field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  content: prismic.GroupField<
+    Simplify<ContentColumnSliceContentColumnWithCardsPrimaryContentItem>
+  >;
+}
+
+/**
+ * ContentColumn with Cards variation for ContentColumn Slice
+ *
+ * - **API ID**: `contentColumnWithCards`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentColumnSliceContentColumnWithCards =
+  prismic.SharedSliceVariation<
+    "contentColumnWithCards",
+    Simplify<ContentColumnSliceContentColumnWithCardsPrimary>,
+    never
+  >;
+
+/**
  * Slice variation for *ContentColumn*
  */
-type ContentColumnSliceVariation = ContentColumnSliceDefault;
+type ContentColumnSliceVariation =
+  | ContentColumnSliceDefault
+  | ContentColumnSliceContentColumnWithCards;
 
 /**
  * ContentColumn Shared Slice
@@ -2815,8 +2939,11 @@ declare module "@prismicio/client" {
       ContentColumnSlice,
       ContentColumnSliceDefaultPrimaryContentItem,
       ContentColumnSliceDefaultPrimary,
+      ContentColumnSliceContentColumnWithCardsPrimaryContentItem,
+      ContentColumnSliceContentColumnWithCardsPrimary,
       ContentColumnSliceVariation,
       ContentColumnSliceDefault,
+      ContentColumnSliceContentColumnWithCards,
       CtaBannerSlice,
       CtaBannerSliceDefaultPrimary,
       CtaBannerSliceCtaBannerWithFormPrimary,
