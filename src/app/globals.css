@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
+@layer base {
+  body {
+    @apply md:text-lg text-base font-body text-white bg-black;
+  }
+  h1 {
+    @apply font-title md:text-h1 text-4xl font-normal leading-h1;
+  }
+  h2 {
+    @apply font-title md:text-h2 text-h3 font-bold md:leading-h2;
+  }
+  h3 {
+    @apply font-title md:text-h3 text-h4 font-bold leading-h2;
+  }
+  h4 {
+    @apply font-body md:text-h4 text-xl font-normal leading-h2;
+  }
+  p,
+  b {
+    @apply font-body leading-p;
+  }
+
+  .tagline {
+    @apply text-accent font-bold;
+  }
+
+  ul,
+  ol {
+    display: block;
+    list-style: disc outside none;
+    margin: 1em 0;
+    padding: 0 0 0 40px;
+    text-align: start;
+  }
+  ol {
+    list-style-type: decimal;
+    text-align: start;
+  }
+
+  /* Button, links styling + Hovers */
+  a:hover:not(.btn):not(nav a) {
+    @apply underline-offset-4 underline;
+  }
+
+  .btn:hover {
+    @apply bg-tertiary
+    border-tertiary
+    text-black;
+  }
+
+  a:focus,
+  button:focus {
+    @apply outline-none ring-4 ring-tertiary outline;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+  }
+
+  .btn {
+    @apply inline-block
+    rounded-full 
+    font-bold 
+    px-7 py-3
+    relative
+    transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply text-center
+    text-white 
+    bg-accent
+    border-none;
+
+    &:disabled {
+      @apply bg-black
+      text-white;
+    }
+  }
+
+  .btn-secondary {
+    @apply text-center
+    text-white
+    border border-accent;
+
+    &:disabled {
+      @apply bg-black
+      text-white;
+    }
+  }
+}

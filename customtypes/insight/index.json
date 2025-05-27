@@ -72,6 +72,24 @@
           }
         }
       },
+      "authors": {
+        "type": "Group",
+        "config": {
+          "label": "Authors",
+          "repeat": true,
+          "fields": {
+            "author": {
+              "type": "Link",
+              "config": {
+                "label": "Author",
+                "select": "document",
+                "repeat": false,
+                "customtypes": ["author"]
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

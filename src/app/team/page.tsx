@@ -6,27 +6,31 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-// import { getLocales } from "@/utils";
 import React from "react";
 
-type Params = { lang: string };
+/**
+ * This page renders a Prismic Document dynamically based on the URL.
+ */
+
+type Params = { uid: string; lang: string };
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { lang } = await params;
+  const { uid, lang } = await params;
+
   const client = createClient();
   const page = await client
-    .getByUID("page", "home", { lang })
+    .getByUID("team", uid, { lang })
     .catch(() => notFound());
 
   return {
     title:
       page.data.meta_title ||
       prismic.asText(page.data.title) ||
-      "Home | Hey Nova",
+      "Our Team | Hey Nova",
     description: page.data.meta_description,
     openGraph: {
       title: page.data.meta_title || undefined,
@@ -40,37 +44,36 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-  const { lang } = await params;
+  const { uid, lang } = await params;
+
   const client = createClient();
   const page = await client
-    .getByUID("page", "home", { lang })
+    .getByUID("team", uid, { lang })
     .catch(() => notFound());
   // const global = await client.getSingle("global", { lang });
   // const menus = await client.getSingle("menus", { lang });
   // const locales = await getLocales(page, client);
 
   return (
-    <div className="bg-black">
-      <p className="font-sans">Hello</p>
-      <SliceZone
-        slices={page.data.slices}
-        components={components}
-        context={{ lang }}
-      />
-    </div>
+    <SliceZone
+      slices={page.data.slices}
+      components={components}
+      context={{ lang: "en-ca" }}
+    />
   );
 }
 
 export async function generateStaticParams() {
   const client = createClient();
-
-  const pages = await client.getAllByType("page", {
-    lang: "*",
-    filters: [prismic.filter.at("my.page.uid", "home")],
-  });
+  const pages = await client
+    .getAllByType("team", {
+      lang: "*",
+    })
+    .catch(() => notFound());
 
   return pages.map((page) => {
     return {
+      uid: page.uid,
       lang: page.lang,
     };
   });

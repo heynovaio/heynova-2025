@@ -307,6 +307,21 @@ export interface InsightDocumentDataCategoriesItem {
   name: prismic.ContentRelationshipField<"insights_categories">;
 }
 
+/**
+ * Item in *Insight → Authors*
+ */
+export interface InsightDocumentDataAuthorsItem {
+  /**
+   * Author field in *Insight → Authors*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insight.authors[].author
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  author: prismic.ContentRelationshipField<"author">;
+}
+
 type InsightDocumentDataSlicesSlice = never;
 
 /**
@@ -381,6 +396,17 @@ interface InsightDocumentData {
   categories: prismic.GroupField<Simplify<InsightDocumentDataCategoriesItem>>;
 
   /**
+   * Authors field in *Insight*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insight.authors[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  authors: prismic.GroupField<Simplify<InsightDocumentDataAuthorsItem>>;
+
+  /**
    * Slice Zone field in *Insight*
    *
    * - **Field Type**: Slice Zone
@@ -446,15 +472,62 @@ type InsightsCategoriesDocumentDataSlicesSlice = never;
  */
 interface InsightsCategoriesDocumentData {
   /**
-   * Name field in *Insights Categories*
+   * Background Color field in *Insights Categories*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
-   * - **API ID Path**: insights_categories.name
+   * - **Default Value**: None
+   * - **API ID Path**: insights_categories.background_color
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
-  name: prismic.KeyTextField;
+  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Title field in *Insights Categories*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insights_categories.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *Insights Categories*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insights_categories.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Buttons field in *Insights Categories*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insights_categories.buttons
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttons: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Image field in *Insights Categories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: insights_categories.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *Insights Categories*
@@ -2904,6 +2977,7 @@ declare module "@prismicio/client" {
       InsightDocument,
       InsightDocumentData,
       InsightDocumentDataCategoriesItem,
+      InsightDocumentDataAuthorsItem,
       InsightDocumentDataSlicesSlice,
       InsightsCategoriesDocument,
       InsightsCategoriesDocumentData,

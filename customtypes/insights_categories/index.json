@@ -12,11 +12,50 @@
           "label": "UID"
         }
       },
-      "name": {
-        "type": "Text",
+      "background_color": {
+        "type": "Select",
         "config": {
-          "label": "Name",
-          "placeholder": ""
+          "label": "Background Color",
+          "placeholder": "",
+          "options": ["None", "Light", "Dark"],
+          "default_value": "None"
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,heading2"
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "buttons": {
+        "type": "Link",
+        "config": {
+          "label": "Buttons",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": true
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {},
+          "thumbnails": []
         }
       },
       "slices": {
