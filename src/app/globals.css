@@ -1,99 +1,141 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Font Families */
+  --font-title: "stolzl", sans-serif;
+  --font-body: "polymath", sans-serif;
+
+  /* Breakpoints */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 905px;
+  --breakpoint-lg: 1240px;
+  --breakpoint-xl: 1440px;
+
+  /* Colours */ 
+  --color-midnight: #0F002E;
+  --color-teal: #006075;
+  --color-teal-md: #009DAA;
+  --color-teal-muted:#63B2B9;
+  --color-teal-drk: #006075;
+  --color-aqua: #97E1E5;
+  --color-lavendar: #C0A2FF;
+  --color-purple-drk: #1E0073;
+  --color-purple-lt: #CACCF8;
+  --color-red: #D70449;
+  --color-wine: #940050;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-primary: var(--color-red);
+  --color-secondary: var(--color-purple-drk);
+
+  /* Font Size */ 
+  --text-base: 1.25rem;
+  --text-h1: 5.375rem;
+  --text-h2: 2.875rem;
+  --text-h3: 1.875rem;
+  --text-label: 1.375rem;
+  --text-bodyLarge: 1.375rem;
+  --text-tagline: 1.875rem;
+  --text-sm: 1rem;
+  --text-button: 1.125rem;
+  
+  /* Font Weight */
+  --font-weight-normal: 300;
+  --font-weight-light: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-weight-extraBold: 700;
 }
 
 
-@layer base {
-  /* body {
-    @apply md:text-lg text-base font-body text-white bg-black;
+/* Base */
+body {
+  font-family: var(--font-body);
+  color: var(--color-white);
+  background-color: var(--color-midnight);
+  font-size: var(--text-base);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+}
+h1 { font-size: var(--text-h1) }
+h2 { font-size: var(--text-h2) }
+h3 { font-size: var(--text-h3) }
+ul,
+ol {
+  display: block;
+  list-style: disc outside none;
+  margin: 1em 0;
+  padding: 0 0 0 40px;
+  text-align: start;
+}
+ol {
+  list-style-type: decimal;
+  text-align: start;
+}
+
+/* Components */
+
+.btn {
+  border-radius: 1.875em;
+  border: 3px solid transparent;
+  padding: 10px 10px 12px 10px;
+  font-size: var(--text-button);
+}
+
+.btn-primary {
+  border-radius: 1.875em;
+  border: 3px solid transparent;
+  padding: 10px 10px 12px 10px;
+  font-size: var(--text-button);
+  background: var(--color-primary);
+
+  &:hover {
+    background: var(--color-wine);
   }
-  h1 {
-    @apply font-title md:text-h1 text-4xl font-normal leading-h1;
-  }
-  h2 {
-    @apply font-title md:text-h2 text-h3 font-bold md:leading-h2;
-  }
-  h3 {
-    @apply font-title md:text-h3 text-h4 font-bold leading-h2;
-  }
-  h4 {
-    @apply font-body md:text-h4 text-xl font-normal leading-h2;
-  } */
-  p,
-  b {
-    /* @apply font-body leading-p; */
-  }
-
-  /* .tagline {
-    @apply text-accent font-bold;
-  } */
-
-  ul,
-  ol {
-    display: block;
-    list-style: disc outside none;
-    margin: 1em 0;
-    padding: 0 0 0 40px;
-    text-align: start;
-  }
-  ol {
-    list-style-type: decimal;
-    text-align: start;
-  }
-
-  /* Button, links styling + Hovers */
-  a:hover:not(.btn):not(nav a) {
-    @apply underline-offset-4 underline;
-  }
-
-  /* .btn:hover {
-    @apply bg-tertiary
-    border-tertiary
-    text-black;
-  } */
-
-  /* a:focus,
-  button:focus {
-    @apply outline-none ring-4 ring-tertiary outline;
-  } */
-
-  .btn:disabled {
-    opacity: 0.5;
-  }
-
-  .btn {
-    @apply inline-block
-    rounded-full 
-    font-bold 
-    px-7 py-3
-    relative
-    transition-all duration-300;
-  }
-
-  /* .btn-primary {
-    @apply text-center
-    text-white 
-    bg-accent
-    border-none;
-
-    &:disabled {
-      @apply bg-black
-      text-white;
-    }
-  } */
-
-  .btn-secondary {
-    @apply text-center
-    text-white
-    /* border border-accent; */
-
-    /* &:disabled {
-      @apply bg-black
-      text-white;
-    } */
+  &:focus {
+    outline: 0;
+    border-color: var(--color-lavendar);
+    background: var(--color-wine);
   }
 }
+
+.btn-secondary {
+  border-radius: 1.875em;
+  border: 3px solid transparent;
+  padding: 10px 10px 12px 10px;
+  font-size: var(--text-button);
+  background: var(--color-purple-drk);
+
+  &:hover {
+    color: var(--color-aqua);
+    background: var(--color-midnight);
+  }
+  &:focus {
+    outline: 0;
+    border-color: var(--color-lavendar);
+    background: var(--color-midnight);
+  }
+}
+
+.btn-outline {
+  border-radius: 1.875em;
+  border: 3px solid transparent;
+  padding: 10px 10px 12px 10px;
+  font-size: var(--text-button);
+  background: transparent;
+  border-color: var(--color-aqua);
+  color: var(--color-aqua);
+
+  &:hover {
+    background: var(--color-teal-drk)
+  }
+  &:focus {
+    outline: 0;
+    border-color: var(--color-purple-lt);
+    background: var(--color-teal-drk);
+  }
+}
+
