@@ -1,9 +1,10 @@
-import { Button } from "@/components";
+// import { Button } from "@/components";
 import { Section, Container, ResponsiveImage, ContentBox } from "@/components";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
-import { components } from "@/utils";
+// import { components } from "@/utils";
+import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `ImageText`.
@@ -53,49 +54,81 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
             title={slice.primary.title}
             content={
               isStats ? (
-                <div className="flex flex-col gap-4 md:mb-4">
-                  <PrismicRichText
-                    field={slice.primary.body}
-                    components={components}
-                  />
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-center md:text-left">
-                    {slice.primary.stats.map((item, index) => (
-                      <div key={index}>
-                        <PrismicRichText
-                          field={item.statistic}
-                          components={{
-                            paragraph: ({ children }) => (
-                              <p className="text-[3.125rem] text-aqua font-extraBold">
-                                {children}
-                              </p>
-                            ),
-                          }}
-                        />
-                        <PrismicRichText
-                          field={item.description}
-                          components={{
-                            paragraph: ({ children }) => (
-                              <p className="text-base">{children}</p>
-                            ),
-                          }}
-                        />
-                      </div>
-                    ))}
+                <div>
+                  {slice.primary.subtitle && (
+                    <PrismicRichText
+                      field={slice.primary.subtitle}
+                      components={{
+                        heading4: ({ children }) => (
+                          <h4 className="mb-4 text-aqua">{children}</h4>
+                        ),
+                      }}
+                    />
+                  )}
+                  <div className="flex flex-col gap-4 md:mb-4">
+                    <PrismicRichText
+                      field={slice.primary.body}
+                      // components={components} **TODO: setup components in utils
+                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-center md:text-left">
+                      {slice.primary.stats.map((item, index) => (
+                        <div key={index}>
+                          <PrismicRichText
+                            field={item.statistic}
+                            components={{
+                              paragraph: ({ children }) => (
+                                <p className="text-[2rem] text-aqua font-extraBold text-center">
+                                  {children}
+                                  {item.percentage && " %"}
+                                </p>
+                              ),
+                            }}
+                          />
+                          <PrismicRichText
+                            field={item.description}
+                            components={{
+                              paragraph: ({ children }) => (
+                                <p className="text-base">{children}</p>
+                              ),
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ) : (
-                <PrismicRichText
-                  field={slice.primary.body}
-                  components={components}
-                />
+                <div>
+                  {slice.primary.subtitle && (
+                    <PrismicRichText
+                      field={slice.primary.subtitle}
+                      components={{
+                        heading4: ({ children }) => (
+                          <h4 className="mb-4 text-[var(--color-aqua)]">
+                            {children}
+                          </h4>
+                        ),
+                      }}
+                    />
+                  )}
+                  <PrismicRichText
+                    field={slice.primary.body}
+                    // components={components} **TODO: setup components in utils
+                  />
+                </div>
               )
             }
             buttons={slice.primary.button.map((link, index) => (
-              <Button
+              // <Button
+              //   key={index}
+              //   buttonType="primary"
+              //   buttonLink={link}
+              //   label={link.text}
+              // />
+              <PrismicNextLink
+                field={link}
                 key={index}
-                buttonType="primary"
-                buttonLink={link}
-                label={link.text}
+                className="btn btn-primary"
               />
             ))}
           />

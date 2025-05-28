@@ -2197,6 +2197,16 @@ export interface ImageTextSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
+   * Subtitle field in *ImageText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
    * Body field in *ImageText → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2277,6 +2287,16 @@ export interface ImageTextSliceStatsPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *ImageText → Stats → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.stats.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
 
   /**
    * Body field in *ImageText → Stats → Primary*
@@ -2369,6 +2389,16 @@ export interface ImageTextSliceVideoPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *ImageText → Video → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.video.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subtitle: prismic.RichTextField;
 
   /**
    * Body field in *ImageText → Video → Primary*

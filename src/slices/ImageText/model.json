@@ -43,6 +43,15 @@
             "multi": "heading2,heading3,heading4"
           }
         },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
         "body": {
           "type": "StructuredText",
           "config": {
@@ -111,6 +120,15 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading2,heading3,heading4"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading4"
           }
         },
         "body": {
@@ -217,6 +235,15 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "heading2,heading3,heading4"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading4"
           }
         },
         "body": {

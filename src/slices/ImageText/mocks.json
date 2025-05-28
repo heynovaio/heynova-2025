@@ -1,12 +1,16 @@
 [
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
+		"variation": "video",
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
 				"value": "None",
 				"type": "Select"
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
@@ -14,7 +18,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Selection"
+							"text": "Mouth"
 						}
 					}
 				]
@@ -25,26 +29,22 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Exercitation do est veniam anim anim cupidatat do do laborum."
+							"text": "Consectetur laborum magna consectetur eiusmod id aliqua excepteur excepteur voluptate quis duis. Aliquip ullamco fugiat incididunt laborum cillum incididunt consequat excepteur velit aute proident exercitation Lorem."
 						}
 					}
 				]
-			},
-			"imageRight": {
-				"__TYPE__": "BooleanContent",
-				"value": true
 			},
 			"button": {
 				"__TYPE__": "RepeatableContent",
 				"type": "Link",
 				"value": [
 					{
-						"key": "c2c9e5f3-504e-45d8-82c7-e605d3a90a71",
+						"key": "eafbac7f-026a-4fcf-9648-0b57f44f1fd0",
 						"__TYPE__": "LinkContent",
 						"value": {
 							"__TYPE__": "ExternalLink",
-							"url": "https://prismic.io",
-							"text": "failed"
+							"url": "http://google.com",
+							"text": "three"
 						}
 					}
 				]
@@ -52,13 +52,13 @@
 			"image": {
 				"origin": {
 					"id": "main",
-					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
-					"width": 3935,
-					"height": 5894
+					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+					"width": 3456,
+					"height": 3456
 				},
-				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
-				"width": 3935,
-				"height": 5894,
+				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+				"width": 3456,
+				"height": 3456,
 				"edit": {
 					"zoom": 1,
 					"crop": {
@@ -67,13 +67,60 @@
 					},
 					"background": "transparent"
 				},
-				"alt": "quite",
+				"alt": "rabbit",
 				"credits": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"video": {
+				"embed_url": "https://www.youtube.com/watch?v=BHACKCNDMW8",
+				"type": "video",
+				"version": "1.0",
+				"title": "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+				"author_name": "Cat Trumpet",
+				"author_url": "https://www.youtube.com/@cattrumpet",
+				"provider_name": "YouTube",
+				"provider_url": "https://www.youtube.com/",
+				"thumbnail_url": "https://i.ytimg.com/vi/BHACKCNDMW8/hqdefault.jpg",
+				"thumbnail_width": 480,
+				"thumbnail_height": 360,
+				"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/BHACKCNDMW8?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"3 Hours of Amazing Nature Scenery &amp; Relaxing Music for Stress Relief.\"></iframe>",
+				"__TYPE__": "EmbedContent",
+				"all": {
+					"embed_url": "https://www.youtube.com/watch?v=BHACKCNDMW8",
+					"type": "video",
+					"version": "1.0",
+					"title": "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+					"author_name": "Cat Trumpet",
+					"author_url": "https://www.youtube.com/@cattrumpet",
+					"provider_name": "YouTube",
+					"provider_url": "https://www.youtube.com/",
+					"thumbnail_url": "https://i.ytimg.com/vi/BHACKCNDMW8/hqdefault.jpg",
+					"thumbnail_width": 480,
+					"thumbnail_height": 360,
+					"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/BHACKCNDMW8?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"3 Hours of Amazing Nature Scenery &amp; Relaxing Music for Stress Relief.\"></iframe>",
+					"height": 113,
+					"width": 200
+				}
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Exactly"
+						}
+					}
+				]
 			}
 		},
-		"items": []
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
@@ -86,7 +133,7 @@
 			},
 			"imageRight": {
 				"__TYPE__": "BooleanContent",
-				"value": true
+				"value": false
 			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
@@ -105,8 +152,10 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Ex exercitation sint elit veniam duis."
-						}
+							"text": "Ex exercitation sint elit veniam duis. oluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. ",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
@@ -120,7 +169,7 @@
 						"value": {
 							"__TYPE__": "ExternalLink",
 							"url": "https://slicemachine.dev",
-							"text": "worse"
+							"text": "Test Button"
 						}
 					}
 				]
@@ -162,8 +211,10 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Qui Lorem anim laboris."
-											}
+												"text": "33",
+												"spans": []
+											},
+											"direction": "ltr"
 										}
 									]
 								}
@@ -190,6 +241,65 @@
 								}
 							]
 						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"statistic",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "56",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Voluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. Anim culpa culpa elit quis eiusmod non nostrud velit duis velit velit mollit cillum nostrud.",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"percentage",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": []
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Furniture"
+						}
 					}
 				]
 			}
@@ -203,16 +313,12 @@
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "video",
+		"variation": "default",
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
 				"value": "None",
 				"type": "Select"
-			},
-			"imageRight": {
-				"__TYPE__": "BooleanContent",
-				"value": true
 			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
@@ -220,7 +326,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Mouth"
+							"text": "Selection"
 						}
 					}
 				]
@@ -231,10 +337,16 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Consectetur laborum magna consectetur eiusmod id aliqua excepteur excepteur voluptate quis duis. Aliquip ullamco fugiat incididunt laborum cillum incididunt consequat excepteur velit aute proident exercitation Lorem."
-						}
+							"text": "Exercitation do est veniam anim anim cupidatat do do laborum. oluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. ",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			},
 			"button": {
 				"__TYPE__": "RepeatableContent",
@@ -242,11 +354,11 @@
 				"value": [
 					{
 						"__TYPE__": "LinkContent",
-						"key": "eafbac7f-026a-4fcf-9648-0b57f44f1fd0",
+						"key": "c2c9e5f3-504e-45d8-82c7-e605d3a90a71",
 						"value": {
 							"__TYPE__": "ExternalLink",
-							"url": "http://google.com",
-							"text": "three"
+							"url": "https://prismic.io",
+							"text": "Test Button"
 						}
 					}
 				]
@@ -254,13 +366,13 @@
 			"image": {
 				"origin": {
 					"id": "main",
-					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
-					"width": 3456,
-					"height": 3456
+					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+					"width": 3935,
+					"height": 5894
 				},
-				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
-				"width": 3456,
-				"height": 3456,
+				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+				"width": 3935,
+				"height": 5894,
 				"edit": {
 					"zoom": 1,
 					"crop": {
@@ -269,42 +381,23 @@
 					},
 					"background": "transparent"
 				},
-				"alt": "rabbit",
+				"alt": "quite",
 				"credits": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
-			"video": {
-				"embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
-				"author_name": "Tim Benniks",
-				"author_url": "https://twitter.com/timbenniks",
-				"html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
-				"type": "rich",
-				"cache_age": "3153600000",
-				"provider_name": "Twitter",
-				"provider_url": "http://www.twitter.com/",
-				"version": "1.0",
-				"all": {
-					"embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
-					"author_name": "Tim Benniks",
-					"author_url": "https://twitter.com/timbenniks",
-					"html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
-					"width": 550,
-					"height": null,
-					"type": "rich",
-					"cache_age": "3153600000",
-					"provider_name": "Twitter",
-					"provider_url": "http://www.twitter.com/",
-					"version": "1.0"
-				},
-				"__TYPE__": "EmbedContent"
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Owner"
+						}
+					}
+				]
 			}
 		},
-		"items": [
-			{
-				"__TYPE__": "GroupItemContent",
-				"value": []
-			}
-		]
+		"items": []
 	}
 ]
