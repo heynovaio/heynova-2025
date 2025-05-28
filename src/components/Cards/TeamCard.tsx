@@ -9,19 +9,20 @@ interface TeamCardProps {
 
 export const TeamCard = ({ image, name, position }: TeamCardProps) => {
   return (
-    <div className="border-2 w-full p-8 font-body flex flex-col justify-between bg-[#14335b] text-black rounded-lg overflow-hidden">
+    <div className=" w-full p-8 font-body flex flex-col justify-between bg-navy-blue text-black rounded-[1.25rem] glow-blur overflow-hidden">
       {image && (
-        <div className="relative -mx-8 -mt-8 mb-4 overflow-hidden rounded-t-lg">
-          <ResponsiveImage
-            image={image}
-            className="w-full object-cover rounded-t-lg"
-          />
+        <div className="relative -mx-8 -mt-8 mb-4 overflow-hidden ">
+          <ResponsiveImage image={image} className="w-full object-cover " />
         </div>
       )}
 
-      <div className="flex-1">
-        {name && <h3 className="font-extraBold text-bodyLarge ml-1">{name}</h3>}
-        {position && <p className="text-base ml-1">{position}</p>}
+      <div className="flex-1 mt-2">
+        {name && (
+          <p className="font-extraBold ml-1 gradient-text inline-block text-label">
+            {name}
+          </p>
+        )}
+        {position && <p className="text-base text-white ml-1">{position}</p>}
       </div>
     </div>
   );

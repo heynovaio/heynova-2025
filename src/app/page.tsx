@@ -71,7 +71,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           image={page.data.image}
         />
         <TeamCard
-          name="Test Name"
+          name="Test Name Longer"
           position="test position"
           image={page.data.image}
         />
