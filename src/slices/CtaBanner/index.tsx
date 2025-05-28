@@ -17,6 +17,11 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
   const textAlignment = leftAligned
     ? "items-start text-left"
     : "items-center text-center";
+  const isForm = slice.variation === "ctaBannerWithForm";
+  const isGradient = slice.primary.inner_background_color === "Gradient";
+  const textColor = isGradient ? "text-white" : "text-midnight";
+  const backgroundColor = isGradient ? "gradient-dark-bg" : "bg-teal-muted";
+  const borderColor = isGradient ? "border-aqua" : "border-wine";
   return (
     <Section
       data-slice-type={slice.slice_type}
@@ -25,17 +30,31 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
     >
       <Container>
         <div
-          className={`rounded-[] bg-teal-muted text-midnight p-6 md:p-24 ${textAlignment} flex flex-col gap-6`}
+          className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}
         >
           <ContentBox
             title={slice.primary.title}
-            content={<PrismicRichText field={slice.primary.body} />}
+            content={
+              <div>
+                <PrismicRichText field={slice.primary.body} />
+                {isForm && slice.primary.form?.html && (
+                  <div
+                    className="mt-6 w-full"
+                    dangerouslySetInnerHTML={{
+                      __html: slice.primary.form.html,
+                    }}
+                  />
+                )}
+              </div>
+            }
             buttons={slice.primary.buttons.map((button, index) => {
               return (
                 <PrismicNextLink
                   field={button}
                   key={index}
-                  className="btn btn-secondary"
+                  className={
+                    isGradient ? "btn btn-primary" : "btn btn-secondary"
+                  }
                 />
               );
             })}

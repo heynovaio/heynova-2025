@@ -1836,6 +1836,17 @@ export interface CtaBannerSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light" | "Dark">;
 
   /**
+   * Inner Background Color field in *CtaBanner → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Default
+   * - **API ID Path**: cta_banner.default.primary.inner_background_color
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
+
+  /**
    * Title field in *CtaBanner → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1865,20 +1876,6 @@ export interface CtaBannerSliceDefaultPrimary {
    */
   buttons: prismic.Repeatable<
     prismic.LinkField<string, string, unknown, prismic.FieldState, never>
-  >;
-
-  /**
-   * Inner Background Color field in *CtaBanner → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Default
-   * - **API ID Path**: cta_banner.default.primary.inner_background_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  inner_background_color: prismic.SelectField<
-    "Default" | "Light" | "Dark",
-    "filled"
   >;
 }
 
@@ -1929,10 +1926,7 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.inner_background_color
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  inner_background_color: prismic.SelectField<
-    "Default" | "Light" | "Dark",
-    "filled"
-  >;
+  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
 
   /**
    * Title field in *CtaBanner → CtaBanner - With Form → Primary*
