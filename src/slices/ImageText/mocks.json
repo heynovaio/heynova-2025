@@ -353,8 +353,8 @@
 				"type": "Link",
 				"value": [
 					{
-						"__TYPE__": "LinkContent",
 						"key": "c2c9e5f3-504e-45d8-82c7-e605d3a90a71",
+						"__TYPE__": "LinkContent",
 						"value": {
 							"__TYPE__": "ExternalLink",
 							"url": "https://prismic.io",
@@ -392,8 +392,10 @@
 					{
 						"type": "heading4",
 						"content": {
-							"text": "Owner"
-						}
+							"text": "Owner longer text blah blah",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			}
