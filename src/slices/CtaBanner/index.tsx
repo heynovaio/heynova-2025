@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Container, ContentBox, Section } from "@/components";
+import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `CtaBanner`.
@@ -11,41 +13,37 @@ export type CtaBannerProps = SliceComponentProps<Content.CtaBannerSlice>;
  * Component for "CtaBanner" Slices.
  */
 const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
+  const leftAligned = slice.primary.text_alignment === false;
+  const textAlignment = leftAligned
+    ? "items-start text-left"
+    : "items-center text-center";
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      backgroundColor={slice.primary.background_color}
     >
-      Placeholder component for cta_banner (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <Container>
+        <div
+          className={`rounded-[] bg-teal-muted text-midnight p-6 md:p-24 ${textAlignment} flex flex-col gap-6`}
+        >
+          <ContentBox
+            title={slice.primary.title}
+            content={<PrismicRichText field={slice.primary.body} />}
+            buttons={slice.primary.buttons.map((button, index) => {
+              return (
+                <PrismicNextLink
+                  field={button}
+                  key={index}
+                  className="btn btn-secondary"
+                />
+              );
+            })}
+            containerClassName={textAlignment}
+          />
+        </div>
+      </Container>
+    </Section>
   );
 };
 
