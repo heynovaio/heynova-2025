@@ -25,6 +25,15 @@
             "default_value": "None"
           }
         },
+        "imageRight": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Orientation",
+            "placeholder_false": "Left",
+            "placeholder_true": "Right",
+            "default_value": false
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -43,21 +52,31 @@
             "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,embed,list-item,image,hyperlink"
           }
         },
-        "imageRight": {
-          "type": "Boolean",
+        "button": {
+          "type": "Link",
           "config": {
-            "label": "Image Orientation",
-            "placeholder_false": "Left",
-            "placeholder_true": "Right",
-            "default_value": false
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },
       "items": {}
     },
     {
-      "id": "imageTextWithStats",
-      "name": "ImageText with Stats",
+      "id": "stats",
+      "name": "Stats",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -76,6 +95,15 @@
             "default_value": "None"
           }
         },
+        "imageRight": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Orientation",
+            "placeholder_false": "Left",
+            "placeholder_true": "Right",
+            "default_value": false
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -94,6 +122,85 @@
             "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,embed,list-item,image,hyperlink"
           }
         },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "stats": {
+          "type": "Group",
+          "config": {
+            "label": "Stats",
+            "repeat": true,
+            "fields": {
+              "statistic": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Statistic",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "percentage": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Percentage",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "video",
+      "name": "Video",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "None"
+          }
+        },
         "imageRight": {
           "type": "Boolean",
           "config": {
@@ -103,29 +210,48 @@
             "default_value": false
           }
         },
-        "stats": {
-          "type": "Group",
+        "title": {
+          "type": "StructuredText",
           "config": {
-            "label": "Stats",
-            "repeat": true,
-            "fields": {
-              "stat": {
-                "type": "Text",
-                "config": {
-                  "label": "Stat",
-                  "placeholder": ""
-                }
-              },
-              "body": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Body",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
-                }
-              }
-            }
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,embed,list-item,image,hyperlink"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "video": {
+          "type": "Embed",
+          "config": {
+            "label": "Video",
+            "placeholder": ""
           }
         }
       },
