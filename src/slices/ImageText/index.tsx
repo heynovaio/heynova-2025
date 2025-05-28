@@ -77,7 +77,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                             field={item.statistic}
                             components={{
                               paragraph: ({ children }) => (
-                                <p className="text-[2rem] text-aqua font-extraBold text-center">
+                                <p className="text-[2.5rem] text-aqua font-extraBold">
                                   {children}
                                   {item.percentage && " %"}
                                 </p>
@@ -88,9 +88,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                             field={item.description}
                             components={{
                               paragraph: ({ children }) => (
-                                <p className="text-base text-center">
-                                  {children}
-                                </p>
+                                <p className="text-base">{children}</p>
                               ),
                             }}
                           />
