@@ -70,7 +70,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                       field={slice.primary.body}
                       // components={components} **TODO: setup components in utils
                     />
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-center md:text-left">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2 text-center md:text-left">
                       {slice.primary.stats.map((item, index) => (
                         <div key={index}>
                           <PrismicRichText
@@ -88,7 +88,9 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                             field={item.description}
                             components={{
                               paragraph: ({ children }) => (
-                                <p className="text-base">{children}</p>
+                                <p className="text-base text-center">
+                                  {children}
+                                </p>
                               ),
                             }}
                           />
