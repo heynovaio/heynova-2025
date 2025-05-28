@@ -2930,26 +2930,6 @@ export interface TeamListSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
-   * Title field in *TeamList → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_list.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * Body field in *TeamList → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: team_list.default.primary.body
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  body: prismic.RichTextField;
-
-  /**
    * Team Member field in *TeamList → Default → Primary*
    *
    * - **Field Type**: Group
