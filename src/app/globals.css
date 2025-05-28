@@ -104,6 +104,7 @@ ol {
   padding: 10px 34px 12px 34px;
   font-size: var(--text-button);
   background: var(--color-primary);
+  color: var(--color-white);
 
   &:hover {
     background: var(--color-wine);
@@ -118,9 +119,10 @@ ol {
 .btn-secondary {
   border-radius: 1.875em;
   border: 3px solid transparent;
-  padding: 10px 10px 12px 10px;
+  padding: 10px 34px 12px 34px;
   font-size: var(--text-button);
   background: var(--color-purple-drk);
+  color: var(--color-white);
 
   &:hover {
     color: var(--color-aqua);
@@ -136,7 +138,7 @@ ol {
 .btn-outline {
   border-radius: 1.875em;
   border: 3px solid transparent;
-  padding: 10px 10px 12px 10px;
+  padding: 10px 34px 12px 34px;
   font-size: var(--text-button);
   background: transparent;
   border-color: var(--color-aqua);

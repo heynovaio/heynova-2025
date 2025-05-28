@@ -12,6 +12,27 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "text_alignment": {
+          "type": "Boolean",
+          "config": {
+            "label": "Text Alignment",
+            "placeholder_false": "Left",
+            "placeholder_true": "Center",
+            "default_value": true
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ]
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -41,18 +62,6 @@
             "repeat": true
           }
         },
-        "background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
-          }
-        },
         "inner_background_color": {
           "type": "Select",
           "config": {
@@ -77,6 +86,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "text_alignment": {
+          "type": "Boolean",
+          "config": {
+            "label": "Text Alignment",
+            "placeholder_false": "Left",
+            "placeholder_true": "Center",
+            "default_value": true
+          }
+        },
         "background_color": {
           "type": "Select",
           "config": {
