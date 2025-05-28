@@ -155,3 +155,11 @@ ol {
 img {
   border-radius: 1.25rem;
 }
+
+.gradient-light {
+  background: linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
