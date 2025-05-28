@@ -52,7 +52,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const locales = await getLocales(page, client);
 
   return (
-    <div className="bg-black p-20">
+    <div className="p-20">
       <p className="font-sans">Hello</p>
       <SliceZone
         slices={page.data.slices}
