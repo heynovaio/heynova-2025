@@ -19,7 +19,7 @@ export const IconCard: React.FC<IconCardProps> = ({
 }) => {
   return (
     <div
-      className="w-full h-full font-body  bg-white text-black text-center p-8 flex flex-col justify-center items-center rounded-[1.25rem] overflow-hidden"
+      className="w-full h-full font-body card-bg-gradient glow-blur border border-aqua text-black text-center px-6 py-12 md:px-8 md:py-16 flex flex-col justify-center items-center rounded-[1.25rem] overflow-hidden"
       {...props}
     >
       {image && (
@@ -34,15 +34,15 @@ export const IconCard: React.FC<IconCardProps> = ({
 
       <div className="pb-4 font-body">
         {typeof title === "string" ? (
-          <h3 className="text-h3">{title}</h3>
+          <h3 className="text-h3 text-lavendar">{title}</h3>
         ) : (
           <PrismicRichText field={title} />
         )}
       </div>
 
-      <div className="section-content ">{content}</div>
+      <div className="text-white font-normal">{content}</div>
 
-      {button && <div className="">{button}</div>}
+      {button && <div className="btn btn-primary">{button}</div>}
     </div>
   );
 };
