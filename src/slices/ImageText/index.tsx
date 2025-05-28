@@ -60,7 +60,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                       field={slice.primary.subtitle}
                       components={{
                         heading4: ({ children }) => (
-                          <h4 className="mb-4 text-aqua">{children}</h4>
+                          <h4 className="mb-4 gradient-light">{children}</h4>
                         ),
                       }}
                     />
@@ -104,9 +104,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
                       field={slice.primary.subtitle}
                       components={{
                         heading4: ({ children }) => (
-                          <h4 className="mb-4 gradient-light inline-block">
-                            {children}
-                          </h4>
+                          <h4 className="mb-4 gradient-light">{children}</h4>
                         ),
                       }}
                     />
