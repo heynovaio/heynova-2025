@@ -1,6 +1,9 @@
-import { FC } from "react";
+import { Button } from "@/components";
+import { Section, Container, ResponsiveImage, ContentBox } from "@/components";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { JSX } from "react";
+import { components } from "@/utils";
 
 /**
  * Props for `ImageText`.
@@ -10,42 +13,95 @@ export type ImageTextProps = SliceComponentProps<Content.ImageTextSlice>;
 /**
  * Component for "ImageText" Slices.
  */
-const ImageText: FC<ImageTextProps> = ({ slice }) => {
+const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
+  const imageSide =
+    slice.primary.imageRight === false ? "md:flex-row" : "md:flex-row-reverse";
+
+  // const isVideo = slice.variation === "video";
+  const isStats = slice.variation === "stats";
+  const isVideo = slice.variation === "video";
+
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      backgroundColor={slice.primary.background_color}
     >
-      Placeholder component for image_text (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <Container
+        containerClassName={`flex flex-col ${imageSide} gap-4 md:gap-16 w-full items-center`}
+      >
+        <div className="w-full md:w-1/2">
+          {isVideo ? (
+            <div className="w-full h-[250px] md:h-[400px] overflow-hidden rounded-xl">
+              <div
+                className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:absolute [&>iframe]:top-0 [&>iframe]:left-0 relative"
+                dangerouslySetInnerHTML={{
+                  __html: slice.primary.video?.html ?? "",
+                }}
+              />
+            </div>
+          ) : (
+            <ResponsiveImage
+              image={slice.primary.image}
+              className="w-full h-[250px] md:h-[400px] object-cover mb-4 md:mb-0"
+            />
+          )}
+        </div>
+
+        <div className="w-full md:w-1/2">
+          <ContentBox
+            title={slice.primary.title}
+            content={
+              isStats ? (
+                <div className="flex flex-col gap-4 md:mb-4">
+                  <PrismicRichText
+                    field={slice.primary.body}
+                    components={components}
+                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-center md:text-left">
+                    {slice.primary.stats.map((item, index) => (
+                      <div key={index}>
+                        <PrismicRichText
+                          field={item.statistic}
+                          components={{
+                            paragraph: ({ children }) => (
+                              <p className="text-[3.125rem] text-aqua font-extraBold">
+                                {children}
+                              </p>
+                            ),
+                          }}
+                        />
+                        <PrismicRichText
+                          field={item.description}
+                          components={{
+                            paragraph: ({ children }) => (
+                              <p className="text-base">{children}</p>
+                            ),
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <PrismicRichText
+                  field={slice.primary.body}
+                  components={components}
+                />
+              )
+            }
+            buttons={slice.primary.button.map((link, index) => (
+              <Button
+                key={index}
+                buttonType="primary"
+                buttonLink={link}
+                label={link.text}
+              />
+            ))}
+          />
+        </div>
+      </Container>
+    </Section>
   );
 };
 
