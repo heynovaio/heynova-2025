@@ -151,3 +151,7 @@ ol {
     background: var(--color-teal-drk);
   }
 }
+
+img {
+  border-radius: 1.25rem;
+}
