@@ -33,6 +33,18 @@
             ]
           }
         },
+        "inner_background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Inner Background Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Gradient"
+            ],
+            "default_value": "Default"
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -60,19 +72,6 @@
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": true
-          }
-        },
-        "inner_background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Inner Background Color",
-            "placeholder": "",
-            "options": [
-              "Default",
-              "Light",
-              "Dark"
-            ],
-            "default_value": "Default"
           }
         }
       },
@@ -114,8 +113,7 @@
             "placeholder": "",
             "options": [
               "Default",
-              "Light",
-              "Dark"
+              "Gradient"
             ],
             "default_value": "Default"
           }

@@ -1,6 +1,64 @@
 [
 	{
 		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Importance"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Dolor quis laboris sunt aute nulla esse cillum dolor ipsum pariatur. Duis ex commodo elit mollit voluptate consectetur proident consequat excepteur elit eiusmod incididunt."
+						}
+					}
+				]
+			},
+			"buttons": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "f6c184b8-f439-4435-a11e-835e2cf34f5f",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://google.com",
+							"text": "Book a Call"
+						}
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "Light",
+				"type": "Select"
+			},
+			"inner_background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "Default",
+				"type": "Select"
+			},
+			"text_alignment": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
 		"variation": "ctaBannerWithForm",
 		"primary": {
 			"title": {
@@ -86,63 +144,5 @@
 				"value": []
 			}
 		]
-	},
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Importance"
-						}
-					}
-				]
-			},
-			"body": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Dolor quis laboris sunt aute nulla esse cillum dolor ipsum pariatur. Duis ex commodo elit mollit voluptate consectetur proident consequat excepteur elit eiusmod incididunt."
-						}
-					}
-				]
-			},
-			"buttons": {
-				"__TYPE__": "RepeatableContent",
-				"type": "Link",
-				"value": [
-					{
-						"__TYPE__": "LinkContent",
-						"key": "f6c184b8-f439-4435-a11e-835e2cf34f5f",
-						"value": {
-							"__TYPE__": "ExternalLink",
-							"url": "http://google.com",
-							"text": "Book a Call"
-						}
-					}
-				]
-			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Light",
-				"type": "Select"
-			},
-			"inner_background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Default",
-				"type": "Select"
-			},
-			"text_alignment": {
-				"__TYPE__": "BooleanContent",
-				"value": true
-			}
-		},
-		"items": []
 	}
 ]
