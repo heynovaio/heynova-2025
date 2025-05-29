@@ -57,9 +57,9 @@
 									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
-											"type": "heading2",
+											"type": "heading3",
 											"content": {
-												"text": "Stiff"
+												"text": "Continued"
 											}
 										}
 									]
@@ -108,19 +108,76 @@
 							[
 								"buttons",
 								{
-									"__TYPE__": "RepeatableContent",
-									"type": "Link",
+									"key": "aced4b39-95a2-4865-b26d-a21950640ed8",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "agree"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
-											"key": "f2e38025-4784-4ee5-ad25-02214ed8bdf8",
-											"__TYPE__": "LinkContent",
-											"value": {
-												"__TYPE__": "ExternalLink",
-												"url": "https://prismic.io",
-												"text": "period"
-											}
+											"type": "heading3",
+											"content": {
+												"text": "Another Item",
+												"spans": []
+											},
+											"direction": "ltr"
 										}
 									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident proident ea cupidatat irure consequat eu veniam labore amet eu fugiat sint voluptate. Pariatur reprehenderit laborum sint enim adipisicing occaecat velit sit eu consequat ipsum.",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"icon",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDg0NTQzNjF8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "sliced grapefruits",
+									"origin": {
+										"id": "ezSFnAFi9hY",
+										"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDg0NTQzNjF8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3024,
+										"height": 4032
+									},
+									"width": 3024,
+									"height": 4032,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"thumbnails": {}
 								}
 							]
 						]
