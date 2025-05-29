@@ -59,6 +59,22 @@ body {
   font-size: var(--text-base);
 }
 
+body.bg-primary {
+  background-image: url("/background-primary.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body.bg-secondary {
+  background-image: url("/background-secondary.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 h1,
 h2,
 h3 {
