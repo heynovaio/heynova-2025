@@ -21,18 +21,6 @@
             "default_value": true
           }
         },
-        "background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
-          }
-        },
         "inner_background_color": {
           "type": "Select",
           "config": {
@@ -92,18 +80,6 @@
             "placeholder_false": "Left",
             "placeholder_true": "Center",
             "default_value": true
-          }
-        },
-        "background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
           }
         },
         "inner_background_color": {
