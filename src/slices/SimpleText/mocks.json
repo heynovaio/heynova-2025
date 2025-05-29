@@ -34,7 +34,18 @@
 						"type": "paragraph",
 						"content": {
 							"text": "Vivamus malesuada, nibh eget pharetra laoreet, quam justo dignissim turpis, nec euismod dolor diam in risus. Vivamus turpis velit, placerat vel feugiat nec, consequat eu ligula. Phasellus ultricies neque fermentum iaculis posuere. Morbi ut feugiat lectus. Duis non lectus et ipsum tempor accumsan in sit amet nisi. In id elit eu lorem molestie convallis. Cras auctor mauris risus, id porttitor magna iaculis a. Aliquam ac vestibulum ex, non tristique erat. Nunc vitae enim ac nisl accumsan efficitur. Phasellus euismod nibh id odio bibendum, eget interdum metus porta. Nam pharetra malesuada augue, quis rutrum nisl. Integer a tellus a ipsum iaculis varius. In rhoncus, sem quis tempus consectetur, mi massa faucibus quam, sit amet molestie quam risus ac est.",
-							"spans": []
+							"spans": [
+								{
+									"type": "hyperlink",
+									"start": 0,
+									"end": 18,
+									"data": {
+										"__TYPE__": "ExternalLink",
+										"url": "#",
+										"target": "_self"
+									}
+								}
+							]
 						},
 						"direction": "rtl"
 					},
@@ -131,7 +142,8 @@
 									"x": 0,
 									"y": 0
 								}
-							}
+							},
+							"credits": null
 						}
 					}
 				]
@@ -143,7 +155,7 @@
 			},
 			"text_alignment": {
 				"__TYPE__": "BooleanContent",
-				"value": true
+				"value": false
 			}
 		},
 		"items": []
