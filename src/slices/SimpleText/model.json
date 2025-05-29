@@ -21,18 +21,6 @@
             "default_value": false
           }
         },
-        "background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
-          }
-        },
         "text": {
           "type": "StructuredText",
           "config": {

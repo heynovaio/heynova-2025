@@ -148,11 +148,6 @@
 					}
 				]
 			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"type": "Select",
-				"value": "Dark"
-			},
 			"text_alignment": {
 				"__TYPE__": "BooleanContent",
 				"value": false
