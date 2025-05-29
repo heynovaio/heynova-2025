@@ -313,3 +313,12 @@ iframe {
     rgba(81, 58, 145, 0.36) 84.35%
   );
 }
+
+.selected-tab-style {
+  border-radius: 20px;
+  border-top: 1px solid #97e1e5;
+  border-bottom: 1px solid #97e1e5;
+  background: rgba(0, 96, 117, 0.4);
+  box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
+  backdrop-filter: blur(15px);
+}

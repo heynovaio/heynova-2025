@@ -46,9 +46,11 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
               {titles.map((title, idx) => (
                 <Tab
                   key={idx}
-                  className={`px-6 py-7 border-t flex flex-row justify-between font-bold data-[selected]:bg-navy   ${
-                    idx === titles.length - 1 ? "border-b" : ""
-                  }`}
+                  className={({ selected }) =>
+                    `px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
+                      idx === titles.length - 1 ? "border-b" : ""
+                    } ${selected ? "selected-tab-style text-white" : "text-[#003D73] border-t"}`
+                  }
                 >
                   {({ selected }) => (
                     <div className="flex items-center justify-between flex-1">
