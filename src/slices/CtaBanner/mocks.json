@@ -35,20 +35,19 @@
 						"value": {
 							"__TYPE__": "ExternalLink",
 							"url": "http://google.com",
-							"text": "guide"
+							"text": "Book a Call"
 						}
 					}
 				]
-			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Light",
-				"type": "Select"
 			},
 			"inner_background_color": {
 				"__TYPE__": "FieldContent",
 				"value": "Default",
 				"type": "Select"
+			},
+			"text_alignment": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []
@@ -94,11 +93,6 @@
 					}
 				]
 			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Light",
-				"type": "Select"
-			},
 			"form": {
 				"embed_url": "https://twitter.com/prismicio/status/1356293316158095361",
 				"author_name": "Prismic",
@@ -128,6 +122,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "Default",
 				"type": "Select"
+			},
+			"text_alignment": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": [
