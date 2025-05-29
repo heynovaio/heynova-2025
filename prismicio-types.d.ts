@@ -1826,16 +1826,6 @@ export interface CtaBannerSliceDefaultPrimary {
   text_alignment: prismic.BooleanField;
 
   /**
-   * Background Color field in *CtaBanner → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_banner.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark">;
-
-  /**
    * Inner Background Color field in *CtaBanner → Default → Primary*
    *
    * - **Field Type**: Select
@@ -1906,16 +1896,6 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   text_alignment: prismic.BooleanField;
-
-  /**
-   * Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark">;
 
   /**
    * Inner Background Color field in *CtaBanner → CtaBanner - With Form → Primary*

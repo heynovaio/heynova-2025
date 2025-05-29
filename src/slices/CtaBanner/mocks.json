@@ -40,11 +40,6 @@
 					}
 				]
 			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Light",
-				"type": "Select"
-			},
 			"inner_background_color": {
 				"__TYPE__": "FieldContent",
 				"value": "Default",
@@ -97,11 +92,6 @@
 						}
 					}
 				]
-			},
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Light",
-				"type": "Select"
 			},
 			"form": {
 				"embed_url": "https://twitter.com/prismicio/status/1356293316158095361",

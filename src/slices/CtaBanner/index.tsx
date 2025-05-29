@@ -26,7 +26,6 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      backgroundColor={slice.primary.background_color}
     >
       <Container>
         <div
