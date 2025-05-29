@@ -3,16 +3,16 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import React, { ReactNode } from "react";
-import { ImageField, RichTextField, EmbedField } from "@prismicio/client";
+import { ImageField, LinkField, RichTextField } from "@prismicio/client";
 
 import { PrismicRichText } from "@prismicio/react";
+import { PrismicNextLink } from "@prismicio/next";
 
 interface HorizontalAccordionProps {
   titles: RichTextField[];
-  contents: (string | RichTextField)[];
+  contents: RichTextField[];
   images?: ImageField[];
-  buttons?: ReactNode[];
-  videos?: EmbedField[];
+  buttons?: LinkField[];
 }
 
 export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
@@ -20,25 +20,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
   contents,
   images = [],
   buttons = [],
-  videos = [],
 }) => {
-  const getEmbedUrl = (url: string) => {
-    if (url.includes("youtube.com/watch?v=")) {
-      const videoId = url.split("watch?v=")[1].split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
-
-    if (url.includes("vimeo.com/") && !url.includes("player.vimeo.com")) {
-      const vimeoId = url.split("/").pop();
-      return `https://player.vimeo.com/video/${vimeoId}`;
-    }
-
-    return url; // fallback
-  };
-
   return (
     <>
-      {/* Desktop view */}
       <div className="hidden md:block">
         <TabGroup>
           <div className="flex gap-6">
@@ -66,11 +50,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           }}
                         />
                       </div>
-                      <FaChevronRight
-                        className={`h-5 w-5 ${
-                          selected ? "text-lavendar" : "text-lavendar"
-                        }`}
-                      />
+                      <FaChevronRight className={`h-5 w-5 text-lavendar`} />
                     </div>
                   )}
                 </Tab>
@@ -90,10 +70,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           />
                         )}
 
-                        <div
-                          className="mb-2 text-2xl font-semibold text-center"
-                          style={{}}
-                        >
+                        <div className="mb-2 text-2xl font-semibold text-center">
                           <PrismicRichText
                             field={titles[idx]}
                             components={{
@@ -104,38 +81,15 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           />
                         </div>
 
-                        {(typeof contents[idx] === "string" &&
-                          contents[idx].trim() !== "") ||
-                        (Array.isArray(contents[idx]) &&
-                          contents[idx]?.length > 0) ? (
-                          <div className="text-base mt-5">
-                            {typeof contents[idx] === "string" ? (
-                              <p>{contents[idx]}</p>
-                            ) : (
-                              <div className="space-y-4">
-                                <PrismicRichText
-                                  field={contents[idx] as RichTextField}
-                                />
-                              </div>
-                            )}
-                          </div>
-                        ) : null}
-
-                        {videos?.[idx]?.embed_url && (
-                          <div className="my-6 w-full max-w-3xl aspect-video">
-                            <iframe
-                              src={getEmbedUrl(videos[idx].embed_url)}
-                              title={videos[idx].title || "Embedded video"}
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              className="w-full h-full rounded-md"
-                              width="100%"
-                            />
-                          </div>
-                        )}
+                        <div className="text-base mt-5 space-y-4">
+                          <PrismicRichText field={contents[idx]} />
+                        </div>
 
                         {buttons?.[idx] && (
-                          <div className="mt-6">{buttons[idx]}</div>
+                          <PrismicNextLink
+                            className="btn-btn-primary"
+                            field={buttons[idx]}
+                          />
                         )}
                       </div>
                     </div>
@@ -147,7 +101,6 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
         </TabGroup>
       </div>
 
-      {/* Mobile view */}
       <div className="block md:hidden">
         <TabGroup>
           <div className="flex flex-col gap-6">
@@ -191,40 +144,15 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           <PrismicRichText field={titles[index]} />
                         </div>
 
-                        {(typeof contents[index] === "string" &&
-                          contents[index].trim() !== "") ||
-                        (Array.isArray(contents[index]) &&
-                          contents[index]?.length > 0) ? (
-                          <div className="text-base mt-5">
-                            {typeof contents[index] === "string" ? (
-                              <p>{contents[index]}</p>
-                            ) : (
-                              <div className="space-y-4">
-                                <PrismicRichText
-                                  field={contents[index] as RichTextField}
-                                />
-                              </div>
-                            )}
-                          </div>
-                        ) : null}
-
-                        {videos?.[index]?.embed_url && (
-                          <div className="my-6 w-full max-w-3xl aspect-video">
-                            <iframe
-                              src={videos[index].embed_url.replace(
-                                "watch?v=",
-                                "embed/"
-                              )}
-                              title={videos[index].title || "Embedded video"}
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              className="w-full h-full rounded-md"
-                            />
-                          </div>
-                        )}
+                        <div className="text-base mt-5 space-y-4">
+                          <PrismicRichText field={contents[index]} />
+                        </div>
 
                         {buttons?.[index] && (
-                          <div className="mt-6">{buttons[index]}</div>
+                          <PrismicNextLink
+                            className="btn-btn-primary"
+                            field={buttons[index]}
+                          />
                         )}
                       </div>
                     </div>
