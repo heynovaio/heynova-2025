@@ -2076,8 +2076,12 @@ export interface HorizontalAccordionSliceDefaultPrimaryAccordionItem {
    * - **API ID Path**: horizontal_accordion.default.primary.accordion[].buttons
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  buttons: prismic.Repeatable<
-    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  buttons: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
   >;
 }
 

@@ -26,7 +26,7 @@
   --color-wine: #940050;
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-navy-blue: #09264b;
+  --color-navy: rgba(0, 96, 117, 0.4);
   --color-primary: var(--color-red);
   --color-secondary: var(--color-purple-drk);
 
@@ -304,4 +304,12 @@ iframe {
   background-size: 100% 1px;
   background-position: bottom left;
   background-origin: border-box;
+}
+
+.gradient-card-bg {
+  background: linear-gradient(
+    66deg,
+    rgba(53, 252, 255, 0.36) 4.86%,
+    rgba(81, 58, 145, 0.36) 84.35%
+  );
 }
