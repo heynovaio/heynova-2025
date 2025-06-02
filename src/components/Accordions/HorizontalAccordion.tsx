@@ -3,7 +3,12 @@
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import React from "react";
-import { ImageField, LinkField, RichTextField } from "@prismicio/client";
+import {
+  ImageField,
+  isFilled,
+  LinkField,
+  RichTextField,
+} from "@prismicio/client";
 
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
@@ -89,9 +94,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                             field={titles[idx]}
                             components={{
                               heading3: ({ children }) => (
-                                <h3 className="text-purple-lt mb-[-0.5rem]">
-                                  {children}
-                                </h3>
+                                <h3 className="text-purple-lt">{children}</h3>
                               ),
                             }}
                           />
@@ -101,7 +104,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           <PrismicRichText field={contents[idx]} />
                         </div>
 
-                        {buttons?.[idx] && (
+                        {isFilled.link(buttons[idx]) && (
                           <PrismicNextLink
                             className="btn btn-primary mt-4"
                             field={buttons[idx]}
@@ -164,9 +167,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           <PrismicRichText field={contents[index]} />
                         </div>
 
-                        {buttons?.[index] && (
+                        {isFilled.link(buttons[index]) && (
                           <PrismicNextLink
-                            className="btn-btn-primary"
+                            className="btn btn-primary mt-4"
                             field={buttons[index]}
                           />
                         )}
