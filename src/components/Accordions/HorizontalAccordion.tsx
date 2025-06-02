@@ -2,7 +2,7 @@
 
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
-import React, { ReactNode } from "react";
+import React from "react";
 import { ImageField, LinkField, RichTextField } from "@prismicio/client";
 
 import { PrismicRichText } from "@prismicio/react";
@@ -26,36 +26,50 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
       <div className="hidden md:block">
         <TabGroup>
           <div className="flex gap-6">
-            <TabList className="w-2/5 flex flex-col ">
+            <TabList className="w-2/5 flex flex-col">
               {titles.map((title, idx) => (
-                <Tab
-                  key={idx}
-                  className={({ selected }) =>
-                    `px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
-                      idx === titles.length - 1 ? "border-b" : ""
-                    } ${selected ? "selected-tab-style" : "text-gradient-light border-t"}`
-                  }
-                >
-                  {({ selected }) => (
-                    <div className="flex items-center justify-between flex-1">
-                      <div
-                        className={selected ? "text-white" : "text-[#003D73]"}
-                      >
-                        <PrismicRichText
-                          field={title}
-                          components={{
-                            heading3: ({ children }) => (
-                              <h3 className="gradient-light">{children}</h3>
-                            ),
-                          }}
-                        />
-                      </div>
-                      <FaChevronRight className={`h-5 w-5 text-lavendar`} />
-                    </div>
+                <div key={idx}>
+                  {idx === 0 && (
+                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
                   )}
-                </Tab>
+
+                  {idx !== 0 && (
+                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                  )}
+
+                  <Tab
+                    className={({ selected }) =>
+                      `w-full px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
+                        selected ? "selected-tab-style" : "text-gradient-light"
+                      }`
+                    }
+                  >
+                    {({ selected }) => (
+                      <div className="flex items-center justify-between flex-1">
+                        <div
+                          className={selected ? "text-white" : "text-[#003D73]"}
+                        >
+                          <PrismicRichText
+                            field={title}
+                            components={{
+                              heading3: ({ children }) => (
+                                <h3 className="gradient-light">{children}</h3>
+                              ),
+                            }}
+                          />
+                        </div>
+                        <FaChevronRight className="h-5 w-5 text-lavendar" />
+                      </div>
+                    )}
+                  </Tab>
+
+                  {idx === titles.length - 1 && (
+                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                  )}
+                </div>
               ))}
             </TabList>
+
             <TabPanels className="w-3/5 border rounded-[10px]  gradient-card-bg min-h-[400px]">
               {titles.map((_, idx) => (
                 <TabPanel key={`panel-${idx}`} className="h-full">

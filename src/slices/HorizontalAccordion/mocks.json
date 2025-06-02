@@ -157,7 +157,6 @@
 							[
 								"icon",
 								{
-									"__TYPE__": "ImageContent",
 									"provider": "imgix",
 									"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDg0NTQzNjF8MA&ixlib=rb-4.1.0&q=85",
 									"alt": "sliced grapefruits",
@@ -169,6 +168,71 @@
 									},
 									"width": 3024,
 									"height": 4032,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Testing",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "blah blah blah",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"icon",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1596460666242-bdcf1bb8eca1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyM3x8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzQ4Nzg1NTkzfDA&ixlib=rb-4.1.0&q=85",
+									"alt": "sliced orange fruit on brown wooden table",
+									"origin": {
+										"id": "K9W_8z2zIVo",
+										"url": "https://images.unsplash.com/photo-1596460666242-bdcf1bb8eca1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyM3x8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzQ4Nzg1NTkzfDA&ixlib=rb-4.1.0&q=85",
+										"width": 3224,
+										"height": 4843
+									},
+									"width": 3224,
+									"height": 4843,
 									"edit": {
 										"background": "transparent",
 										"zoom": 1,
