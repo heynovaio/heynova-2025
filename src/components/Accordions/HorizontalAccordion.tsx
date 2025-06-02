@@ -89,7 +89,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                             field={titles[idx]}
                             components={{
                               heading3: ({ children }) => (
-                                <h3 className="text-purple-lt">{children}</h3>
+                                <h3 className="text-purple-lt mb-[-0.5rem]">
+                                  {children}
+                                </h3>
                               ),
                             }}
                           />
@@ -101,7 +103,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
 
                         {buttons?.[idx] && (
                           <PrismicNextLink
-                            className="btn-btn-primary"
+                            className="btn btn-primary mt-4"
                             field={buttons[idx]}
                           />
                         )}
