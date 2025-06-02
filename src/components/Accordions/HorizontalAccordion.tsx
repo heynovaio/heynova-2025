@@ -33,7 +33,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                   className={({ selected }) =>
                     `px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
                       idx === titles.length - 1 ? "border-b" : ""
-                    } ${selected ? "selected-tab-style text-white" : "text-[#003D73] border-t"}`
+                    } ${selected ? "selected-tab-style" : "text-gradient-light border-t"}`
                   }
                 >
                   {({ selected }) => (
