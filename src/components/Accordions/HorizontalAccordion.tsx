@@ -75,46 +75,48 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
               ))}
             </TabList>
 
-            <TabPanels className="w-3/5 border rounded-[10px]  gradient-card-bg min-h-[400px]">
-              {titles.map((_, idx) => (
-                <TabPanel key={`panel-${idx}`} className="h-full">
-                  <div className="h-full w-full py-10">
-                    <div className="h-full flex items-center justify-center">
-                      <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
-                        {images[idx]?.url && (
-                          <img
-                            src={images[idx].url}
-                            alt={images[idx].alt || `Image ${idx}`}
-                            className="mb-6 max-h-[80px] object-contain block mx-auto"
-                          />
-                        )}
+            <TabPanels className="w-3/5 p-[2px] rounded-[10px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8] min-h-[400px]">
+              <div className="w-full h-full rounded-[10px] bg-midnight">
+                {titles.map((_, idx) => (
+                  <TabPanel key={`panel-${idx}`} className="h-full">
+                    <div className="h-full w-full py-10">
+                      <div className="h-full flex items-center justify-center">
+                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+                          {images[idx]?.url && (
+                            <img
+                              src={images[idx].url}
+                              alt={images[idx].alt || `Image ${idx}`}
+                              className="mb-6 max-h-[80px] object-contain block mx-auto"
+                            />
+                          )}
 
-                        <div className="mb-2 text-2xl font-semibold text-center">
-                          <PrismicRichText
-                            field={titles[idx]}
-                            components={{
-                              heading3: ({ children }) => (
-                                <h3 className="text-purple-lt">{children}</h3>
-                              ),
-                            }}
-                          />
+                          <div className="mb-2 text-2xl font-semibold text-center">
+                            <PrismicRichText
+                              field={titles[idx]}
+                              components={{
+                                heading3: ({ children }) => (
+                                  <h3 className="text-purple-lt">{children}</h3>
+                                ),
+                              }}
+                            />
+                          </div>
+
+                          <div className="text-base mt-5 space-y-4">
+                            <PrismicRichText field={contents[idx]} />
+                          </div>
+
+                          {isFilled.link(buttons[idx]) && (
+                            <PrismicNextLink
+                              className="btn btn-primary mt-4"
+                              field={buttons[idx]}
+                            />
+                          )}
                         </div>
-
-                        <div className="text-base mt-5 space-y-4">
-                          <PrismicRichText field={contents[idx]} />
-                        </div>
-
-                        {isFilled.link(buttons[idx]) && (
-                          <PrismicNextLink
-                            className="btn btn-primary mt-4"
-                            field={buttons[idx]}
-                          />
-                        )}
                       </div>
                     </div>
-                  </div>
-                </TabPanel>
-              ))}
+                  </TabPanel>
+                ))}
+              </div>
             </TabPanels>
           </div>
         </TabGroup>
