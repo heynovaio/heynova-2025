@@ -30,11 +30,11 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
               {titles.map((title, idx) => (
                 <div key={idx}>
                   {idx === 0 && (
-                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
                   )}
 
                   {idx !== 0 && (
-                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
                   )}
 
                   <Tab
@@ -64,7 +64,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                   </Tab>
 
                   {idx === titles.length - 1 && (
-                    <div className="h-[2px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
                   )}
                 </div>
               ))}
