@@ -8,28 +8,6 @@
 				"value": "None",
 				"type": "Select"
 			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Current"
-						}
-					}
-				]
-			},
-			"body": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Ad deserunt ea et aliqua nostrud quis voluptate laborum dolore velit pariatur aute excepteur. Ea ea sint nisi dolor minim duis adipisicing magna non esse ex velit mollit ut."
-						}
-					}
-				]
-			},
 			"team_member": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -66,8 +44,8 @@
 								"name",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "mark",
-									"type": "Text"
+									"type": "Text",
+									"value": "Mark"
 								}
 							],
 							[
@@ -76,6 +54,198 @@
 									"__TYPE__": "FieldContent",
 									"value": "applied",
 									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Dave"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "relax"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgzNDc0MzV8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "orange fruit on white ceramic plate",
+									"origin": {
+										"id": "Jr7t5QviCDM",
+										"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgzNDc0MzV8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3024,
+										"height": 4032
+									},
+									"width": 3024,
+									"height": 4032,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1473830394358-91588751b241?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8cGVyc29ufGVufDB8fHx8MTc0ODQ0ODg1Nnww&ixlib=rb-4.1.0&q=85",
+									"alt": "person looking out through window",
+									"origin": {
+										"id": "gzhyKEo_cbU",
+										"url": "https://images.unsplash.com/photo-1473830394358-91588751b241?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8cGVyc29ufGVufDB8fHx8MTc0ODQ0ODg1Nnww&ixlib=rb-4.1.0&q=85",
+										"width": 5184,
+										"height": 3456
+									},
+									"width": 5184,
+									"height": 3456,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Kerry"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "element"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1528629297340-d1d466945dc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8YmljeWNsZXxlbnwwfHx8fDE3NDg0NDg4Nzh8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "man riding bicycle on road during daytime",
+									"origin": {
+										"id": "nPOtzvGLYW0",
+										"url": "https://images.unsplash.com/photo-1528629297340-d1d466945dc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8YmljeWNsZXxlbnwwfHx8fDE3NDg0NDg4Nzh8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3829,
+										"height": 2411
+									},
+									"width": 3829,
+									"height": 2411,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Ellen"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "landing"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Erin"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxiYXJiZXF1ZXxlbnwwfHx8fDE3NDg0NDkzMDh8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "grilled meat and vegetable on the table",
+									"origin": {
+										"id": "UC0HZdUitWY",
+										"url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxiYXJiZXF1ZXxlbnwwfHx8fDE3NDg0NDkzMDh8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3571,
+										"height": 5356
+									},
+									"width": 3571,
+									"height": 5356,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "advance"
 								}
 							]
 						]
