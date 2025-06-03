@@ -30,7 +30,7 @@ export const IconCard: React.FC<IconCardProps> = ({
           {...props}
         >
           {isFilled.image(image) && (
-            <div className="w-[125px] h-[125px] mb-6">
+            <div className="w-[125px] h-[125px] mb-6 rounded-[1.25rem] overflow-hidden">
               <ResponsiveImage
                 image={image}
                 className="w-full h-full object-contain"
