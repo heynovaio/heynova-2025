@@ -2760,16 +2760,6 @@ export interface SimpleTextSliceDefaultPrimary {
   text_alignment: prismic.BooleanField;
 
   /**
-   * Background Color field in *SimpleText → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: simple_text.default.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark">;
-
-  /**
    * Text field in *SimpleText → Default → Primary*
    *
    * - **Field Type**: Rich Text
