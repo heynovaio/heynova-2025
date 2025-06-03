@@ -186,3 +186,7 @@ img {
     rgba(0, 96, 117, 0.7) 100%
   );
 }
+
+.gradient-border {
+  background-image: linear-gradient(to right, #97e1e5, #d9caf8);
+}
