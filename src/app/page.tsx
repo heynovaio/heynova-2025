@@ -8,7 +8,6 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
-import { TeamCard } from "@/components/Cards/TeamCard";
 import { IconCard } from "@/components/Cards/IconCard";
 
 type Params = { lang: string };
