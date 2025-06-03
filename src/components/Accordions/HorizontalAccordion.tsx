@@ -78,10 +78,13 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
             <TabPanels className="w-3/5 p-[2px] rounded-[10px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8] min-h-[400px]">
               <div className="w-full h-full rounded-[10px] bg-midnight">
                 {titles.map((_, idx) => (
-                  <TabPanel key={`panel-${idx}`} className="h-full">
+                  <TabPanel
+                    key={`panel-${idx}`}
+                    className="h-full gradient-card-bg"
+                  >
                     <div className="h-full w-full py-10">
-                      <div className="h-full flex items-center justify-center">
-                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+                      <div className="h-full flex items-center justify-center ">
+                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center ">
                           {images[idx]?.url && (
                             <img
                               src={images[idx].url}
