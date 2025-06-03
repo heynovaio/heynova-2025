@@ -130,55 +130,73 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
           <div className="flex flex-col gap-6">
             {titles.map((title, index) => (
               <div key={index} className="flex flex-col gap-2">
-                <Tab className="px-6 py-7 bg-[#C8E7F7] border rounded-[10px] flex justify-between font-bold data-[selected]:bg-[#003D73] data-[selected]:text-white">
+                <Tab
+                  className={({ selected }) =>
+                    `px-6 py-7 border rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none `
+                  }
+                >
                   {({ selected }) => (
-                    <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center justify-between w-full ">
                       <div
                         className={selected ? "text-white" : "text-[#003D73]"}
                       >
-                        <PrismicRichText field={title} />
+                        <PrismicRichText
+                          field={title}
+                          components={{
+                            heading3: ({ children }) => (
+                              <h3
+                                className={`${
+                                  selected
+                                    ? "gradient-light text-white"
+                                    : "gradient-light"
+                                }`}
+                              >
+                                {children}
+                              </h3>
+                            ),
+                          }}
+                        />
                       </div>
                       <FaChevronDown
                         className={`h-4 w-4 ${
-                          selected ? "text-[#DA7857]" : "text-[#003D73]"
+                          selected ? "text-lavendar" : "text-lavendar"
                         }`}
                       />
                     </div>
                   )}
                 </Tab>
 
-                <TabPanel className="border rounded-[10px] bg-[#003D73] min-h-[400px]">
-                  <div className="h-full w-full py-10">
-                    <div className="h-full flex items-center justify-center">
-                      <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
-                        {images[index]?.url && (
-                          <img
-                            src={images[index].url}
-                            alt={images[index].alt || `Image ${index}`}
-                            className="mb-6 max-h-[80px] object-contain block mx-auto"
-                          />
-                        )}
-                        <div
-                          className="mb-2 text-2xl font-semibold text-center"
-                          style={{
-                            color: "#C8E7F7",
-                            fontFamily: "Lato, sans-serif",
+                <TabPanel className="border rounded-[10px] min-h-[400px] gradient-card-bg py-10">
+                  <div className="h-full flex items-center justify-center">
+                    <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+                      {images[index]?.url && (
+                        <img
+                          src={images[index].url}
+                          alt={images[index].alt || `Image ${index}`}
+                          className="mb-6 max-h-[80px] object-contain block mx-auto"
+                        />
+                      )}
+                      <div className="mb-2 text-2xl font-semibold text-center text-purple-lt">
+                        <PrismicRichText
+                          field={titles[index]}
+                          components={{
+                            heading3: ({ children }) => (
+                              <h3 className="text-purple-lt">{children}</h3>
+                            ),
                           }}
-                        >
-                          <PrismicRichText field={titles[index]} />
-                        </div>
-
-                        <div className="text-base mt-5 space-y-4">
-                          <PrismicRichText field={contents[index]} />
-                        </div>
-
-                        {isFilled.link(buttons[index]) && (
-                          <PrismicNextLink
-                            className="btn btn-primary mt-4"
-                            field={buttons[index]}
-                          />
-                        )}
+                        />
                       </div>
+
+                      <div className="text-base mt-5 space-y-4">
+                        <PrismicRichText field={contents[index]} />
+                      </div>
+
+                      {isFilled.link(buttons[index]) && (
+                        <PrismicNextLink
+                          className="btn btn-primary mt-4"
+                          field={buttons[index]}
+                        />
+                      )}
                     </div>
                   </div>
                 </TabPanel>
