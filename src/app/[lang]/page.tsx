@@ -8,7 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
-import { TeamCard } from "@/components/Cards/TeamCard";
+import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
 type Params = { lang: string };
 
@@ -51,8 +51,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const locales = await getLocales(page, client);
 
   return (
-    <div className="bg-black">
-      <p className="font-sans">Hello</p>
+    <div className="">
+      <DefaultIntro data={page.data} />
       <SliceZone
         slices={page.data.slices}
         components={components}
