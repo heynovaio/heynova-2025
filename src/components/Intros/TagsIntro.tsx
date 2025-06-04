@@ -53,7 +53,10 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
                 {tags.map((tag: string) => (
-                  <span className="text-white px-3 py-1 rounded-full border border-white text-sm">
+                  <span
+                    key={tag}
+                    className="text-white px-3 py-1 rounded-full border border-white text-sm"
+                  >
                     {tag}
                   </span>
                 ))}
