@@ -32,7 +32,8 @@
 
   /* Font Size */
   --text-base: 1.25rem;
-  --text-h1: 5.375rem;
+  --text-h1-home: 5.375rem;
+  --text-h1: 3.5rem;
   --text-h2: 2.875rem;
   --text-h3: 1.875rem;
   --text-h4: 1.625rem;
