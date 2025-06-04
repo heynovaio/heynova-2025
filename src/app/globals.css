@@ -296,3 +296,12 @@ iframe {
     height: 450px;
   }
 }
+
+.gradient-bottom-border {
+  border-bottom: 1px solid transparent;
+  background-image: linear-gradient(to right, #97e1e5, #d9caf8);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: bottom left;
+  background-origin: border-box;
+}

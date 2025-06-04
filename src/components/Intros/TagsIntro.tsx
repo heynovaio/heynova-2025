@@ -27,7 +27,7 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
         <div
           className={`text-white flex flex-col sm:flex-row justify-between ${
             imageExists ? "sm:items-center" : "items-center"
-          } padded-div py-0 pb-8 gap-8 mt-0 border-b`}
+          } padded-div py-0 pb-12 gap-8 mt-0 gradient-bottom-border`}
         >
           <div
             className={`${
