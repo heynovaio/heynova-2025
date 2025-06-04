@@ -2,9 +2,14 @@ import React from "react";
 import { Container } from "../Layout";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import { ImageField, RichTextField } from "@prismicio/client";
 
 interface TagsIntroProps {
-  data: any;
+  data: {
+    title: RichTextField;
+    image: ImageField;
+    paragraph?: RichTextField;
+  };
   content?: React.ReactNode;
   tags: string[];
 }
@@ -16,7 +21,6 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
 }) => {
   const imageExists = data.image?.url;
 
-  console.log(tags);
   return (
     <section
       className={`${
@@ -44,7 +48,7 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
             />
 
             {content}
-            <PrismicRichText field={data.paragraph} />
+            {data.paragraph && <PrismicRichText field={data.paragraph} />}
 
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
