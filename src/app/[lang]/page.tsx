@@ -8,6 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
+import { TagsIntro } from "@/components/Intros/TagsIntro";
 
 type Params = { lang: string };
 
@@ -48,6 +49,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const global = await client.getSingle("global", { lang });
   // const menus = await client.getSingle("menus", { lang });
   // const locales = await getLocales(page, client);
+  console.log(page.tags);
 
   return (
     <div className="">
