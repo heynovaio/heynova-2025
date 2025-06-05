@@ -17,9 +17,9 @@ type Params = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<Params>; // Make this consistent with Next.js 15
+  params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid, lang = "en-ca" } = await params; // Await the params
+  const { uid, lang = "en-ca" } = await params;
 
   const client = createClient();
   const page = await client
@@ -52,21 +52,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   try {
     const page = await client.getByUID("insight", uid, { lang });
 
-    // Optional: Verify the insight actually belongs to this category
-    const insightCategories = page.data.categories as Array<{
-      category: prismic.FilledContentRelationshipField;
-    }>;
-
-    const belongsToCategory = insightCategories?.some(
-      (cat) => cat.category?.uid === category
-    );
-
-    // You can choose to handle this however you want
-    if (!belongsToCategory && insightCategories?.length > 0) {
-      console.warn(`Insight ${uid} doesn't belong to category ${category}`);
-      // Optionally redirect or show different content
-    }
-
     return (
       <SliceZone
         slices={page.data.slices}
@@ -85,7 +70,7 @@ export async function generateStaticParams() {
 
   try {
     // Get all insights and all categories
-    const [insights, allCategories] = await Promise.all([
+    const [insights, otherCategories] = await Promise.all([
       client.getAllByType("insight", { lang: "*" }),
       client.getAllByType("insights_categories", { lang: "*" }),
     ]);
@@ -111,12 +96,12 @@ export async function generateStaticParams() {
       } else {
         // If insight has no categories, generate for all available categories
         // or use a default category
-        allCategories
+        otherCategories
           .filter((cat) => cat.lang === insight.lang)
           .forEach((category) => {
             params.push({
               uid: insight.uid,
-              category: category.uid,
+              category: category.uid || "other",
               lang: insight.lang,
             });
           });

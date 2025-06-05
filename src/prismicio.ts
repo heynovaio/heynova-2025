@@ -30,13 +30,11 @@ const routes: Route[] = [
   { type: "team", path: "/:lang?/team" },
   { type: "contact", path: "/:lang?/contact" },
 
-  // Insights routes
   { type: "insights_listing", path: "/:lang?/insights" },
   {
     type: "insights_categories",
-    path: "/:lang?/insights/:uid", // Keep this simple
+    path: "/:lang?/insights/:uid",
   },
-  // Services routes
   { type: "services_listing", path: "/:lang?/services" },
   { type: "service", path: "/:lang?/services/:uid" },
 ];
