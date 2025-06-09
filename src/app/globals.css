@@ -328,3 +328,7 @@ iframe {
   outline-offset: 3px;
   border-radius: 10px;
 }
+
+.testimonial-img {
+  border-radius: 99em;
+}
