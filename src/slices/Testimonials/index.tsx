@@ -21,7 +21,6 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className=" p-10"
     >
       <Container containerClassName="flex flex-col gap-12 items-center bg-midnight">
         <div
