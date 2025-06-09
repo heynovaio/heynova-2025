@@ -40,6 +40,39 @@
           "placeholder": ""
         }
       },
+      "facebook": {
+        "type": "Link",
+        "config": {
+          "label": "Facebook",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "instagram": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "linkedin": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "slices1": {
         "type": "Slices",
         "fieldset": "Slice Zone",
