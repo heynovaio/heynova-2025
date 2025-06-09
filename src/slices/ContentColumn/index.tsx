@@ -1,6 +1,7 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Section, Container, ResponsiveImage } from "@/components";
+import { JSX } from "react";
 
 /**
  * Props for `ContentColumn`.
@@ -11,42 +12,51 @@ export type ContentColumnProps =
 /**
  * Component for "ContentColumn" Slices.
  */
-const ContentColumn: FC<ContentColumnProps> = ({ slice }) => {
+const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
+  const cardStyling =
+    slice.primary.card_color === "Purple"
+      ? "bg-neon-violet/60 text-white divide-soft-purple/25"
+      : "bg-white text-midnight divide-neon-violet";
+
+  const isSingleColumn = slice.primary.content.length === 1;
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for content_column (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <Container
+        containerClassName={isSingleColumn ? "flex justify-center" : ""}
+      >
+        <div
+          className={`${cardStyling} flex flex-col md:flex-row items-center justify-center shadow rounded border border-neon-violet items-stretch ${
+            isSingleColumn ? "max-w-[860px] w-full" : "w-full"
+          }`}
+        >
+          {slice.primary.content.map((item, index) => (
+            <div
+              key={index}
+              className={`flex flex-col items-center justify-center p-10 w-full ${
+                index !== 0
+                  ? "border-t md:border-t-0 md:border-l border-neon-violet"
+                  : ""
+              }`}
+            >
+              {item.icon && (
+                <ResponsiveImage
+                  image={item.icon}
+                  imageHeightClassName="h-[100px] w-auto aspect-square"
+                />
+              )}
+              <div className="mt-4 text-center flex flex-col gap-2">
+                <PrismicRichText field={item.title} />
+                {/* <PrismicRichText field={item.body} components={components} /> */}
+                <PrismicRichText field={item.body} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
   );
 };
 

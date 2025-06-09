@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "None",
-				"type": "Select"
-			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -94,14 +89,10 @@
 					}
 				]
 			},
-			"tile_color": {
+			"card_color": {
 				"__TYPE__": "FieldContent",
-				"value": "Light",
+				"value": "Blue",
 				"type": "Select"
-			},
-			"show_icon": {
-				"__TYPE__": "BooleanContent",
-				"value": false
 			}
 		},
 		"items": []
