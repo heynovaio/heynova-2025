@@ -12,15 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "background_color": {
+        "card_color": {
           "type": "Select",
           "config": {
-            "label": "Background Color",
+            "label": "Card Color",
             "placeholder": "",
             "options": [
               "None",
-              "Light",
-              "Dark"
+              "Purple",
+              "Blue"
             ],
             "default_value": "None"
           }
@@ -41,30 +41,6 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "strong,em,preformatted,paragraph,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "tile_color": {
-          "type": "Select",
-          "config": {
-            "label": "Content Tile Color",
-            "placeholder": "",
-            "options": [
-              "Default",
-              "Light",
-              "Dark",
-              "Outline",
-              "No Border"
-            ],
-            "default_value": "Default"
-          }
-        },
-        "show_icon": {
-          "type": "Boolean",
-          "config": {
-            "label": "Show Icon",
-            "placeholder_false": "Hide",
-            "placeholder_true": "Show",
-            "default_value": true
           }
         },
         "content": {

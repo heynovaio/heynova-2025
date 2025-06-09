@@ -1674,15 +1674,15 @@ export interface ContentColumnSliceContentColumnWithCardsPrimaryContentItem {
  */
 export interface ContentColumnSliceDefaultPrimary {
   /**
-   * Background Color field in *ContentColumn → Default → Primary*
+   * Card Color field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **Default Value**: None
-   * - **API ID Path**: content_column.default.primary.background_color
+   * - **API ID Path**: content_column.default.primary.card_color
    * - **Documentation**: https://prismic.io/docs/field#select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  card_color: prismic.SelectField<"None" | "Purple" | "Blue", "filled">;
 
   /**
    * Title field in *ContentColumn → Default → Primary*
@@ -1703,31 +1703,6 @@ export interface ContentColumnSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   body: prismic.RichTextField;
-
-  /**
-   * Content Tile Color field in *ContentColumn → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Default
-   * - **API ID Path**: content_column.default.primary.tile_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  tile_color: prismic.SelectField<
-    "Default" | "Light" | "Dark" | "Outline" | "No Border",
-    "filled"
-  >;
-
-  /**
-   * Show Icon field in *ContentColumn → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: content_column.default.primary.show_icon
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  show_icon: prismic.BooleanField;
 
   /**
    * Content field in *ContentColumn → Default → Primary*
