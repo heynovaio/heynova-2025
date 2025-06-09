@@ -7,9 +7,9 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading2",
+						"type": "heading4",
 						"content": {
-							"text": "Order"
+							"text": "Forgotten"
 						}
 					}
 				]
@@ -25,6 +25,24 @@
 							"__TYPE__": "ExternalLink",
 							"url": "http://google.com",
 							"text": "nature"
+						}
+					},
+					{
+						"key": "f5f246a9-6011-4efa-82b6-27471e8fa619",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "AnyLink",
+							"kind": "any",
+							"text": "Test"
+						}
+					},
+					{
+						"key": "ae3be44c-794c-4565-961d-dc998947da03",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "AnyLink",
+							"kind": "any",
+							"text": "Another Test"
 						}
 					}
 				]
