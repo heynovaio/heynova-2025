@@ -25,21 +25,24 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
     >
       <Container containerClassName="flex flex-col gap-12 items-center bg-midnight">
         <div
-          className="rounded py-4 px-6 md:py-16 md:px-28  bg-no-repeat "
+          className="relative rounded py-4 px-6 md:py-16 md:px-28 overflow-hidden"
           style={{
-            backgroundImage: "url('/testimonial-bg.svg')",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            backgroundPosition: "center",
+            background:
+              "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
           }}
         >
-          <div
-            className={`flex flex-col md:flex-row gap-4 md:gap-12 md:items-center`}
-          >
+          <img
+            src="/testimonial-bg.svg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 flex flex-col md:flex-row gap-4 md:gap-12 md:items-center">
             <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
               <PrismicNextImage
                 field={displayedTestimonial.image}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover rounded-full"
                 alt=""
               />
             </div>
