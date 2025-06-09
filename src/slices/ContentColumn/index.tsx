@@ -13,10 +13,12 @@ export type ContentColumnProps =
  * Component for "ContentColumn" Slices.
  */
 const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
-  const cardStyling =
-    slice.primary.card_color === "Purple"
-      ? "bg-neon-violet/60 text-white divide-soft-purple/25"
-      : "bg-white text-midnight divide-neon-violet";
+  let cardStyling;
+
+  switch (slice.primary.card_color) {
+    case "none":
+      cardStyling = "border border-";
+  }
 
   const isSingleColumn = slice.primary.content.length === 1;
   return (
