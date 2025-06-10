@@ -12,6 +12,7 @@ import {
 
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
+import { useState } from "react";
 
 interface HorizontalAccordionProps {
   titles: RichTextField[];
@@ -26,53 +27,62 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
   images = [],
   buttons = [],
 }) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   return (
     <>
       <div className="hidden md:block">
-        <TabGroup>
+        <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <div className="flex gap-6">
             <TabList className="w-2/5 flex flex-col">
-              {titles.map((title, idx) => (
-                <div key={idx}>
-                  {idx === 0 && (
-                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
-                  )}
+              {titles.map((title, idx) => {
+                return (
+                  <div key={idx}>
+                    {(idx === 0 && selectedIndex !== idx) ||
+                    (idx > 0 &&
+                      selectedIndex !== idx &&
+                      selectedIndex !== idx - 1) ? (
+                      <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                    ) : null}
 
-                  {idx !== 0 && (
-                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
-                  )}
-
-                  <Tab
-                    className={({ selected }) =>
-                      `w-full px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
-                        selected ? "selected-tab-style" : "text-gradient-light"
-                      }`
-                    }
-                  >
-                    {({ selected }) => (
-                      <div className="flex items-center justify-between flex-1">
-                        <div
-                          className={selected ? "text-white" : "text-[#003D73]"}
-                        >
-                          <PrismicRichText
-                            field={title}
-                            components={{
-                              heading3: ({ children }) => (
-                                <h3 className="gradient-light">{children}</h3>
-                              ),
-                            }}
-                          />
+                    <Tab
+                      className={({ selected }) =>
+                        `w-full px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
+                          selected
+                            ? "selected-tab-style"
+                            : "text-gradient-light"
+                        }`
+                      }
+                    >
+                      {({ selected }) => (
+                        <div className="flex items-center justify-between flex-1">
+                          <div
+                            className={
+                              selected ? "text-white" : "text-[#003D73]"
+                            }
+                          >
+                            <PrismicRichText
+                              field={title}
+                              components={{
+                                heading3: ({ children }) => (
+                                  <h3 className="gradient-light">{children}</h3>
+                                ),
+                              }}
+                            />
+                          </div>
+                          <FaChevronRight className="h-5 w-5 text-lavendar" />
                         </div>
-                        <FaChevronRight className="h-5 w-5 text-lavendar" />
-                      </div>
-                    )}
-                  </Tab>
+                      )}
+                    </Tab>
 
-                  {idx === titles.length - 1 && (
-                    <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
-                  )}
-                </div>
-              ))}
+                    {(idx === titles.length - 1 && selectedIndex !== idx) ||
+                    (idx < titles.length - 1 &&
+                      selectedIndex !== idx &&
+                      selectedIndex !== idx + 1) ? (
+                      <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                    ) : null}
+                  </div>
+                );
+              })}
             </TabList>
 
             <TabPanels className="w-3/5 p-[2px] rounded-[10px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8] min-h-[400px]">
@@ -83,8 +93,8 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                     className="h-full gradient-card-bg"
                   >
                     <div className="h-full w-full py-10">
-                      <div className="h-full flex items-center justify-center ">
-                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center ">
+                      <div className="h-full flex items-center justify-center">
+                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
                           {images[idx]?.url && (
                             <img
                               src={images[idx].url}
