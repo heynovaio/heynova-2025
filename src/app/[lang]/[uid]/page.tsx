@@ -7,6 +7,7 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
+import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -28,9 +29,7 @@ export async function generateMetadata({
 
   return {
     title:
-      page.data.meta_title ||
-      prismic.asText(page.data.title) ||
-      "Hey Nova",
+      page.data.meta_title || prismic.asText(page.data.title) || "Hey Nova",
     description: page.data.meta_description,
     openGraph: {
       title: page.data.meta_title || undefined,
@@ -55,11 +54,14 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const locales = await getLocales(page, client);
 
   return (
-    <SliceZone
-      slices={page.data.slices}
-      components={components}
-      context={{ lang: "en-ca" }}
-    />
+    <div>
+      <DefaultIntro data={page.data} />
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={{ lang: "en-ca" }}
+      />
+    </div>
   );
 }
 

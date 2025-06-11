@@ -8,7 +8,6 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
-import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
 type Params = { lang: string };
 
@@ -52,35 +51,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   return (
     <div className="">
-      <DefaultIntro data={page.data} />
       <SliceZone
         slices={page.data.slices}
         components={components}
         context={{ lang }}
       />
-      {/** Just in for testing */}
-      <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
-        <TeamCard
-          name="Test Name"
-          position="test position"
-          image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name"
-          position="test position"
-          image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name Longer"
-          position="test position"
-          image={page.data.image}
-        />
-        <TeamCard
-          name="Test Name"
-          position="test position"
-          image={page.data.image}
-        />
-      </div>
     </div>
   );
 }
