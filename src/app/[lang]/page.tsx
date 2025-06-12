@@ -48,7 +48,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   // const global = await client.getSingle("global", { lang });
   // const menus = await client.getSingle("menus", { lang });
   // const locales = await getLocales(page, client);
-  console.log(page.tags);
 
   return (
     <div className="">
