@@ -8,7 +8,6 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
-import { TagsIntro } from "@/components/Intros/TagsIntro";
 
 type Params = { lang: string };
 
