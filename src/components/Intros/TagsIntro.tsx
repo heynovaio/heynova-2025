@@ -3,6 +3,7 @@ import { Container } from "../Layout";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { ImageField, RichTextField } from "@prismicio/client";
+import Link from "next/link";
 
 interface TagsIntroProps {
   data: {
@@ -53,12 +54,14 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
                 {tags.map((tag: string) => (
-                  <span
+                  // TODO: Add in the link for the tags once confirmed where they are going
+                  <Link
                     key={tag}
-                    className="text-white px-3 py-1 rounded-full border border-white text-sm"
+                    className="text-white px-3 py-1 rounded-full border border-white text-sm hover:text-aqua hover:border-aqua"
+                    href="/"
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
             )}
