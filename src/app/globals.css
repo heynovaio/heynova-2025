@@ -322,3 +322,9 @@ iframe {
   box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
   backdrop-filter: blur(15px);
 }
+
+[role="tabpanel"]:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
