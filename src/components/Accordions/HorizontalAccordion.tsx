@@ -141,7 +141,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
             {titles.map((title, index) => (
               <div key={index} className="flex flex-col gap-2">
                 <Tab
-                  className={({ selected }) =>
+                  className={() =>
                     `px-6 py-7 border rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none `
                   }
                 >
