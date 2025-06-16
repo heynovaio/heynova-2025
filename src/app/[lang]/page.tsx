@@ -9,6 +9,7 @@ import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
 import { Layout } from "@/components/Layout/Layout";
+import { HomeIntro } from "@/components/Intros/HomeIntro";
 
 type Params = { lang: string };
 
@@ -58,7 +59,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       menus={menus.data}
     >
       <div>
-        <p className="font-sans">Hello</p>
+        <HomeIntro data={page.data} />
         <SliceZone
           slices={page.data.slices}
           components={components}
