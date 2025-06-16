@@ -14,6 +14,10 @@ export type TestimonialsProps = SliceComponentProps<Content.TestimonialsSlice>;
  */
 const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
   const allTestimonials = slice.primary.testimonials;
+
+  if (!Array.isArray(allTestimonials) || allTestimonials.length === 0) {
+    return <></>;
+  }
   const displayedTestimonial =
     allTestimonials[Math.floor(Math.random() * allTestimonials.length)];
 
