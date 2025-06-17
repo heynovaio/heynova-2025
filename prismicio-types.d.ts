@@ -323,6 +323,7 @@ export interface InsightDocumentDataAuthorsItem {
 }
 
 type InsightDocumentDataSlicesSlice =
+  | TileGridSlice
   | ContentCarouselSlice
   | CtaBannerSlice
   | NumberedListSlice
