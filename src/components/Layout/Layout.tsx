@@ -16,9 +16,9 @@ interface LayoutProps {
 }
 
 export const Layout = ({
-  locales,
-  menus,
-  global,
+  // locales,
+  // menus,
+  // global,
   children,
   backgroundType,
 }: LayoutProps) => {
