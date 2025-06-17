@@ -17,7 +17,6 @@ const TeamList: FC<TeamListProps> = ({ slice }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      backgroundColor={slice.primary.background_color}
     >
       <Container>
         <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-4">
