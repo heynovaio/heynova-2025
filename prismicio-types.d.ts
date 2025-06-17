@@ -322,7 +322,15 @@ export interface InsightDocumentDataAuthorsItem {
   author: prismic.ContentRelationshipField<"author">;
 }
 
-type InsightDocumentDataSlicesSlice = never;
+type InsightDocumentDataSlicesSlice =
+  | ContentCarouselSlice
+  | CtaBannerSlice
+  | NumberedListSlice
+  | ContentColumnSlice
+  | TestimonialsSlice
+  | ImageTextSlice
+  | SimpleTextSlice
+  | HorizontalAccordionSlice;
 
 /**
  * Content for Insight documents
