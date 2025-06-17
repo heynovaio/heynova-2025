@@ -26,7 +26,6 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      backgroundColor={slice.primary.background_color}
     >
       <Container
         containerClassName={`flex flex-col ${imageSide} gap-4 md:gap-16 w-full items-center`}
