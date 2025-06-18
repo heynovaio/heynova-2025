@@ -348,3 +348,17 @@ iframe {
 .testimonial-img {
   border-radius: 99em;
 }
+
+.footer-links {
+  a {
+    font-size: 1.125rem;
+    text-decoration: underline;
+  }
+}
+
+.social-links {
+  a {
+    font-size: 1.125rem;
+    font-weight: 400;
+  }
+}

@@ -22,7 +22,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
   return (
     <footer className=" text-white flex flex-col justify-center items-center">
       <nav className="py-14 px-5  mx-auto max-w-screen-xl w-full flex flex-col">
-        <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-between gap-x-8 gap-y-12 w-full text-center md:text-left footer-links">
+        <div className="flex flex-col md:flex-row flex-wrap justify-center md:justify-between gap-x-8 gap-y-12 w-full text-center md:text-left social-links">
           <div className="flex flex-col items-center lg:items-start">
             <ResponsiveImage
               image={global?.site_logo}
@@ -31,7 +31,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             <div className="flex flex-col items-center md:items-start">
               <h4 className="mb-6 footer-header">Follow Us</h4>
               <div className="flex  flex-col justify-center items-center md:items-start gap-6 ">
-                {footerData?.instagram.link_type !== "Any" && (
+                {footerData?.instagram.text !== "Any" && (
                   <span className="flex flex-row gap-4 items-center ">
                     <FaInstagram size={35} />
                     <PrismicNextLink
@@ -40,7 +40,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     />
                   </span>
                 )}
-                {footerData?.facebook.link_type !== "Any" && (
+                {footerData?.facebook.text !== "Any" && (
                   <span className="flex flex-row gap-4 items-center">
                     <FaFacebook size={35} />
                     <PrismicNextLink
@@ -49,7 +49,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     />
                   </span>
                 )}
-                {footerData?.linkedin.link_type !== "Any" && (
+                {footerData?.linkedin.text !== "Any" && (
                   <span className="flex flex-row gap-4 items-center">
                     <FaLinkedin size={35} />
                     <PrismicNextLink
@@ -74,12 +74,14 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             <PrismicNextLink
               key={link.key}
               field={link}
-              className="text-base text-white md:text-bodyLarge menu-link underline-offset-4"
+              className="text-[1.125rem] text-white md:text-bodyLarge menu-link underline-offset-4"
             />
           ))}
         </div>
 
-        <p className="mt-6 text-center text-base">{footerData?.copyright}</p>
+        <p className="mt-6 text-center text-[1.125rem]">
+          {footerData?.copyright}
+        </p>
       </div>
     </footer>
   );
