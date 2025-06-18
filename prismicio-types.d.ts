@@ -92,6 +92,18 @@ interface ContactDocumentData {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
+   * Newsletter Slice field in *Contact*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: contact.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
+
+  /**
    * Tagline field in *Contact*
    *
    * - **Field Type**: Text
@@ -357,6 +369,18 @@ interface InsightDocumentData {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
+   * Newsletter Slice field in *Insight*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insight.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
+
+  /**
    * Tagline field in *Insight*
    *
    * - **Field Type**: Text
@@ -500,6 +524,18 @@ interface InsightsCategoriesDocumentData {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
+   * Newsletter Slice field in *Insights Categories*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insights_categories.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
+
+  /**
    * Title field in *Insights Categories*
    *
    * - **Field Type**: Rich Text
@@ -604,7 +640,7 @@ export type InsightsCategoriesDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsListingDocumentDataSlicesSlice = never;
+type InsightsListingDocumentDataSlicesSlice = CtaBannerSlice;
 
 /**
  * Content for Insights Listing documents
@@ -621,6 +657,18 @@ interface InsightsListingDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Newsletter Slice field in *Insights Listing*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insights_listing.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
 
   /**
    * Tagline field in *Insights Listing*
@@ -863,6 +911,84 @@ interface MenusDocumentData {
 export type MenusDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<MenusDocumentData>, "menus", Lang>;
 
+/**
+ * Content for Newsletter Slice documents
+ */
+interface NewsletterSliceDocumentData {
+  /**
+   * Tagline field in *Newsletter Slice*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_slice.tagline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tagline: prismic.KeyTextField;
+
+  /**
+   * TItle field in *Newsletter Slice*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_slice.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *Newsletter Slice*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_slice.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Buttons field in *Newsletter Slice*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_slice.buttons
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttons: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Embed (Form) field in *Newsletter Slice*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_slice.embed
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#embed
+   */
+  embed: prismic.EmbedField;
+}
+
+/**
+ * Newsletter Slice document from Prismic
+ *
+ * - **API ID**: `newsletter_slice`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsletterSliceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NewsletterSliceDocumentData>,
+    "newsletter_slice",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | TestimonialsSlice
   | SimpleTextSlice
@@ -888,6 +1014,18 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Newsletter Slice field in *Page*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: page.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
 
   /**
    * Tagline field in *Page*
@@ -1018,6 +1156,18 @@ interface ServiceDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Newsletter Slice field in *Service*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: service.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
 
   /**
    * Tagline field in *Service*
@@ -1154,6 +1304,18 @@ interface ServicesListingDocumentData {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
+   * Newsletter Slice field in *Services Listing*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: services_listing.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
+
+  /**
    * Title field in *Services Listing*
    *
    * - **Field Type**: Rich Text
@@ -1277,6 +1439,18 @@ interface TeamDocumentData {
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
+   * Newsletter Slice field in *Team*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: team.newsletter_slice
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  newsletter_slice: prismic.BooleanField;
+
+  /**
    * Tagline field in *Team*
    *
    * - **Field Type**: Text
@@ -1396,6 +1570,7 @@ export type AllDocumentTypes =
   | InsightsCategoriesDocument
   | InsightsListingDocument
   | MenusDocument
+  | NewsletterSliceDocument
   | PageDocument
   | ServiceDocument
   | ServicesListingDocument
@@ -3313,6 +3488,8 @@ declare module "@prismicio/client" {
       MenusDocumentData,
       MenusDocumentDataSlicesSlice,
       MenusDocumentDataSlices1Slice,
+      NewsletterSliceDocument,
+      NewsletterSliceDocumentData,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
