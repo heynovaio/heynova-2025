@@ -30,7 +30,7 @@ export async function generateMetadata({
     title:
       page.data.meta_title ||
       prismic.asText(page.data.title) ||
-      "Canadian Women in Sports",
+      "Insights | Hey Nova",
     description: page.data.meta_description,
     openGraph: {
       title: page.data.meta_title || undefined,

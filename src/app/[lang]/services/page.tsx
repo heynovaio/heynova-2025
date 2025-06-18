@@ -19,11 +19,11 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid, lang } = await params;
+  const { lang } = await params;
 
   const client = createClient();
   const page = await client
-    .getByUID("services_listing", uid, { lang })
+    .getSingle("services_listing", { lang })
     .catch(() => notFound());
 
   return {
@@ -44,16 +44,12 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-  const { uid, lang } = await params;
+  const { lang } = await params;
 
   const client = createClient();
   const page = await client
-    .getByUID("services_listing", uid, { lang })
+    .getSingle("services_listing", { lang })
     .catch(() => notFound());
-  // const global = await client.getSingle("global", { lang });
-  // const menus = await client.getSingle("menus", { lang });
-  // const locales = await getLocales(page, client);
-
   return (
     <SliceZone
       slices={page.data.slices}
