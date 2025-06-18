@@ -63,7 +63,32 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "cta_banner": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "numbered_list": {
+              "type": "SharedSlice"
+            },
+            "content_column": {
+              "type": "SharedSlice"
+            },
+            "content_carousel": {
+              "type": "SharedSlice"
+            },
+            "image_text": {
+              "type": "SharedSlice"
+            },
+            "simple_text": {
+              "type": "SharedSlice"
+            },
+            "horizontal_accordion": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

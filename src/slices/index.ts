@@ -15,5 +15,4 @@ export const components = {
   single_link: dynamic(() => import("./SingleLink")),
   team_list: dynamic(() => import("./TeamList")),
   testimonials: dynamic(() => import("./Testimonials")),
-  tile_grid: dynamic(() => import("./TileGrid")),
 };

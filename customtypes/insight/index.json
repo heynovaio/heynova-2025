@@ -95,9 +95,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "tile_grid": {
-              "type": "SharedSlice"
-            },
             "content_carousel": {
               "type": "SharedSlice"
             },

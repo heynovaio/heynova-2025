@@ -56,7 +56,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "cta_banner": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

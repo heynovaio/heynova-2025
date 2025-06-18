@@ -65,7 +65,15 @@ interface AuthorDocumentData {
 export type AuthorDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AuthorDocumentData>, "author", Lang>;
 
-type ContactDocumentDataSlicesSlice = never;
+type ContactDocumentDataSlicesSlice =
+  | CtaBannerSlice
+  | TestimonialsSlice
+  | NumberedListSlice
+  | ContentColumnSlice
+  | ContentCarouselSlice
+  | ImageTextSlice
+  | SimpleTextSlice
+  | HorizontalAccordionSlice;
 
 /**
  * Content for Contact documents
@@ -323,7 +331,6 @@ export interface InsightDocumentDataAuthorsItem {
 }
 
 type InsightDocumentDataSlicesSlice =
-  | TileGridSlice
   | ContentCarouselSlice
   | CtaBannerSlice
   | NumberedListSlice
@@ -474,7 +481,7 @@ export type InsightDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsCategoriesDocumentDataSlicesSlice = never;
+type InsightsCategoriesDocumentDataSlicesSlice = CtaBannerSlice;
 
 /**
  * Content for Insights Categories documents
@@ -858,7 +865,6 @@ export type MenusDocument<Lang extends string = string> =
 
 type PageDocumentDataSlicesSlice =
   | TestimonialsSlice
-  | TileGridSlice
   | SimpleTextSlice
   | ImageTextSlice
   | HorizontalAccordionSlice
@@ -1129,7 +1135,7 @@ export type ServiceDocument<Lang extends string = string> =
     Lang
   >;
 
-type ServicesListingDocumentDataSlicesSlice = never;
+type ServicesListingDocumentDataSlicesSlice = CtaBannerSlice;
 
 /**
  * Content for Services Listing documents
@@ -3264,36 +3270,6 @@ export type TestimonialsSlice = prismic.SharedSlice<
   TestimonialsSliceVariation
 >;
 
-/**
- * Default variation for TileGrid Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TileGridSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *TileGrid*
- */
-type TileGridSliceVariation = TileGridSliceDefault;
-
-/**
- * TileGrid Shared Slice
- *
- * - **API ID**: `tile_grid`
- * - **Description**: TileGrid
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TileGridSlice = prismic.SharedSlice<
-  "tile_grid",
-  TileGridSliceVariation
->;
-
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -3421,9 +3397,6 @@ declare module "@prismicio/client" {
       TestimonialsSliceDefaultPrimary,
       TestimonialsSliceVariation,
       TestimonialsSliceDefault,
-      TileGridSlice,
-      TileGridSliceVariation,
-      TileGridSliceDefault,
     };
   }
 }
