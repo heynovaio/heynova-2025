@@ -362,3 +362,9 @@ iframe {
     font-weight: 400;
   }
 }
+
+.logo {
+  img {
+    border-radius: 0;
+  }
+}

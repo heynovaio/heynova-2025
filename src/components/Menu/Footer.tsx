@@ -7,7 +7,7 @@ import {
 import { ResponsiveImage } from "..";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
-import { FaFacebook, FaInstagram, FaMeta } from "react-icons/fa6";
+import { FaFacebook, FaInstagram } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -26,7 +26,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
           <div className="flex flex-col items-center lg:items-start">
             <ResponsiveImage
               image={global?.site_logo}
-              containerClassName="mb-8 max-w-[180px] md:max-w-[220px]"
+              containerClassName="mb-8 max-w-[180px] md:max-w-[220px] logo"
             />
             <div className="flex flex-col items-center md:items-start">
               <h4 className="mb-6 footer-header">Follow Us</h4>
@@ -68,7 +68,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
           </div>
         </div>
       </nav>
-      <div className="flex flex-col justify-center items-center mt-6 footer-links">
+      <div className="flex flex-col justify-center items-center mt-6 footer-links mb-6">
         <div className="flex flex-row gap-6 md:gap-10">
           {footerData?.footer_links.map((link) => (
             <PrismicNextLink
