@@ -13,13 +13,6 @@ export type ContentColumnProps =
  * Component for "ContentColumn" Slices.
  */
 const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
-  let cardStyling;
-
-  switch (slice.primary.card_color) {
-    case "none":
-      cardStyling = "border border-";
-  }
-
   const isSingleColumn = slice.primary.content.length === 1;
   return (
     <Section
@@ -30,29 +23,34 @@ const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
         containerClassName={isSingleColumn ? "flex justify-center" : ""}
       >
         <div
-          className={`${cardStyling} flex flex-col md:flex-row items-center justify-center shadow rounded border border-neon-violet items-stretch ${
+          className={`flex flex-col md:flex-row items-center justify-center shadow rounded items-stretch ${
             isSingleColumn ? "max-w-[860px] w-full" : "w-full"
           }`}
         >
           {slice.primary.content.map((item, index) => (
             <div
               key={index}
-              className={`flex flex-col items-center justify-center p-10 w-full ${
-                index !== 0
-                  ? "border-t md:border-t-0 md:border-l border-neon-violet"
-                  : ""
-              }`}
+              className={`flex flex-col-reverse md:flex-row items-center justify-center md:gap-6 p-2 md:p-10 w-full `}
             >
               {item.icon && (
                 <ResponsiveImage
                   image={item.icon}
-                  imageHeightClassName="h-[100px] w-auto aspect-square"
+                  imageHeightClassName="h-[100px] w-auto aspect-square mt-4 md:mt-0"
                 />
               )}
-              <div className="mt-4 text-center flex flex-col gap-2">
-                <PrismicRichText field={item.title} />
-                {/* <PrismicRichText field={item.body} components={components} /> */}
-                <PrismicRichText field={item.body} />
+              <div className="mt-4 md:mt-0 text-center flex flex-col gap-2">
+                <PrismicRichText
+                  field={item.title}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="text-[1.375rem] text-light-blue font-extraBold">
+                        {children}
+                      </p>
+                    ),
+                  }}
+                />
+
+                {item.body && <PrismicRichText field={item.body} />}
               </div>
             </div>
           ))}

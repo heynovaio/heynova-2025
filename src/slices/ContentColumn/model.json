@@ -12,19 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "card_color": {
-          "type": "Select",
-          "config": {
-            "label": "Card Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Purple",
-              "Blue"
-            ],
-            "default_value": "None"
-          }
-        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -63,7 +50,7 @@
                   "label": "Title",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "heading3,heading4"
+                  "multi": "paragraph"
                 }
               },
               "body": {

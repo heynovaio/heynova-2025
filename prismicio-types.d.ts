@@ -1623,17 +1623,6 @@ export interface ContentColumnSliceContentColumnWithCardsPrimaryContentItem {
  */
 export interface ContentColumnSliceDefaultPrimary {
   /**
-   * Card Color field in *ContentColumn → Default → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: None
-   * - **API ID Path**: content_column.default.primary.card_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  card_color: prismic.SelectField<"None" | "Purple" | "Blue", "filled">;
-
-  /**
    * Title field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Rich Text
