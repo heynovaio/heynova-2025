@@ -52,6 +52,26 @@
                   "label": "Position",
                   "placeholder": ""
                 }
+              },
+              "bio": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Bio",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
+                }
+              },
+              "links": {
+                "type": "Link",
+                "config": {
+                  "label": "Links",
+                  "placeholder": "LinkedIn",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
               }
             }
           }
