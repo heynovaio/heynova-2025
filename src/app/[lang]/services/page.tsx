@@ -69,7 +69,6 @@ export async function generateStaticParams() {
 
   return pages.map((page) => {
     return {
-      uid: page.uid,
       lang: page.lang,
     };
   });

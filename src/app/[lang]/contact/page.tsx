@@ -19,12 +19,10 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid, lang } = await params;
+  const { lang } = await params;
 
   const client = createClient();
-  const page = await client
-    .getByUID("contact", uid, { lang })
-    .catch(() => notFound());
+  const page = await client.getSingle("contact", { lang }).catch(() => notFound());
 
   return {
     title:
@@ -44,21 +42,15 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-  const { uid, lang } = await params;
+  const { lang } = await params;
 
   const client = createClient();
-  const page = await client
-    .getByUID("contact", uid, { lang })
-    .catch(() => notFound());
-  // const global = await client.getSingle("global", { lang });
-  // const menus = await client.getSingle("menus", { lang });
-  // const locales = await getLocales(page, client);
-
+  const page = await client.getSingle("contact", { lang }).catch(() => notFound());
   return (
     <SliceZone
       slices={page.data.slices}
       components={components}
-      context={{ lang: "en-ca" }}
+      context={{ lang: lang }}
     />
   );
 }
@@ -73,7 +65,6 @@ export async function generateStaticParams() {
 
   return pages.map((page) => {
     return {
-      uid: page.uid,
       lang: page.lang,
     };
   });

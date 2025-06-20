@@ -45,8 +45,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid, category, lang = "en-ca" } = await params;
-  console.log("Insight page params:", { uid, category, lang });
-
+  
   const client = createClient();
 
   try {
