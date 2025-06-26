@@ -6,6 +6,7 @@ import {
   MenusDocumentData,
 } from "../../../prismicio-types";
 import { PrismicDocument } from "@prismicio/client";
+import { Footer } from "../Menu/Footer";
 
 interface LayoutProps {
   locales: PrismicDocument[];
@@ -17,8 +18,8 @@ interface LayoutProps {
 
 export const Layout = ({
   // locales,
-  // menus,
-  // global,
+  menus,
+  global,
   children,
   backgroundType,
 }: LayoutProps) => {
@@ -44,7 +45,7 @@ export const Layout = ({
       <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
         {children}
       </main>
-      {/* <Footer global={global} slices={menus?.slices1} footerData={menus} /> */}
+      <Footer global={global} slices={menus?.slices1} footerData={menus} />
     </div>
   );
 };
