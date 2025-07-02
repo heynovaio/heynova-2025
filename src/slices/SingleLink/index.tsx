@@ -1,6 +1,7 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
+import { JSX } from "react";
 
 /**
  * Props for `SingleLink`.
@@ -10,41 +11,30 @@ export type SingleLinkProps = SliceComponentProps<Content.SingleLinkSlice>;
 /**
  * Component for "SingleLink" Slices.
  */
-const SingleLink: FC<SingleLinkProps> = ({ slice }) => {
+const SingleLink = ({ slice }: SingleLinkProps): JSX.Element => {
+  const iconOnly = slice.primary.link.text === "" && slice.primary.icon;
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      data-test-id={slice.slice_type}
+      className="flex w-full"
     >
-      Placeholder component for single_link (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
+      <PrismicNextLink
+        field={slice.primary.link}
+        className="flex w-full gap-2 rounded-full text-nowrap justify-between no-underline p-4 text-left relative after:content-[''] after:absolute after:bottom-3 after:left-1/2 after:right-1/2 after:h-[2px] after:bg-current after:transition-all after:duration-300 after:ease-in-out hover:after:left-5 hover:after:right-5"
+      >
+        <div className="w-3 h-3"></div>
+        {slice.primary.icon && (
+          <PrismicNextImage
+            field={slice.primary.icon}
+            className={iconOnly ? "w-5 h-5" : "w-3 h-3"}
+            alt=""
+          />
+        )}
+        {slice.primary.link.text}
+        <div className="w-3 h-3"></div>
+      </PrismicNextLink>
     </section>
   );
 };

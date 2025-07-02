@@ -747,6 +747,23 @@ type MenusDocumentDataSlices1Slice = MultiLinkColumnSlice;
  */
 interface MenusDocumentData {
   /**
+   * Call to Action field in *Menus*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Book a Call
+   * - **API ID Path**: menus.call_to_action
+   * - **Tab**: Header
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  call_to_action: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
    * Slice Zone field in *Menus*
    *
    * - **Field Type**: Slice Zone

@@ -8,6 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
+import { Layout } from "@/components";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -47,15 +48,22 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const client = createClient();
   const page = await client.getSingle("team", { lang }).catch(() => notFound());
+  const global = await client.getSingle("global", { lang });
+  const menus = await client.getSingle("menus", { lang });
   return (
-    <>
-    <DefaultIntro data={page.data} />
+    <Layout
+      backgroundType="primary"
+      locales={[]}
+      global={global.data}
+      menus={menus.data}
+    >
+      <DefaultIntro data={page.data} />
       <SliceZone
         slices={page.data.slices}
         components={components}
         context={{ lang: lang }}
       />
-    </>
+    </Layout>
   );
 }
 

@@ -6,7 +6,7 @@ import {
   MenusDocumentData,
 } from "../../../prismicio-types";
 import { PrismicDocument } from "@prismicio/client";
-import { Footer } from "../Menu/Footer";
+import { Announcement, Footer, Header } from "../Menu";
 
 interface LayoutProps {
   locales: PrismicDocument[];
@@ -17,7 +17,7 @@ interface LayoutProps {
 }
 
 export const Layout = ({
-  // locales,
+  locales,
   menus,
   global,
   children,
@@ -28,19 +28,25 @@ export const Layout = ({
 
     document.body.classList.add(`bg-${backgroundType}`);
   }, [backgroundType]);
-
+  
+  console.log("Locales: ", locales);
   return (
     <div>
-      <a href="#main-content" className="skip-to-content-link">
+      {/* <a href="#main-content" className="skip-to-content-link">
         Skip to Content
-      </a>
+      </a> */}
+      <Announcement
+        text={menus.banner_text}
+        locales={locales}
+        global={global}
+      />
       <div className="sticky top-0 z-50 ">
-        {/* <TopBar locales={locales} global={global} text={menus.banner_text} />
         <Header
+          menus={menus}
           logo={global.site_logo}
           slices={menus.slices}
           locales={locales}
-        /> */}
+        />
       </div>
       <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
         {children}

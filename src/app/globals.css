@@ -110,12 +110,17 @@ ol {
 }
 
 /* Components */
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0.4px;
+}
 
 .btn {
   border-radius: 1.875em;
   border: 3px solid transparent;
   padding: 10px 10px 12px 10px;
   font-size: var(--text-button);
+  text-align: center;
 }
 
 .btn-primary {
@@ -174,6 +179,9 @@ ol {
   }
 }
 
+.nav-link {
+}
+
 .gradient-text {
   background: linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%);
   -webkit-background-clip: text;
@@ -200,6 +208,10 @@ img {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.gradient-header {
+  background: rgba(151, 225, 229, 0.04);
 }
 
 .gradient-dark-bg {
