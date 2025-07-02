@@ -7,6 +7,7 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
+import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -22,9 +23,7 @@ export async function generateMetadata({
   const { lang } = await params;
 
   const client = createClient();
-  const page = await client
-    .getSingle("team", { lang })
-    .catch(() => notFound());
+  const page = await client.getSingle("team", { lang }).catch(() => notFound());
 
   return {
     title:
@@ -47,15 +46,16 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { lang } = await params;
 
   const client = createClient();
-  const page = await client
-    .getSingle("team", { lang })
-    .catch(() => notFound());
+  const page = await client.getSingle("team", { lang }).catch(() => notFound());
   return (
-    <SliceZone
-      slices={page.data.slices}
-      components={components}
-      context={{ lang: lang }}
-    />
+    <>
+    <DefaultIntro data={page.data} />
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={{ lang: lang }}
+      />
+    </>
   );
 }
 
