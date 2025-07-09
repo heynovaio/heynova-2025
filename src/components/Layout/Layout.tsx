@@ -28,8 +28,7 @@ export const Layout = ({
 
     document.body.classList.add(`bg-${backgroundType}`);
   }, [backgroundType]);
-  
-  console.log("Locales: ", locales);
+
   return (
     <div>
       {/* <a href="#main-content" className="skip-to-content-link">

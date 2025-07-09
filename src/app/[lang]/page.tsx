@@ -52,7 +52,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const menus = await client.getSingle("menus", { lang });
   const locales = await getLocales(page, client);
 
-  console.log("Locales: ", locales);
   return (
     <Layout
       backgroundType="primary"

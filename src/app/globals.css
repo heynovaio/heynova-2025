@@ -26,6 +26,7 @@
   --color-wine: #940050;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-light-blue: #ddf5f7;
   --color-navy: rgba(0, 96, 117, 0.4);
   --color-primary: var(--color-red);
   --color-secondary: var(--color-purple-drk);
@@ -229,7 +230,7 @@ img {
 .card-bg-gradient {
   background: linear-gradient(
     66deg,
-    rgba(53, 252, 255, 0.36) 4.86%,
+    rgba(53, 006075 252, 255, 0.36) 4.86%,
     rgba(81, 58, 145, 0.36) 84.35%
   );
 }
@@ -379,4 +380,19 @@ iframe {
   img {
     border-radius: 0;
   }
+}
+
+.tabbed-carousel .react-multi-carousel-item {
+  align-content: flex-start;
+  justify-content: start;
+}
+
+.tabbed-carousel .react-multi-carousel-list {
+  overflow: visible !important;
+}
+
+.tabbed-carousel .react-multi-carousel-item {
+  height: auto !important;
+  display: flex !important;
+  margin: 0 !important;
 }

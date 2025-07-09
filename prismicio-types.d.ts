@@ -1468,14 +1468,34 @@ export interface ContentCarouselSliceManualCarouselPrimaryCardsItem {
   body: prismic.RichTextField;
 
   /**
-   * Tags field in *ContentCarousel → ManualCarousel (Our Works) → Primary → Cards*
+   * Tag 1 field in *ContentCarousel → ManualCarousel (Our Works) → Primary → Cards*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.manualCarousel.primary.cards[].tags
+   * - **API ID Path**: content_carousel.manualCarousel.primary.cards[].tag_1
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  tags: prismic.ContentRelationshipField<"insights_categories">;
+  tag_1: prismic.ContentRelationshipField<"insights_categories">;
+
+  /**
+   * Tag 2 field in *ContentCarousel → ManualCarousel (Our Works) → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.manualCarousel.primary.cards[].tag_2
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  tag_2: prismic.ContentRelationshipField<"insights_categories">;
+
+  /**
+   * Tag 3 field in *ContentCarousel → ManualCarousel (Our Works) → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.manualCarousel.primary.cards[].tag_3
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  tag_3: prismic.ContentRelationshipField<"insights_categories">;
 
   /**
    * Buttons field in *ContentCarousel → ManualCarousel (Our Works) → Primary → Cards*
@@ -1583,6 +1603,18 @@ export interface ContentCarouselSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
+   * Button field in *ContentCarousel → Default (Insight) → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
    * Cards field in *ContentCarousel → Default (Insight) → Primary*
    *
    * - **Field Type**: Group
@@ -1642,6 +1674,16 @@ export interface ContentCarouselSliceManualCarouselPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentCarousel → ManualCarousel (Our Works) → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.manualCarousel.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Cards field in *ContentCarousel → ManualCarousel (Our Works) → Primary*
@@ -1898,17 +1940,6 @@ export type ContentColumnSliceDefault = prismic.SharedSliceVariation<
  */
 export interface ContentColumnSliceContentColumnWithCardsPrimary {
   /**
-   * Background Color field in *ContentColumn → ContentColumn with Cards → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: None
-   * - **API ID Path**: content_column.contentColumnWithCards.primary.background_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
-
-  /**
    * Title field in *ContentColumn → ContentColumn with Cards → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1927,31 +1958,6 @@ export interface ContentColumnSliceContentColumnWithCardsPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   body: prismic.RichTextField;
-
-  /**
-   * Content Tile Color field in *ContentColumn → ContentColumn with Cards → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: Default
-   * - **API ID Path**: content_column.contentColumnWithCards.primary.tile_color
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  tile_color: prismic.SelectField<
-    "Default" | "Light" | "Dark" | "Outline" | "No Border",
-    "filled"
-  >;
-
-  /**
-   * Show Icon field in *ContentColumn → ContentColumn with Cards → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: content_column.contentColumnWithCards.primary.show_icon
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  show_icon: prismic.BooleanField;
 
   /**
    * Content field in *ContentColumn → ContentColumn with Cards → Primary*

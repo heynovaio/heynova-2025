@@ -22,7 +22,7 @@ const SingleLink = ({ slice }: SingleLinkProps): JSX.Element => {
     >
       <PrismicNextLink
         field={slice.primary.link}
-        className="flex w-full gap-2 rounded-full text-nowrap justify-between no-underline p-4 text-left relative after:content-[''] after:absolute after:bottom-3 after:left-1/2 after:right-1/2 after:h-[2px] after:bg-current after:transition-all after:duration-300 after:ease-in-out hover:after:left-5 hover:after:right-5"
+        className="flex w-full gap-2 rounded-full text-nowrap justify-between no-underline py-4 px-0 text-left relative after:content-[''] after:absolute after:bottom-3 after:left-1/2 after:right-1/2 after:h-[2px] after:bg-current after:transition-all after:duration-300 after:ease-in-out hover:after:left-5 hover:after:right-5"
       >
         <div className="w-3 h-3"></div>
         {slice.primary.icon && (
