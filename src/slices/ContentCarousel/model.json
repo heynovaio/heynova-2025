@@ -43,6 +43,17 @@
             "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
           }
         },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
         "cards": {
           "type": "Group",
           "config": {
@@ -105,6 +116,17 @@
             "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
           }
         },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
         "cards": {
           "type": "Group",
           "config": {
@@ -137,10 +159,32 @@
                   "multi": "preformatted,paragraph,hyperlink,image,embed,list-item,o-list-item,rtl,strong,em"
                 }
               },
-              "tags": {
+              "tag_1": {
                 "type": "Link",
                 "config": {
-                  "label": "Tags",
+                  "label": "Tag 1",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "insights_categories"
+                  ]
+                }
+              },
+              "tag_2": {
+                "type": "Link",
+                "config": {
+                  "label": "Tag 2",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "insights_categories"
+                  ]
+                }
+              },
+              "tag_3": {
+                "type": "Link",
+                "config": {
+                  "label": "Tag 3",
                   "select": "document",
                   "repeat": false,
                   "customtypes": [

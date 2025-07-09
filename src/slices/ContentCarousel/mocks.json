@@ -50,6 +50,21 @@
 						}
 					}
 				]
+			},
+			"button": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "ebace158-e75f-4502-ace1-cfa291c37454",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://twitter.com",
+							"text": "charge"
+						}
+					}
+				]
 			}
 		},
 		"items": []
@@ -146,17 +161,6 @@
 								}
 							],
 							[
-								"tags",
-								{
-									"key": "2d859e67-098a-49e0-b471-dccde2bedeeb",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "DocumentLink",
-										"id": "mock_document_id"
-									}
-								}
-							],
-							[
 								"buttons",
 								{
 									"__TYPE__": "RepeatableContent",
@@ -173,10 +177,52 @@
 										}
 									]
 								}
+							],
+							[
+								"tag_1",
+								{
+									"key": "01279d0b-cca5-4a0b-8f48-54da3a2b3538",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							],
+							[
+								"tag_2",
+								{
+									"key": "d3dfa3ce-7b0b-4f36-9014-029c68a9f98b",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							],
+							[
+								"tag_3",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "f1ed4b02-135d-42ad-a0c6-1adc64a17bf7",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
 							]
 						]
 					}
 				]
+			},
+			"button": {
+				"key": "b6f2c668-741d-4610-9f2d-28cdf3d0f646",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "introduced"
+				}
 			}
 		},
 		"items": [

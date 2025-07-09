@@ -8,8 +8,9 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { getLocales } from "@/utils";
 import React from "react";
-import { Layout } from "@/components/Layout/Layout";
+import { Layout } from "@/components";
 import { HomeIntro } from "@/components/Intros/HomeIntro";
+import { getLocales } from "@/utils";
 
 type Params = { lang: string };
 
@@ -49,12 +50,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     .catch(() => notFound());
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });
-  // const locales = await getLocales(page, client);
+  const locales = await getLocales(page, client);
 
   return (
     <Layout
       backgroundType="primary"
-      locales={[]}
+      locales={locales}
       global={global.data}
       menus={menus.data}
     >

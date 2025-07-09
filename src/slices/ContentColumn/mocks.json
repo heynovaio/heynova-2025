@@ -3,17 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Tightly"
-						}
-					}
-				]
-			},
 			"body": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -93,6 +82,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "Blue",
 				"type": "Select"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Storm"
+						}
+					}
+				]
 			}
 		},
 		"items": []
@@ -101,11 +101,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "contentColumnWithCards",
 		"primary": {
-			"background_color": {
-				"__TYPE__": "FieldContent",
-				"value": "None",
-				"type": "Select"
-			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -127,15 +122,6 @@
 						}
 					}
 				]
-			},
-			"tile_color": {
-				"__TYPE__": "FieldContent",
-				"value": "Default",
-				"type": "Select"
-			},
-			"show_icon": {
-				"__TYPE__": "BooleanContent",
-				"value": true
 			},
 			"content": {
 				"__TYPE__": "GroupContentType",

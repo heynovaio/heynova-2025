@@ -1,52 +1,156 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Section, Container, ResponsiveImage, ContentBox } from "@/components";
+import { JSX } from "react";
 
 /**
  * Props for `ContentColumn`.
  */
 export type ContentColumnProps =
   SliceComponentProps<Content.ContentColumnSlice>;
-
 /**
  * Component for "ContentColumn" Slices.
  */
-const ContentColumn: FC<ContentColumnProps> = ({ slice }) => {
+const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
+  const isSingleColumn = slice.primary.content.length === 1;
+
+  console.log("ContentColumn Slice Data: ", slice);
+
+  let card_color = "";
+
+  // Type guard to check if card_color exists on primary
+  if ("card_color" in slice.primary && slice.primary.card_color) {
+    switch (slice.primary.card_color) {
+      case "Blue":
+        card_color = "bg-aqua";
+        break;
+      case "Purple":
+        card_color = "bg-purple";
+        break;
+      case "None":
+      default:
+        card_color = "";
+        break;
+    }
+  }
+
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      styling="overflow-x-hidden"
     >
-      Placeholder component for content_column (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <Container
+        containerClassName={isSingleColumn ? "flex justify-center" : ""}
+      >
+        <ContentBox
+          title={slice.primary.title}
+          titleClassName="text-aqua"
+          content={
+            <div className="text-bodyLarge">
+              <PrismicRichText
+                field={slice.primary.body}
+                components={{
+                  paragraph: ({ children }) => (
+                    <p className="!mx-0">{children}</p>
+                  ),
+                }}
+              />
+            </div>
+          }
+          width="standard"
+          containerClassName="flex text-center justify-center"
+        />
+        <div
+          className={`${card_color} ${slice.variation === "default" ? "" : "mt-16"} flex flex-col lg:flex-row justify-center items-center shadow rounded gap-1 ${
+            isSingleColumn ? "max-w-[860px] w-full" : "w-full"
+          }`}
+        >
+          {slice.primary.content.map((item, index) => {
+            let rotation = "";
+            switch (index) {
+              case 0:
+                rotation = "rotate-[-6.16deg]";
+                break;
+              case 1:
+                rotation = "rotate-[13.469deg]";
+                break;
+              case 2:
+                rotation = "rotate-[-7.311deg]";
+                break;
+              case 3:
+                rotation = "rotate-[6.358deg]";
+                break;
+              default:
+                rotation = "rotate-0";
+                break;
+            }
+
+            return slice.variation === "default" ? (
+              <div
+                key={index}
+                className={`flex flex-col-reverse md:flex-row items-center justify-center md:gap-6 p-2 md:p-10 w-full `}
+              >
+                {item.icon && (
+                  <ResponsiveImage
+                    image={item.icon}
+                    containerClassName="h-[100px] w-auto aspect-square mt-4 md:mt-0 flex items-center justify-center"
+                  />
+                )}
+                <div className="mt-4 md:mt-0 text-center flex flex-col gap-2">
+                  <PrismicRichText
+                    field={item.title}
+                    components={{
+                      heading2: ({ children }) => (
+                        <h2 className="!text-[1.375rem] text-light-blue font-extraBold">
+                          {children}
+                        </h2>
+                      ),
+                      heading3: ({ children }) => (
+                        <h3 className="!text-[1.375rem] text-light-blue font-extraBold">
+                          {children}
+                        </h3>
+                      ),
+                    }}
+                  />
+                  {item.body && <PrismicRichText field={item.body} />}
+                </div>
+              </div>
+            ) : (
+              <div
+                key={index}
+                className={`${rotation} border-white bg-teal-drk/40 hover:bg-teal-drk/80 border-[0.5px] flex flex-col glow-blur overflow-hidden items-center max-w-[400px] max-h-[400px] justify-center md:gap-6 p-5 md:w-full md:h-full aspect-square rounded-[20px] transition-all duration-300 ease-in-out`}
+              >
+                {item.icon && (
+                  <ResponsiveImage
+                    image={item.icon}
+                    containerClassName="h-[100px] w-auto aspect-square flex items-center justify-center"
+                  />
+                )}
+                <div className="mt-4 md:mt-0 text-center flex flex-col gap-2">
+                  <PrismicRichText
+                    field={item.title}
+                    components={{
+                      heading2: ({ children }) => (
+                        <h2 className="!text-[1.375rem] text-light-blue font-extraBold">
+                          {children}
+                        </h2>
+                      ),
+                      heading3: ({ children }) => (
+                        <h3 className="!text-[1.375rem] text-light-blue font-extraBold">
+                          {children}
+                        </h3>
+                      ),
+                    }}
+                  />
+                  {item.body && <PrismicRichText field={item.body} />}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </Section>
   );
 };
 
