@@ -9,6 +9,7 @@ import { components } from "@/slices";
 import React from "react";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { Layout } from "@/components";
+import { getLocales } from "@/utils";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -50,10 +51,12 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const page = await client.getSingle("team", { lang }).catch(() => notFound());
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });
+  const locales = await getLocales(page, client);
+
   return (
     <Layout
       backgroundType="primary"
-      locales={[]}
+      locales={locales}
       global={global.data}
       menus={menus.data}
     >

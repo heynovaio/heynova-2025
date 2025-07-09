@@ -1,2 +1,2 @@
-export { GeneralCarouselCard } from "./GeneralCarouselCard";
+export { GeneralCard } from "./GeneralCard";
 export { ManualCarouselCard } from "./ManualCarouselCard";

@@ -1,13 +1,18 @@
-import { ImageField, LinkField, RichTextField } from "@prismicio/client";
+import {
+  ImageField,
+  KeyTextField,
+  LinkField,
+  RichTextField,
+} from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import React, { ReactNode } from "react";
 
-interface GeneralCarouselCardProps {
+interface GeneralCardProps {
   image?: ImageField;
   title: string | RichTextField;
   tags?: string[];
-  description?: RichTextField;
+  description?: RichTextField | KeyTextField;
   buttons?: LinkField[] | undefined;
   titleClassName?: string;
   titleComponents?: {
@@ -16,7 +21,7 @@ interface GeneralCarouselCardProps {
   titleLevel?: 2 | 3;
 }
 
-export const GeneralCarouselCard = ({
+export const GeneralCard = ({
   image,
   title,
   titleClassName,
@@ -25,7 +30,7 @@ export const GeneralCarouselCard = ({
   description,
   titleComponents,
   buttons,
-}: GeneralCarouselCardProps) => {
+}: GeneralCardProps) => {
   const TitleHeading = ({ children }: { children: ReactNode }) => {
     return titleLevel === 2 ? (
       <h2 className={titleClassName}>{children}</h2>
@@ -64,7 +69,11 @@ export const GeneralCarouselCard = ({
               </div>
             )}
           </div>
-          {description && <PrismicRichText field={description} />}
+          {description && typeof description === "string" ? (
+            <p>{description}</p>
+          ) : Array.isArray(description) ? (
+            <PrismicRichText field={description} />
+          ) : null}
           <div className="flex-grow"></div>
           {buttons && (
             <div className="flex gap-2.5 flex-wrap">

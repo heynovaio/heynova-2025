@@ -12,7 +12,7 @@ import React, { useState, useRef } from "react";
 import Carousel from "react-multi-carousel";
 import { Container, Section } from "../Layout";
 import { category_responsive } from "./responsive";
-import { ContentBox, GeneralCarouselCard } from "..";
+import { ContentBox, GeneralCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";
 import { useItemsPerPage } from "@/hooks/use-items-per-page";
 import { PrismicNextLink } from "@prismicio/next";
@@ -118,7 +118,7 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
               return (
                 <div key={index} className="pr-3 md:pr-7 flex">
                   {hasImage(slice) ? (
-                    <GeneralCarouselCard
+                    <GeneralCard
                       image={slice.image}
                       title={asText(slice.title)}
                       description={slice.body}

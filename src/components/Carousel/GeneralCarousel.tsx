@@ -11,7 +11,7 @@ import React, { useState, useRef } from "react";
 import Carousel from "react-multi-carousel";
 import { Container, Section } from "../Layout";
 import { responsive } from "./responsive";
-import { ContentBox, GeneralCarouselCard } from "..";
+import { ContentBox, GeneralCard } from "..";
 import { useInsightCategoryData } from "@/hooks/use-all-insights-category-data";
 import { CarouselButton } from "../Buttons/CarouselButtons";
 import { useItemsPerPage } from "@/hooks/use-items-per-page";
@@ -158,7 +158,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
             return (
               <div key={index} className="pr-3 md:pr-7 flex">
                 {hasImage(item) ? (
-                  <GeneralCarouselCard
+                  <GeneralCard
                     image={item.image}
                     title={item?.title || "Untitled"}
                     description={item?.body}

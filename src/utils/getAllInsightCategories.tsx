@@ -10,7 +10,7 @@ const fetchData = async (lang: string) => {
 
 const GetAllInsightCategories = (lang: string) => {
   return useQuery({
-    queryKey: [`program-categories-${lang}`],
+    queryKey: [`insight-categories-${lang}`],
     queryFn: () => fetchData(lang),
   });
 };
