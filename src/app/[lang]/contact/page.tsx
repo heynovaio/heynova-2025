@@ -7,6 +7,8 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
+import { Layout } from "@/components";
+import { getLocales } from "@/utils";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -22,7 +24,9 @@ export async function generateMetadata({
   const { lang } = await params;
 
   const client = createClient();
-  const page = await client.getSingle("contact", { lang }).catch(() => notFound());
+  const page = await client
+    .getSingle("contact", { lang })
+    .catch(() => notFound());
 
   return {
     title:
@@ -45,13 +49,26 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { lang } = await params;
 
   const client = createClient();
-  const page = await client.getSingle("contact", { lang }).catch(() => notFound());
+  const page = await client
+    .getSingle("contact", { lang })
+    .catch(() => notFound());
+  const global = await client.getSingle("global", { lang });
+  const menus = await client.getSingle("menus", { lang });
+  const locales = await getLocales(page, client);
+
   return (
-    <SliceZone
-      slices={page.data.slices}
-      components={components}
-      context={{ lang: lang }}
-    />
+    <Layout
+      backgroundType="primary"
+      locales={locales}
+      global={global.data}
+      menus={menus.data}
+    >
+      <SliceZone
+        slices={page.data.slices}
+        components={components}
+        context={{ lang: lang }}
+      />
+    </Layout>
   );
 }
 

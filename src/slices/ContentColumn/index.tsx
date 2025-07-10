@@ -14,8 +14,6 @@ export type ContentColumnProps =
 const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
   const isSingleColumn = slice.primary.content.length === 1;
 
-  console.log("ContentColumn Slice Data: ", slice);
-
   let card_color = "";
 
   // Type guard to check if card_color exists on primary

@@ -1,12 +1,15 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { SliceZone } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
+import { Layout } from "@/components";
+import { getLocales } from "@/utils";
+import { TagsIntro } from "@/components/Intros/TagsIntro";
 
 type Params = {
   uid: string;
@@ -45,18 +48,32 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid, category, lang = "en-ca" } = await params;
-  
   const client = createClient();
-
   try {
     const page = await client.getByUID("insight", uid, { lang });
+    const global = await client.getSingle("global", { lang });
+    const menus = await client.getSingle("menus", { lang });
+    const locales = await getLocales(page, client);
 
     return (
-      <SliceZone
-        slices={page.data.slices}
-        components={components}
-        context={{ lang, category }}
-      />
+      <Layout
+        backgroundType="primary"
+        locales={locales}
+        global={global.data}
+        menus={menus.data}
+      >
+        <TagsIntro
+          data={page.data}
+          tags={page.tags}
+          content={<PrismicRichText field={page.data.body} />}
+          uid={page.uid}
+        />
+        <SliceZone
+          slices={page.data.slices}
+          components={components}
+          context={{ lang, category }}
+        />
+      </Layout>
     );
   } catch (error) {
     console.error("Error fetching insight:", error);
@@ -107,7 +124,6 @@ export async function generateStaticParams() {
       }
     });
 
-    console.log("Generated static params:", params);
     return params;
   } catch (error) {
     console.error("Error generating static params:", error);
