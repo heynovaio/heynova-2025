@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useAllInsightsData } from "@/hooks/use-all-insights-data";
 import React from "react";
 import { Container, Section } from "../Layout";
 import { Grid } from "./Grid";

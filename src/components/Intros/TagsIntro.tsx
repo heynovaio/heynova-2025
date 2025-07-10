@@ -11,16 +11,10 @@ import {
 } from "@prismicio/client";
 import Link from "next/link";
 import GetAllInsightCategories from "@/utils/getAllInsightCategories";
+import { InsightDocumentData } from "../../../prismicio-types";
 
 interface TagsIntroProps {
-  data: {
-    title: RichTextField;
-    image: ImageField;
-    paragraph?: RichTextField;
-    categories?: {
-      name: { url: string; id: string; data: { title: RichTextField } };
-    }[];
-  };
+  data: InsightDocumentData;
   id?: string | ContentRelationshipField;
   content?: React.ReactNode;
   tags: string[];
@@ -48,7 +42,7 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
     const firstCategory = data.categories[0];
 
     // If the category data is already populated in the categories array
-    if (firstCategory.name?.data?.title) {
+    if (firstCategory && firstCategory.name?.data?.title) {
       return {
         url: firstCategory.name.url || "#",
         name: asText(firstCategory.name.data.title),
