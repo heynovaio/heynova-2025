@@ -55,7 +55,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     const menus = await client.getSingle("menus", { lang });
     const locales = await getLocales(page, client);
 
-    console.log("Page data:", page);
     return (
       <Layout
         backgroundType="primary"
@@ -125,7 +124,6 @@ export async function generateStaticParams() {
       }
     });
 
-    console.log("Generated static params:", params);
     return params;
   } catch (error) {
     console.error("Error generating static params:", error);

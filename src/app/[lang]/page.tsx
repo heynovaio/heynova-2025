@@ -6,7 +6,6 @@ import * as prismic from "@prismicio/client";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-// import { getLocales } from "@/utils";
 import React from "react";
 import { Layout } from "@/components";
 import { HomeIntro } from "@/components/Intros/HomeIntro";

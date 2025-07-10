@@ -21,10 +21,6 @@ export const InsightCategoryGrid = ({
   const { insightsData } = useAllInsightsData(lang || "en-ca");
   const { data: insightCategories } = GetAllInsightCategories(lang || "en-ca");
 
-  console.log("Insights Data:", insightsData);
-  console.log("Insight Categories:", insightCategories);
-  console.log("Category ID:", categoryId);
-
   const getInsightUrl = (insight: any) => {
     const currentCategory = insightCategories?.find(
       (category) => category.id === categoryId

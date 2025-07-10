@@ -38,8 +38,6 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
 
     const firstCategory = data.categories[0];
 
-    console.log("First Category:", firstCategory);
-
     // If the category data is already populated in the categories array
     if (
       firstCategory &&
