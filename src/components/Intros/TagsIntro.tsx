@@ -5,7 +5,7 @@ import { PrismicRichText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import {
   ContentRelationshipField,
-  ImageField,
+  FilledContentRelationshipField,
   RichTextField,
   asText,
 } from "@prismicio/client";
@@ -24,7 +24,6 @@ interface TagsIntroProps {
 
 export const TagsIntro: React.FC<TagsIntroProps> = ({
   data,
-  content,
   tags,
   lang = "en-ca",
   uid,
@@ -44,19 +43,54 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
     // If the category data is already populated in the categories array
     if (
       firstCategory &&
-      firstCategory.name?.data &&
-      firstCategory.name?.data?.title
+      typeof firstCategory.name === "object" &&
+      firstCategory.name !== null &&
+      "data" in firstCategory.name &&
+      firstCategory.name.data &&
+      typeof firstCategory.name.data === "object" &&
+      "title" in firstCategory.name.data
     ) {
       return {
-        url: firstCategory.name.url || "#",
-        name: asText(firstCategory.name.data.title),
+        url:
+          (
+            firstCategory.name as FilledContentRelationshipField<
+              "insights_categories",
+              string,
+              unknown
+            >
+          ).url || "#",
+        name: asText(
+          (
+            (
+              firstCategory.name as FilledContentRelationshipField<
+                "insights_categories",
+                string,
+                { title: RichTextField }
+              >
+            ).data as { title: RichTextField }
+          ).title
+        ),
       };
     }
 
     // If we need to find the category from insightCategories
-    if (firstCategory.name?.id && insightCategories) {
+    if (
+      firstCategory &&
+      firstCategory.name &&
+      firstCategory.name.link_type === "Document" &&
+      "id" in firstCategory.name &&
+      insightCategories
+    ) {
       const matchedCategory = insightCategories.find(
-        (category) => category.id === firstCategory.name.id
+        (category) =>
+          category.id ===
+          (
+            firstCategory.name as FilledContentRelationshipField<
+              "insights_categories",
+              string,
+              unknown
+            >
+          ).id
       );
 
       if (matchedCategory) {
@@ -71,7 +105,13 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
 
     // Fallback
     return {
-      url: firstCategory.name?.url || "#",
+      url:
+        firstCategory &&
+        firstCategory.name &&
+        "url" in firstCategory.name &&
+        typeof firstCategory.name.url === "string"
+          ? firstCategory.name.url
+          : "#",
       name: "Category",
     };
   };
@@ -108,9 +148,7 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
                 ),
               }}
             />
-
-            {content}
-            {data.paragraph && <PrismicRichText field={data.paragraph} />}
+            {data.body && <PrismicRichText field={data.body} />}
 
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
