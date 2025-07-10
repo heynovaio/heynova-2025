@@ -11,6 +11,7 @@ import { Layout } from "@/components";
 import { getLocales } from "@/utils";
 import { InsightListingGrid } from "@/components/Grid";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
+import { reverseLocaleLookup } from "@/i18n";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -52,7 +53,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const client = createClient();
   const page = await client
-    .getSingle("insights_listing", { lang })
+    .getSingle("insights_listing", { lang: reverseLocaleLookup(lang) })
     .catch(() => notFound());
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });

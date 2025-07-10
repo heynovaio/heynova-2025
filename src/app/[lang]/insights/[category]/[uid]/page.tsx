@@ -9,7 +9,6 @@ import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
 import { getLocales } from "@/utils";
-import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { TagsIntro } from "@/components/Intros/TagsIntro";
 
 type Params = {

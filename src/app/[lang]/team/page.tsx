@@ -10,6 +10,7 @@ import React from "react";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { Layout } from "@/components";
 import { getLocales } from "@/utils";
+import { reverseLocaleLookup } from "@/i18n";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -48,7 +49,9 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { lang } = await params;
 
   const client = createClient();
-  const page = await client.getSingle("team", { lang }).catch(() => notFound());
+  const page = await client
+    .getSingle("team", { lang: reverseLocaleLookup(lang) })
+    .catch(() => notFound());
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });
   const locales = await getLocales(page, client);
@@ -64,7 +67,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       <SliceZone
         slices={page.data.slices}
         components={components}
-        context={{ lang: lang }}
+        context={{ lang }}
       />
     </Layout>
   );

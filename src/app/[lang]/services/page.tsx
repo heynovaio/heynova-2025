@@ -11,6 +11,7 @@ import { getLocales } from "@/utils";
 import { Layout } from "@/components";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { ServiceGrid } from "@/components/Grid/ServiceGrid";
+import { reverseLocaleLookup } from "@/i18n";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -27,7 +28,7 @@ export async function generateMetadata({
 
   const client = createClient();
   const page = await client
-    .getSingle("services_listing", { lang })
+    .getSingle("services_listing", { lang: reverseLocaleLookup(lang) })
     .catch(() => notFound());
 
   return {
@@ -52,7 +53,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const client = createClient();
   const page = await client
-    .getSingle("services_listing", { lang })
+    .getSingle("services_listing", { lang: reverseLocaleLookup(lang) })
     .catch(() => notFound());
 
   const global = await client.getSingle("global", { lang });

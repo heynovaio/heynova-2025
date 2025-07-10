@@ -8,6 +8,9 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
+import { Layout } from "@/components";
+import { getLocales } from "@/utils";
+import { reverseLocaleLookup } from "@/i18n";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -47,21 +50,26 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
   const client = createClient();
   const page = await client
-    .getByUID("page", uid, { lang })
+    .getByUID("page", uid, { lang: reverseLocaleLookup(lang) })
     .catch(() => notFound());
-  // const global = await client.getSingle("global", { lang });
-  // const menus = await client.getSingle("menus", { lang });
-  // const locales = await getLocales(page, client);
+  const global = await client.getSingle("global", { lang });
+  const menus = await client.getSingle("menus", { lang });
+  const locales = await getLocales(page, client);
 
   return (
-    <div>
+    <Layout
+      backgroundType="primary"
+      locales={locales}
+      global={global.data}
+      menus={menus.data}
+    >
       <DefaultIntro data={page.data} />
       <SliceZone
         slices={page.data.slices}
         components={components}
         context={{ lang: "en-ca" }}
       />
-    </div>
+    </Layout>
   );
 }
 
