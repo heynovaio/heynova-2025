@@ -109,6 +109,11 @@ ol {
   list-style-type: decimal;
   text-align: start;
 }
+a {
+  &:hover {
+    color: var(--color-aqua);
+  }
+}
 
 /* Components */
 .underline {
