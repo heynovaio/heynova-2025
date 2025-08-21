@@ -35,7 +35,6 @@ const routes: Route[] = [
     type: "insights_categories",
     path: "/:lang?/insights/:uid",
   },
-  // { type: "insight", path: "/:lang?/insights/:category_name/:uid" },
   { type: "services_listing", path: "/:lang?/services" },
   { type: "service", path: "/:lang?/services/:uid" },
 ];

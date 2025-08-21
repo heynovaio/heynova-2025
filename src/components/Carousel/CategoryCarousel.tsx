@@ -115,10 +115,21 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
                 "image" in item &&
                 Boolean((item as { image?: unknown }).image);
 
+              const singleCategory = item.data?.categories?.[0]?.name;
+              const category = isFilled.contentRelationship(singleCategory)
+                ? singleCategory.uid
+                : "";
+              const url = `/insights/${category}/${item.uid}`;
+
+              const showLink = hasImage(slice) && category;
+
+              const docWithUrl = { ...item, url };
+
               return (
                 <div key={index} className="pr-3 md:pr-7 flex">
-                  {hasImage(slice) ? (
-                    <PrismicNextLink document={item}>
+                  {showLink ? (
+                    <PrismicNextLink document={docWithUrl}>
+                      {" "}
                       <GeneralCard
                         image={slice.image}
                         title={asText(slice.title)}
