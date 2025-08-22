@@ -166,7 +166,7 @@
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
-                    "insights_categories"
+                    "service"
                   ]
                 }
               },
@@ -177,7 +177,7 @@
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
-                    "insights_categories"
+                    "service"
                   ]
                 }
               },
@@ -188,7 +188,7 @@
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
-                    "insights_categories"
+                    "service"
                   ]
                 }
               },
