@@ -37,13 +37,13 @@
           "multi": "heading1,heading2"
         }
       },
-      "body": {
+      "summary": {
         "type": "StructuredText",
         "config": {
-          "label": "Body",
+          "label": "Summary",
           "placeholder": "",
           "allowTargetBlank": true,
-          "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
+          "multi": "paragraph,preformatted,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "buttons": {
@@ -69,7 +69,44 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "team_list": {
+              "type": "SharedSlice"
+            },
+            "content_carousel": {
+              "type": "SharedSlice"
+            },
+            "cta_banner": {
+              "type": "SharedSlice"
+            },
+            "numbered_list": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "image_text": {
+              "type": "SharedSlice"
+            },
+            "menu_panel": {
+              "type": "SharedSlice"
+            },
+            "simple_text": {
+              "type": "SharedSlice"
+            },
+            "content_column": {
+              "type": "SharedSlice"
+            },
+            "single_link": {
+              "type": "SharedSlice"
+            },
+            "multi_link_column": {
+              "type": "SharedSlice"
+            },
+            "horizontal_accordion": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

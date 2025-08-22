@@ -1083,7 +1083,19 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ServiceDocumentDataSlicesSlice = never;
+type ServiceDocumentDataSlicesSlice =
+  | TeamListSlice
+  | ContentCarouselSlice
+  | CtaBannerSlice
+  | NumberedListSlice
+  | TestimonialsSlice
+  | ImageTextSlice
+  | MenuPanelSlice
+  | SimpleTextSlice
+  | ContentColumnSlice
+  | SingleLinkSlice
+  | MultiLinkColumnSlice
+  | HorizontalAccordionSlice;
 
 /**
  * Content for Service documents
@@ -1124,15 +1136,15 @@ interface ServiceDocumentData {
   title: prismic.RichTextField;
 
   /**
-   * Body field in *Service*
+   * Summary field in *Service*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: service.body
+   * - **API ID Path**: service.summary
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  body: prismic.RichTextField;
+  summary: prismic.RichTextField;
 
   /**
    * Buttons field in *Service*
