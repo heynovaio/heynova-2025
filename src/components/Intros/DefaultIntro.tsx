@@ -15,7 +15,7 @@ interface GeneralHeroProps {
 
 export const DefaultIntro: React.FC<GeneralHeroProps> = ({ data }) => {
   return (
-    <section className="relative flex items-center w-full  md:min-h-[500px] min-h-[400px]">
+    <section className="relative flex items-start w-full pt-24 md:min-h-[500px] min-h-[400px]">
       <Container>
         {data.tagline && (
           <p className="uppercase text-white font-extraBold text-md md:text-tagline text-center mb-2">
