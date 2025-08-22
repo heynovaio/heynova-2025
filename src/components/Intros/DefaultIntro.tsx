@@ -7,7 +7,7 @@ import { PrismicNextLink } from "@prismicio/next";
 interface GeneralHeroProps {
   data: {
     title: RichTextField;
-    summary: RichTextField;
+    body: RichTextField;
     button?: LinkField[];
     tagline?: string | KeyTextField;
   };

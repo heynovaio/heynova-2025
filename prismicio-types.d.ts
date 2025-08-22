@@ -1140,11 +1140,11 @@ interface ServiceDocumentData {
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: service.summary
+   * - **API ID Path**: service.body
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  summary: prismic.RichTextField;
+  body: prismic.RichTextField;
 
   /**
    * Buttons field in *Service*

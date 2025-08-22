@@ -37,7 +37,7 @@
           "multi": "heading1,heading2"
         }
       },
-      "summary": {
+      "body": {
         "type": "StructuredText",
         "config": {
           "label": "Summary",
