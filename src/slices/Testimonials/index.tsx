@@ -1,4 +1,4 @@
-import { Container } from "@/components";
+import { Container, Section } from "@/components";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
@@ -22,63 +22,65 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
     allTestimonials[Math.floor(Math.random() * allTestimonials.length)];
 
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Container containerClassName="flex flex-col gap-12 items-center bg-midnight">
-        <div
-          className="relative rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28 overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
-          }}
-        >
-          <img
-            src="/testimonial-bg.svg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none "
-            aria-hidden="true"
-          />
+      <Container containerClassName="flex flex-col gap-12 items-center">
+        <div className="rounded-[1.25rem] overflow-hidden ">
+          <div
+            className="relative rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28 overflow-hidden"
+            style={{
+              background:
+                "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
+            }}
+          >
+            <img
+              src="/testimonial-bg.svg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none "
+              aria-hidden="true"
+            />
 
-          <div className="relative z-10 flex flex-col md:flex-row gap-4 md:gap-12 md:items-center">
-            <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
-              <PrismicNextImage
-                field={displayedTestimonial.image}
-                className="w-full h-full object-cover testimonial-img bg-aqua"
-                alt=""
-              />
-            </div>
-            <div className="flex flex-col gap-4">
-              <PrismicRichText
-                field={slice.primary.title}
-                components={{
-                  heading2: ({ children }) => (
-                    <h2 className="text-aqua">{children}</h2>
-                  ),
-                }}
-              />
-              <PrismicRichText
-                field={displayedTestimonial.quote}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="text-md font-normal">{children}</p>
-                  ),
-                }}
-              />
-              <div className="flex flex-col">
-                <p className="text-[1.875rem] font-extraBold">
-                  {displayedTestimonial.author}
-                </p>
-                <p className="text-[1.375rem]">
-                  {displayedTestimonial.author_title}
-                </p>
+            <div className="relative z-10 flex flex-col md:flex-row gap-4 md:gap-12 md:items-center">
+              <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
+                <PrismicNextImage
+                  field={displayedTestimonial.image}
+                  className="w-full h-full object-cover testimonial-img bg-aqua"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col gap-4">
+                <PrismicRichText
+                  field={slice.primary.title}
+                  components={{
+                    heading2: ({ children }) => (
+                      <h2 className="text-aqua">{children}</h2>
+                    ),
+                  }}
+                />
+                <PrismicRichText
+                  field={displayedTestimonial.quote}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="text-md font-normal">{children}</p>
+                    ),
+                  }}
+                />
+                <div className="flex flex-col">
+                  <p className="text-[1.875rem] font-extraBold">
+                    {displayedTestimonial.author}
+                  </p>
+                  <p className="text-[1.375rem]">
+                    {displayedTestimonial.author_title}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 };
 
