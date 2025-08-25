@@ -27,7 +27,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Container containerClassName="flex flex-col gap-12 items-center">
-        <div className="rounded-[1.25rem] overflow-hidden ">
+        <div className="rounded-[1.25rem] overflow-hidden bg-midnight">
           <div
             className="relative rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28 overflow-hidden"
             style={{
