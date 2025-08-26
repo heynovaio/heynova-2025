@@ -2,7 +2,7 @@ import { Content } from "@prismicio/client";
 import { Container, Section } from "@/components";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
-import { componentsTextSmall, components } from "@/utils";
+import { componentsTextSmall } from "@/utils";
 
 /**
  * Props for `SimpleText`.
