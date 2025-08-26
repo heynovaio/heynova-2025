@@ -119,6 +119,91 @@
 
 @layer components {
   /* Components */
+
+  .text-content {
+    h1 {
+      background: var(
+        --Light-Gradient,
+        linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      color: var(--color-purple-lt);
+      margin-bottom: 0.5em;
+    }
+    h3:not(:first-child),
+    h2:not(:first-child) {
+      margin-top: 1em;
+    }
+    h3 {
+      background: var(
+        --Light-Gradient,
+        linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%)
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 500;
+    }
+    a {
+      text-decoration: underline;
+      color: var(--color-aqua);
+    }
+    p {
+      margin-bottom: 1.25em;
+      max-width: 900px;
+      margin: 0 auto;
+      letter-spacing: 0.1px;
+    }
+    ol {
+      list-style: none;
+      counter-reset: num;
+      text-align: start;
+      padding: 0;
+      margin: 0 0 1.5em 0;
+    }
+    ol li {
+      counter-increment: num;
+      font-weight: var(--font-weight-normal);
+      &::before {
+        vertical-align: center;
+        content: counter(num) ". ";
+        padding-left: 0.25em;
+        font-size: 2.2em;
+        font-family: var(--font-title);
+        font-weight: 700;
+        text-shadow: 0px 0px 22px rgba(99, 178, 185, 0.28);
+        background: linear-gradient(
+          66deg,
+          rgba(99, 178, 185, 0.5) 4.86%,
+          rgba(93, 16, 255, 0.5) 84.35%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        backdrop-filter: blur(15px);
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: var(--Light-Purple, #caccf8);
+      }
+      &::after {
+        margin-top: 0.75em;
+        margin-bottom: 0.5em;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(151, 225, 229, 0.6) 0.01%,
+          rgba(217, 202, 248, 0.6) 89.82%
+        );
+      }
+    }
+  }
+
   .underline {
     text-decoration: underline;
     text-underline-offset: 0.4px;
@@ -322,87 +407,3 @@
     margin: 0 !important;
   }
 }
-
-.text-content {
-    h1 {
-      background: var(
-        --Light-Gradient,
-        linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    h2 {
-      color: var(--color-purple-lt);
-      margin-bottom: 0.5em;
-    }
-    h3:not(:first-child),
-    h2:not(:first-child) {
-      margin-top: 1em;
-    }
-    h3 {
-      background: var(
-        --Light-Gradient,
-        linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 500;
-    }
-    a {
-      text-decoration: underline;
-      color: var(--color-aqua);
-    }
-    p {
-      margin-bottom: 1.25em;
-      max-width: 900px;
-      margin: 0 auto;
-      letter-spacing: 0.1px;
-    }
-    ol {
-      list-style: none;
-      counter-reset: num;
-      text-align: start;
-      padding: 0;
-      margin: 0 0 1.5em 0;
-    }
-    ol li {
-      counter-increment: num;
-      font-weight: var(--font-weight-normal);
-      &::before {
-        vertical-align: center;
-        content: counter(num) ". ";
-        padding-left: 0.25em;
-        font-size: 2.2em;
-        font-family: var(--font-title);
-        font-weight: 700;
-        text-shadow: 0px 0px 22px rgba(99, 178, 185, 0.28);
-        background: linear-gradient(
-          66deg,
-          rgba(99, 178, 185, 0.5) 4.86%,
-          rgba(93, 16, 255, 0.5) 84.35%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        backdrop-filter: blur(15px);
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: var(--Light-Purple, #caccf8);
-      }
-      &::after {
-        margin-top: 0.75em;
-        margin-bottom: 0.5em;
-        content: "";
-        display: block;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(151, 225, 229, 0.6) 0.01%,
-          rgba(217, 202, 248, 0.6) 89.82%
-        );
-      }
-    }
-  }
