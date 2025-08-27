@@ -67,7 +67,7 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
       styling="overflow-x-hidden flex flex-col gap-8"
     >
       <Container containerClassName="flex flex-col">
-        <Container containerClassName="flex justify-between items-start">
+        <div className="flex justify-between items-start">
           <ContentBox
             title={slice.primary.title}
             titleClassName="text-aqua"
@@ -94,10 +94,10 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
               styling="w-fit"
             />
           )}
-        </Container>
+        </div>
       </Container>
       <Container>
-        <Container>
+        <div>
           <Carousel
             responsive={category_responsive}
             partialVisible
@@ -146,8 +146,8 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
               );
             })}
           </Carousel>
-        </Container>
-        <Container containerClassName="px-10">
+        </div>
+        <Container>
           {((Array.isArray(slice.primary.button) &&
             slice.primary.button[0]?.text) ||
             (!Array.isArray(slice.primary.button) &&
