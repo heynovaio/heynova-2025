@@ -181,7 +181,7 @@
 							[
 								"tag_1",
 								{
-									"key": "01279d0b-cca5-4a0b-8f48-54da3a2b3538",
+									"key": "66e9a3ef-e30b-4e4b-86a4-0ad72c8ed0ce",
 									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "DocumentLink",
@@ -192,7 +192,7 @@
 							[
 								"tag_2",
 								{
-									"key": "d3dfa3ce-7b0b-4f36-9014-029c68a9f98b",
+									"key": "38a9f7fe-07d3-4d10-9ae5-3ec9399c6e8f",
 									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "DocumentLink",
@@ -204,7 +204,7 @@
 								"tag_3",
 								{
 									"__TYPE__": "LinkContent",
-									"key": "f1ed4b02-135d-42ad-a0c6-1adc64a17bf7",
+									"key": "d85ba046-290f-49aa-99e3-df36f8ee9509",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"

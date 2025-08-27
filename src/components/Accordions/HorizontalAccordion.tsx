@@ -66,6 +66,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                                 heading3: ({ children }) => (
                                   <h3 className="gradient-light">{children}</h3>
                                 ),
+                                heading4: ({ children }) => (
+                                  <h4 className="gradient-light">{children}</h4>
+                                ),
                               }}
                             />
                           </div>
@@ -109,6 +112,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                               components={{
                                 heading3: ({ children }) => (
                                   <h3 className="text-purple-lt">{children}</h3>
+                                ),
+                                heading4: ({ children }) => (
+                                  <h4 className="text-purple-lt">{children}</h4>
                                 ),
                               }}
                             />
@@ -164,6 +170,17 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                                 {children}
                               </h3>
                             ),
+                            heading4: ({ children }) => (
+                              <h4
+                                className={`${
+                                  selected
+                                    ? "gradient-light text-white"
+                                    : "gradient-light"
+                                }`}
+                              >
+                                {children}
+                              </h4>
+                            ),
                           }}
                         />
                       </div>
@@ -192,6 +209,9 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                           components={{
                             heading3: ({ children }) => (
                               <h3 className="text-purple-lt">{children}</h3>
+                            ),
+                            heading4: ({ children }) => (
+                              <h4 className="text-purple-lt">{children}</h4>
                             ),
                           }}
                         />
