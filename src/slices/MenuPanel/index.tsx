@@ -99,9 +99,11 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
       >
         {({ open }) => (
           <>
-            <DisclosureButton className="flex gap-4 items-center rounded-full p-5 justify-between">
+            <DisclosureButton className="flex gap-4 items-center rounded-full p-5 justify-between ">
               <div className="w-3 h-3"></div>
-              {slice.primary.menu_display || "Dropdown"}
+              <span className="text-[1.75rem]">
+                {slice.primary.menu_display || "Dropdown"}
+              </span>
               <FaChevronDown
                 className={`h-6 w-6 transition-transform duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] ${
                   open ? "rotate-180" : ""
@@ -124,8 +126,6 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
                 >
                   <div className="border-b border-white pb-4 mb-4 px-5">
                     <ContentBox
-                      title={slice.primary.title}
-                      titleClassName="gradient-text !text-base"
                       content={
                         <PrismicRichText
                           field={slice.primary.body}
