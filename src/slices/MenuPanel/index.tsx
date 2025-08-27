@@ -99,7 +99,11 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
       >
         {({ open }) => (
           <>
-            <DisclosureButton className="flex gap-4 items-center rounded-full p-5 justify-between ">
+            <DisclosureButton
+              className={`flex gap-4 items-center rounded-full p-5 justify-between ${
+                open ? "bg-white/10" : "bg-transparent"
+              }`}
+            >
               <div className="w-3 h-3"></div>
               <span className="text-[1.75rem]">
                 {slice.primary.menu_display || "Dropdown"}
