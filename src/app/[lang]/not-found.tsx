@@ -29,13 +29,6 @@ export default async function NotFound() {
           <Link href="/" className="btn btn-primary">
             Visit Homepage
           </Link>
-          <Link
-            href="/"
-            className="btn btn-outline
-          "
-          >
-            Second Button
-          </Link>
         </div>
       </div>
     </Layout>
