@@ -18,9 +18,6 @@ const SimpleText = ({ slice }: SimpleTextProps): JSX.Element => {
     ? "items-start text-left"
     : "items-center text-center";
 
-  console.log("COMPONENTS:", componentsTextSmall);
-  console.log("TEXT:", slice.primary.text);
-
   return (
     <Section
       data-slice-type={slice.slice_type}
