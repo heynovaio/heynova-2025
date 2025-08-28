@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, ContentBox, Section } from "@/components";
-import { PrismicNextLink } from "@prismicio/next";
+// import { PrismicNextLink } from "@prismicio/next";
 
 /**
  * Props for `CtaBanner`.
@@ -46,17 +46,17 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
                 )}
               </div>
             }
-            buttons={slice.primary.buttons.map((button, index) => {
-              return (
-                <PrismicNextLink
-                  field={button}
-                  key={index}
-                  className={
-                    isGradient ? "btn btn-primary" : "btn btn-secondary"
-                  }
-                />
-              );
-            })}
+            // buttons={slice.primary.buttons.map((button, index) => {
+            //   return (
+            //     <PrismicNextLink
+            //       field={button}
+            //       key={index}
+            //       className={
+            //         isGradient ? "btn btn-primary" : "btn btn-secondary"
+            //       }
+            //     />
+            //   );
+            // })}
             containerClassName={textAlignment}
           />
         </div>
