@@ -6,15 +6,11 @@
   "status": true,
   "json": {
     "Header": {
-      "call_to_action": {
-        "type": "Link",
+      "call_to_action_text": {
+        "type": "Text",
         "config": {
-          "label": "Call to Action",
-          "placeholder": "Book a Call",
-          "select": null,
-          "allowTargetBlank": true,
-          "allowText": true,
-          "repeat": false
+          "label": "Call to Action Text",
+          "placeholder": ""
         }
       },
       "slices": {
