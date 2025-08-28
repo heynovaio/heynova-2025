@@ -1,9 +1,10 @@
 "use client";
+import { KeyTextField } from "@prismicio/client";
 import { useEffect, useState } from "react";
 import { PopupButton } from "react-calendly";
 
 interface CalendlyButtonProps {
-  text: string;
+  text: string | KeyTextField;
   buttonClass: "btn-primary" | "btn-secondary";
 }
 export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
@@ -19,7 +20,7 @@ export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
     <PopupButton
       url="https://calendly.com/hey-nova/free-consult"
       rootElement={rootEl}
-      text={text}
+      text={text ?? ""}
       className={`btn ${buttonClass}`}
     />
   );
