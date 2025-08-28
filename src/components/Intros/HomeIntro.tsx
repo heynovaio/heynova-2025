@@ -3,6 +3,7 @@ import { Container } from "../Layout";
 import { PrismicRichText } from "@prismicio/react";
 import { KeyTextField, LinkField, RichTextField } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
+import { CalendlyButton } from "../Buttons/CalendlyButton";
 
 interface HomeIntroProps {
   data: {
@@ -53,6 +54,7 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
               />
             ))}
           </div>
+          <CalendlyButton />
         </div>
       </Container>
     </section>
