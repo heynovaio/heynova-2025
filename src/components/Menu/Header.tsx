@@ -14,6 +14,7 @@ import {
 } from "../../../prismicio-types";
 import { ImageField, PrismicDocument } from "@prismicio/client";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { CalendlyButton } from "../Buttons/CalendlyButton";
 
 interface HeaderProps {
   logo: ImageField;
@@ -51,12 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
           <SliceZone slices={slices} components={components} />
         </div>
 
-        {/* {menus?.call_to_action.text !== "" && (
-          <PrismicNextLink
-            className="btn btn-primary lg:block hidden"
-            field={menus?.call_to_action}
-          />
-        )} */}
+        <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
 
         {/* Mobile Menu */}
         <div className="lg:hidden">
@@ -94,12 +90,10 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
                       <SliceZone slices={slices} components={components} />
-                      {/* {menus?.call_to_action.text !== "" && (
-                        <PrismicNextLink
-                          className="btn btn-primary px-6 mt-10"
-                          field={menus?.call_to_action}
-                        />
-                      )} */}
+                      <CalendlyButton
+                        text="Book a Chat"
+                        buttonClass="btn-primary"
+                      />
                     </div>
                     <LanguageSwitcher
                       locales={locales}

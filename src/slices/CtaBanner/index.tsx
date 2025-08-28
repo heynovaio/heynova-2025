@@ -2,7 +2,8 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, ContentBox, Section } from "@/components";
-// import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
+import { CalendlyButton } from "@/components/Buttons/CalendlyButton";
 
 /**
  * Props for `CtaBanner`.
@@ -22,6 +23,10 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
   const textColor = isGradient ? "text-white" : "text-midnight";
   const backgroundColor = isGradient ? "gradient-dark-bg" : "bg-teal-muted";
   const borderColor = isGradient ? "border-aqua" : "border-wine";
+
+  const showPrismicButtons =
+    slice.variation === "default" || slice.variation === "ctaBannerWithForm";
+
   return (
     <Section
       data-slice-type={slice.slice_type}
@@ -46,17 +51,29 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
                 )}
               </div>
             }
-            // buttons={slice.primary.buttons.map((button, index) => {
-            //   return (
-            //     <PrismicNextLink
-            //       field={button}
-            //       key={index}
-            //       className={
-            //         isGradient ? "btn btn-primary" : "btn btn-secondary"
-            //       }
-            //     />
-            //   );
-            // })}
+            buttons={
+              showPrismicButtons
+                ? slice.primary.buttons?.map((button, index) => (
+                    <PrismicNextLink
+                      field={button}
+                      key={index}
+                      className={
+                        isGradient ? "btn btn-primary" : "btn btn-secondary"
+                      }
+                    />
+                  ))
+                : [
+                    <CalendlyButton
+                      text={slice.primary.booking_button_text ?? "Book Now"}
+                      buttonClass={
+                        slice.primary.button_class == true
+                          ? "btn-secondary"
+                          : "btn-primary"
+                      }
+                      key={slice.primary.booking_button_text}
+                    />,
+                  ]
+            }
             containerClassName={textAlignment}
           />
         </div>
