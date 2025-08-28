@@ -23,7 +23,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  menus,
+  // menus,
   logo,
   slices,
   locales,
