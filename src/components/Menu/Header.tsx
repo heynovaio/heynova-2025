@@ -51,12 +51,12 @@ export const Header: React.FC<HeaderProps> = ({
           <SliceZone slices={slices} components={components} />
         </div>
 
-        {menus?.call_to_action.text !== "" && (
+        {/* {menus?.call_to_action.text !== "" && (
           <PrismicNextLink
             className="btn btn-primary lg:block hidden"
             field={menus?.call_to_action}
           />
-        )}
+        )} */}
 
         {/* Mobile Menu */}
         <div className="lg:hidden">
@@ -94,12 +94,12 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
                       <SliceZone slices={slices} components={components} />
-                      {menus?.call_to_action.text !== "" && (
+                      {/* {menus?.call_to_action.text !== "" && (
                         <PrismicNextLink
                           className="btn btn-primary px-6 mt-10"
                           field={menus?.call_to_action}
                         />
-                      )}
+                      )} */}
                     </div>
                     <LanguageSwitcher
                       locales={locales}
