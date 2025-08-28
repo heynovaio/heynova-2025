@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 import { PopupButton } from "react-calendly";
 
-export function CalendlyButton() {
+interface CalendlyButtonProps {
+  text: string;
+  buttonClass: "btn-primary" | "btn-secondary";
+}
+export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
   const [rootEl, setRootEl] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -15,8 +19,8 @@ export function CalendlyButton() {
     <PopupButton
       url="https://calendly.com/hey-nova/free-consult"
       rootElement={rootEl}
-      text="Book a Chat"
-      className="btn btn-primary"
+      text={text}
+      className={`btn ${buttonClass}`}
     />
   );
 }

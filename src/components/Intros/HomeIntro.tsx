@@ -54,7 +54,7 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
               />
             ))}
           </div>
-          <CalendlyButton />
+          <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
         </div>
       </Container>
     </section>
