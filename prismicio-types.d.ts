@@ -2231,11 +2231,93 @@ export type CtaBannerSliceCtaBannerWithForm = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *CtaBanner → Booking → Primary*
+ */
+export interface CtaBannerSliceBookingPrimary {
+  /**
+   * Text Alignment field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: cta_banner.booking.primary.text_alignment
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  text_alignment: prismic.BooleanField;
+
+  /**
+   * Inner Background Color field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Default
+   * - **API ID Path**: cta_banner.booking.primary.inner_background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
+
+  /**
+   * Title field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_banner.booking.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_banner.booking.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Booking Button Text field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta_banner.booking.primary.booking_button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  booking_button_text: prismic.KeyTextField;
+
+  /**
+   * Button Class field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: cta_banner.booking.primary.button_class
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  button_class: prismic.BooleanField;
+}
+
+/**
+ * Booking variation for CtaBanner Slice
+ *
+ * - **API ID**: `booking`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CtaBannerSliceBooking = prismic.SharedSliceVariation<
+  "booking",
+  Simplify<CtaBannerSliceBookingPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *CtaBanner*
  */
 type CtaBannerSliceVariation =
   | CtaBannerSliceDefault
-  | CtaBannerSliceCtaBannerWithForm;
+  | CtaBannerSliceCtaBannerWithForm
+  | CtaBannerSliceBooking;
 
 /**
  * CtaBanner Shared Slice
@@ -3442,9 +3524,11 @@ declare module "@prismicio/client" {
       CtaBannerSlice,
       CtaBannerSliceDefaultPrimary,
       CtaBannerSliceCtaBannerWithFormPrimary,
+      CtaBannerSliceBookingPrimary,
       CtaBannerSliceVariation,
       CtaBannerSliceDefault,
       CtaBannerSliceCtaBannerWithForm,
+      CtaBannerSliceBooking,
       HorizontalAccordionSlice,
       HorizontalAccordionSliceDefaultPrimaryAccordionItem,
       HorizontalAccordionSliceDefaultPrimary,
