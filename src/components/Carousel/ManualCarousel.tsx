@@ -48,7 +48,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
       styling="overflow-x-hidden flex flex-col gap-8"
     >
       <Container containerClassName="flex flex-col">
-        <Container containerClassName="flex justify-between items-start">
+        <div className="flex justify-between items-start">
           <ContentBox
             title={slice.primary.title}
             titleClassName="text-aqua"
@@ -75,9 +75,9 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
               styling="w-fit"
             />
           )}
-        </Container>
+        </div>
       </Container>
-      <Container containerClassName="px-10">
+      <Container>
         <Carousel
           responsive={category_responsive}
           partialVisible
@@ -175,7 +175,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
           })}
         </Carousel>
       </Container>
-      <Container containerClassName="px-10">
+      <Container>
         {((Array.isArray(slice.primary.button) &&
           slice.primary.button[0]?.text) ||
           (!Array.isArray(slice.primary.button) &&

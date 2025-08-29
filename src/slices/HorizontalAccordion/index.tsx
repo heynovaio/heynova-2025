@@ -27,7 +27,6 @@ const HorizontalAccordionSlice = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="p-6"
     >
       <Container>
         <ContentBox
