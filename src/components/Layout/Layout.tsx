@@ -7,6 +7,7 @@ import {
 } from "../../../prismicio-types";
 import { PrismicDocument } from "@prismicio/client";
 import { Announcement, Footer, Header } from "../Menu";
+import { Newsletter } from "../Newsletter";
 
 interface LayoutProps {
   locales: PrismicDocument[];
@@ -50,6 +51,7 @@ export const Layout = ({
       <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
         {children}
       </main>
+      <Newsletter />
       <Footer global={global} slices={menus?.slices1} footerData={menus} />
     </div>
   );
