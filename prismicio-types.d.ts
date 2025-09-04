@@ -214,6 +214,18 @@ interface ContactDocumentData {
   image: prismic.ImageField<never>;
 
   /**
+   * Include Newsletter Sign Up field in *Contact*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: contact.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Contact*
    *
    * - **Field Type**: Slice Zone
@@ -488,6 +500,18 @@ interface InsightDocumentData {
   authors: prismic.GroupField<Simplify<InsightDocumentDataAuthorsItem>>;
 
   /**
+   * Include Newsletter Sign Up field in *Insight*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insight.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Insight*
    *
    * - **Field Type**: Slice Zone
@@ -609,6 +633,18 @@ interface InsightsCategoriesDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Include Newsletter Sign Up field in *Insights Categories*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insights_categories.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
 
   /**
    * Slice Zone field in *Insights Categories*
@@ -743,6 +779,18 @@ interface InsightsListingDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Include Newsletter Sign Up field in *Insights Listing*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: insights_listing.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
 
   /**
    * Slice Zone field in *Insights Listing*
@@ -1023,6 +1071,18 @@ interface PageDocumentData {
   image: prismic.ImageField<never>;
 
   /**
+   * Include Newsletter Sign Up field in *Page*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: page.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Page*
    *
    * - **Field Type**: Slice Zone
@@ -1165,6 +1225,18 @@ interface ServiceDocumentData {
   image: prismic.ImageField<never>;
 
   /**
+   * Include Newsletter Sign Up field in *Service*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: service.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
+
+  /**
    * Slice Zone field in *Service*
    *
    * - **Field Type**: Slice Zone
@@ -1286,6 +1358,18 @@ interface ServicesListingDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Include Newsletter Sign Up field in *Services Listing*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: services_listing.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
 
   /**
    * Slice Zone field in *Services Listing*
@@ -1420,6 +1504,18 @@ interface TeamDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Include Newsletter Sign Up field in *Team*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: team.include_newsletter_sign_up
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  include_newsletter_sign_up: prismic.BooleanField;
 
   /**
    * Slice Zone field in *Team*
