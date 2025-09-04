@@ -987,6 +987,146 @@ interface MenusDocumentData {
 export type MenusDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<MenusDocumentData>, "menus", Lang>;
 
+/**
+ * Item in *Newsletter SignUp → Form Field*
+ */
+export interface NewsletterSignupDocumentDataFormFieldItem {
+  /**
+   * label field in *Newsletter SignUp → Form Field*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.form_field[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField;
+
+  /**
+   * name field in *Newsletter SignUp → Form Field*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.form_field[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * type field in *Newsletter SignUp → Form Field*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.form_field[].type
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  type: prismic.KeyTextField;
+
+  /**
+   * placeholder field in *Newsletter SignUp → Form Field*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.form_field[].placeholder
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  placeholder: prismic.KeyTextField;
+}
+
+/**
+ * Item in *Newsletter SignUp → Submit Button*
+ */
+export interface NewsletterSignupDocumentDataSubmitButtonItem {
+  /**
+   * Button Text field in *Newsletter SignUp → Submit Button*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.submit_button[].button_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+}
+
+/**
+ * Content for Newsletter SignUp documents
+ */
+interface NewsletterSignupDocumentData {
+  /**
+   * Title field in *Newsletter SignUp*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * subtitle field in *Newsletter SignUp*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.subtitle
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * signup_success_message field in *Newsletter SignUp*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.signup_success_message
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  signup_success_message: prismic.KeyTextField;
+
+  /**
+   * Form Field field in *Newsletter SignUp*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.form_field[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  form_field: prismic.GroupField<
+    Simplify<NewsletterSignupDocumentDataFormFieldItem>
+  >;
+
+  /**
+   * Submit Button field in *Newsletter SignUp*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: newsletter_signup.submit_button[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  submit_button: prismic.GroupField<
+    Simplify<NewsletterSignupDocumentDataSubmitButtonItem>
+  >;
+}
+
+/**
+ * Newsletter SignUp document from Prismic
+ *
+ * - **API ID**: `newsletter_signup`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsletterSignupDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NewsletterSignupDocumentData>,
+    "newsletter_signup",
+    Lang
+  >;
+
 type PageDocumentDataSlicesSlice =
   | TestimonialsSlice
   | SimpleTextSlice
@@ -1580,6 +1720,7 @@ export type AllDocumentTypes =
   | InsightsCategoriesDocument
   | InsightsListingDocument
   | MenusDocument
+  | NewsletterSignupDocument
   | PageDocument
   | ServiceDocument
   | ServicesListingDocument
@@ -3585,6 +3726,10 @@ declare module "@prismicio/client" {
       MenusDocumentData,
       MenusDocumentDataSlicesSlice,
       MenusDocumentDataSlices1Slice,
+      NewsletterSignupDocument,
+      NewsletterSignupDocumentData,
+      NewsletterSignupDocumentDataFormFieldItem,
+      NewsletterSignupDocumentDataSubmitButtonItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
