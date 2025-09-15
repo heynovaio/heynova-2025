@@ -104,7 +104,7 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
 
     try {
       await fetch(
-        "https://heynova.us2.list-manage.com/subscribe/post?u=8ee5619b8ee91b0ddf0ee8e84&id=bc04ac6cf0",
+        "https://heynova.us2.list-manage.com/subscribe/post?u=8ee5619b8ee91b0ddf0ee8e84&amp;id=bc04ac6cf0",
         {
           method: "POST",
           mode: "no-cors", // required to bypass CORS but means no readable response
@@ -126,7 +126,7 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
 
   return (
     <Section data-slice-type="newsletter_signup" id="newsletter">
-      <Container className="hover-shadow border border-white py-6">
+      <Container className="hover-shadow  border-t border-b border-white py-12">
         <div
           className="p-8 max-w-4xl mx-auto rounded-[1.25rem]"
           style={{
@@ -215,8 +215,8 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
                       type={fieldType}
                       placeholder={field.placeholder ?? ""}
                       className={`w-full p-4 rounded-xl border-2 ${
-                        hasError ? "border-lavendar" : "border-lavendar"
-                      } bg-white focus:outline-none focus:ring-2 focus:ring-lavendar focus:border-lavendar`}
+                        hasError ? "border-red" : "border-lavendar"
+                      } bg-white text-black  focus:outline-none focus:ring-2 focus:ring-lavendar focus:border-lavendar`}
                       required
                       aria-describedby={hasError ? errorId : undefined}
                       aria-invalid={hasError}
