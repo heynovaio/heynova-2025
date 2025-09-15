@@ -16,6 +16,7 @@ interface LayoutProps {
   global: GlobalDocumentData;
   children: ReactNode;
   backgroundType: "primary" | "secondary";
+  include_newsletter_sign_up_banner: boolean;
 }
 
 export const Layout = ({
@@ -24,6 +25,7 @@ export const Layout = ({
   global,
   children,
   backgroundType,
+  include_newsletter_sign_up_banner,
 }: LayoutProps) => {
   useEffect(() => {
     document.body.classList.remove("bg-primary", "bg-secondary");
@@ -56,7 +58,9 @@ export const Layout = ({
       <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
         {children}
       </main>
-      <NewsletterSignupBanner lang={"en-ca"} />
+      {include_newsletter_sign_up_banner && (
+        <NewsletterSignupBanner lang={"en-ca"} />
+      )}
       <Footer global={global} slices={menus?.slices1} footerData={menus} />
     </div>
   );
