@@ -16,7 +16,7 @@ interface LayoutProps {
   global: GlobalDocumentData;
   children: ReactNode;
   backgroundType: "primary" | "secondary";
-  include_newsletter_sign_up_banner: boolean;
+  include_newsletter_sign_up_banner?: boolean;
 }
 
 export const Layout = ({
