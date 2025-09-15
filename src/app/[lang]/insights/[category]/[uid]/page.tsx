@@ -61,6 +61,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         locales={locales}
         global={global.data}
         menus={menus.data}
+        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
         <TagsIntro
           data={page.data}
