@@ -127,124 +127,126 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
   return (
     <Section data-slice-type="newsletter_signup" id="newsletter">
       <Container className="hover-shadow  border-t border-b border-white py-12">
-        <div
-          className="p-8 max-w-4xl mx-auto rounded-[1.25rem]"
-          style={{
-            background:
-              "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
-          }}
-        >
-          <div className="text-center mb-12 ">
-            <PrismicRichText
-              field={title}
-              components={{
-                heading2: ({ children }) => (
-                  <h2 className="text-[2.875rem] font-extrabold text-white text-center leading-tight">
-                    {children}
-                  </h2>
-                ),
-              }}
-            />
+        <div className="p-8 max-w-4xl mx-auto rounded-[1.25rem]">
+          <div
+            className="p-6 rounded-[1.25rem]"
+            style={{
+              background:
+                "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
+            }}
+          >
+            <div className="text-center mb-12 ">
+              <PrismicRichText
+                field={title}
+                components={{
+                  heading2: ({ children }) => (
+                    <h2 className="text-[2.875rem] font-extrabold text-white text-center leading-tight">
+                      {children}
+                    </h2>
+                  ),
+                }}
+              />
 
-            <div className="mt-6">
-              <PrismicRichText field={subtitle} />
+              <div className="mt-6">
+                <PrismicRichText field={subtitle} />
+              </div>
             </div>
-          </div>
 
-          {success ? (
-            <h4 className="font-extrabold text-center">
-              {signup_success_message}
-            </h4>
-          ) : (
-            <form
-              className="space-y-8"
-              ref={formRef}
-              onSubmit={handleSubmit}
-              noValidate
-              aria-describedby={errors.hasErrors ? "form-errors" : undefined}
-            >
-              {form_field.map((field: NewsletterField, index: number) => {
-                const fieldName = field.name ?? `field-${index}`;
-                const fieldType = field.type ?? "text";
-                const fieldLabel = field.label ?? "Untitled Field";
-                const hasError = getFieldError(fieldName);
-                const errorId = `${fieldName}-error`;
+            {success ? (
+              <h4 className="font-extrabold text-center">
+                {signup_success_message}
+              </h4>
+            ) : (
+              <form
+                className="space-y-8"
+                ref={formRef}
+                onSubmit={handleSubmit}
+                noValidate
+                aria-describedby={errors.hasErrors ? "form-errors" : undefined}
+              >
+                {form_field.map((field: NewsletterField, index: number) => {
+                  const fieldName = field.name ?? `field-${index}`;
+                  const fieldType = field.type ?? "text";
+                  const fieldLabel = field.label ?? "Untitled Field";
+                  const hasError = getFieldError(fieldName);
+                  const errorId = `${fieldName}-error`;
 
-                if (field.type === "checkbox") {
+                  if (field.type === "checkbox") {
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-3 mt-6"
+                      >
+                        <input
+                          id={fieldName}
+                          name={fieldName}
+                          type="checkbox"
+                          className={`h-6 w-6 rounded border-2 ${
+                            hasError ? "border-red" : "border-lavendar"
+                          } bg-white checked:bg-lavendar focus:outline-none focus:ring-2 focus:ring-lavendar`}
+                          required
+                          aria-describedby={hasError ? errorId : undefined}
+                          aria-invalid={hasError}
+                        />
+                        <label
+                          htmlFor={fieldName}
+                          className={`font-semibold ${
+                            hasError ? "text-ultra-pink" : "text-white"
+                          }`}
+                        >
+                          {field.label}
+                        </label>
+                      </div>
+                    );
+                  }
+
                   return (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 mt-6"
-                    >
+                    <div key={index} className="mb-6">
+                      <label
+                        htmlFor={fieldName}
+                        className={`block mb-4 font-semibold ${
+                          hasError ? "text-red" : "text-white"
+                        }`}
+                      >
+                        {fieldLabel}
+                      </label>
                       <input
                         id={fieldName}
                         name={fieldName}
-                        type="checkbox"
-                        className={`h-6 w-6 rounded border-2 ${
+                        type={fieldType}
+                        placeholder={field.placeholder ?? ""}
+                        className={`w-full p-4 rounded-xl border-2 ${
                           hasError ? "border-red" : "border-lavendar"
-                        } bg-white checked:bg-lavendar focus:outline-none focus:ring-2 focus:ring-lavendar`}
+                        } bg-white text-black  focus:outline-none focus:ring-2 focus:ring-lavendar focus:border-lavendar`}
                         required
                         aria-describedby={hasError ? errorId : undefined}
                         aria-invalid={hasError}
                       />
-                      <label
-                        htmlFor={fieldName}
-                        className={`font-semibold ${
-                          hasError ? "text-ultra-pink" : "text-white"
-                        }`}
-                      >
-                        {field.label}
-                      </label>
                     </div>
                   );
-                }
-
-                return (
-                  <div key={index} className="mb-6">
-                    <label
-                      htmlFor={fieldName}
-                      className={`block mb-4 font-semibold ${
-                        hasError ? "text-red" : "text-white"
-                      }`}
-                    >
-                      {fieldLabel}
-                    </label>
-                    <input
-                      id={fieldName}
-                      name={fieldName}
-                      type={fieldType}
-                      placeholder={field.placeholder ?? ""}
-                      className={`w-full p-4 rounded-xl border-2 ${
-                        hasError ? "border-red" : "border-lavendar"
-                      } bg-white text-black  focus:outline-none focus:ring-2 focus:ring-lavendar focus:border-lavendar`}
-                      required
-                      aria-describedby={hasError ? errorId : undefined}
-                      aria-invalid={hasError}
-                    />
+                })}
+                {/* Error Messages */}
+                {errors.hasErrors && (
+                  <div
+                    id="form-errors"
+                    role="alert"
+                    aria-live="polite"
+                    className="flex flex-col gap-4"
+                  >
+                    {errors.requiredFieldsError && (
+                      <label>Please fill out all required sections.</label>
+                    )}
+                    {errors.emailError && (
+                      <label>Please enter a valid email.</label>
+                    )}
                   </div>
-                );
-              })}
-              {/* Error Messages */}
-              {errors.hasErrors && (
-                <div
-                  id="form-errors"
-                  role="alert"
-                  aria-live="polite"
-                  className="flex flex-col gap-4"
-                >
-                  {errors.requiredFieldsError && (
-                    <label>Please fill out all required sections.</label>
-                  )}
-                  {errors.emailError && (
-                    <label>Please enter a valid email.</label>
-                  )}
-                </div>
-              )}
-              <button type="submit" className="btn btn-primary">
-                {submit_button[0]?.button_text ?? "Sign Up"}
-              </button>
-            </form>
-          )}
+                )}
+                <button type="submit" className="btn btn-primary">
+                  {submit_button[0]?.button_text ?? "Sign Up"}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
       </Container>
     </Section>
