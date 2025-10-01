@@ -60,7 +60,7 @@ const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
           containerClassName="flex text-center justify-center"
         />
         <div
-          className={`${card_color} ${slice.variation === "default" ? "" : "mt-16"} flex flex-col lg:flex-row justify-center items-center shadow rounded gap-1 ${
+          className={`${card_color} ${slice.variation === "default" ? "" : "mt-16"} flex flex-col lg:flex-row justify-center items-center rounded gap-1 ${
             isSingleColumn ? "max-w-[860px] w-full" : "w-full"
           }`}
         >
