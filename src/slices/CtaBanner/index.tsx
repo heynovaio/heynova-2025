@@ -38,6 +38,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
         >
           <ContentBox
             title={slice.primary.title}
+            smallerTextWidth={true}
             content={
               <div>
                 <PrismicRichText field={slice.primary.body} />
