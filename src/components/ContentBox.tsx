@@ -17,6 +17,7 @@ interface ContentBoxProps {
     [key: string]: React.FC<{ children: ReactNode }>;
   };
   titleLevel?: 2 | 3; // New prop to control heading level
+  smallerTextWidth?: boolean;
 }
 
 export const ContentBox: React.FC<ContentBoxProps> = ({
@@ -30,9 +31,11 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
   containerClassName,
   titleComponents,
   titleLevel = 2,
+  smallerTextWidth = false,
   ...props
 }) => {
   const widthClassName = getWidthClassNames(width);
+  const textWidth = smallerTextWidth ? "max-w-[80ch]" : "";
 
   const TitleHeading = ({ children }: { children: ReactNode }) => {
     return titleLevel === 2 ? (
@@ -46,13 +49,13 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
     <div
       data-test-id="contentbox"
       className={clsx(
-        "flex flex-col gap-7 contentBox ",
+        `flex flex-col gap-7 contentBox `,
         widthClassName,
         containerClassName
       )}
       {...props}
     >
-      <div className={`flex flex-col w-full gap-2`}>
+      <div className={`flex flex-col w-full gap-2 ${textWidth}`}>
         <div className={titleClassName}>
           {tagline && <div className="text-bodyLarge">{tagline}</div>}
           {typeof title === "string" ? (
