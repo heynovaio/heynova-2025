@@ -92,6 +92,7 @@
   h2 {
     font-size: var(--text-h2-mobile);
     font-weight: var(--font-weight-extraBold);
+    line-height: 1.2;
   }
 
   h3 {
