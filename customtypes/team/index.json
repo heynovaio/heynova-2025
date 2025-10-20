@@ -73,6 +73,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "content_column": {
+              "type": "SharedSlice"
+            },
             "cta_banner": {
               "type": "SharedSlice"
             },

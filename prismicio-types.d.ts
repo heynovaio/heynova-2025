@@ -1570,7 +1570,10 @@ export type ServicesListingDocument<Lang extends string = string> =
     Lang
   >;
 
-type TeamDocumentDataSlicesSlice = CtaBannerSlice | TeamListSlice;
+type TeamDocumentDataSlicesSlice =
+  | ContentColumnSlice
+  | CtaBannerSlice
+  | TeamListSlice;
 
 /**
  * Content for Team documents
