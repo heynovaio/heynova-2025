@@ -7,6 +7,7 @@ import {
 } from "../../../prismicio-types";
 import { PrismicDocument } from "@prismicio/client";
 import { Announcement, Footer, Header } from "../Menu";
+import Link from "next/link";
 
 interface LayoutProps {
   locales: PrismicDocument[];
@@ -31,9 +32,13 @@ export const Layout = ({
 
   return (
     <div>
-      {/* <a href="#main-content" className="skip-to-content-link">
+      <Link
+        href="#main-content"
+        className="bg-primary skip-content text-white rounded p-2 text-center transition-transform duration-300 transform -translate-y-full -translate-x-1/2 fixed left-1/2 z-[100] focus:translate-y-0"
+        tabIndex={1}
+      >
         Skip to Content
-      </a> */}
+      </Link>
       <Announcement
         text={menus.banner_text}
         locales={locales}
