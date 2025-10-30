@@ -41,12 +41,12 @@ export const GeneralCard = ({
 
   return (
     <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col">
-      <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col h-full gap-5">
+      <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col h-full">
         {image && (
           <PrismicNextImage
             field={image}
             fallbackAlt=""
-            className="object-cover"
+            className="object-cover general-card-image"
           />
         )}
         <div className="p-5 flex flex-col gap-4 h-full">
