@@ -25,8 +25,8 @@ export const ManualCarouselCard = ({
         {image && (
           <ResponsiveImage
             image={image}
-            imageHeightClassName="object-cover"
-            containerClassName="w-full h-full flex items-center justify-center"
+            imageHeightClassName="object-cover aspect-[5/3]"
+            containerClassName="w-full h-full flex items-center justify-center "
           />
         )}
         <div className="flex flex-col gap-4 h-full">
