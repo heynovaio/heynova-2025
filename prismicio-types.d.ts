@@ -1879,6 +1879,21 @@ export interface ContentCarouselSliceGeneralCarouselPrimaryCardsItem {
 }
 
 /**
+ * Item in *ContentCarousel → Photo Carousel → Primary → Cards*
+ */
+export interface ContentCarouselSlicePhotoCarouselPrimaryCardsItem {
+  /**
+   * Image field in *ContentCarousel → Photo Carousel → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.photoCarousel.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
  * Primary content in *ContentCarousel → Default (Insight) → Primary*
  */
 export interface ContentCarouselSliceDefaultPrimary {
@@ -2096,12 +2111,86 @@ export type ContentCarouselSliceGeneralCarousel = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ContentCarousel → Photo Carousel → Primary*
+ */
+export interface ContentCarouselSlicePhotoCarouselPrimary {
+  /**
+   * Background Color field in *ContentCarousel → Photo Carousel → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_carousel.photoCarousel.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+
+  /**
+   * Title field in *ContentCarousel → Photo Carousel → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.photoCarousel.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentCarousel → Photo Carousel → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.photoCarousel.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentCarousel → Photo Carousel → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.photoCarousel.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Cards field in *ContentCarousel → Photo Carousel → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.photoCarousel.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<ContentCarouselSlicePhotoCarouselPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Photo Carousel variation for ContentCarousel Slice
+ *
+ * - **API ID**: `photoCarousel`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentCarouselSlicePhotoCarousel = prismic.SharedSliceVariation<
+  "photoCarousel",
+  Simplify<ContentCarouselSlicePhotoCarouselPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ContentCarousel*
  */
 type ContentCarouselSliceVariation =
   | ContentCarouselSliceDefault
   | ContentCarouselSliceManualCarousel
-  | ContentCarouselSliceGeneralCarousel;
+  | ContentCarouselSliceGeneralCarousel
+  | ContentCarouselSlicePhotoCarousel;
 
 /**
  * ContentCarousel Shared Slice
@@ -3753,10 +3842,13 @@ declare module "@prismicio/client" {
       ContentCarouselSliceManualCarouselPrimary,
       ContentCarouselSliceGeneralCarouselPrimaryCardsItem,
       ContentCarouselSliceGeneralCarouselPrimary,
+      ContentCarouselSlicePhotoCarouselPrimaryCardsItem,
+      ContentCarouselSlicePhotoCarouselPrimary,
       ContentCarouselSliceVariation,
       ContentCarouselSliceDefault,
       ContentCarouselSliceManualCarousel,
       ContentCarouselSliceGeneralCarousel,
+      ContentCarouselSlicePhotoCarousel,
       ContentColumnSlice,
       ContentColumnSliceDefaultPrimaryContentItem,
       ContentColumnSliceDefaultPrimary,
