@@ -20,7 +20,7 @@ const ContentCarousel = ({ slice }: ContentCarouselProps) => {
       break;
     case "generalCarousel":
       carouselType = <GeneralCarousel slice={slice} />;
-    case "photoCarousel":
+    case "pictureCarousel":
       carouselType = <PhotoCarousel slice={slice} />;
     default:
       carouselType = <CategoryCarousel slice={slice} />;

@@ -1879,15 +1879,15 @@ export interface ContentCarouselSliceGeneralCarouselPrimaryCardsItem {
 }
 
 /**
- * Item in *ContentCarousel → Photo Carousel → Primary → Cards*
+ * Item in *ContentCarousel → Picture Carousel → Primary → Cards*
  */
-export interface ContentCarouselSlicePhotoCarouselPrimaryCardsItem {
+export interface ContentCarouselSlicePictureCarouselPrimaryCardsItem {
   /**
-   * Image field in *ContentCarousel → Photo Carousel → Primary → Cards*
+   * Image field in *ContentCarousel → Picture Carousel → Primary → Cards*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.photoCarousel.primary.cards[].image
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.cards[].image
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
@@ -2111,46 +2111,46 @@ export type ContentCarouselSliceGeneralCarousel = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ContentCarousel → Photo Carousel → Primary*
+ * Primary content in *ContentCarousel → Picture Carousel → Primary*
  */
-export interface ContentCarouselSlicePhotoCarouselPrimary {
+export interface ContentCarouselSlicePictureCarouselPrimary {
   /**
-   * Background Color field in *ContentCarousel → Photo Carousel → Primary*
+   * Background Color field in *ContentCarousel → Picture Carousel → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **Default Value**: None
-   * - **API ID Path**: content_carousel.photoCarousel.primary.background_color
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
 
   /**
-   * Title field in *ContentCarousel → Photo Carousel → Primary*
+   * Title field in *ContentCarousel → Picture Carousel → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.photoCarousel.primary.title
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.title
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   title: prismic.RichTextField;
 
   /**
-   * Body field in *ContentCarousel → Photo Carousel → Primary*
+   * Body field in *ContentCarousel → Picture Carousel → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.photoCarousel.primary.body
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.body
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
 
   /**
-   * Button field in *ContentCarousel → Photo Carousel → Primary*
+   * Button field in *ContentCarousel → Picture Carousel → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.photoCarousel.primary.button
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.button
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
   button: prismic.Repeatable<
@@ -2158,28 +2158,28 @@ export interface ContentCarouselSlicePhotoCarouselPrimary {
   >;
 
   /**
-   * Cards field in *ContentCarousel → Photo Carousel → Primary*
+   * Cards field in *ContentCarousel → Picture Carousel → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: content_carousel.photoCarousel.primary.cards[]
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.cards[]
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   cards: prismic.GroupField<
-    Simplify<ContentCarouselSlicePhotoCarouselPrimaryCardsItem>
+    Simplify<ContentCarouselSlicePictureCarouselPrimaryCardsItem>
   >;
 }
 
 /**
- * Photo Carousel variation for ContentCarousel Slice
+ * Picture Carousel variation for ContentCarousel Slice
  *
- * - **API ID**: `photoCarousel`
+ * - **API ID**: `pictureCarousel`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type ContentCarouselSlicePhotoCarousel = prismic.SharedSliceVariation<
-  "photoCarousel",
-  Simplify<ContentCarouselSlicePhotoCarouselPrimary>,
+export type ContentCarouselSlicePictureCarousel = prismic.SharedSliceVariation<
+  "pictureCarousel",
+  Simplify<ContentCarouselSlicePictureCarouselPrimary>,
   never
 >;
 
@@ -2190,7 +2190,7 @@ type ContentCarouselSliceVariation =
   | ContentCarouselSliceDefault
   | ContentCarouselSliceManualCarousel
   | ContentCarouselSliceGeneralCarousel
-  | ContentCarouselSlicePhotoCarousel;
+  | ContentCarouselSlicePictureCarousel;
 
 /**
  * ContentCarousel Shared Slice
@@ -3842,13 +3842,13 @@ declare module "@prismicio/client" {
       ContentCarouselSliceManualCarouselPrimary,
       ContentCarouselSliceGeneralCarouselPrimaryCardsItem,
       ContentCarouselSliceGeneralCarouselPrimary,
-      ContentCarouselSlicePhotoCarouselPrimaryCardsItem,
-      ContentCarouselSlicePhotoCarouselPrimary,
+      ContentCarouselSlicePictureCarouselPrimaryCardsItem,
+      ContentCarouselSlicePictureCarouselPrimary,
       ContentCarouselSliceVariation,
       ContentCarouselSliceDefault,
       ContentCarouselSliceManualCarousel,
       ContentCarouselSliceGeneralCarousel,
-      ContentCarouselSlicePhotoCarousel,
+      ContentCarouselSlicePictureCarousel,
       ContentColumnSlice,
       ContentColumnSliceDefaultPrimaryContentItem,
       ContentColumnSliceDefaultPrimary,

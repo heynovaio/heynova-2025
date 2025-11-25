@@ -381,11 +381,11 @@
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "photoCarousel",
+		"variation": "pictureCarousel",
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
-				"value": "Dark",
+				"value": "None",
 				"type": "Select"
 			},
 			"title": {
@@ -394,7 +394,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Coach"
+							"text": "Continued"
 						}
 					}
 				]
@@ -405,7 +405,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Cillum elit pariatur anim do ex deserunt irure nulla exercitation consequat commodo sit in. Laborum ut laboris voluptate anim exercitation irure laboris adipisicing aliquip exercitation laboris. Fugiat ad velit cupidatat eiusmod id esse pariatur pariatur officia laboris nostrud."
+							"text": "Ut sunt proident deserunt sint duis laboris cupidatat pariatur id quis consequat. Dolor sint ex voluptate id qui."
 						}
 					}
 				]
@@ -415,12 +415,12 @@
 				"type": "Link",
 				"value": [
 					{
-						"key": "7c80028b-0799-4058-bdb3-9532b881e5f8",
+						"key": "216467f0-ce0c-466e-bf4d-00d048f22c88",
 						"__TYPE__": "LinkContent",
 						"value": {
 							"__TYPE__": "ExternalLink",
 							"url": "https://slicemachine.dev",
-							"text": "no"
+							"text": "examine"
 						}
 					}
 				]
@@ -436,13 +436,13 @@
 								{
 									"origin": {
 										"id": "main",
-										"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
-										"width": 4752,
-										"height": 3168
+										"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+										"width": 3168,
+										"height": 4752
 									},
-									"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
-									"width": 4752,
-									"height": 3168,
+									"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+									"width": 3168,
+									"height": 4752,
 									"edit": {
 										"zoom": 1,
 										"crop": {
@@ -451,45 +451,13 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "equal",
+									"alt": "queen",
 									"credits": null,
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							]
 						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"image",
-								{
-									"__TYPE__": "ImageContent",
-									"provider": "imgix",
-									"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NjQwMDY3MjN8MA&ixlib=rb-4.1.0&q=85",
-									"alt": "sliced fruit on white surface",
-									"origin": {
-										"id": "YSA1IRkGAsg",
-										"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NjQwMDY3MjN8MA&ixlib=rb-4.1.0&q=85",
-										"width": 5760,
-										"height": 3840
-									},
-									"width": 5760,
-									"height": 3840,
-									"edit": {
-										"background": "transparent",
-										"zoom": 1,
-										"crop": {
-											"x": 0,
-											"y": 0
-										}
-									},
-									"thumbnails": {}
-								}
-							]
-						],
-						"key": "3ec7a6d3-071a-4fa6-80be-c96ca5500cc3"
 					}
 				]
 			}
