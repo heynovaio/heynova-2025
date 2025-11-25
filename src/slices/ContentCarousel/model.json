@@ -320,8 +320,8 @@
       "items": {}
     },
     {
-      "id": "photoCarousel",
-      "name": "Photo Carousel",
+      "id": "pictureCarousel",
+      "name": "Picture Carousel",
       "docURL": "...",
       "version": "initial",
       "description": "Default",

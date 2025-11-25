@@ -22,6 +22,7 @@ export type ManualCarouselProps = {
 };
 
 export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
+  if (slice.variation !== "manualCarousel") return null;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel>(null);
   const { insightCategoryData } = useInsightCategoryData("en-ca");
