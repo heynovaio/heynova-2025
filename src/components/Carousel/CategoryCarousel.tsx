@@ -147,7 +147,8 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
             })}
           </Carousel>
         </div>
-        <Container>
+
+        <div className="mt-10">
           {((Array.isArray(slice.primary.button) &&
             slice.primary.button[0]?.text) ||
             (!Array.isArray(slice.primary.button) &&
@@ -161,7 +162,7 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
               className={`btn btn-primary justify-self-start`}
             />
           )}
-        </Container>
+        </div>
       </Container>
     </Section>
   );
