@@ -46,35 +46,25 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
 
                     <Tab
                       className={({ selected }) =>
-                        `w-full px-6 py-7 flex flex-row justify-between font-bold transition-all duration-300 outline-none ${
+                        `hover:cursor-pointer w-full px-6 py-7 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none ${
                           selected
                             ? "selected-tab-style"
                             : "text-gradient-light"
                         }`
                       }
                     >
-                      {({ selected }) => (
-                        <div className="flex items-center justify-between flex-1">
-                          <div
-                            className={
-                              selected ? "text-white" : "text-[#003D73]"
-                            }
-                          >
-                            <PrismicRichText
-                              field={title}
-                              components={{
-                                heading3: ({ children }) => (
-                                  <h3 className="gradient-light">{children}</h3>
-                                ),
-                                heading4: ({ children }) => (
-                                  <h4 className="gradient-light">{children}</h4>
-                                ),
-                              }}
-                            />
-                          </div>
-                          <FaChevronRight className="h-5 w-5 text-lavendar" />
-                        </div>
-                      )}
+                      <PrismicRichText
+                        field={title}
+                        components={{
+                          heading3: ({ children }) => (
+                            <h3 className="gradient-light">{children}</h3>
+                          ),
+                          heading4: ({ children }) => (
+                            <h4 className="gradient-light">{children}</h4>
+                          ),
+                        }}
+                      />
+                      <FaChevronRight className="h-5 w-5 text-lavendar" />
                     </Tab>
 
                     {(idx === titles.length - 1 && selectedIndex !== idx) ||
