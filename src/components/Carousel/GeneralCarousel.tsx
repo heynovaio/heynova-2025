@@ -22,6 +22,8 @@ export type GeneralCarouselProps = {
 };
 
 export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
+  if (slice.variation !== "generalCarousel") return null;
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel>(null);
   const { insightCategoryData } = useInsightCategoryData("en-ca");
@@ -176,19 +178,22 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
         </Carousel>
       </Container>
       <Container>
-        {((Array.isArray(slice.primary.button) &&
-          slice.primary.button[0]?.text) ||
-          (!Array.isArray(slice.primary.button) &&
-            slice.primary.button?.text)) && (
+        {Array.isArray(slice.primary.button) ? (
+          slice.primary.button.map((btn, idx) =>
+            isFilled.link(btn) ? (
+              <PrismicNextLink
+                key={idx}
+                field={btn}
+                className="btn btn-primary justify-self-start"
+              />
+            ) : null
+          )
+        ) : isFilled.link(slice.primary.button) ? (
           <PrismicNextLink
-            field={
-              Array.isArray(slice.primary.button)
-                ? (slice.primary.button[0] ?? undefined)
-                : slice.primary.button
-            }
-            className={`btn btn-primary justify-self-start`}
+            field={slice.primary.button}
+            className="btn btn-primary justify-self-start"
           />
-        )}
+        ) : null}
       </Container>
     </Section>
   );
