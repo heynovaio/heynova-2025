@@ -43,7 +43,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
           ) : (
             <ResponsiveImage
               image={slice.primary.image}
-              className="w-full h-[250px] md:h-[400px] object-cover mb-4 md:mb-0"
+              className="w-full h-[250px] md:h-[400px] object-contain mb-4 md:mb-0"
             />
           )}
         </div>
