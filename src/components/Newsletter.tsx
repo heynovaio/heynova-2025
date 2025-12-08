@@ -126,15 +126,9 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
 
   return (
     <Section data-slice-type="newsletter_signup" id="newsletter">
-      <Container className="hover-shadow  border-t border-b border-white py-12">
-        <div className="p-8 max-w-4xl mx-auto rounded-[1.25rem]">
-          <div
-            className="p-6 rounded-[1.25rem]"
-            style={{
-              background:
-                "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
-            }}
-          >
+      <Container className="hover-shadow bg-teal-muted/20 p-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="p-6 rounded-[1.25rem]">
             <div className="text-center mb-12 ">
               <PrismicRichText
                 field={title}
