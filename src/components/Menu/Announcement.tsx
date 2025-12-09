@@ -14,22 +14,17 @@ export const Announcement: React.FC<AnnouncementProps> = ({
   locales,
 }) => {
   return (
-    <div className="gradient-dark-bg w-full text-center px-2 md:px-0 py-2 flex-col">
+    <div className="bg-[#10506d] w-full text-center px-2 md:px-0 py-2 flex-col">
       <PrismicRichText
         field={text}
         components={{
-          paragraph: ({ children }) => (
-            <p className="text-sm">{children}</p>
-          ),
+          paragraph: ({ children }) => <p className="text-sm">{children}</p>,
         }}
       />
 
       {locales && (
         <div className="absolute top-0 right-4 z-[60] ">
-          <LanguageSwitcher
-            locales={locales}
-            classname="hidden lg:block"
-          />
+          <LanguageSwitcher locales={locales} classname="hidden lg:block" />
         </div>
       )}
     </div>
