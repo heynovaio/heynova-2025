@@ -31,8 +31,11 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header
-      className="sticky top-0 z-50 gradient-header border-b-[0.5px] border-aqua"
-      style={{ backdropFilter: "blur(15px)" }}
+      className="sticky top-0 z-50 border-b-[0.5px] border-aqua"
+      style={{
+        backdropFilter: "blur(25px)",
+        background: "rgba(14, 1, 46, .34)",
+      }}
     >
       <nav
         aria-label="Main Nav"
