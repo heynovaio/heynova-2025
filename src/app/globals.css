@@ -394,14 +394,6 @@ a {
     border-radius: 10px;
   }
 
-  .testimonial-img {
-    border-radius: 99em;
-
-    @media (max-width: 768px) {
-      border-radius: 1.25rem;
-    }
-  }
-
   .footer-links {
     a {
       font-size: 1.125rem;
