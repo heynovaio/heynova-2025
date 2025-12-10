@@ -1,5 +1,5 @@
 "use client";
-import { Content, ImageField } from "@prismicio/client";
+import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import React, { useState, useRef } from "react";
 import Carousel from "react-multi-carousel";
