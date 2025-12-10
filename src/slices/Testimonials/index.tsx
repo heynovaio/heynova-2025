@@ -46,7 +46,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
               <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
                 <PrismicNextImage
                   field={displayedTestimonial.image}
-                  className="w-full h-full object-cover rounded-[1.25rem] bg-aqua"
+                  className="w-full h-full object-cover rounded-[1.25rem]"
                   alt=""
                 />
               </div>
