@@ -189,6 +189,7 @@ a {
     ol li {
       counter-increment: num;
       font-weight: var(--font-weight-normal);
+      list-style: none;
       &::before {
         vertical-align: center;
         content: counter(num) ". ";
