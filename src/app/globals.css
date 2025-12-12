@@ -179,6 +179,7 @@ a {
       margin: 0 auto;
       letter-spacing: 0.1px;
     }
+
     ol {
       list-style: none;
       counter-reset: num;
@@ -223,6 +224,37 @@ a {
           rgba(217, 202, 248, 0.6) 89.82%
         );
       }
+    }
+    .text-content ol > li {
+      counter-increment: num;
+      list-style: none;
+    }
+
+    .text-content ol > li::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 0.75em;
+      margin-bottom: 0.5em;
+      background: linear-gradient(
+        90deg,
+        rgba(151, 225, 229, 0.6) 0.01%,
+        rgba(217, 202, 248, 0.6) 89.82%
+      );
+    }
+
+    .text-content ul,
+    .text-content ul li {
+      counter-reset: none;
+      counter-increment: none;
+      list-style-type: disc;
+      margin-bottom: 1rem;
+    }
+
+    .text-content ul li::before,
+    .text-content ul li::after {
+      content: none;
     }
   }
 
