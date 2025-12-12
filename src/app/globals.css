@@ -315,9 +315,6 @@ a {
     }
   }
 
-  .nav-link {
-  }
-
   .gradient-text {
     background: linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%);
     -webkit-background-clip: text;
