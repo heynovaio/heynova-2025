@@ -16,13 +16,19 @@ interface NumberListProps {
 export const NumberList = ({ title, body, listItems }: NumberListProps) => {
   return (
     <div className="flex flex-col md:flex-row gap-20">
-      <ContentBox title={title} content={<PrismicRichText field={body} />} />
+      <div className="w-full md:w-2/5">
+        <ContentBox
+          title={title}
+          titleClassName="text-aqua"
+          content={<PrismicRichText field={body} />}
+        />
+      </div>
 
-      <div className="text-content">
-        <ol>
+      <div className="w-full md:w-3/5 text-content">
+        <ol className="text-content">
           {listItems.map((item, index) => (
-            <li key={index}>
-              <div className="list-item-content">
+            <li key={index} className="relative">
+              <div className="">
                 <PrismicRichText field={item.title} />
                 {item.body && <PrismicRichText field={item.body} />}
               </div>
