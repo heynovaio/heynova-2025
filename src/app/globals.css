@@ -127,6 +127,9 @@ ol {
   margin: 1em 0;
   padding: 0 0 0 40px;
   text-align: start;
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 }
 ol {
   list-style-type: decimal;
@@ -191,7 +194,16 @@ a {
       counter-increment: num;
       font-weight: var(--font-weight-normal);
       list-style: none;
+      padding-left: 60px;
+      position: relative;
+      padding-bottom: 1.5em;
+      margin-bottom: 1.5em;
+      border-bottom: 1px solid #9884b2;
       &::before {
+        line-height: 1;
+        position: absolute;
+        left: 0;
+        top: -10px;
         vertical-align: center;
         content: counter(num) ". ";
         padding-left: 0.25em;
@@ -211,50 +223,26 @@ a {
         -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: var(--Light-Purple, #caccf8);
       }
-      &::after {
-        margin-top: 0.75em;
-        margin-bottom: 0.5em;
-        content: "";
-        display: block;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          rgba(151, 225, 229, 0.6) 0.01%,
-          rgba(217, 202, 248, 0.6) 89.82%
-        );
-      }
-    }
-    .text-content ol > li {
-      counter-increment: num;
-      list-style: none;
     }
 
-    .text-content ol > li::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 1px;
-      margin-top: 0.75em;
-      margin-bottom: 0.5em;
-      background: linear-gradient(
-        90deg,
-        rgba(151, 225, 229, 0.6) 0.01%,
-        rgba(217, 202, 248, 0.6) 89.82%
-      );
-    }
-
-    .text-content ul,
-    .text-content ul li {
+    ul,
+    ul li {
       counter-reset: none;
       counter-increment: none;
       list-style-type: disc;
       margin-bottom: 1rem;
+      border: none;
     }
 
-    .text-content ul li::before,
-    .text-content ul li::after {
+    ul li::before,
+    ul li::after {
       content: none;
+    }
+
+    ol,
+    ul li {
+      padding-left: 0;
+      padding-bottom: 0;
     }
   }
 
