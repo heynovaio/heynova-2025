@@ -22,8 +22,6 @@ export type GeneralCarouselProps = {
 };
 
 export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
-  if (slice.variation !== "generalCarousel") return null;
-
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel>(null);
   const { insightCategoryData } = useInsightCategoryData("en-ca");
@@ -42,6 +40,8 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
       carouselRef.current?.previous(1);
     }
   };
+
+  if (slice.variation !== "generalCarousel") return null;
 
   return (
     <Section

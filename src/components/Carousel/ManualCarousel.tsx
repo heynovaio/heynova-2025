@@ -22,7 +22,6 @@ export type ManualCarouselProps = {
 };
 
 export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
-  if (slice.variation !== "manualCarousel") return null;
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef<Carousel>(null);
   const { insightCategoryData } = useInsightCategoryData("en-ca");
@@ -41,6 +40,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
       carouselRef.current?.previous(1);
     }
   };
+  if (slice.variation !== "manualCarousel") return null;
 
   return (
     <Section
