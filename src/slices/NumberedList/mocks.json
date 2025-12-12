@@ -39,8 +39,10 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Ea est excepteur proident ad ullamco cupidatat velit consequat nisi sit officia. Velit tempor proident consectetur ad consequat cillum sunt do ullamco mollit commodo. Aliquip ad do reprehenderit sunt enim sit sunt nostrud reprehenderit ipsum ipsum ea laboris occaecat dolor."
-											}
+												"text": "Ea est excepteur proident ad ullamco cupidatat velit consequat nisi sit officia. ",
+												"spans": []
+											},
+											"direction": "ltr"
 										}
 									]
 								}
@@ -60,6 +62,44 @@
 								}
 							]
 						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Field",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ea est excepteur proident ad ullamco cupidatat velit consequat",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						],
+						"key": "20dea3e6-ad12-4824-a567-28a6b897a909"
 					}
 				]
 			}
