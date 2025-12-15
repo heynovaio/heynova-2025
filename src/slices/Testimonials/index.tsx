@@ -18,8 +18,11 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
   if (!Array.isArray(allTestimonials) || allTestimonials.length === 0) {
     return <></>;
   }
+
   const displayedTestimonial =
     allTestimonials[Math.floor(Math.random() * allTestimonials.length)];
+
+  const hasImage = Boolean(displayedTestimonial.image?.url);
 
   return (
     <Section
@@ -27,7 +30,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Container containerClassName="flex flex-col gap-12 items-center">
-        <div className="rounded-[1.25rem] overflow-hidden bg-midnight">
+        <div className="rounded-[1.25rem] overflow-hidden bg-midnight w-full">
           <div
             className="relative rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28 overflow-hidden"
             style={{
@@ -38,19 +41,32 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
             <img
               src="/testimonial-bg.svg"
               alt=""
-              className="absolute inset-0 w-full h-full object-cover pointer-events-none "
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               aria-hidden="true"
             />
 
-            <div className="relative z-10 flex flex-col md:flex-row gap-4 md:gap-12 md:items-center">
-              <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
-                <PrismicNextImage
-                  field={displayedTestimonial.image}
-                  className="w-full h-full object-cover rounded-[1.25rem]"
-                  alt=""
-                />
-              </div>
-              <div className="flex flex-col gap-4">
+            <div
+              className={`relative z-10 flex flex-col gap-4 md:gap-12 ${
+                hasImage
+                  ? "md:flex-row md:items-center"
+                  : "items-center text-center"
+              }`}
+            >
+              {hasImage && (
+                <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
+                  <PrismicNextImage
+                    field={displayedTestimonial.image}
+                    className="w-full h-full object-cover rounded-[1.25rem]"
+                    alt=""
+                  />
+                </div>
+              )}
+
+              <div
+                className={`flex flex-col gap-4 ${
+                  hasImage ? "" : "items-center max-w-2xl"
+                }`}
+              >
                 <PrismicRichText
                   field={slice.primary.title}
                   components={{
@@ -59,6 +75,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
                     ),
                   }}
                 />
+
                 <PrismicRichText
                   field={displayedTestimonial.quote}
                   components={{
@@ -67,7 +84,10 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
                     ),
                   }}
                 />
-                <div className="flex flex-col">
+
+                <div
+                  className={`flex flex-col ${hasImage ? "" : "items-center"}`}
+                >
                   <p className="text-[1.875rem] font-extraBold">
                     {displayedTestimonial.author}
                   </p>
