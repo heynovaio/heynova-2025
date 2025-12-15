@@ -190,13 +190,13 @@ a {
       padding: 0;
       margin: 0 0 1.5em 0;
     }
-    ol li {
+    ol > li {
       counter-increment: num;
       font-weight: var(--font-weight-normal);
       list-style: none;
       padding-left: 60px;
       position: relative;
-      padding-bottom: 1.5em;
+      padding-bottom: 1em;
       margin-bottom: 1.5em;
       border-bottom: 1px solid #9884b2;
       &::before {
@@ -240,8 +240,7 @@ a {
     }
 
     ol,
-    ul li {
-      padding-left: 0;
+    ul {
       padding-bottom: 0;
     }
   }
