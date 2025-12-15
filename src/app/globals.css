@@ -333,6 +333,7 @@ a {
   .general-card-image img,
   img.general-card-image {
     border-radius: 1.25rem 1.25rem 0 0 !important;
+    height: 286px !important;
   }
 
   .team-card img {
