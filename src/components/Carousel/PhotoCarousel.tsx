@@ -1,6 +1,6 @@
 "use client";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useRef } from "react";
 import Carousel from "react-multi-carousel";
 import { Container, Section } from "../Layout";
@@ -8,6 +8,7 @@ import { responsive } from "./responsive";
 import { CarouselButton } from "../Buttons/CarouselButtons";
 import { useItemsPerPage } from "@/hooks/use-items-per-page";
 import { PrismicNextImage } from "@prismicio/next";
+import { ContentBox } from "../ContentBox";
 
 export type PhotoCarouselProps = {
   slice: SliceComponentProps<Content.ContentCarouselSlice>["slice"];
@@ -39,6 +40,24 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
       styling="overflow-x-hidden flex flex-col gap-8"
     >
       <Container className="flex justify-end">
+        <ContentBox
+          title={slice.primary.title}
+          titleClassName="text-aqua"
+          content={
+            <div className="text-bodyLarge">
+              <PrismicRichText
+                field={slice.primary.body}
+                components={{
+                  paragraph: ({ children }) => (
+                    <p className="!mx-0">{children}</p>
+                  ),
+                }}
+              />
+            </div>
+          }
+          width="standard"
+          containerClassName="gap-4"
+        />
         {slice.primary.cards.length > itemsPerPage && (
           <CarouselButton
             currentSlide={currentSlide + 1}

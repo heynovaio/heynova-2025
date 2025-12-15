@@ -13,21 +13,19 @@ export type ContentCarouselProps =
   SliceComponentProps<Content.ContentCarouselSlice>;
 
 const ContentCarousel = ({ slice }: ContentCarouselProps) => {
-  let carouselType;
   switch (slice.variation) {
     case "manualCarousel":
-      carouselType = <ManualCarousel slice={slice} />;
-      break;
-    case "generalCarousel":
-      carouselType = <GeneralCarousel slice={slice} />;
-    case "pictureCarousel":
-      carouselType = <PhotoCarousel slice={slice} />;
-    default:
-      carouselType = <CategoryCarousel slice={slice} />;
-      break;
-  }
+      return <ManualCarousel slice={slice} />;
 
-  return carouselType;
+    case "generalCarousel":
+      return <GeneralCarousel slice={slice} />;
+
+    case "pictureCarousel":
+      return <PhotoCarousel slice={slice} />;
+
+    default:
+      return <CategoryCarousel slice={slice} />;
+  }
 };
 
 export default ContentCarousel;
