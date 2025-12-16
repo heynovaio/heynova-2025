@@ -101,6 +101,12 @@
     font-size: var(--text-h3-mobile);
     font-weight: var(--font-weight-medium);
   }
+  h4 {
+    font-size: var(--text-h4);
+    font-weight: var(--font-weight-bold);
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 
   @media (min-width: 600px) {
     h1 {
@@ -113,13 +119,16 @@
       font-size: var(--text-h3);
       font-weight: var(--font-weight-medium);
     }
+
+    h4 {
+      font-size: var(--text-h4);
+      font-weight: var(--font-weight-bold);
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
   }
 }
 
-h4 {
-  font-size: var(--text-h4);
-  font-weight: var(--font-weight-bold);
-}
 ul,
 ol {
   display: block;
@@ -171,6 +180,12 @@ a {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 500;
+    }
+    h4 {
+      color: var(--color-aqua);
+      font-weight: 600;
+
+      font-size: 1.25rem;
     }
     a {
       text-decoration: underline;
