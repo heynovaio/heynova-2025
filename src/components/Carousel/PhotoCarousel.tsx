@@ -39,7 +39,7 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
       data-slice-variation={slice.variation}
       styling="overflow-x-hidden flex flex-col gap-8"
     >
-      <Container className="flex justify-end">
+      <Container containerClassName="flex justify-end">
         <ContentBox
           title={slice.primary.title}
           titleClassName="text-aqua"
