@@ -40,7 +40,7 @@ export const GeneralCard = ({
   };
 
   return (
-    <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col">
+    <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col h-full">
       <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col h-full">
         {image && (
           <PrismicNextImage
