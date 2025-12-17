@@ -181,12 +181,15 @@ a {
       -webkit-text-fill-color: transparent;
       font-weight: 500;
     }
-    h4 {
+    p:has(+ ol) {
       color: var(--color-aqua);
       font-weight: 600;
-
       font-size: 1.25rem;
+      margin-bottom: 0.5em;
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
+
     a {
       text-decoration: underline;
       color: var(--color-aqua);
