@@ -28,9 +28,14 @@ export const NumberList = ({ title, body, listItems }: NumberListProps) => {
         <ol className="text-content">
           {listItems.map((item, index) => (
             <li key={index} className="">
-              <div className="">
+              <div>
                 <PrismicRichText field={item.title} />
-                {item.body && <PrismicRichText field={item.body} />}
+
+                {item.body && (
+                  <div className="li-content">
+                    <PrismicRichText field={item.body} />
+                  </div>
+                )}
               </div>
             </li>
           ))}
