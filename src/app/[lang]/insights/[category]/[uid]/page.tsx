@@ -113,7 +113,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
 
         {page.data.authors.length > 0 && (
           <Container>
-            <div className="w-full flex flex-col md:flex-row gap-6 justify-center items-center">
+            <div className="w-full flex flex-col md:flex-row gap-10 justify-center items-center">
               {page.data.authors?.map((item: InsightAuthorItem, index) => {
                 const author = item.author;
 
