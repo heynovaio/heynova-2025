@@ -111,26 +111,28 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           context={{ lang, category }}
         />
 
-        <Container>
-          <div className="w-full flex flex-col md:flex-row gap-6 justify-center items-center">
-            {page.data.authors?.map((item: InsightAuthorItem, index) => {
-              const author = item.author;
+        {page.data.authors.length > 0 && (
+          <Container>
+            <div className="w-full flex flex-col md:flex-row gap-6 justify-center items-center">
+              {page.data.authors?.map((item: InsightAuthorItem, index) => {
+                const author = item.author;
 
-              if (!isFilled.contentRelationship(author)) return null;
+                if (!isFilled.contentRelationship(author)) return null;
 
-              const data = author.data as AuthorDocumentData;
+                const data = author.data as AuthorDocumentData;
 
-              return (
-                <Author
-                  key={index}
-                  image={data.image}
-                  author={data.name}
-                  jobTitle={data.job_title}
-                />
-              );
-            })}
-          </div>
-        </Container>
+                return (
+                  <Author
+                    key={index}
+                    image={data.image}
+                    author={data.name}
+                    jobTitle={data.job_title}
+                  />
+                );
+              })}
+            </div>
+          </Container>
+        )}
       </Layout>
     );
   } catch (error) {
