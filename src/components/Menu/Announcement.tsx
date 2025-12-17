@@ -14,7 +14,7 @@ export const Announcement: React.FC<AnnouncementProps> = ({
   locales,
 }) => {
   return (
-    <div className="bg-[#10506d] w-full text-center px-2 md:px-0 py-2 flex-col">
+    <div className="bg-[#83B3C1] w-full text-center text-midnight px-2 md:px-0 py-2 flex-col">
       <PrismicRichText
         field={text}
         components={{
