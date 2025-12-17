@@ -10,7 +10,7 @@ interface AuthorProps {
 
 const Author = ({ image, author, jobTitle }: AuthorProps) => {
   return (
-    <div className="max-w-[40%] flex-1 basis-0 rounded-[1.25rem] bg-midnight overflow-hidden border border-[#97E1E5]/60">
+    <div className="w-full md:max-w-[40%] flex-1 md:basis-0 rounded-[1.25rem] bg-midnight overflow-hidden border border-[#97E1E5]/60">
       <div
         className="flex flex-col items-center justify-center glow-blur gap-8 px-8 py-8 md:px-16 md:py-16 lg:px-32"
         style={{
