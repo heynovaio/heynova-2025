@@ -1,15 +1,32 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-
 import { PrismicRichText, SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
-import { Layout } from "@/components";
+import { Container, Layout } from "@/components";
 import { getLocales } from "@/utils";
 import { TagsIntro } from "@/components/Intros/TagsIntro";
+import Author from "@/components/Author/Author";
+import {
+  ContentRelationshipField,
+  ImageField,
+  KeyTextField,
+  RichTextField,
+  isFilled,
+} from "@prismicio/client";
+
+interface AuthorDocumentData {
+  name?: KeyTextField;
+  job_title?: KeyTextField;
+  bio?: RichTextField;
+  image?: ImageField;
+}
+
+interface InsightAuthorItem {
+  author: ContentRelationshipField<"author">;
+}
 
 type Params = {
   uid: string;
@@ -26,7 +43,15 @@ export async function generateMetadata({
 
   const client = createClient();
   const page = await client
-    .getByUID("insight", uid, { lang })
+    .getByUID("insight", uid, {
+      lang,
+      fetchLinks: [
+        "author.name",
+        "author.job_title",
+        "author.bio",
+        "author.image",
+      ],
+    })
     .catch(() => notFound());
 
   return {
@@ -49,8 +74,18 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { uid, category, lang = "en-ca" } = await params;
   const client = createClient();
+
   try {
-    const page = await client.getByUID("insight", uid, { lang });
+    const page = await client.getByUID("insight", uid, {
+      lang,
+      fetchLinks: [
+        "author.name",
+        "author.job_title",
+        "author.bio",
+        "author.image",
+      ],
+    });
+
     const global = await client.getSingle("global", { lang });
     const menus = await client.getSingle("menus", { lang });
     const locales = await getLocales(page, client);
@@ -69,11 +104,33 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           content={<PrismicRichText field={page.data.body} />}
           uid={page.uid}
         />
+
         <SliceZone
           slices={page.data.slices}
           components={components}
           context={{ lang, category }}
         />
+
+        <Container>
+          <div className="w-full flex flex-col md:flex-row gap-6 justify-center items-center">
+            {page.data.authors?.map((item: InsightAuthorItem, index) => {
+              const author = item.author;
+
+              if (!isFilled.contentRelationship(author)) return null;
+
+              const data = author.data as AuthorDocumentData;
+
+              return (
+                <Author
+                  key={index}
+                  image={data.image}
+                  author={data.name}
+                  jobTitle={data.job_title}
+                />
+              );
+            })}
+          </div>
+        </Container>
       </Layout>
     );
   } catch (error) {
@@ -86,7 +143,6 @@ export async function generateStaticParams() {
   const client = createClient();
 
   try {
-    // Get all insights and all categories
     const [insights, otherCategories] = await Promise.all([
       client.getAllByType("insight", { lang: "*" }),
       client.getAllByType("insights_categories", { lang: "*" }),
@@ -99,7 +155,6 @@ export async function generateStaticParams() {
         category: prismic.FilledContentRelationshipField;
       }>;
 
-      // Generate params for each category this insight belongs to
       if (insightCategories && insightCategories.length > 0) {
         insightCategories.forEach((categoryItem) => {
           if (categoryItem.category?.uid) {
@@ -111,8 +166,6 @@ export async function generateStaticParams() {
           }
         });
       } else {
-        // If insight has no categories, generate for all available categories
-        // or use a default category
         otherCategories
           .filter((cat) => cat.lang === insight.lang)
           .forEach((category) => {
