@@ -504,7 +504,7 @@ interface InsightDocumentData {
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **Default Value**: false
+   * - **Default Value**: true
    * - **API ID Path**: insight.include_newsletter_sign_up
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/boolean
