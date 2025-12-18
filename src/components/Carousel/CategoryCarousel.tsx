@@ -123,8 +123,6 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
 
               const showLink = hasImage(slice) && category;
 
-              const docWithUrl = { ...item, url };
-
               return (
                 <div key={index} className="pr-3 md:pr-7 flex">
                   {showLink ? (
