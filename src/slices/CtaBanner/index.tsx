@@ -21,7 +21,9 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
   const isForm = slice.variation === "ctaBannerWithForm";
   const isGradient = slice.primary.inner_background_color === "Gradient";
   const textColor = isGradient ? "text-white" : "text-midnight";
-  const backgroundColor = isGradient ? "gradient-dark-bg" : "bg-teal-muted";
+  const backgroundColor = isGradient
+    ? "gradient-dark-bg"
+    : "bg-teal-muted pink-link";
   const borderColor = isGradient ? "border-aqua" : "border-wine";
 
   const showPrismicButtons =
