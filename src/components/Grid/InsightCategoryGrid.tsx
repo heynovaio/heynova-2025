@@ -5,7 +5,6 @@ import React from "react";
 import { Container, Section } from "../Layout";
 import { Grid } from "./Grid";
 import { GeneralCard } from "../Cards";
-import Link from "next/link";
 import { asText } from "@prismicio/client";
 import GetAllInsightCategories from "@/utils/getAllInsightCategories";
 
@@ -55,15 +54,15 @@ export const InsightCategoryGrid = ({
               const insightUrl = getInsightUrl(item);
 
               return (
-                <Link href={insightUrl} key={index}>
-                  <GeneralCard
-                    image={data.meta_image}
-                    title={data.meta_title || asText(data.title) || "Untitled"}
-                    titleLevel={3}
-                    description={data.meta_description || data.body}
-                    tags={item?.tags}
-                  />
-                </Link>
+                <GeneralCard
+                  key={index}
+                  href={insightUrl}
+                  image={data.meta_image}
+                  title={data.meta_title || asText(data.title) || "Untitled"}
+                  titleLevel={3}
+                  description={data.meta_description || data.body}
+                  tags={item?.tags}
+                />
               );
             })}
           </Grid>

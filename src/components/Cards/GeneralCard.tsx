@@ -4,9 +4,11 @@ import {
   LinkField,
   RichTextField,
 } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import React, { ReactNode } from "react";
+import { Button } from "@headlessui/react";
+import Link from "next/link";
 
 interface GeneralCardProps {
   image?: ImageField;
@@ -19,6 +21,7 @@ interface GeneralCardProps {
     [key: string]: React.FC<{ children: ReactNode }>;
   };
   titleLevel?: 2 | 3;
+  href?: string;
 }
 
 export const GeneralCard = ({
@@ -30,6 +33,7 @@ export const GeneralCard = ({
   description,
   titleComponents,
   buttons,
+  href,
 }: GeneralCardProps) => {
   const TitleHeading = ({ children }: { children: ReactNode }) => {
     return titleLevel === 2 ? (
@@ -39,7 +43,16 @@ export const GeneralCard = ({
     );
   };
 
-  return (
+  // When the card itself is a link, avoid rendering inner <a> elements from PrismicRichText
+  const richTextComponents = href
+    ? {
+        hyperlink: ({ children }: { children: ReactNode }) => <span>{children}</span>,
+      }
+    : undefined;
+
+  const titleRichTextComponents = titleComponents || richTextComponents;
+
+  const cardInner = (
     <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col h-full">
       <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col h-full">
         {image && (
@@ -54,7 +67,7 @@ export const GeneralCard = ({
             {title && typeof title === "string" ? (
               <TitleHeading>{title}</TitleHeading>
             ) : Array.isArray(title) ? (
-              <PrismicRichText field={title} components={titleComponents} />
+              <PrismicRichText field={title} components={titleRichTextComponents} />
             ) : null}
             {tags?.length > 0 && (
               <div className="flex gap-2.5 flex-wrap">
@@ -72,22 +85,31 @@ export const GeneralCard = ({
           {description && typeof description === "string" ? (
             <p>{description}</p>
           ) : Array.isArray(description) ? (
-            <PrismicRichText field={description} />
+            <PrismicRichText field={description} components={richTextComponents} />
           ) : null}
           <div className="flex-grow"></div>
           {buttons && (
             <div className="flex gap-2.5 flex-wrap">
               {buttons.map((button, index) => (
-                <PrismicNextLink
+                <Button
                   key={index}
-                  field={button}
                   className={`btn ${index === 1 ? "btn-secondary" : "btn-primary"} flex-shrink-0`}
-                />
+                >
+                  {button.text}
+                </Button>
               ))}
             </div>
           )}
         </div>
       </div>
     </div>
+  );
+
+  return href ? (
+    <Link href={href} className="block h-full">
+      {cardInner}
+    </Link>
+  ) : (
+    cardInner
   );
 };
