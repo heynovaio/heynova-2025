@@ -128,15 +128,13 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
               return (
                 <div key={index} className="pr-3 md:pr-7 flex">
                   {showLink ? (
-                    <PrismicNextLink document={docWithUrl}>
-                      {" "}
-                      <GeneralCard
-                        image={slice.image}
-                        title={asText(slice.title)}
-                        description={slice.body}
-                        tags={item.tags}
-                      />
-                    </PrismicNextLink>
+                    <GeneralCard
+                      href={url}
+                      image={slice.image}
+                      title={asText(slice.title)}
+                      description={slice.body}
+                      tags={item.tags}
+                    />
                   ) : (
                     <div className="text-center py-8 h-full flex items-center justify-center">
                       No content available
