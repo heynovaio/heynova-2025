@@ -43,10 +43,11 @@ export const GeneralCard = ({
     );
   };
 
-  // When the card itself is a link, avoid rendering inner <a> elements from PrismicRichText
   const richTextComponents = href
     ? {
-        hyperlink: ({ children }: { children: ReactNode }) => <span>{children}</span>,
+        hyperlink: ({ children }: { children: ReactNode }) => (
+          <span>{children}</span>
+        ),
       }
     : undefined;
 
@@ -67,7 +68,10 @@ export const GeneralCard = ({
             {title && typeof title === "string" ? (
               <TitleHeading>{title}</TitleHeading>
             ) : Array.isArray(title) ? (
-              <PrismicRichText field={title} components={titleRichTextComponents} />
+              <PrismicRichText
+                field={title}
+                components={titleRichTextComponents}
+              />
             ) : null}
             {tags?.length > 0 && (
               <div className="flex gap-2.5 flex-wrap">
@@ -85,7 +89,10 @@ export const GeneralCard = ({
           {description && typeof description === "string" ? (
             <p>{description}</p>
           ) : Array.isArray(description) ? (
-            <PrismicRichText field={description} components={richTextComponents} />
+            <PrismicRichText
+              field={description}
+              components={richTextComponents}
+            />
           ) : null}
           <div className="flex-grow"></div>
           {buttons && (
