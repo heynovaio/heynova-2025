@@ -23,11 +23,13 @@ export const ManualCarouselCard = ({
     <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col">
       <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col gap-5 h-full px-8 py-11">
         {image && (
-          <ResponsiveImage
-            image={image}
-            imageHeightClassName="object-cover"
-            containerClassName="w-full h-full flex items-center justify-center"
-          />
+          <div className="h-[12em]">
+            <ResponsiveImage
+              image={image}
+              imageHeightClassName="object-cover"
+              containerClassName="w-full h-full flex items-center justify-center"
+            />
+          </div>
         )}
         <div className="flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-4">
