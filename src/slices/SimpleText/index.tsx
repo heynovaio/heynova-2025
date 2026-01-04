@@ -1,5 +1,7 @@
+"use client";
+
 import { Content } from "@prismicio/client";
-import { Container, Section } from "@/components";
+import { Container, Section, AnimatedSection } from "@/components";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
 import { componentsTextSmall } from "@/utils";
@@ -23,14 +25,16 @@ const SimpleText = ({ slice }: SimpleTextProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Container>
-        <div className={`text-content max-w-[900px] mx-auto ${textAlignment}`}>
-          <PrismicRichText
-            field={slice.primary.text}
-            components={componentsTextSmall}
-          />
-        </div>
-      </Container>
+      <AnimatedSection>
+        <Container>
+          <div className={`text-content max-w-[900px] mx-auto ${textAlignment}`}>
+            <PrismicRichText
+              field={slice.primary.text}
+              components={componentsTextSmall}
+            />
+          </div>
+        </Container>
+      </AnimatedSection>
     </Section>
   );
 };

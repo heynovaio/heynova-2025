@@ -10,6 +10,7 @@ import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { JSX } from "react";
+import { AnimatedSection } from "@/components";
 
 export type MultiLinkColumnProps =
   SliceComponentProps<Content.MultiLinkColumnSlice>;
@@ -22,64 +23,66 @@ const MultiLinkColumn = ({ slice }: MultiLinkColumnProps): JSX.Element => {
   };
 
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-      className="flex flex-col gap-5 bg-midnight"
-    >
-      <div className="hidden md:flex flex-col gap-5">
-        <span>
-          <PrismicRichText
-            field={slice.primary.title}
-            components={footerComponentStyling}
-          />
-        </span>
-        {slice.variation === "default" && (
-          <div className="flex flex-col gap-5">
-            {slice.primary.link.map((item, index) => (
-              <PrismicNextLink
-                field={item}
-                key={index}
-                className="no-underline"
-              />
-            ))}
-          </div>
-        )}
-      </div>
+    <AnimatedSection>
+      <section
+        data-slice-type={slice.slice_type}
+        data-slice-variation={slice.variation}
+        className="flex flex-col gap-5"
+      >
+        <div className="hidden md:flex flex-col gap-5">
+          <span>
+            <PrismicRichText
+              field={slice.primary.title}
+              components={footerComponentStyling}
+            />
+          </span>
+          {slice.variation === "default" && (
+            <div className="flex flex-col gap-5">
+              {slice.primary.link.map((item, index) => (
+                <PrismicNextLink
+                  field={item}
+                  key={index}
+                  className="no-underline"
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
-      <Disclosure as="div" className="md:hidden">
-        {({ open }) => (
-          <>
-            <DisclosureButton
-              className={`flex items-center justify-center gap-4 pl-2 w-full menu-link ${open ? "mb-3" : ""}`}
-            >
-              <PrismicRichText
-                field={slice.primary.title}
-                components={footerComponentStyling}
-              />
-              <div>
-                <FaPlus
-                  className={`h-4 w-4 font-bold ${open ? "hidden" : ""}`}
+        <Disclosure as="div" className="md:hidden">
+          {({ open }) => (
+            <>
+              <DisclosureButton
+                className={`flex items-center justify-center gap-4 pl-2 w-full menu-link ${open ? "mb-3" : ""}`}
+              >
+                <PrismicRichText
+                  field={slice.primary.title}
+                  components={footerComponentStyling}
                 />
-                <FaMinus
-                  className={`h-4 w-4 font-bold ${open ? "" : "hidden"}`}
-                />
-              </div>
-            </DisclosureButton>
-            <DisclosurePanel className="pl-2 flex flex-col gap-5 mb-3 transition duration-200 ease-out text-center">
-              {slice.variation === "default" &&
-                slice.primary.link.map((item, index) => (
-                  <PrismicNextLink
-                    field={item}
-                    key={index}
-                    className="no-underline text-base"
+                <div>
+                  <FaPlus
+                    className={`h-4 w-4 font-bold ${open ? "hidden" : ""}`}
                   />
-                ))}
-            </DisclosurePanel>
-          </>
-        )}
-      </Disclosure>
-    </section>
+                  <FaMinus
+                    className={`h-4 w-4 font-bold ${open ? "" : "hidden"}`}
+                  />
+                </div>
+              </DisclosureButton>
+              <DisclosurePanel className="pl-2 flex flex-col gap-5 mb-3 transition duration-200 ease-out text-center">
+                {slice.variation === "default" &&
+                  slice.primary.link.map((item, index) => (
+                    <PrismicNextLink
+                      field={item}
+                      key={index}
+                      className="no-underline text-base"
+                    />
+                  ))}
+              </DisclosurePanel>
+            </>
+          )}
+        </Disclosure>
+      </section>
+    </AnimatedSection>
   );
 };
 

@@ -5,7 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 
 import { HorizontalAccordion } from "@/components/Accordions/HorizontalAccordion";
-import { Container, ContentBox } from "@/components";
+import { Container, ContentBox, AnimatedSection } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 
 export type HorizontalAccordionSliceProps =
@@ -27,8 +27,10 @@ const HorizontalAccordionSlice = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="py-10 md:py-26"
     >
-      <Container>
+      <AnimatedSection>
+        <Container>
         <ContentBox
           title={slice.primary.title}
           content={<PrismicRichText field={slice.primary.body} />}
@@ -51,6 +53,7 @@ const HorizontalAccordionSlice = ({
           buttons={buttons}
         />
       </Container>
+      </AnimatedSection>
     </section>
   );
 };

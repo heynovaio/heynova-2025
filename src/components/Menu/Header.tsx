@@ -1,3 +1,5 @@
+"use client";
+
 import { components } from "@/slices";
 import {
   Popover,
@@ -7,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   MenusDocumentData,
   MenusDocumentDataSlicesSlice,
@@ -29,33 +31,66 @@ export const Header: React.FC<HeaderProps> = ({
   slices,
   locales,
 }) => {
+  const [bgOpacity, setBgOpacity] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Fade in from 0 to 0.34 opacity over 200px scroll
+      const opacity = Math.min(scrollY / 200, 0.74);
+      setBgOpacity(opacity);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header
-      className="sticky top-0 z-50 border-b-[0.5px] border-aqua"
-      style={{
-        backdropFilter: "blur(25px)",
-        background: "rgba(14, 1, 46, .34)",
-      }}
-    >
-      <nav
-        aria-label="Main Nav"
-        className="flex justify-between items-center px-5 py-3 "
+    <>
+      <style>{`
+        @keyframes fadeInZoom {
+          from {
+            opacity: 0;
+            transform: scale(1.05);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .header-bg {
+          animation: fadeInZoom 0.8s ease-out both;
+        }
+      `}</style>
+      <header
+        className="sticky top-0 z-50 header-bg"
+        style={{
+          backdropFilter: "blur(25px)",
+          background: `rgba(14, 1, 46, ${bgOpacity})`,
+        }}
       >
-        <PrismicNextLink
-          className="flex max-w-[180px] md:max-w-[220px] "
-          aria-label="homepage link"
-          prefetch={true}
-          href={`/`}
+        <nav
+          aria-label="Main Nav"
+          className="flex items-center px-5 py-3 gap-3"
         >
-          <PrismicNextImage field={logo} fallbackAlt="" className="p-5" />
-        </PrismicNextLink>
+          <PrismicNextLink
+            className="flex max-w-[180px] md:max-w-[220px]"
+            aria-label="homepage link"
+            prefetch={true}
+            href={`/`}
+          >
+            <PrismicNextImage field={logo} fallbackAlt="" className="p-5" />
+          </PrismicNextLink>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center xl:gap-10 gap-3 z-50 ">
-          <SliceZone slices={slices} components={components} />
-        </div>
+          {/* Desktop Menu - flex-1 to take space */}
+          <div className="hidden lg:flex items-center xl:gap-10 gap-3 z-50 flex-1 justify-center">
+            <SliceZone slices={slices} components={components} />
+          </div>
 
-        <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
+          {/* Button - always visible, fixed width */}
+          <div className="w-[174px]">
+            <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
+          </div>
 
         {/* Mobile Menu */}
         <div className="lg:hidden">
@@ -110,5 +145,6 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </nav>
     </header>
+    </>
   );
 };

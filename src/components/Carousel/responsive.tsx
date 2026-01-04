@@ -33,3 +33,19 @@ export const category_responsive = {
     slidesToSlide: 1,
   },
 };
+
+export const getResponsiveItems = (): number => {
+  if (typeof window === "undefined") return 2;
+  const width = window.innerWidth;
+  if (width >= 1024) return 2;
+  if (width >= 640) return 2;
+  return 1;
+};
+
+export const getCategoryResponsiveItems = (): number => {
+  if (typeof window === "undefined") return 3;
+  const width = window.innerWidth;
+  if (width >= 1024) return 3;
+  if (width >= 640) return 2;
+  return 1;
+};

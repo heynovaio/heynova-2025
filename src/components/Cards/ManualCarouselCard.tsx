@@ -20,8 +20,8 @@ export const ManualCarouselCard = ({
   buttons,
 }: ManualCarouselCard) => {
   return (
-    <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col">
-      <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col gap-5 h-full px-8 py-11">
+    <div className="rounded-[20px] p-[0.5px] flex flex-col glow-blur">
+      <div className="bg-teal-muted/25 border-aqua/20 border overflow-hidden rounded-[20px] flex flex-col gap-5 h-full px-8 py-11">
         {image && (
           <div className="h-[12em]">
             <ResponsiveImage
@@ -55,7 +55,7 @@ export const ManualCarouselCard = ({
                 <PrismicNextLink
                   key={index}
                   field={button}
-                  className={`btn ${index === 1 ? "btn-secondary" : "btn-primary"} flex-shrink-0`}
+                  className={`btn ${index === 1 ? "btn-secondary" : "btn-primary"} flex-shrink-0 bg-midnight`}
                 />
               ))}
             </div>

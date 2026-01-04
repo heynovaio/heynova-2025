@@ -25,6 +25,14 @@
             "default_value": "None"
           }
         },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "imageRight": {
           "type": "Boolean",
           "config": {
@@ -32,6 +40,18 @@
             "placeholder_false": "Left",
             "placeholder_true": "Right",
             "default_value": false
+          }
+        },
+        "imageFit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "",
+            "options": [
+              "contain",
+              "cover"
+            ],
+            "default_value": "contain"
           }
         },
         "title": {
@@ -70,14 +90,6 @@
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": true
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Image",
-            "constraint": {},
-            "thumbnails": []
           }
         }
       },
@@ -194,6 +206,18 @@
               }
             }
           }
+        },
+        "imageFit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "",
+            "options": [
+              "contain",
+              "cover"
+            ],
+            "default_value": "contain"
+          }
         }
       },
       "items": {}
@@ -279,6 +303,18 @@
           "config": {
             "label": "Video",
             "placeholder": ""
+          }
+        },
+        "imageFit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "",
+            "options": [
+              "contain",
+              "cover"
+            ],
+            "default_value": "contain"
           }
         }
       },

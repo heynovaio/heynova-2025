@@ -30,10 +30,10 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
   const [selectedIndex, setSelectedIndex] = useState(0);
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden test md:block">
         <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-          <div className="flex gap-6">
-            <TabList className="w-2/5 flex flex-col">
+          <div className="flex gap-10">
+            <TabList className="w-1/2 flex flex-col h-full flex-1">
               {titles.map((title, idx) => {
                 return (
                   <div key={idx}>
@@ -41,12 +41,12 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                     (idx > 0 &&
                       selectedIndex !== idx &&
                       selectedIndex !== idx - 1) ? (
-                      <div className="h-[1px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
+                      <div className="h-[.5px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8]" />
                     ) : null}
 
                     <Tab
                       className={({ selected }) =>
-                        `hover:cursor-pointer w-full px-6 py-7 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none ${
+                        `hover:cursor-pointer w-full px-6 py-10 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none ${
                           selected
                             ? "selected-tab-style"
                             : "text-gradient-light"
@@ -57,7 +57,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                         field={title}
                         components={{
                           heading3: ({ children }) => (
-                            <h3 className="gradient-light">{children}</h3>
+                            <h3 className="text-white">{children}</h3>
                           ),
                           heading4: ({ children }) => (
                             <h4 className="gradient-light">{children}</h4>
@@ -78,39 +78,39 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
               })}
             </TabList>
 
-            <TabPanels className="w-3/5 p-[2px] rounded-[10px] bg-gradient-to-r from-[#97e1e5] to-[#d9caf8] min-h-[400px]">
-              <div className="w-full h-full rounded-[10px] bg-midnight">
+            <TabPanels className="w-1/2 p-[2px] rounded-[10px] flex-1 bg-midnight/25 border-aqua/70 border min-h-[400px] glow-blur">
+              <div className="w-full h-full">
                 {titles.map((_, idx) => (
                   <TabPanel
                     key={`panel-${idx}`}
-                    className="h-full gradient-card-bg"
+                    className="h-full animate-fade-in-down"
                   >
                     <div className="h-full w-full py-10">
-                      <div className="h-full flex items-center justify-center">
-                        <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+                      <div className="h-full flex items-center justify-start">
+                        <div className="text-white text-left px-8 w-full max-w-2xl flex flex-col items-start">
                           {images[idx]?.url && (
                             <img
                               src={images[idx].url}
                               alt={images[idx].alt || `Image ${idx}`}
-                              className="mb-6 max-h-[80px] object-contain block mx-auto"
+                              className="mb-6 max-h-[100px] p-3 object-contain block rounded-40 bg-midnight/60"
                             />
                           )}
 
-                          <div className="mb-2 text-2xl font-semibold text-center">
+                          <div className="mb-2 text-2xl font-semibold text-left">
                             <PrismicRichText
                               field={titles[idx]}
                               components={{
                                 heading3: ({ children }) => (
-                                  <h3 className="text-purple-lt">{children}</h3>
+                                  <h3 className="text-aqua">{children}</h3>
                                 ),
                                 heading4: ({ children }) => (
-                                  <h4 className="text-purple-lt">{children}</h4>
+                                  <h4 className="text-aqua">{children}</h4>
                                 ),
                               }}
                             />
                           </div>
 
-                          <div className="text-base mt-5 space-y-4">
+                          <div className="text-base font-thin mt-5 space-y-4">
                             <PrismicRichText field={contents[idx]} />
                           </div>
 
@@ -138,7 +138,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
               <div key={index} className="flex flex-col gap-2">
                 <Tab
                   className={() =>
-                    `px-6 py-7 border rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none `
+                    `px-6 py-7 rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none `
                   }
                 >
                   {({ selected }) => (

@@ -26,25 +26,35 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     }
   };
   return (
-    <div className={`print:hidden ${classname}`}>
-      <div className="inline-flex text-sm items-center px-2 pt-1 pb-2 bg-midnight md:bg-transparent border-t border-l rounded-tl-lg lg:border-none">
-        <label htmlFor="language-switcher" className="px-1 py-1 text-sm">
-          Language:
-        </label>
+    <>
+      <style>{`
+        select:focus {
+          outline: 2px solid #97e1e5;
+          outline-offset: 2px;
+          background-color: rgba(151, 225, 229, 0.1);
+        }
+      `}</style>
+      <div className={`print:hidden ${classname}`}>
+        <div className="inline-flex text-sm items-center px-2 pt-1 pb-2 bg-midnight md:bg-transparent border-t border-l rounded-tl-lg lg:border-none">
+          <label htmlFor="language-switcher" className="px-1 py-1 text-sm">
+            Language:
+          </label>
 
-        <select
-          id="language-switcher"
-          value={currentLang}
-          onChange={handleLanguageChange}
-          className="bg-transparent px-1 py-1 rounded-lg text-sm outline-none"
-        >
-          {locales.map((locale) => (
-            <option key={locale.id} value={locale.lang}>
-              {fullLangList[locale.lang as keyof typeof fullLangList]}
-            </option>
-          ))}
-        </select>
+          <select
+            id="language-switcher"
+            value={currentLang}
+            onChange={handleLanguageChange}
+            className="bg-transparent px-1 py-1 rounded-lg text-sm transition-all"
+            aria-label="Select language"
+          >
+            {locales.map((locale) => (
+              <option key={locale.id} value={locale.lang}>
+                {fullLangList[locale.lang as keyof typeof fullLangList]}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

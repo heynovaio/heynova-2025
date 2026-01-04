@@ -22,6 +22,8 @@ interface GeneralCardProps {
   };
   titleLevel?: 2 | 3;
   href?: string;
+  variant?: "default" | "category";
+  category?: string;
 }
 
 export const GeneralCard = ({
@@ -34,6 +36,8 @@ export const GeneralCard = ({
   titleComponents,
   buttons,
   href,
+  variant = "default",
+  category,
 }: GeneralCardProps) => {
   const TitleHeading = ({ children }: { children: ReactNode }) => {
     return titleLevel === 2 ? (
@@ -53,9 +57,15 @@ export const GeneralCard = ({
 
   const titleRichTextComponents = titleComponents || richTextComponents;
 
+  const bgColor = variant === "category" ? "bg-aqua" : "bg-teal-muted/20";
+  const textColor = variant === "category" ? "text-midnight" : "text-white";
+  const tagBgColor = variant === "category" ? "bg-aqua/10" : "bg-white/10";
+  const tagBorderColor = variant === "category" ? "border-aqua" : "border-white";
+  const tagTextColor = variant === "category" ? "text-aqua" : "text-white";
+
   const cardInner = (
-    <div className="rounded-[20px] p-[0.5px] gradient-border flex flex-col h-full">
-      <div className="bg-midnight glow-blur overflow-hidden rounded-[20px] flex flex-col h-full">
+    <div className="rounded-[20px] p-[0.5px] flex flex-col h-full glow-blur">
+      <div className={`${bgColor} border-aqua/20 border overflow-hidden rounded-[20px] flex flex-col h-full`}>
         {image && (
           <PrismicNextImage
             field={image}
@@ -63,8 +73,8 @@ export const GeneralCard = ({
             className="object-cover general-card-image"
           />
         )}
-        <div className="p-5 flex flex-col gap-4 h-full">
-          <div className="flex flex-col gap-4">
+        <div className="p-5 flex flex-col gap-4 h-full z-10">
+          <div className={`flex flex-col gap-4 ${textColor}`}>
             {title && typeof title === "string" ? (
               <TitleHeading>{title}</TitleHeading>
             ) : Array.isArray(title) ? (
@@ -73,18 +83,23 @@ export const GeneralCard = ({
                 components={titleRichTextComponents}
               />
             ) : null}
-            {tags?.length > 0 && (
-              <div className="flex gap-2.5 flex-wrap">
-                {tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="inline-block text-white px-3 py-1 rounded-full border-white border text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
+            <div className="flex gap-2.5 flex-wrap">
+              {category && (
+                <span
+                  className={`inline-block px-3 py-1 rounded-full border text-xs font-medium ${tagBgColor} ${tagBorderColor} ${tagTextColor}`}
+                >
+                  {category}
+                </span>
+              )}
+              {tags?.length > 0 && tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className={`inline-block px-3 py-1 rounded-full border text-xs font-medium ${tagBgColor} ${tagBorderColor} ${tagTextColor}`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
           {description && typeof description === "string" ? (
             <p>{description}</p>

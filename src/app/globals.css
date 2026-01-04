@@ -1,5 +1,103 @@
 @import "tailwindcss";
 
+/* Lightweight above-the-fold animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotateToStraight {
+  from {
+    opacity: 0;
+    transform: rotate(var(--rotation-angle, 0deg)) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes backgroundFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @theme {
   /* Font Families */
   --font-title: "stolzl", sans-serif;
@@ -65,20 +163,61 @@
   }
 
   body.bg-primary {
+    background-color: var(--color-teal-drk);
+    position: relative;
+  }
+
+  body.bg-primary::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url("/background-primary.png");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: var(--color-teal-drk);
+    animation: backgroundFadeIn 1.2s ease-out both;
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  body.bg-primary::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15,0,46,0.2);
+    backdrop-filter: blur(3px);
+    animation: backgroundFadeIn 1.2s ease-out both;
+    pointer-events: none;
+    z-index: -1;
+
   }
 
   body.bg-secondary {
+    position: relative;
+  }
+
+  body.bg-secondary::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url("/background-secondary.png");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
+    animation: backgroundFadeIn 1.2s ease-out both;
+    pointer-events: none;
+    z-index: -1;
   }
 
   h1,
@@ -155,13 +294,17 @@ a {
 
   .text-content {
     h1 {
-      background: var(
-        --Light-Gradient,
-        linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%)
+      background: linear-gradient(
+        90deg,
+        #97e1e5 0%,
+        #d9caf8 50%,
+        #97e1e5 100%
       );
+      background-size: 200% 100%;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease-in-out infinite;
     }
     h2 {
       color: var(--color-purple-lt);
@@ -389,7 +532,11 @@ a {
   }
 
   .gradient-border {
-    background-image: linear-gradient(to right, #97e1e5, #d9caf8);
+    background-image: linear-gradient(to right, #97e1e57d, #dacaf86f);
+  }
+
+  .gradient-light-full {
+    background-image: linear-gradient(to right, #97e1e5, #dacaf8);
   }
 
   .card-bg-gradient {
@@ -427,9 +574,8 @@ a {
 
   .selected-tab-style {
     border-radius: 20px;
-    border-top: 1px solid #97e1e5;
-    border-bottom: 1px solid #97e1e5;
-    background: rgba(0, 96, 117, 0.4);
+    border: 1px solid #ffffff2c;
+    background: var(--color-teal-drk);
     box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
     backdrop-filter: blur(15px);
   }
@@ -474,4 +620,73 @@ a {
     display: flex !important;
     margin: 0 !important;
   }
+
+  /* Embla Carousel Styles */
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+    gap: 0;
+  }
+
+  .embla__slide {
+    flex: 0 0 auto;
+    min-width: 0;
+    height: auto;
+    display: flex;
+    align-content: flex-start;
+    justify-content: start;
+  }
+
+  /* Desktop: 2 items */
+  @media (min-width: 1024px) {
+    .embla__slide {
+      width: calc(33.333%);
+    }
+  }
+
+  /* Tablet: 2 items */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .embla__slide {
+      width: calc(50% - 14px);
+    }
+  }
+
+  /* Mobile: 1 item */
+  @media (max-width: 639px) {
+    .embla__slide {
+      width: 100%;
+    }
+  }
+
+  /* Category carousel specific: 3 items on desktop, 2 on tablet, 1 on mobile */
+  .tabbed-carousel .embla__slide {
+    width: calc(50% - 14px);
+  }
+
+  @media (min-width: 1024px) {
+    .tabbed-carousel .embla__slide {
+      width: calc(33.333%);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .tabbed-carousel .embla__slide {
+      width: 100%;
+    }
+  }
+
+  .tabbed-carousel.embla__container {
+    overflow: visible !important;
+  }
+
+  .image-carousel.embla__container {
+    overflow: visible !important;
+  }
+}
+
+.menuPanel {
+  backdrop-filter: blur(10px);
 }

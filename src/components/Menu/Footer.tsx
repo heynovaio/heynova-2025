@@ -10,6 +10,7 @@ import { components } from "@/slices";
 import { FaFacebook, FaInstagram } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
 import { FaLinkedin } from "react-icons/fa";
+import { isFilled } from "@prismicio/client";
 
 interface FooterProps {
   global?: GlobalDocumentData;
@@ -30,7 +31,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             <div className="flex flex-col items-center md:items-start">
               <h4 className="mb-6 footer-header">Follow Us</h4>
               <div className="flex  flex-col justify-center items-center md:items-start gap-6 ">
-                {footerData?.instagram.text !== "Any" && (
+                {isFilled.link(footerData?.instagram) && (
                   <span className="flex flex-row gap-4 items-center ">
                     <FaInstagram size={35} />
                     <PrismicNextLink
@@ -39,7 +40,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     />
                   </span>
                 )}
-                {footerData?.facebook.text !== "Any" && (
+                {isFilled.link(footerData?.facebook) && (
                   <span className="flex flex-row gap-4 items-center">
                     <FaFacebook size={35} />
                     <PrismicNextLink
@@ -48,7 +49,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     />
                   </span>
                 )}
-                {footerData?.linkedin.text !== "Any" && (
+                {isFilled.link(footerData?.linkedin) && (
                   <span className="flex flex-row gap-4 items-center">
                     <FaLinkedin size={35} />
                     <PrismicNextLink

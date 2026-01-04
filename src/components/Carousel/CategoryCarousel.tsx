@@ -6,15 +6,16 @@ import {
   FilledContentRelationshipField,
   ImageField,
   isFilled,
+  LinkField,
+  RichTextField,
 } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import React, { useState, useRef } from "react";
-import Carousel from "react-multi-carousel";
+import React, { useState, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { Container, Section } from "../Layout";
-import { category_responsive } from "./responsive";
+import { getCategoryResponsiveItems } from "./responsive";
 import { ContentBox, GeneralCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";
-import { useItemsPerPage } from "@/hooks/use-items-per-page";
 import { PrismicNextLink } from "@prismicio/next";
 import GetAllInsights from "@/utils/getAllInsights";
 import {
@@ -29,20 +30,38 @@ export type CategoryCarouselProps = {
 
 export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef<Carousel>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    skipSnaps: false,
+    loop: false,
+  });
   const insightPageData = GetAllInsights("en-ca").data;
-  const itemsPerPage = useItemsPerPage(category_responsive);
+  const itemsPerPage = getCategoryResponsiveItems();
 
   const totalSlides = Math.max(
     0,
     slice.primary.cards.length - itemsPerPage + 1
   );
 
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setCurrentSlide(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
   const handleArrowClick = (direction: "next" | "prev") => {
+    if (!emblaApi) return;
     if (direction === "next" && currentSlide < totalSlides - 1) {
-      carouselRef.current?.next(1);
+      emblaApi.scrollNext();
     } else if (direction === "prev" && currentSlide > 0) {
-      carouselRef.current?.previous(1);
+      emblaApi.scrollPrev();
     }
   };
 
@@ -98,50 +117,59 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
       </Container>
       <Container>
         <div>
-          <Carousel
-            responsive={category_responsive}
-            partialVisible
-            keyBoardControl
-            arrows={false}
-            ref={carouselRef}
-            beforeChange={(nextSlide) => setCurrentSlide(nextSlide)}
-            containerClass="tabbed-carousel m-0 focus:focus focus:outline-offset-8 !overflow-visible"
+          <div
+            className="embla tabbed-carousel m-0 focus:focus focus:outline-offset-8 !overflow-visible"
+            ref={emblaRef}
           >
-            {filteredData?.map((item, index) => {
-              const slice = item.data;
-              const hasImage = (item: unknown): item is { image: ImageField } =>
-                typeof item === "object" &&
-                item !== null &&
-                "image" in item &&
-                Boolean((item as { image?: unknown }).image);
+            <div className="embla__container">
+              {filteredData?.map((item, index) => {
+                const itemData = item.data;
+                const hasImage = (item: unknown): item is { image: ImageField } =>
+                  typeof item === "object" &&
+                  item !== null &&
+                  "image" in item &&
+                  Boolean((item as { image?: unknown }).image);
 
-              const singleCategory = item.data?.categories?.[0]?.name;
-              const category = isFilled.contentRelationship(singleCategory)
-                ? singleCategory.uid
-                : "";
-              const url = `/insights/${category}/${item.uid}`;
+                const singleCategory = item.data?.categories?.[0]?.name;
+                const category = isFilled.contentRelationship(singleCategory)
+                  ? singleCategory.uid
+                  : "";
+                
+                // Try to get category title from the relationship data
+                let categoryName = "";
+                if (isFilled.contentRelationship(singleCategory)) {
+                  const categoryTitle = (singleCategory as unknown as { data?: { title?: RichTextField } })?.data?.title;
+                  if (categoryTitle) {
+                    categoryName = asText(categoryTitle);
+                  }
+                }
+                
+                const url = `/insights/${category}/${item.uid}`;
 
-              const showLink = hasImage(slice) && category;
+                const showLink = hasImage(itemData) && category;
 
-              return (
-                <div key={index} className="pr-3 md:pr-7 flex">
-                  {showLink ? (
-                    <GeneralCard
-                      href={url}
-                      image={slice.image}
-                      title={asText(slice.title)}
-                      description={slice.body}
-                      tags={item.tags}
-                    />
-                  ) : (
-                    <div className="text-center py-8 h-full flex items-center justify-center">
-                      No content available
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </Carousel>
+                return (
+                  <div key={index} className="embla__slide pr-3 md:pr-7 flex">
+                    {showLink ? (
+                      <GeneralCard
+                        href={url}
+                        image={itemData.image}
+                        title={asText(itemData.title)}
+                        description={itemData.body}
+                        tags={item.tags}
+                        variant="category"
+                        category={categoryName}
+                      />
+                    ) : (
+                      <div className="text-center py-8 h-full flex items-center justify-center">
+                        No content available
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="mt-10">

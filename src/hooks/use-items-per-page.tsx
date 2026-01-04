@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
-import { ResponsiveType } from "react-multi-carousel";
 
-export function useItemsPerPage(responsive: ResponsiveType): number {
+export interface ResponsiveConfig {
+  [key: string]: {
+    breakpoint: { max: number; min: number };
+    items: number;
+    slidesToSlide: number;
+    partialVisibilityGutter?: number;
+  };
+}
+
+export function useItemsPerPage(responsive: ResponsiveConfig): number {
   const [items, setItems] = useState(responsive.desktop.items);
 
   useEffect(() => {

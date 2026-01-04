@@ -1,4 +1,6 @@
-import { Container, Section } from "@/components";
+"use client";
+
+import { Container, Section, AnimatedSection } from "@/components";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
@@ -29,7 +31,8 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Container containerClassName="flex flex-col gap-12 items-center">
+      <AnimatedSection>
+        <Container containerClassName="flex flex-col gap-12 items-center">
         <div className="rounded-[1.25rem] overflow-hidden bg-midnight w-full">
           <div
             className="relative rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28 overflow-hidden"
@@ -56,7 +59,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
                 <div className="w-full md:w-1/3 aspect-square flex-shrink-0 max-h-60 md:max-h-none">
                   <PrismicNextImage
                     field={displayedTestimonial.image}
-                    className="w-full h-full object-cover rounded-[1.25rem]"
+                    className="w-full h-full object-contain rounded-[1.25rem]"
                     alt=""
                   />
                 </div>
@@ -71,7 +74,9 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
                   field={slice.primary.title}
                   components={{
                     heading2: ({ children }) => (
-                      <h2 className="text-aqua">{children}</h2>
+                      <h2 className="text-aqua">
+                        {children}
+                      </h2>
                     ),
                   }}
                 />
@@ -100,6 +105,7 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
           </div>
         </div>
       </Container>
+      </AnimatedSection>
     </Section>
   );
 };

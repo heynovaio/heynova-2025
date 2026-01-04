@@ -1,5 +1,7 @@
+"use client";
+
 // import { Button } from "@/components";
-import { Section, Container, ResponsiveImage, ContentBox } from "@/components";
+import { Section, Container, ResponsiveImage, ContentBox, AnimatedSection } from "@/components";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
@@ -21,15 +23,19 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
   // const isVideo = slice.variation === "video";
   const isStats = slice.variation === "stats";
   const isVideo = slice.variation === "video";
+  
+  // Get imageFit value with fallback to "contain"
+  const imageFit = (slice.primary as Record<string, unknown>).imageFit === "cover" ? "cover" : "contain";
 
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Container
-        containerClassName={`flex flex-col ${imageSide} gap-4 md:gap-16 w-full items-center`}
-      >
+      <AnimatedSection>
+        <Container
+          containerClassName={`flex flex-col ${imageSide} gap-4 md:gap-16 w-full items-center`}
+        >
         <div className="w-full md:w-1/2">
           {isVideo ? (
             <div className="w-full h-[250px] md:h-[400px] overflow-hidden rounded-xl">
@@ -43,7 +49,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
           ) : (
             <ResponsiveImage
               image={slice.primary.image}
-              className="w-full h-[250px] md:h-[400px] object-contain mb-4 md:mb-0"
+              className={`w-full h-[250px] md:h-[400px] object-${imageFit} mb-4 md:mb-0`}
             />
           )}
         </div>
@@ -131,6 +137,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
           />
         </div>
       </Container>
+      </AnimatedSection>
     </Section>
   );
 };

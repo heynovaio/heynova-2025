@@ -1,7 +1,9 @@
+"use client";
+
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Container, ContentBox, Section } from "@/components";
+import { Container, ContentBox, Section, AnimatedSection } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 import { CalendlyButton } from "@/components/Buttons/CalendlyButton";
 
@@ -34,7 +36,8 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Container>
+      <AnimatedSection>
+        <Container>
         <div
           className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}
         >
@@ -81,6 +84,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
           />
         </div>
       </Container>
+      </AnimatedSection>
     </Section>
   );
 };

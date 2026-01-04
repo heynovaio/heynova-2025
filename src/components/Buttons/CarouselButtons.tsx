@@ -46,36 +46,63 @@ export const CarouselButton = ({
   }, [handleKeyDown]);
 
   return (
-    <div
-      className={`flex items-center gap-2 ${styling}`}
-      ref={containerRef}
-      tabIndex={0}
-    >
-      <button
-        onClick={() => currentSlide > 1 && onSlideChange("prev")}
-        aria-label="Previous slide"
-        aria-disabled={currentSlide === 1}
-        tabIndex={0}
-        className={`rounded-full p-2 border-aqua border-2 text-aqua ${
-          currentSlide === 1 ? "opacity-50 cursor-not-allowed" : ""
-        }`}
+    <>
+      <style>{`
+        @keyframes slideCardIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .carousel-button {
+          transition: all 0.2s ease-out;
+        }
+        .carousel-button:focus {
+          outline: 2px solid #97e1e5;
+          outline-offset: 2px;
+          background-color: rgba(151, 225, 229, 0.1);
+        }
+        .carousel-button:active {
+          animation: slideCardIn 0.3s ease-out;
+        }
+        .carousel-button:disabled {
+          cursor: not-allowed;
+          opacity: 0.4;
+        }
+      `}</style>
+      <div
+        className={`flex items-center gap-2 ${styling}`}
+        ref={containerRef}
+        role="group"
+        aria-label="Carousel navigation"
       >
-        <HiOutlineArrowLongRight className="h-5 w-5 rotate-180" />
-      </button>
-      <span aria-live="polite" aria-atomic="true" className="sr-only">
-        {currentSlide}/{totalSlides}
-      </span>
-      <button
-        onClick={() => currentSlide < totalSlides && onSlideChange("next")}
-        aria-label="Next slide"
-        aria-disabled={currentSlide === totalSlides}
-        tabIndex={0}
-        className={`rounded-full p-2 border-aqua border-2 text-aqua ${
-          currentSlide === totalSlides ? "opacity-50 cursor-not-allowed" : ""
-        }`}
-      >
-        <HiOutlineArrowLongRight className="h-5 w-5 stroke-2" />
-      </button>
-    </div>
+        <button
+          onClick={() => currentSlide > 1 && onSlideChange("prev")}
+          aria-label={`Previous slide (${currentSlide - 1} of ${totalSlides})`}
+          disabled={currentSlide === 1}
+          className="carousel-button rounded-full p-2 border-aqua border-2 text-aqua hover:bg-aqua/10"
+        >
+          <HiOutlineArrowLongRight className="h-5 w-5 rotate-180" />
+        </button>
+        <span aria-live="polite" aria-atomic="true" className="sr-only">
+          Slide {currentSlide} of {totalSlides}
+        </span>
+        <span className="text-sm text-aqua/70 min-w-[3rem] text-center" aria-hidden="true">
+          {currentSlide}/{totalSlides}
+        </span>
+        <button
+          onClick={() => currentSlide < totalSlides && onSlideChange("next")}
+          aria-label={`Next slide (${currentSlide + 1} of ${totalSlides})`}
+          disabled={currentSlide === totalSlides}
+          className="carousel-button rounded-full p-2 border-aqua border-2 text-aqua hover:bg-aqua/10"
+        >
+          <HiOutlineArrowLongRight className="h-5 w-5 stroke-2" />
+        </button>
+      </div>
+    </>
   );
 };
