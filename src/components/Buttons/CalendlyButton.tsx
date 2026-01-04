@@ -60,7 +60,7 @@ export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
     <div 
       ref={containerRef} 
       suppressHydrationWarning
-      style={{ minHeight: "44px", display: "flex", alignItems: "center" }}
+      style={{ minHeight: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}
     />
   );
 }

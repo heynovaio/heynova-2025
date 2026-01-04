@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Button - always visible, fixed width */}
           <div className="w-[174px]">
-            <CalendlyButton text="Book a Chat" buttonClass="btn-primary justify-center" />
+            <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
           </div>
 
         {/* Mobile Menu */}
