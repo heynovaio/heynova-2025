@@ -92,7 +92,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                             <img
                               src={images[idx].url}
                               alt={images[idx].alt || `Image ${idx}`}
-                              className="mb-6 max-h-[100px] p-3 object-contain block rounded-40 bg-midnight/60"
+                              className="mb-6 max-h-[100px] p-3 object-contain block rounded-40 bg-midnight/60 border border-teal/90"
                             />
                           )}
 

@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
     const handleScroll = () => {
       const scrollY = window.scrollY;
       // Fade in from 0 to 0.34 opacity over 200px scroll
-      const opacity = Math.min(scrollY / 200, 0.74);
+      const opacity = Math.min(scrollY / 200, 0.54);
       setBgOpacity(opacity);
     };
 
@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
             prefetch={true}
             href={`/`}
           >
-            <PrismicNextImage field={logo} fallbackAlt="" className="p-5" />
+            <PrismicNextImage field={logo} fallbackAlt="" className="md:px-5 py-5 px-0" />
           </PrismicNextLink>
 
           {/* Desktop Menu - flex-1 to take space */}
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Button - always visible, fixed width */}
           <div className="w-[174px]">
-            <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
+            <CalendlyButton text="Book a Chat" buttonClass="btn-primary justify-center" />
           </div>
 
         {/* Mobile Menu */}
@@ -103,13 +103,13 @@ export const Header: React.FC<HeaderProps> = ({
                 >
                   <div className="flex flex-col justify-center items-center w-8 h-8">
                     <span
-                      className={`block absolute h-0.5 w-8 gradient-border transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-0" : "-translate-y-2"}`}
+                      className={`block absolute h-0.5 w-8 gradient-light-full transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-0" : "-translate-y-2"}`}
                     ></span>
                     <span
-                      className={`block absolute h-0.5 w-8 gradient-border transform transition duration-300 ease-in-out ${open ? "opacity-0" : "opacity-100"}`}
+                      className={`block absolute h-0.5 w-8 gradient-light-full transform transition duration-300 ease-in-out ${open ? "opacity-0" : "opacity-100"}`}
                     ></span>
                     <span
-                      className={`block absolute h-0.5 w-8 gradient-border transform transition duration-300 ease-in-out ${open ? "-rotate-45 translate-y-0" : "translate-y-2"}`}
+                      className={`block absolute h-0.5 w-8 gradient-light-full transform transition duration-300 ease-in-out ${open ? "-rotate-45 translate-y-0" : "translate-y-2"}`}
                     ></span>
                   </div>
                 </PopoverButton>

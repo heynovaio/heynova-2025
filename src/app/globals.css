@@ -439,6 +439,9 @@ a {
       border-color: var(--color-lavendar);
       background: var(--color-wine);
     }
+    @media screen and (max-width: 768px) {
+      padding: 10px 16px;
+    }
   }
 
   .btn-secondary {

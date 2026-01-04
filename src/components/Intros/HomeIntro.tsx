@@ -17,7 +17,7 @@ interface HomeIntroProps {
 
 export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
   return (
-    <section className="relative flex items-center w-full  md:min-h-[600px] min-h-[400px] md:mb-[-64px] md:mt-10">
+    <section className="relative flex items-center w-full min-h-[560px] md:mb-[-64px] md:mt-10">
       <Container>
         {data.tagline && (
           <p
