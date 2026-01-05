@@ -101,11 +101,13 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
               return (
                 <div key={index} className="embla__slide pr-3 md:pr-7 flex">
                   {hasImage ? (
-                    <PrismicNextImage
-                      field={item.image}
-                      fallbackAlt=""
-                      className="object-cover w-full h-full"
-                    />
+                    <div className="w-full aspect-4/3 overflow-hidden rounded-lg">
+                      <PrismicNextImage
+                        field={item.image}
+                        fallbackAlt=""
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
                   ) : (
                     <div className="text-center py-8 h-full flex items-center justify-center">
                       No image available

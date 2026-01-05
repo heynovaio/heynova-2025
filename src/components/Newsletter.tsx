@@ -134,7 +134,7 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
                 field={title}
                 components={{
                   heading2: ({ children }) => (
-                    <h2 className="text-[2.875rem] font-extrabold text-white text-center leading-tight">
+                    <h2 className="text-white text-center leading-tight">
                       {children}
                     </h2>
                   ),

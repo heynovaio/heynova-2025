@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
       >
         <nav
           aria-label="Main Nav"
-          className="flex items-center px-5 py-3 gap-3"
+          className="flex items-center px-5 py-3 gap-3 justify-between"
         >
           <PrismicNextLink
             className="flex max-w-[180px] md:max-w-[220px]"
