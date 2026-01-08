@@ -30,7 +30,6 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
   const isStats = slice.variation === "stats";
   const isVideo = slice.variation === "video";
 
-  // Get imageFit value with fallback to "contain"
   const imageFit =
     (slice.primary as Record<string, unknown>).imageFit === "cover"
       ? "cover"
