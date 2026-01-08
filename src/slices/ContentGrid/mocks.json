@@ -1,0 +1,344 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Particles"
+						}
+					}
+				]
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Esse aute enim Lorem irure tempor."
+						}
+					}
+				]
+			},
+			"number_of_columns": {
+				"__TYPE__": "FieldContent",
+				"type": "Number",
+				"value": "3"
+			},
+			"cards": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+										"width": 4016,
+										"height": 6016
+									},
+									"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+									"width": 4016,
+									"height": 6016,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "rear",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Friend"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit est consectetur voluptate mollit ipsum. Minim do adipisicing esse laborum est ipsum adipisicing ex minim excepteur et. Ad eiusmod nisi dolor."
+											}
+										}
+									]
+								}
+							],
+							[
+								"button",
+								{
+									"key": "ee0b45df-3fdd-4b5d-96ba-abeace3344b8",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "great"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							],
+							[
+								"image",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Njc4NjcyODJ8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "sliced fruit on white surface",
+									"origin": {
+										"id": "YSA1IRkGAsg",
+										"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Njc4NjcyODJ8MA&ixlib=rb-4.1.0&q=85",
+										"width": 5760,
+										"height": 3840
+									},
+									"width": 5760,
+									"height": 3840,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Test Title",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit est consectetur voluptate mollit ipsum. Minim do adipisicing esse",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						],
+						"key": "ea1452c6-75e9-465d-878b-e2d182ee59dc"
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							],
+							[
+								"image",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1663002976076-de02deea5fbe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzY3ODY3MjgyfDA&ixlib=rb-4.1.0&q=85",
+									"alt": "a large pile of lemons",
+									"origin": {
+										"id": "kRMreoqSPmc",
+										"url": "https://images.unsplash.com/photo-1663002976076-de02deea5fbe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzY3ODY3MjgyfDA&ixlib=rb-4.1.0&q=85",
+										"width": 3648,
+										"height": 2736
+									},
+									"width": 3648,
+									"height": 2736,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Title 3",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit est consectetur voluptate mollit ipsum. Minim do adipisicing esse more words blah blah extra",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						],
+						"key": "e33d20ea-4f82-4692-a299-d75e454109ea"
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Title No Image",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit est consectetur voluptate mollit ipsum. Minim do adipisicing esse",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"button",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "cd16d108-6171-4e00-9553-326b106afd35",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "google",
+										"text": "Button"
+									}
+								}
+							]
+						],
+						"key": "060f96da-46e9-489b-a04d-b7e0db4e0b6a"
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						],
+						"key": "cc6f84ef-0269-461c-a15b-fafb63c46cab"
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						],
+						"key": "f27d48ee-3eba-4e74-a3c5-346ce2415bd6"
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
