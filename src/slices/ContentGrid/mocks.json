@@ -66,7 +66,7 @@
 								"image_style",
 								{
 									"__TYPE__": "BooleanContent",
-									"value": false
+									"value": true
 								}
 							],
 							[
@@ -118,13 +118,12 @@
 								"image_style",
 								{
 									"__TYPE__": "BooleanContent",
-									"value": false
+									"value": true
 								}
 							],
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"provider": "imgix",
 									"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Njc4NjcyODJ8MA&ixlib=rb-4.1.0&q=85",
 									"alt": "sliced fruit on white surface",
@@ -144,6 +143,8 @@
 											"y": 0
 										}
 									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							],
@@ -179,8 +180,7 @@
 									]
 								}
 							]
-						],
-						"key": "ea1452c6-75e9-465d-878b-e2d182ee59dc"
+						]
 					},
 					{
 						"__TYPE__": "GroupItemContent",
@@ -195,7 +195,6 @@
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"provider": "imgix",
 									"url": "https://images.unsplash.com/photo-1663002976076-de02deea5fbe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzY3ODY3MjgyfDA&ixlib=rb-4.1.0&q=85",
 									"alt": "a large pile of lemons",
@@ -215,6 +214,8 @@
 											"y": 0
 										}
 									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							],
@@ -250,8 +251,7 @@
 									]
 								}
 							]
-						],
-						"key": "e33d20ea-4f82-4692-a299-d75e454109ea"
+						]
 					},
 					{
 						"__TYPE__": "GroupItemContent",
@@ -260,7 +260,7 @@
 								"image_style",
 								{
 									"__TYPE__": "BooleanContent",
-									"value": false
+									"value": true
 								}
 							],
 							[
@@ -298,8 +298,8 @@
 							[
 								"button",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "cd16d108-6171-4e00-9553-326b106afd35",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "google",
@@ -307,8 +307,19 @@
 									}
 								}
 							]
-						],
-						"key": "060f96da-46e9-489b-a04d-b7e0db4e0b6a"
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image_style",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": true
+								}
+							]
+						]
 					},
 					{
 						"__TYPE__": "GroupItemContent",
@@ -320,21 +331,7 @@
 									"value": false
 								}
 							]
-						],
-						"key": "cc6f84ef-0269-461c-a15b-fafb63c46cab"
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"image_style",
-								{
-									"__TYPE__": "BooleanContent",
-									"value": false
-								}
-							]
-						],
-						"key": "f27d48ee-3eba-4e74-a3c5-346ce2415bd6"
+						]
 					}
 				]
 			}

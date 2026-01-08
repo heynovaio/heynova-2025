@@ -2424,7 +2424,7 @@ export interface ContentGridSliceDefaultPrimaryCardsItem {
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **Default Value**: false
+   * - **Default Value**: true
    * - **API ID Path**: content_grid.default.primary.cards[].image_style
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
