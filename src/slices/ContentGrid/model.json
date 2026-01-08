@@ -55,8 +55,8 @@
                 "type": "Boolean",
                 "config": {
                   "label": "Image Style",
-                  "placeholder_false": "false",
-                  "placeholder_true": "true",
+                  "placeholder_false": "Contain",
+                  "placeholder_true": "Cover",
                   "default_value": true
                 }
               },
