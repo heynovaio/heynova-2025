@@ -24,7 +24,7 @@ export const ReusableCard: React.FC<ReusableCardProps> = ({
   return (
     <div
       className={clsx(
-        "rounded-[1.25rem] border border-2 border-secondary overflow-hidden p-6 flex flex-col h-full transition-all",
+        "rounded-[1.25rem] border-aqua/20 border overflow-hidden p-6 flex flex-col h-full transition-all bg-teal-muted/20",
         !hasImage && "justify-center items-center text-center"
       )}
     >
@@ -49,11 +49,7 @@ export const ReusableCard: React.FC<ReusableCardProps> = ({
           !hasImage && "items-center justify-center"
         )}
       >
-        {title && (
-          <div className="gradient-text">
-            <PrismicRichText field={title} />
-          </div>
-        )}
+        {title && <PrismicRichText field={title} />}
 
         {body && <PrismicRichText field={body} />}
       </div>
@@ -62,7 +58,7 @@ export const ReusableCard: React.FC<ReusableCardProps> = ({
         <PrismicLink
           field={button}
           className={clsx(
-            "btn btn-primary mt-4 inline-block",
+            "btn btn-secondary mt-4 inline-block",
             hasImage ? "self-start" : "self-center"
           )}
         >

@@ -57,7 +57,7 @@
                   "label": "Image Style",
                   "placeholder_false": "false",
                   "placeholder_true": "true",
-                  "default_value": false
+                  "default_value": true
                 }
               },
               "title": {
