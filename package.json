@@ -12,7 +12,7 @@
     "postbuild": "next-sitemap",
     "lint": "next lint",
     "format": "prettier --write .",
-    "slicemachine": "NODE_OPTIONS=--experimental-require-module start-slicemachine"
+    "slicemachine": "set NODE_OPTIONS=--experimental-require-module&& start-slicemachine"
   },
   "dependencies": {
     "@formatjs/intl": "^3.1.6",

@@ -2406,6 +2406,137 @@ export type ContentColumnSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ContentGrid → Default → Primary → Cards*
+ */
+export interface ContentGridSliceDefaultPrimaryCardsItem {
+  /**
+   * Image field in *ContentGrid → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Style field in *ContentGrid → Default → Primary → Cards*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_grid.default.primary.cards[].image_style
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  image_style: prismic.BooleanField;
+
+  /**
+   * Title field in *ContentGrid → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentGrid → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.cards[].body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentGrid → Default → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.cards[].button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *ContentGrid → Default → Primary*
+ */
+export interface ContentGridSliceDefaultPrimary {
+  /**
+   * Heading field in *ContentGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Text field in *ContentGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Number of Columns field in *ContentGrid → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.number_of_columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number_of_columns: prismic.NumberField;
+
+  /**
+   * Cards field in *ContentGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_grid.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<Simplify<ContentGridSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for ContentGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContentGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContentGrid*
+ */
+type ContentGridSliceVariation = ContentGridSliceDefault;
+
+/**
+ * ContentGrid Shared Slice
+ *
+ * - **API ID**: `content_grid`
+ * - **Description**: ContentGrid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentGridSlice = prismic.SharedSlice<
+  "content_grid",
+  ContentGridSliceVariation
+>;
+
+/**
  * Primary content in *CtaBanner → Default → Primary*
  */
 export interface CtaBannerSliceDefaultPrimary {
@@ -3890,6 +4021,11 @@ declare module "@prismicio/client" {
       ContentColumnSliceVariation,
       ContentColumnSliceDefault,
       ContentColumnSliceContentColumnWithCards,
+      ContentGridSlice,
+      ContentGridSliceDefaultPrimaryCardsItem,
+      ContentGridSliceDefaultPrimary,
+      ContentGridSliceVariation,
+      ContentGridSliceDefault,
       CtaBannerSlice,
       CtaBannerSliceDefaultPrimary,
       CtaBannerSliceCtaBannerWithFormPrimary,

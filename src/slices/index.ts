@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   content_carousel: dynamic(() => import("./ContentCarousel")),
   content_column: dynamic(() => import("./ContentColumn")),
+  content_grid: dynamic(() => import("./ContentGrid")),
   cta_banner: dynamic(() => import("./CtaBanner")),
   horizontal_accordion: dynamic(() => import("./HorizontalAccordion")),
   image_text: dynamic(() => import("./ImageText")),
