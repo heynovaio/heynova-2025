@@ -49,7 +49,12 @@ export const ReusableCard: React.FC<ReusableCardProps> = ({
           !hasImage && "items-center justify-center"
         )}
       >
-        {title && <PrismicRichText field={title} />}
+        {title && (
+          <div className="gradient-text">
+            <PrismicRichText field={title} />
+          </div>
+        )}
+
         {body && <PrismicRichText field={body} />}
       </div>
 
