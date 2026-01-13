@@ -26,21 +26,19 @@ const ContentListing: FC<ContentGridProps> = ({ slice }) => {
   }));
 
   return (
-    <div className="bg-midnight">
-      <Section
-        data-slice-type={slice.slice_type}
-        data-slice-variation={slice.variation}
-      >
-        <Container>
-          <ContentGrid
-            cards={cards}
-            numCols={numColumns}
-            title={slice.primary.heading}
-            body={slice.primary.text}
-          />
-        </Container>
-      </Section>
-    </div>
+    <Section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      <Container>
+        <ContentGrid
+          cards={cards}
+          numCols={numColumns}
+          title={slice.primary.heading}
+          body={slice.primary.text}
+        />
+      </Container>
+    </Section>
   );
 };
 
