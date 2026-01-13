@@ -30,8 +30,11 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
 
   return (
     <div>
-      <div className="mb-6">
-        <PrismicRichText field={title} />
+      <div className="mb-6 flex flex-col gap-2">
+        <span className="text-aqua">
+          <PrismicRichText field={title} />
+        </span>
+
         <PrismicRichText field={body} />
       </div>
       {/** TODO: Figure out mobile layout not working */}
