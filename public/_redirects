@@ -7,13 +7,13 @@
 # Main Pages
 
 /contact /home 301!
-/about /about-us 301!
-/accessibility /accessibility-statement 301!
+/en-ca/about /en-ca/about-us 301!
+/en-ca/accessibility /accessibility-statement 301!
 /ourwork /our-work 301!
 
 # Services (Update redirects once the services page is all set up, this is just temporary routing)
 
-/consult /home 302!
+/consult /en-ca/home 302!
 /services/shopify /home 302!
 
 # Insight Pages
