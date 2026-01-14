@@ -6,42 +6,42 @@
 
 # Main Pages
 
-/contact /home 301!
+/en-ca/contact /en-ca/home 301!
 /en-ca/about /en-ca/about-us 301!
-/en-ca/accessibility /accessibility-statement 301!
-/ourwork /our-work 301!
+/en-ca/accessibility /en-ca/accessibility-statement 301!
+/en-ca/ourwork /en-ca/our-work 301!
 
 # Services (Update redirects once the services page is all set up, this is just temporary routing)
 
-/consult /en-ca/home 302!
-/services/shopify /home 302!
+/en-ca/consult /en-ca/home 302!
+/en-ca/services/shopify /en-ca/home 302!
 
 # Insight Pages
 
 /en-ca/blog /en-ca/insights 301!
 /en-ca/blog/ /en-ca/insights 301!
 
-/blog/2023-05-when-is-accessibility-complete /insights/think-pieces/when-is-accessibility-complete 301!
-/blog/2023-12-adaptive-fashion-can-push-beyond-the-basics /insights/think-pieces/adaptive-fashion-can-push-beyond-the-basics 301!
-/blog/2024-11-adhd-three-tips%20for-designing-with-adhd /insights/accessibility-tips/3-tips-for-designing-for-adhd 301!
-/blog/building-a-climate-friendly-web-part-2 /insights/think-pieces/building-a-climate-friendly-web-part-2 301!
-/blog/2023-10-designing-for-people-with-adhd /insights/accessibility-tips/designing-for-people-with-adhd 301!
-/blog/2024-09-mental-health-for-remote-workers /insights/think-pieces/mental-health-for-remote-workers 301!
-/blog/four-ways-to-improve-your-customers-online-shopping-experience /insights/accessibility-tips/four-ways-to-improve-your-customers-online-shopping-experience 301!
-/blog/can-normal-include-everyone /insights/think-pieces/can-normal-include-everyone 301!
-/blog/how-anyone-can-gather-insights-for-web-accessibility /insights/accessibility-tips/how-anyone-can-gather-insights-for-web-accessibility 301!
-/blog/click-here-to-read-more-words-matter-more-than-you-think /insights/think-pieces/click-here-to-read-more-words-matter-more-than-you-think 301!
-/blog/impacts-of-accessibility-on-business-culture /insights/accessibility-tips/the-impact-of-accessibility-on-business-culture 301!
-/blog/know-your-aoda-whats-happening-in-2021 /insights/accessibility-tips/know-your-aoda-whats-happening-in-2021 301!
-/blog/building-a-climate-friendly-web-part-1 /insights/think-pieces/building-a-climate-friendly-web-part-1 301!
-/blog/how-to-write-good-alt-text /insights/accessibility-tips/how-good-alt-text-can-improve-seo 301!
-/blog/how-anyone-can-start-testing-for-web-accessibility /insights/accessibility-tips/how-anyone-can-start-testing-for-web-accessibility 301!
-/blog/lets-talk-legal-the-cross-canada-accessibility-checkup /insights/accessibility-tips/lets-talk-legal-the-cross-canada-accessibility-checkup 301!
-/blog/the-undeniable-importance-of-web-accessibility /insights/accessibility-tips/the-undeniable-importance-of-web-accessibility 301!
-/blog/top-6-web-accessibility-myths /insights/accessibility-tips/top-6-web-accessibility-myths-busted 301!
-/blog/whats-the-deal-with-colour-contrast /insights/accessibility-tips/whats-the-deal-with-colour-contrast 301!
+/en-ca/blog/2023-05-when-is-accessibility-complete /en-ca/insights/think-pieces/when-is-accessibility-complete 301!
+/en-ca/blog/2023-12-adaptive-fashion-can-push-beyond-the-basics /en-ca/insights/think-pieces/adaptive-fashion-can-push-beyond-the-basics 301!
+/en-ca/blog/2024-11-adhd-three-tips%20for-designing-with-adhd /en-ca/insights/accessibility-tips/3-tips-for-designing-for-adhd 301!
+/en-ca/blog/building-a-climate-friendly-web-part-2 /en-ca/insights/think-pieces/building-a-climate-friendly-web-part-2 301!
+en-ca/blog/2023-10-designing-for-people-with-adhd /en-ca/insights/accessibility-tips/designing-for-people-with-adhd 301!
+/en-ca/blog/2024-09-mental-health-for-remote-workers /en-ca/insights/think-pieces/mental-health-for-remote-workers 301!
+/en-ca/blog/four-ways-to-improve-your-customers-online-shopping-experience /en-ca/insights/accessibility-tips/four-ways-to-improve-your-customers-online-shopping-experience 301!
+/en-ca/blog/can-normal-include-everyone /en-ca/insights/think-pieces/can-normal-include-everyone 301!
+/en-ca/blog/how-anyone-can-gather-insights-for-web-accessibility /en-ca/insights/accessibility-tips/how-anyone-can-gather-insights-for-web-accessibility 301!
+/en-ca/blog/click-here-to-read-more-words-matter-more-than-you-think /en-ca/insights/think-pieces/click-here-to-read-more-words-matter-more-than-you-think 301!
+/en-ca/blog/impacts-of-accessibility-on-business-culture /en-ca/insights/accessibility-tips/the-impact-of-accessibility-on-business-culture 301!
+/en-ca/blog/know-your-aoda-whats-happening-in-2021 /en-ca/insights/accessibility-tips/know-your-aoda-whats-happening-in-2021 301!
+/en-ca/blog/building-a-climate-friendly-web-part-1 /en-ca/insights/think-pieces/building-a-climate-friendly-web-part-1 301!
+/en-ca/blog/how-to-write-good-alt-text /en-ca/insights/accessibility-tips/how-good-alt-text-can-improve-seo 301!
+/en-ca/blog/how-anyone-can-start-testing-for-web-accessibility /en-ca/insights/accessibility-tips/how-anyone-can-start-testing-for-web-accessibility 301!
+/en-ca/blog/lets-talk-legal-the-cross-canada-accessibility-checkup /en-ca/insights/accessibility-tips/lets-talk-legal-the-cross-canada-accessibility-checkup 301!
+/en-ca/blog/the-undeniable-importance-of-web-accessibility /en-ca/insights/accessibility-tips/the-undeniable-importance-of-web-accessibility 301!
+/en-ca/blog/top-6-web-accessibility-myths /en-ca/insights/accessibility-tips/top-6-web-accessibility-myths-busted 301!
+/en-ca/blog/whats-the-deal-with-colour-contrast /en-ca/insights/accessibility-tips/whats-the-deal-with-colour-contrast 301!
 
 # Need path updated once page is setup
 
-/blog/2023-02-getting-started-with-digital-accessibility /home 302!
-/blog/how-lack-of-accessibility-undermines-impact /home 302!
+/en-ca/blog/2023-02-getting-started-with-digital-accessibility /en-ca/home 302!
+/en-ca/blog/how-lack-of-accessibility-undermines-impact /en-ca/home 302!
