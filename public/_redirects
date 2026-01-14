@@ -18,8 +18,8 @@
 
 # Insight Pages
 
-/blog /insights 301!
-/blog/ /insights 301!
+/en-ca/blog /en-ca/insights 301!
+/en-ca/blog/ /en-ca/insights 301!
 
 /blog/2023-05-when-is-accessibility-complete /insights/think-pieces/when-is-accessibility-complete 301!
 /blog/2023-12-adaptive-fashion-can-push-beyond-the-basics /insights/think-pieces/adaptive-fashion-can-push-beyond-the-basics 301!
