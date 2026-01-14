@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://heynova.io/
+Host: https://heynova.io
 
 # Sitemaps
 Sitemap: https://heynova.io/sitemap.xml
