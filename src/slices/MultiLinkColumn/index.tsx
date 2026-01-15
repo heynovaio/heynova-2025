@@ -42,7 +42,7 @@ const MultiLinkColumn = ({ slice }: MultiLinkColumnProps): JSX.Element => {
                 <PrismicNextLink
                   field={item}
                   key={index}
-                  className="no-underline"
+                  className="no-underline hover:underline"
                 />
               ))}
             </div>
