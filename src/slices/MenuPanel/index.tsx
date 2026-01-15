@@ -35,7 +35,7 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
         >
           {({ open }) => (
             <>
-              <PopoverButton className="flex items-center w-full gap-2 rounded-full text-nowrap lg:justify-center no-underline p-4 text-left relative after:content-[''] after:absolute after:bottom-3 after:left-1/2 after:right-1/2 after:h-[2px] after:bg-current after:transition-all after:duration-300 after:ease-in-out hover:after:left-5 hover:after:right-5">
+              <PopoverButton className="flex items-center w-full gap-2 rounded-full text-nowrap lg:justify-center no-underline p-4 text-left relative after:content-[''] after:absolute after:bottom-3 after:left-1/2 after:right-1/2 after:h-[2px] after:bg-current after:transition-all after:duration-300 after:ease-in-out hover:after:left-5 hover:after:right-5 menu-panel-hover">
                 {slice.primary.menu_display || "Dropdown"}
                 <FaChevronDown
                   className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -56,37 +56,36 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
                     />
                     <div className="flex flex-col basis-2/3 justify-center text-white lg:pl-32 pl-16 py-5 w-full">
                       <div
-                        className={`mb-8 grid gap-x-24 gap-y-4 text-left ${
-                          numColumns3 ? "grid-cols-3" : "grid-cols-2"
-                        }`}
+                        className={`mb-8 grid gap-x-24 gap-y-4 text-left ${numColumns3 ? "grid-cols-3" : "grid-cols-2"
+                          }`}
                       >
-                      {(slice.primary.links || []).map((linkItem, linkIndex) => (
-                        <PrismicNextLink
-                          key={linkIndex}
-                          field={linkItem}
-                          className="text-base font-bold hover:underline p-2 rounded-4xl"
-                        >
-                          {linkItem.text}
-                        </PrismicNextLink>
-                      ))}
-                      {slice.primary.link_with_paragraph.map((item, index) => {
-                        return (
-                          <div key={index} className="flex flex-col">
-                            {item.title && (
-                              <PrismicNextLink
-                                field={item.title}
-                                className="font-bold hover:underline p-2 rounded-4xl"
-                                prefetch={false}
-                              />
-                            )}
-                            {item.body && (
-                              <div className="p-2 text-sm">
-                                <PrismicRichText field={item.body} />
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })}
+                        {(slice.primary.links || []).map((linkItem, linkIndex) => (
+                          <PrismicNextLink
+                            key={linkIndex}
+                            field={linkItem}
+                            className="text-base font-bold hover:underline p-2 rounded-4xl"
+                          >
+                            {linkItem.text}
+                          </PrismicNextLink>
+                        ))}
+                        {slice.primary.link_with_paragraph.map((item, index) => {
+                          return (
+                            <div key={index} className="flex flex-col">
+                              {item.title && (
+                                <PrismicNextLink
+                                  field={item.title}
+                                  className="font-bold hover:underline p-2 rounded-4xl"
+                                  prefetch={false}
+                                />
+                              )}
+                              {item.body && (
+                                <div className="p-2 text-sm">
+                                  <PrismicRichText field={item.body} />
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -104,9 +103,8 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
           {({ open }) => (
             <>
               <DisclosureButton
-                className={`flex gap-4 items-center rounded-full p-5 justify-between ${
-                  open ? "bg-white/10" : "bg-transparent"
-                }`}
+                className={`flex gap-4 items-center rounded-full p-5 justify-between ${open ? "bg-white/10" : "bg-transparent"
+                  }`}
                 suppressHydrationWarning
               >
                 <div className="w-3 h-3"></div>
@@ -114,9 +112,8 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
                   {slice.primary.menu_display || "Dropdown"}
                 </span>
                 <FaChevronDown
-                  className={`h-6 w-6 transition-transform duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] ${
-                    open ? "rotate-180" : ""
-                  }`}
+                  className={`h-6 w-6 transition-transform duration-300 ease-[cubic-bezier(0.87,0,0.13,1)] ${open ? "rotate-180" : ""
+                    }`}
                 />
               </DisclosureButton>
 
@@ -128,11 +125,10 @@ const MenuPanel = ({ slice }: MenuPanelProps): JSX.Element => {
               >
                 {({ open }) => (
                   <div
-                    className={`transition-all duration-500 ease-in ${
-                      open
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 -translate-y-2"
-                    }`}
+                    className={`transition-all duration-500 ease-in ${open
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-2"
+                      }`}
                   >
                     <div className="border-b border-white pb-4 mb-4 px-5">
                       <ContentBox
