@@ -92,8 +92,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Button - always visible, fixed width */}
-          <div className="w-[174px]">
-            <CalendlyButton text="Book a Chat" buttonClass="btn-primary" />
+          <div className="hidden lg:flex">
+            <CalendlyButton
+              text="Book a Discovery Call"
+              buttonClass="btn-primary"
+            />
           </div>
 
           {/* Mobile Menu */}
@@ -133,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
                       <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
                         <SliceZone slices={slices} components={components} />
                         <CalendlyButton
-                          text="Book a Chat"
+                          text="Book a Discovery Call"
                           buttonClass="btn-primary"
                         />
                       </div>
