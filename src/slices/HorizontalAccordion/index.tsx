@@ -5,7 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 
 import { HorizontalAccordion } from "@/components/Accordions/HorizontalAccordion";
-import { Container, ContentBox, AnimatedSection } from "@/components";
+import { Container, ContentBox, AnimatedSection, Section } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 
 export type HorizontalAccordionSliceProps =
@@ -24,37 +24,36 @@ const HorizontalAccordionSlice = ({
   const buttons = slice.primary.accordion.map((item) => item.buttons || null);
 
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-10 md:py-26"
     >
       <AnimatedSection>
         <Container>
-        <ContentBox
-          title={slice.primary.title}
-          content={<PrismicRichText field={slice.primary.body} />}
-          buttons={slice.primary.buttons.map((button, index) => {
-            return (
-              <PrismicNextLink
-                field={button}
-                key={index}
-                className="btn btn-primary"
-              />
-            );
-          })}
-          containerClassName="mb-8"
-          titleClassName="text-aqua"
-        />
-        <HorizontalAccordion
-          titles={titles}
-          contents={contents}
-          images={images}
-          buttons={buttons}
-        />
-      </Container>
+          <ContentBox
+            title={slice.primary.title}
+            content={<PrismicRichText field={slice.primary.body} />}
+            buttons={slice.primary.buttons.map((button, index) => {
+              return (
+                <PrismicNextLink
+                  field={button}
+                  key={index}
+                  className="btn btn-primary"
+                />
+              );
+            })}
+            containerClassName="mb-8"
+            titleClassName="text-aqua"
+          />
+          <HorizontalAccordion
+            titles={titles}
+            contents={contents}
+            images={images}
+            buttons={buttons}
+          />
+        </Container>
       </AnimatedSection>
-    </section>
+    </Section>
   );
 };
 
