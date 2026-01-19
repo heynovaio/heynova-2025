@@ -309,6 +309,15 @@ interface GlobalDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   site_title: prismic.KeyTextField; /**
+   * Calendly Button Text field in *Global*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: global.calendly_button_text
+   * - **Tab**: Labels
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  calendly_button_text: prismic.KeyTextField; /**
    * Address field in *Global*
    *
    * - **Field Type**: Text
