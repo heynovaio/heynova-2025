@@ -11,6 +11,7 @@ import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import React, { Fragment, useEffect, useState } from "react";
 import {
+  GlobalDocumentData,
   MenusDocumentData,
   MenusDocumentDataSlicesSlice,
 } from "../../../prismicio-types";
@@ -23,6 +24,7 @@ interface HeaderProps {
   slices: MenusDocumentDataSlicesSlice[];
   menus?: MenusDocumentData;
   locales: PrismicDocument[];
+  global?: GlobalDocumentData;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -30,6 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   logo,
   slices,
   locales,
+  global,
 }) => {
   const [bgOpacity, setBgOpacity] = useState(0);
 
@@ -94,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Button - always visible, fixed width */}
           <div className="hidden lg:flex">
             <CalendlyButton
-              text="Book a Discovery Call"
+              text={global?.calendly_button_text || "Book a Discovery Call"}
               buttonClass="btn-primary"
             />
           </div>
@@ -136,7 +139,10 @@ export const Header: React.FC<HeaderProps> = ({
                       <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
                         <SliceZone slices={slices} components={components} />
                         <CalendlyButton
-                          text="Book a Discovery Call"
+                          text={
+                            global?.calendly_button_text ||
+                            "Book a Discovery Call"
+                          }
                           buttonClass="btn-primary"
                         />
                       </div>

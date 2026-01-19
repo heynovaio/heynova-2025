@@ -53,6 +53,7 @@ export const Layout = ({
           logo={global.site_logo}
           slices={menus.slices}
           locales={locales}
+          global={global}
         />
       </div>
       <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
