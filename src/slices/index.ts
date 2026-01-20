@@ -14,6 +14,7 @@ export const components = {
   numbered_list: dynamic(() => import("./NumberedList")),
   simple_text: dynamic(() => import("./SimpleText")),
   single_link: dynamic(() => import("./SingleLink")),
+  stats: dynamic(() => import("./Stats")),
   team_list: dynamic(() => import("./TeamList")),
   testimonials: dynamic(() => import("./Testimonials")),
 };

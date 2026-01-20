@@ -3724,6 +3724,84 @@ export type SingleLinkSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Stats → Default → Primary → Stats*
+ */
+export interface StatsSliceDefaultPrimaryStatsItem {
+  /**
+   * Stat field in *Stats → Default → Primary → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats.default.primary.stats[].stat
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  stat: prismic.KeyTextField;
+
+  /**
+   * Description field in *Stats → Default → Primary → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats.default.primary.stats[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Stats → Default → Primary*
+ */
+export interface StatsSliceDefaultPrimary {
+  /**
+   * Background field in *Stats → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: stats.default.primary.background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  background: prismic.BooleanField;
+
+  /**
+   * Stats field in *Stats → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats.default.primary.stats[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  stats: prismic.GroupField<Simplify<StatsSliceDefaultPrimaryStatsItem>>;
+}
+
+/**
+ * Default variation for Stats Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<StatsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Stats*
+ */
+type StatsSliceVariation = StatsSliceDefault;
+
+/**
+ * Stats Shared Slice
+ *
+ * - **API ID**: `stats`
+ * - **Description**: Stats
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatsSlice = prismic.SharedSlice<"stats", StatsSliceVariation>;
+
+/**
  * Item in *TeamList → Default → Primary → Team Member*
  */
 export interface TeamListSliceDefaultPrimaryTeamMemberItem {
@@ -4079,6 +4157,11 @@ declare module "@prismicio/client" {
       SingleLinkSliceDefaultPrimary,
       SingleLinkSliceVariation,
       SingleLinkSliceDefault,
+      StatsSlice,
+      StatsSliceDefaultPrimaryStatsItem,
+      StatsSliceDefaultPrimary,
+      StatsSliceVariation,
+      StatsSliceDefault,
       TeamListSlice,
       TeamListSliceDefaultPrimaryTeamMemberItem,
       TeamListSliceDefaultPrimary,

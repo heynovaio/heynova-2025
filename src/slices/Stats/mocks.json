@@ -1,0 +1,83 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"background": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "+89%"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Increase in something"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "40"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Of something idk"
+								}
+							]
+						],
+						"key": "3f194592-7731-41dc-ab5a-4e29ed94f559"
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "$10"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Of money"
+								}
+							]
+						],
+						"key": "f3aeac42-2e90-4a0c-b693-2bb6c55064a1"
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
