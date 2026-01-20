@@ -12,7 +12,9 @@ export type StatsProps = SliceComponentProps<Content.StatsSlice>;
  */
 const Stats: FC<StatsProps> = ({ slice }) => {
   const background = slice.primary.background;
-  const bgColor = !background ? "bg-aqua text-black" : "bg-teal-drk text-white";
+  const bgColor = !background
+    ? "bg-aqua text-purple-drk"
+    : "bg-teal-drk text-white";
   return (
     <section
       data-slice-type={slice.slice_type}
