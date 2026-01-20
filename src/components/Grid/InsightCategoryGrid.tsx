@@ -22,7 +22,7 @@ export const InsightCategoryGrid = ({
 
   const getInsightUrl = (insight: any) => {
     const currentCategory = insightCategories?.find(
-      (category) => category.id === categoryId
+      (category) => category.id === categoryId,
     );
 
     if (currentCategory && currentCategory.url) {
@@ -40,7 +40,7 @@ export const InsightCategoryGrid = ({
 
     // Check if any of the insight's categories match the provided categoryId
     return insight.data.categories.some(
-      (category: any) => category.name?.id === categoryId
+      (category: any) => category.name?.id === categoryId,
     );
   });
 
@@ -60,7 +60,6 @@ export const InsightCategoryGrid = ({
                   image={data.meta_image}
                   title={data.meta_title || asText(data.title) || "Untitled"}
                   titleLevel={3}
-                  description={data.meta_description || data.body}
                   tags={item?.tags}
                 />
               );
