@@ -33,7 +33,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
 
   const totalSlides = Math.max(
     0,
-    slice.primary.cards.length - itemsPerPage + 1
+    slice.primary.cards.length - itemsPerPage + 1,
   );
 
   useEffect(() => {
@@ -104,7 +104,9 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
           >
             <div className="embla__container">
               {slice.primary?.cards.map((item, index) => {
-                const hasImage = (item: unknown): item is { image: ImageField } =>
+                const hasImage = (
+                  item: unknown,
+                ): item is { image: ImageField } =>
                   typeof item === "object" &&
                   item !== null &&
                   "image" in item &&
@@ -116,7 +118,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
                   if (!tagId) return null;
 
                   const matchedCategory = insightCategoryData?.find(
-                    (category) => category.id === tagId
+                    (category) => category.id === tagId,
                   );
                   return matchedCategory?.data?.title
                     ? asText(matchedCategory.data.title)
@@ -177,7 +179,6 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
                       <ManualCarouselCard
                         image={item.image}
                         title={item?.title || "Untitled"}
-                        description={item?.body}
                         tags={tags}
                         buttons={item?.buttons}
                       />

@@ -33,7 +33,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
 
   const totalSlides = Math.max(
     0,
-    slice.primary.cards.length - itemsPerPage + 1
+    slice.primary.cards.length - itemsPerPage + 1,
   );
 
   useEffect(() => {
@@ -102,94 +102,96 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
             className="embla tabbed-carousel m-0 focus:focus focus:outline-offset-8 !overflow-visible"
             ref={emblaRef}
           >
-              <div className="embla__container">
-                {slice.primary?.cards.map((item, index) => {
-                  const hasImage = (item: unknown): item is { image: ImageField } =>
-                    typeof item === "object" &&
-                    item !== null &&
-                    "image" in item &&
-                    Boolean((item as { image?: unknown }).image);
+            <div className="embla__container">
+              {slice.primary?.cards.map((item, index) => {
+                const hasImage = (
+                  item: unknown,
+                ): item is { image: ImageField } =>
+                  typeof item === "object" &&
+                  item !== null &&
+                  "image" in item &&
+                  Boolean((item as { image?: unknown }).image);
 
-                  const tags = [];
+                const tags = [];
 
-                  const getCategoryTitle = (tagId: string | null) => {
-                    if (!tagId) return null;
+                const getCategoryTitle = (tagId: string | null) => {
+                  if (!tagId) return null;
 
-                    const matchedCategory = insightCategoryData?.find(
-                      (category) => category.id === tagId
-                    );
-                    return matchedCategory?.data?.title
-                      ? asText(matchedCategory.data.title)
-                      : null;
-                  };
-
-                  if ("tag_1" in item) {
-                    const tag1 = (
-                      item as {
-                        tag_1?: ContentRelationshipField<"insights_categories">;
-                      }
-                    ).tag_1;
-                    const tag1_id = isFilled.contentRelationship(tag1)
-                      ? tag1.id
-                      : null;
-                    const tag1Title = getCategoryTitle(tag1_id);
-
-                    if (tag1Title) {
-                      tags.push(tag1Title);
-                    }
-                  }
-
-                  if ("tag_2" in item) {
-                    const tag2 = (
-                      item as {
-                        tag_2?: ContentRelationshipField<"insights_categories">;
-                      }
-                    ).tag_2;
-                    const tag2_id = isFilled.contentRelationship(tag2)
-                      ? tag2.id
-                      : null;
-                    const tag2Title = getCategoryTitle(tag2_id);
-
-                    if (tag2Title) {
-                      tags.push(tag2Title);
-                    }
-                  }
-
-                  if ("tag_3" in item) {
-                    const tag3 = (
-                      item as {
-                        tag_3?: ContentRelationshipField<"insights_categories">;
-                      }
-                    ).tag_3;
-                    const tag3_id = isFilled.contentRelationship(tag3)
-                      ? tag3.id
-                      : null;
-                    const tag3Title = getCategoryTitle(tag3_id);
-
-                    if (tag3Title) {
-                      tags.push(tag3Title);
-                    }
-                  }
-
-                  return (
-                    <div key={index} className="embla__slide pr-3 md:pr-7 flex">
-                      {hasImage(item) ? (
-                        <GeneralCard
-                          image={item.image}
-                          title={item?.title || "Untitled"}
-                          description={item?.body}
-                          tags={tags}
-                          buttons={item?.buttons}
-                        />
-                      ) : (
-                        <div className="text-center py-8 h-full flex items-center justify-center">
-                          No content available
-                        </div>
-                      )}
-                    </div>
+                  const matchedCategory = insightCategoryData?.find(
+                    (category) => category.id === tagId,
                   );
-                })}
-              </div>
+                  return matchedCategory?.data?.title
+                    ? asText(matchedCategory.data.title)
+                    : null;
+                };
+
+                if ("tag_1" in item) {
+                  const tag1 = (
+                    item as {
+                      tag_1?: ContentRelationshipField<"insights_categories">;
+                    }
+                  ).tag_1;
+                  const tag1_id = isFilled.contentRelationship(tag1)
+                    ? tag1.id
+                    : null;
+                  const tag1Title = getCategoryTitle(tag1_id);
+
+                  if (tag1Title) {
+                    tags.push(tag1Title);
+                  }
+                }
+
+                if ("tag_2" in item) {
+                  const tag2 = (
+                    item as {
+                      tag_2?: ContentRelationshipField<"insights_categories">;
+                    }
+                  ).tag_2;
+                  const tag2_id = isFilled.contentRelationship(tag2)
+                    ? tag2.id
+                    : null;
+                  const tag2Title = getCategoryTitle(tag2_id);
+
+                  if (tag2Title) {
+                    tags.push(tag2Title);
+                  }
+                }
+
+                if ("tag_3" in item) {
+                  const tag3 = (
+                    item as {
+                      tag_3?: ContentRelationshipField<"insights_categories">;
+                    }
+                  ).tag_3;
+                  const tag3_id = isFilled.contentRelationship(tag3)
+                    ? tag3.id
+                    : null;
+                  const tag3Title = getCategoryTitle(tag3_id);
+
+                  if (tag3Title) {
+                    tags.push(tag3Title);
+                  }
+                }
+
+                return (
+                  <div key={index} className="embla__slide pr-3 md:pr-7 flex">
+                    {hasImage(item) ? (
+                      <GeneralCard
+                        image={item.image}
+                        title={item?.title || "Untitled"}
+                        description={item?.body}
+                        tags={tags}
+                        buttons={item?.buttons}
+                      />
+                    ) : (
+                      <div className="text-center py-8 h-full flex items-center justify-center">
+                        No content available
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </Container>
         <Container>
@@ -201,7 +203,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
                   field={btn}
                   className="btn btn-primary justify-self-start"
                 />
-              ) : null
+              ) : null,
             )
           ) : isFilled.link(slice.primary.button) ? (
             <PrismicNextLink

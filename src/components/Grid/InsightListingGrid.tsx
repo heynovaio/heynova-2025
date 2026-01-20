@@ -35,7 +35,7 @@ export const InsightListingGrid = ({ lang }: InsightListingGridProps) => {
 
     // Find the matching category by ID
     const matchingCategory = insightCategories.find(
-      (category) => category.id === firstInsightCategory.name.id
+      (category) => category.id === firstInsightCategory.name.id,
     );
 
     return matchingCategory || null;
@@ -45,7 +45,7 @@ export const InsightListingGrid = ({ lang }: InsightListingGridProps) => {
   const getInsightUrl = (insight: any) => {
     const matchingCategory = findMatchingCategory(
       insightCategories || ["Other"],
-      insight.data
+      insight.data,
     );
 
     if (matchingCategory && matchingCategory.url) {
@@ -66,15 +66,14 @@ export const InsightListingGrid = ({ lang }: InsightListingGridProps) => {
               const insightUrl = getInsightUrl(item);
 
               return (
-                  <GeneralCard
-                    key={index}
-                    href={insightUrl}
-                    image={data.meta_image}
-                    title={data.meta_title || asText(data.title) || "Untitled"}
-                    titleLevel={3}
-                    description={data.meta_description || data.body}
-                    tags={item?.tags}
-                  />
+                <GeneralCard
+                  key={index}
+                  href={insightUrl}
+                  image={data.meta_image}
+                  title={data.meta_title || asText(data.title) || "Untitled"}
+                  titleLevel={3}
+                  tags={item?.tags}
+                />
               );
             })}
           </Grid>
