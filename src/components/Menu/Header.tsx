@@ -111,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
                     className="inline-flex justify-center w-full p-2 relative group"
                     aria-label="Main Menu"
                   >
-                    <div data-menu="hamburger" className="flex flex-col justify-center items-center w-8 h-8">
+                    <div className="flex flex-col justify-center items-center w-8 h-8">
                       <span
                         className={`block absolute h-0.5 w-8 gradient-light-full transform transition duration-300 ease-in-out ${open ? "rotate-45 translate-y-0" : "-translate-y-2"}`}
                       ></span>
@@ -136,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
                       anchor="bottom"
                       className="w-screen h-screen bg-midnight bg-gradient-dark lg:mt-4 pb-10 z-40"
                     >
-                      <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
+                      <div data-menu="hamburger" className="flex flex-col px-6 my-10 items-center justify-center w-full">
                         <SliceZone slices={slices} components={components} />
                         <CalendlyButton
                           text={
