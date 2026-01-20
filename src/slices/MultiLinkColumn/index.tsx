@@ -43,6 +43,8 @@ const MultiLinkColumn = ({ slice }: MultiLinkColumnProps): JSX.Element => {
                   field={item}
                   key={index}
                   className="no-underline hover:underline"
+                  target={item.link_type === "Media" ? "_blank" : undefined}
+                  rel={item.link_type === "Media" ? "noopener noreferrer" : undefined}
                 />
               ))}
             </div>
