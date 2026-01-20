@@ -417,6 +417,7 @@ export interface InsightDocumentDataAuthorsItem {
 }
 
 type InsightDocumentDataSlicesSlice =
+  | StatsSlice
   | ContentCarouselSlice
   | CtaBannerSlice
   | NumberedListSlice
@@ -579,7 +580,7 @@ export type InsightDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsCategoriesDocumentDataSlicesSlice = CtaBannerSlice;
+type InsightsCategoriesDocumentDataSlicesSlice = StatsSlice | CtaBannerSlice;
 
 /**
  * Content for Insights Categories documents
@@ -714,7 +715,7 @@ export type InsightsCategoriesDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsListingDocumentDataSlicesSlice = never;
+type InsightsListingDocumentDataSlicesSlice = StatsSlice;
 
 /**
  * Content for Insights Listing documents
@@ -1137,6 +1138,7 @@ export type NewsletterSignupDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | StatsSlice
   | TestimonialsSlice
   | SimpleTextSlice
   | ImageTextSlice
@@ -1287,6 +1289,7 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 type ServiceDocumentDataSlicesSlice =
+  | StatsSlice
   | TeamListSlice
   | ContentCarouselSlice
   | CtaBannerSlice
@@ -1444,7 +1447,7 @@ export type ServiceDocument<Lang extends string = string> =
     Lang
   >;
 
-type ServicesListingDocumentDataSlicesSlice = CtaBannerSlice;
+type ServicesListingDocumentDataSlicesSlice = StatsSlice | CtaBannerSlice;
 
 /**
  * Content for Services Listing documents
@@ -1580,6 +1583,7 @@ export type ServicesListingDocument<Lang extends string = string> =
   >;
 
 type TeamDocumentDataSlicesSlice =
+  | StatsSlice
   | ContentColumnSlice
   | CtaBannerSlice
   | TeamListSlice;

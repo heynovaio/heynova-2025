@@ -79,6 +79,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "stats": {
+              "type": "SharedSlice"
+            },
             "team_list": {
               "type": "SharedSlice"
             },
