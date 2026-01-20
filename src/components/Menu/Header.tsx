@@ -136,7 +136,7 @@ export const Header: React.FC<HeaderProps> = ({
                       anchor="bottom"
                       className="w-screen h-screen bg-midnight bg-gradient-dark lg:mt-4 pb-10 z-40"
                     >
-                      <div className="flex flex-col px-6 my-10 items-center justify-center w-full">
+                      <div data-menu="hamburger" className="flex flex-col px-6 my-10 items-center justify-center w-full">
                         <SliceZone slices={slices} components={components} />
                         <CalendlyButton
                           text={

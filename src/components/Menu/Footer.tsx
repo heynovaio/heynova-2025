@@ -32,11 +32,11 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
               <h4 className="mb-6 footer-header">Follow Us</h4>
               <div className="flex  flex-col justify-center items-center md:items-start gap-6 ">
                 {isFilled.link(footerData?.instagram) && (
-                  <span className="flex flex-row gap-4 items-center ">
+                  <span className="flex flex-row gap-4 items-center">
                     <FaInstagram size={35} />
                     <PrismicNextLink
                       field={footerData?.instagram}
-                      className="text-base underline-offset-4 menu-link"
+                      className="text-base underline-offset-4 menu-link hover:underline"
                     />
                   </span>
                 )}
@@ -45,7 +45,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     <FaFacebook size={35} />
                     <PrismicNextLink
                       field={footerData?.facebook}
-                      className="text-base underline-offset-4 menu-link"
+                      className="text-base underline-offset-4 menu-link hover:underline"
                     />
                   </span>
                 )}
@@ -54,7 +54,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
                     <FaLinkedin size={35} />
                     <PrismicNextLink
                       field={footerData?.linkedin}
-                      className="text-base underline-offset-4 menu-link"
+                      className="text-base underline-offset-4 menu-link hover:underline"
                     />
                   </span>
                 )}
@@ -64,7 +64,7 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
           <SliceZone slices={slices} components={components} />
           <div className="flex flex-col gap-4">
             <h4 className="footer-header">Contact Us</h4>
-            <a href={`mailto:${global?.email}`}>{global?.email}</a>
+            <a className={"hover:underline"} href={`mailto:${global?.email}`}>{global?.email}</a>
           </div>
         </div>
       </nav>
