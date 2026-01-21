@@ -420,13 +420,63 @@ a {
   }
 
   .btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 34px 12px 34px;
     border-radius: 1.875em;
-    border: 3px solid transparent;
-    padding: 10px 10px 12px 10px;
+    border-radius: 1.875em;
+    background: var(--color-primary);
+    color: var(--color-white) !important;
     font-size: var(--text-button);
     text-align: center;
-    transform: translateY(0);
-    transition: transform 0.2s ease;
+    overflow: visible;
+    z-index: 0;
+    border: 3px solid transparent;
+    transition: color 0.6s ease;
+  }
+
+  .btn::before,
+  .btn::after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    border-radius: inherit;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .btn::before {
+    top: 0;
+    left: 0;
+    border-top-color: var(--color-white);
+    border-left-color: var(--color-white);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transition:
+      width 0.3s ease,
+      height 0.3s ease;
+  }
+
+  .btn::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-color: var(--color-white);
+    border-right-color: var(--color-white);
+    box-shadow: 0 0 15px rgba(241, 240, 244, 0.6);
+    transition:
+      width 0.3s ease 0.15s,
+      height 0.3s ease 0.15s;
+  }
+
+  .btn:hover::before,
+  .btn:hover::after {
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn:hover {
+    color: var(--color-white);
   }
 
   .btn-primary {
@@ -437,11 +487,6 @@ a {
     background: var(--color-primary);
     color: var(--color-white);
 
-    &:hover {
-      background: var(--color-wine);
-      @apply border-aqua -translate-y-1;
-      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
-    }
     &:focus {
       outline: 0;
       border-color: var(--color-lavendar);
@@ -460,12 +505,6 @@ a {
     background: var(--color-purple-drk);
     color: var(--color-white);
 
-    &:hover {
-      color: var(--color-aqua);
-      background: var(--color-midnight);
-      @apply border-aqua -translate-y-1;
-      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
-    }
     &:focus {
       outline: 0;
       border-color: var(--color-lavendar);
@@ -482,11 +521,6 @@ a {
     border-color: var(--color-aqua);
     color: var(--color-aqua);
 
-    &:hover {
-      background: var(--color-teal-drk);
-      @apply border-aqua -translate-y-1;
-      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
-    }
     &:focus {
       outline: 0;
       border-color: var(--color-purple-lt);
