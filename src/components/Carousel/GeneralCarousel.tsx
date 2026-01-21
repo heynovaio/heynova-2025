@@ -206,7 +206,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
               ) : null,
             )
           ) : isFilled.link(slice.primary.button) ? (
-            <div className="animate-button w-fit">
+            <div className="w-fit">
               <PrismicNextLink
                 field={
                   Array.isArray(slice.primary.button)

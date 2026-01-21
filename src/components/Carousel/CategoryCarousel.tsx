@@ -183,7 +183,7 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
             slice.primary.button[0]?.text) ||
             (!Array.isArray(slice.primary.button) &&
               slice.primary.button?.text)) && (
-            <div className="animate-button w-fit">
+            <div className=" w-fit">
               <PrismicNextLink
                 field={
                   Array.isArray(slice.primary.button)
