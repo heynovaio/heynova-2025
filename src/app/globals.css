@@ -494,6 +494,12 @@ a {
     }
   }
 
+  .animate-button {
+    &:hover {
+      @apply border-aqua -translate-y-1;
+      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
+    }
+  }
   .pink-link .text-content a {
     color: var(--color-wine);
   }

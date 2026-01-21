@@ -206,10 +206,16 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
               ) : null,
             )
           ) : isFilled.link(slice.primary.button) ? (
-            <PrismicNextLink
-              field={slice.primary.button}
-              className="btn btn-primary justify-self-start "
-            />
+            <div className="animate-button w-fit">
+              <PrismicNextLink
+                field={
+                  Array.isArray(slice.primary.button)
+                    ? (slice.primary.button[0] ?? undefined)
+                    : slice.primary.button
+                }
+                className={`btn btn-primary justify-self-start `}
+              />
+            </div>
           ) : null}
         </Container>
       </Section>

@@ -198,14 +198,16 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
             slice.primary.button[0]?.text) ||
             (!Array.isArray(slice.primary.button) &&
               slice.primary.button?.text)) && (
-            <PrismicNextLink
-              field={
-                Array.isArray(slice.primary.button)
-                  ? (slice.primary.button[0] ?? undefined)
-                  : slice.primary.button
-              }
-              className={`btn btn-primary justify-self-start `}
-            />
+            <div className="animate-button w-fit">
+              <PrismicNextLink
+                field={
+                  Array.isArray(slice.primary.button)
+                    ? (slice.primary.button[0] ?? undefined)
+                    : slice.primary.button
+                }
+                className={`btn btn-primary justify-self-start `}
+              />
+            </div>
           )}
         </Container>
       </Section>
