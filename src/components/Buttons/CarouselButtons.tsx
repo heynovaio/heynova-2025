@@ -37,7 +37,7 @@ export const CarouselButton = ({
         onSlideChange("next");
       }
     },
-    [onSlideChange]
+    [onSlideChange],
   );
 
   useEffect(() => {
@@ -66,6 +66,9 @@ export const CarouselButton = ({
           outline-offset: 2px;
           background-color: rgba(151, 225, 229, 0.1);
         }
+          .carousel-button:hover {
+         cursor: pointer;
+        }
         .carousel-button:active {
           animation: slideCardIn 0.3s ease-out;
         }
@@ -91,7 +94,10 @@ export const CarouselButton = ({
         <span aria-live="polite" aria-atomic="true" className="sr-only">
           Slide {currentSlide} of {totalSlides}
         </span>
-        <span className="text-sm text-aqua/70 min-w-[3rem] text-center" aria-hidden="true">
+        <span
+          className="text-sm text-aqua/70 min-w-[3rem] text-center"
+          aria-hidden="true"
+        >
           {currentSlide}/{totalSlides}
         </span>
         <button
