@@ -40,7 +40,7 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
 
   const totalSlides = Math.max(
     0,
-    slice.primary.cards.length - itemsPerPage + 1
+    slice.primary.cards.length - itemsPerPage + 1,
   );
 
   useEffect(() => {
@@ -70,13 +70,13 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
       (item): item is { item: ContentRelationshipField<"insight"> } =>
         item !== null &&
         isFilled.contentRelationship(
-          (item as Simplify<ContentCarouselSliceDefaultPrimaryCardsItem>).item
-        )
+          (item as Simplify<ContentCarouselSliceDefaultPrimaryCardsItem>).item,
+        ),
     )
     .map((item) => (item.item as FilledContentRelationshipField<"insight">).id);
 
   const filteredData: InsightDocument[] = (insightPageData ?? []).filter(
-    (item) => contentCardIds.includes(item.id)
+    (item) => contentCardIds.includes(item.id),
   );
 
   return (
@@ -124,7 +124,9 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
             <div className="embla__container">
               {filteredData?.map((item, index) => {
                 const itemData = item.data;
-                const hasImage = (item: unknown): item is { image: ImageField } =>
+                const hasImage = (
+                  item: unknown,
+                ): item is { image: ImageField } =>
                   typeof item === "object" &&
                   item !== null &&
                   "image" in item &&
@@ -134,16 +136,20 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
                 const category = isFilled.contentRelationship(singleCategory)
                   ? singleCategory.uid
                   : "";
-                
+
                 // Try to get category title from the relationship data
                 let categoryName = "";
                 if (isFilled.contentRelationship(singleCategory)) {
-                  const categoryTitle = (singleCategory as unknown as { data?: { title?: RichTextField } })?.data?.title;
+                  const categoryTitle = (
+                    singleCategory as unknown as {
+                      data?: { title?: RichTextField };
+                    }
+                  )?.data?.title;
                   if (categoryTitle) {
                     categoryName = asText(categoryTitle);
                   }
                 }
-                
+
                 const url = `/insights/${category}/${item.uid}`;
 
                 const showLink = hasImage(itemData) && category;
@@ -177,14 +183,16 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
             slice.primary.button[0]?.text) ||
             (!Array.isArray(slice.primary.button) &&
               slice.primary.button?.text)) && (
-            <PrismicNextLink
-              field={
-                Array.isArray(slice.primary.button)
-                  ? (slice.primary.button[0] ?? undefined)
-                  : slice.primary.button
-              }
-              className={`btn btn-primary justify-self-start`}
-            />
+            <div className="animate-button w-fit">
+              <PrismicNextLink
+                field={
+                  Array.isArray(slice.primary.button)
+                    ? (slice.primary.button[0] ?? undefined)
+                    : slice.primary.button
+                }
+                className={`btn btn-primary justify-self-start `}
+              />
+            </div>
           )}
         </div>
       </Container>
