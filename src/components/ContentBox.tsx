@@ -39,13 +39,9 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
 
   const TitleHeading = ({ children }: { children: ReactNode }) => {
     return titleLevel === 2 ? (
-      <h2 className={titleClassName}>
-        {children}
-      </h2>
+      <h2 className={titleClassName}>{children}</h2>
     ) : (
-      <h3 className={titleClassName}>
-        {children}
-      </h3>
+      <h3 className={titleClassName}>{children}</h3>
     );
   };
 
@@ -57,22 +53,14 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
       if (CustomHeading2) {
         return <CustomHeading2>{children}</CustomHeading2>;
       }
-      return (
-        <h2 className={titleClassName}>
-          {children}
-        </h2>
-      );
+      return <h2 className={titleClassName}>{children}</h2>;
     },
     heading3: ({ children }: { children: ReactNode }) => {
       const CustomHeading3 = titleComponents?.heading3;
       if (CustomHeading3) {
         return <CustomHeading3>{children}</CustomHeading3>;
       }
-      return (
-        <h3 className={titleClassName}>
-          {children}
-        </h3>
-      );
+      return <h3 className={titleClassName}>{children}</h3>;
     },
   };
 
@@ -82,7 +70,7 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
       className={clsx(
         `flex flex-col gap-7 contentBox `,
         widthClassName,
-        containerClassName
+        containerClassName,
       )}
       {...props}
     >
@@ -92,7 +80,10 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
           {typeof title === "string" ? (
             <TitleHeading>{title}</TitleHeading>
           ) : (
-            <PrismicRichText field={title} components={animatedHeadingComponents} />
+            <PrismicRichText
+              field={title}
+              components={animatedHeadingComponents}
+            />
           )}
         </div>
         {content && <div className="text-content">{content}</div>}

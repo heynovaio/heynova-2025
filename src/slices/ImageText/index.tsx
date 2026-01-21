@@ -43,7 +43,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
             key={index}
             className="btn btn-primary"
           />
-        ) : null
+        ) : null,
       )
     : undefined;
 

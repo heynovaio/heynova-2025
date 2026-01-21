@@ -425,6 +425,8 @@ a {
     padding: 10px 10px 12px 10px;
     font-size: var(--text-button);
     text-align: center;
+    transform: translateY(0);
+    transition: transform 0.2s ease;
   }
 
   .btn-primary {
@@ -437,6 +439,8 @@ a {
 
     &:hover {
       background: var(--color-wine);
+      @apply border-aqua -translate-y-1;
+      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
     }
     &:focus {
       outline: 0;
@@ -459,6 +463,8 @@ a {
     &:hover {
       color: var(--color-aqua);
       background: var(--color-midnight);
+      @apply border-aqua -translate-y-1;
+      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
     }
     &:focus {
       outline: 0;
@@ -478,6 +484,8 @@ a {
 
     &:hover {
       background: var(--color-teal-drk);
+      @apply border-aqua -translate-y-1;
+      box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
     }
     &:focus {
       outline: 0;
