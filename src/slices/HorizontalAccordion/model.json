@@ -74,7 +74,7 @@
                   "label": "Title",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "heading2,heading3,heading4"
+                  "multi": "heading3,heading4"
                 }
               },
               "body": {
@@ -94,7 +94,7 @@
                   "select": null,
                   "allowTargetBlank": true,
                   "allowText": true,
-                  "repeat": true
+                  "repeat": false
                 }
               }
             }

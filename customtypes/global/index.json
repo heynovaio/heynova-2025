@@ -22,7 +22,15 @@
         }
       }
     },
-    "Labels": {},
+    "Labels": {
+      "calendly_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "Calendly Button Text",
+          "placeholder": ""
+        }
+      }
+    },
     "Contact": {
       "address": {
         "type": "Text",

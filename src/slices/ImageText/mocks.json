@@ -25,26 +25,83 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Exercitation do est veniam anim anim cupidatat do do laborum."
-						}
+							"text": "Exercitation do est veniam anim anim cupidatat do do laborum. oluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. ",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
 			"imageRight": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"button": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "c2c9e5f3-504e-45d8-82c7-e605d3a90a71",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "https://prismic.io",
+							"text": "Test Button"
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+					"width": 3935,
+					"height": 5894
+				},
+				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+				"width": 3935,
+				"height": 5894,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "quite",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Owner longer text blah blah",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
 			}
 		},
 		"items": []
 	},
 	{
 		"__TYPE__": "SharedSliceContent",
-		"variation": "imageTextWithStats",
+		"variation": "stats",
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
-				"value": "None",
+				"value": "Light",
 				"type": "Select"
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
@@ -52,7 +109,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Hospital"
+							"text": "Pride"
 						}
 					}
 				]
@@ -63,14 +120,50 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Elit laboris sunt in sint ullamco dolore deserunt pariatur ut tempor. Ex dolore tempor magna. Laborum incididunt adipisicing irure commodo sunt sit nulla nulla Lorem Lorem commodo consectetur ipsum eiusmod cillum."
+							"text": "Ex exercitation sint elit veniam duis. oluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. ",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"button": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "31d4cbae-ff0e-4862-9294-d9ac4179156c",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "https://slicemachine.dev",
+							"text": "Test Button"
 						}
 					}
 				]
 			},
-			"imageRight": {
-				"__TYPE__": "BooleanContent",
-				"value": false
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
+				"width": 4000,
+				"height": 6000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "aside",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
 			},
 			"stats": {
 				"__TYPE__": "GroupContentType",
@@ -79,28 +172,225 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "party",
-									"type": "Text"
-								}
-							],
-							[
-								"body",
+								"statistic",
 								{
 									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Magna incididunt cupidatat aliquip. Occaecat velit ea magna enim adipisicing ex ad ut velit quis tempor ea adipisicing irure. Aliqua et et qui incididunt in esse esse irure cillum non exercitation elit laborum sint velit."
+												"text": "33",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Voluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. Anim culpa culpa elit quis eiusmod non nostrud velit duis velit velit mollit cillum nostrud."
 											}
 										}
 									]
 								}
+							],
+							[
+								"percentage",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": true
+								}
 							]
 						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"statistic",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "56",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Voluptate elit eu consectetur aute ex laboris laborum duis cupidatat id quis. Anim culpa culpa elit quis eiusmod non nostrud velit duis velit velit mollit cillum nostrud.",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"percentage",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": []
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Furniture"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "video",
+		"primary": {
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
+			},
+			"imageRight": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Mouth"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consectetur laborum magna consectetur eiusmod id aliqua excepteur excepteur voluptate quis duis. Aliquip ullamco fugiat incididunt laborum cillum incididunt consequat excepteur velit aute proident exercitation Lorem."
+						}
+					}
+				]
+			},
+			"button": {
+				"__TYPE__": "RepeatableContent",
+				"type": "Link",
+				"value": [
+					{
+						"key": "eafbac7f-026a-4fcf-9648-0b57f44f1fd0",
+						"__TYPE__": "LinkContent",
+						"value": {
+							"__TYPE__": "ExternalLink",
+							"url": "http://google.com",
+							"text": "three"
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+				"width": 3456,
+				"height": 3456,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "rabbit",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"video": {
+				"embed_url": "https://www.youtube.com/watch?v=BHACKCNDMW8",
+				"type": "video",
+				"version": "1.0",
+				"title": "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+				"author_name": "Cat Trumpet",
+				"author_url": "https://www.youtube.com/@cattrumpet",
+				"provider_name": "YouTube",
+				"provider_url": "https://www.youtube.com/",
+				"thumbnail_url": "https://i.ytimg.com/vi/BHACKCNDMW8/hqdefault.jpg",
+				"thumbnail_width": 480,
+				"thumbnail_height": 360,
+				"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/BHACKCNDMW8?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"3 Hours of Amazing Nature Scenery &amp; Relaxing Music for Stress Relief.\"></iframe>",
+				"__TYPE__": "EmbedContent",
+				"all": {
+					"embed_url": "https://www.youtube.com/watch?v=BHACKCNDMW8",
+					"type": "video",
+					"version": "1.0",
+					"title": "3 Hours of Amazing Nature Scenery & Relaxing Music for Stress Relief.",
+					"author_name": "Cat Trumpet",
+					"author_url": "https://www.youtube.com/@cattrumpet",
+					"provider_name": "YouTube",
+					"provider_url": "https://www.youtube.com/",
+					"thumbnail_url": "https://i.ytimg.com/vi/BHACKCNDMW8/hqdefault.jpg",
+					"thumbnail_width": 480,
+					"thumbnail_height": 360,
+					"html": "<iframe width=\"200\" height=\"113\" src=\"https://www.youtube.com/embed/BHACKCNDMW8?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen title=\"3 Hours of Amazing Nature Scenery &amp; Relaxing Music for Stress Relief.\"></iframe>",
+					"height": 113,
+					"width": 200
+				}
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Exactly"
+						}
 					}
 				]
 			}

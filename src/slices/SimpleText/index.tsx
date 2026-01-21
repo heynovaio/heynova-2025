@@ -1,6 +1,10 @@
-import { FC } from "react";
+"use client";
+
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { Container, Section, AnimatedSection } from "@/components";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { JSX } from "react";
+import { componentsTextSmall } from "@/utils";
 
 /**
  * Props for `SimpleText`.
@@ -10,42 +14,28 @@ export type SimpleTextProps = SliceComponentProps<Content.SimpleTextSlice>;
 /**
  * Component for "SimpleText" Slices.
  */
-const SimpleText: FC<SimpleTextProps> = ({ slice }) => {
+const SimpleText = ({ slice }: SimpleTextProps): JSX.Element => {
+  const leftAligned = slice.primary.text_alignment === false;
+  const textAlignment = leftAligned
+    ? "items-start text-left"
+    : "items-center text-center";
+
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for simple_text (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <AnimatedSection>
+        <Container>
+          <div className={`text-content max-w-[900px] mx-auto ${textAlignment}`}>
+            <PrismicRichText
+              field={slice.primary.text}
+              components={componentsTextSmall}
+            />
+          </div>
+        </Container>
+      </AnimatedSection>
+    </Section>
   );
 };
 

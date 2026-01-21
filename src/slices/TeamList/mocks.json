@@ -8,28 +8,6 @@
 				"value": "None",
 				"type": "Select"
 			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Current"
-						}
-					}
-				]
-			},
-			"body": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Ad deserunt ea et aliqua nostrud quis voluptate laborum dolore velit pariatur aute excepteur. Ea ea sint nisi dolor minim duis adipisicing magna non esse ex velit mollit ut."
-						}
-					}
-				]
-			},
 			"team_member": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -66,8 +44,8 @@
 								"name",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "mark",
-									"type": "Text"
+									"type": "Text",
+									"value": "Mark"
 								}
 							],
 							[
@@ -76,6 +54,328 @@
 									"__TYPE__": "FieldContent",
 									"value": "applied",
 									"type": "Text"
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Sint adipisicing est dolor anim velit sit dolore esse do nulla deserunt laboris eu. Quis eu amet ut amet excepteur nisi ex nisi consequat elit occaecat aute id duis voluptate."
+											}
+										}
+									]
+								}
+							],
+							[
+								"links",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "a5518db1-7dc8-4bc3-b30b-42174b6debe0",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "view"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Dave"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "relax"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgzNDc0MzV8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "orange fruit on white ceramic plate",
+									"origin": {
+										"id": "Jr7t5QviCDM",
+										"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgzNDc0MzV8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3024,
+										"height": 4032
+									},
+									"width": 3024,
+									"height": 4032,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident cillum eu aute velit laborum incididunt dolor. Do tempor id excepteur."
+											}
+										}
+									]
+								}
+							],
+							[
+								"links",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "aeca675c-04f5-4ddc-81cd-0bf829e619e5",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "cast"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1473830394358-91588751b241?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8cGVyc29ufGVufDB8fHx8MTc0ODQ0ODg1Nnww&ixlib=rb-4.1.0&q=85",
+									"alt": "person looking out through window",
+									"origin": {
+										"id": "gzhyKEo_cbU",
+										"url": "https://images.unsplash.com/photo-1473830394358-91588751b241?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8cGVyc29ufGVufDB8fHx8MTc0ODQ0ODg1Nnww&ixlib=rb-4.1.0&q=85",
+										"width": 5184,
+										"height": 3456
+									},
+									"width": 5184,
+									"height": 3456,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Kerry"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "element"
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Eu laboris cillum adipisicing cillum reprehenderit laborum voluptate et nostrud aute excepteur aliquip. Sit nisi voluptate commodo anim nulla reprehenderit proident aliquip dolore laboris esse occaecat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"links",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "0caadf1c-a990-47dd-9b31-fd2f753ac740",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "whale"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1528629297340-d1d466945dc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8YmljeWNsZXxlbnwwfHx8fDE3NDg0NDg4Nzh8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "man riding bicycle on road during daytime",
+									"origin": {
+										"id": "nPOtzvGLYW0",
+										"url": "https://images.unsplash.com/photo-1528629297340-d1d466945dc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNXx8YmljeWNsZXxlbnwwfHx8fDE3NDg0NDg4Nzh8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3829,
+										"height": 2411
+									},
+									"width": 3829,
+									"height": 2411,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Ellen"
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "landing"
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Reprehenderit quis occaecat id."
+											}
+										}
+									]
+								}
+							],
+							[
+								"links",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "71a0f0e8-681d-43ea-bdb0-8a679ab81e85",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "anybody"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Erin"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxiYXJiZXF1ZXxlbnwwfHx8fDE3NDg0NDkzMDh8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "grilled meat and vegetable on the table",
+									"origin": {
+										"id": "UC0HZdUitWY",
+										"url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxiYXJiZXF1ZXxlbnwwfHx8fDE3NDg0NDkzMDh8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3571,
+										"height": 5356
+									},
+									"width": 3571,
+									"height": 5356,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"position",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "advance"
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ipsum veniam consectetur dolore reprehenderit officia voluptate cupidatat in."
+											}
+										}
+									]
+								}
+							],
+							[
+								"links",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "6924305e-3951-4a30-abae-b254b4db09dc",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "nearby"
+									}
 								}
 							]
 						]

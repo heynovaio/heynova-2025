@@ -1,53 +1,60 @@
-import { FC } from "react";
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+"use client";
 
-/**
- * Props for `HorizontalAccordion`.
- */
-export type HorizontalAccordionProps =
+import React, { JSX } from "react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Content } from "@prismicio/client";
+
+import { HorizontalAccordion } from "@/components/Accordions/HorizontalAccordion";
+import { Container, ContentBox, AnimatedSection, Section } from "@/components";
+import { PrismicNextLink } from "@prismicio/next";
+
+export type HorizontalAccordionSliceProps =
   SliceComponentProps<Content.HorizontalAccordionSlice>;
 
-/**
- * Component for "HorizontalAccordion" Slices.
- */
-const HorizontalAccordion: FC<HorizontalAccordionProps> = ({ slice }) => {
+const HorizontalAccordionSlice = ({
+  slice,
+}: HorizontalAccordionSliceProps): JSX.Element | null => {
+  if (!slice.primary.accordion) {
+    return null;
+  }
+
+  const titles = slice.primary.accordion.map((item) => item.title || "");
+  const contents = slice.primary.accordion.map((item) => item.body || "");
+  const images = slice.primary.accordion.map((item) => item.icon || null);
+  const buttons = slice.primary.accordion.map((item) => item.buttons || null);
+
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for horizontal_accordion (variation:{" "}
-      {slice.variation}) slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select Claude 3.7 Sonnet (recommended for optimal output)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 📚 Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       */}
-    </section>
+      <AnimatedSection>
+        <Container>
+          <ContentBox
+            title={slice.primary.title}
+            content={<PrismicRichText field={slice.primary.body} />}
+            buttons={slice.primary.buttons.map((button, index) => {
+              return (
+                <PrismicNextLink
+                  field={button}
+                  key={index}
+                  className="btn btn-primary"
+                />
+              );
+            })}
+            containerClassName="mb-8"
+            titleClassName="text-aqua"
+          />
+          <HorizontalAccordion
+            titles={titles}
+            contents={contents}
+            images={images}
+            buttons={buttons}
+          />
+        </Container>
+      </AnimatedSection>
+    </Section>
   );
 };
 
-export default HorizontalAccordion;
+export default HorizontalAccordionSlice;

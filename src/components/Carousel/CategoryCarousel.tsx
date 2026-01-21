@@ -1,0 +1,201 @@
+"use client";
+import {
+  asText,
+  Content,
+  ContentRelationshipField,
+  FilledContentRelationshipField,
+  ImageField,
+  isFilled,
+  LinkField,
+  RichTextField,
+} from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import React, { useState, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import { Container, Section } from "../Layout";
+import { getCategoryResponsiveItems } from "./responsive";
+import { ContentBox, GeneralCard } from "..";
+import { CarouselButton } from "../Buttons/CarouselButtons";
+import { PrismicNextLink } from "@prismicio/next";
+import GetAllInsights from "@/utils/getAllInsights";
+import {
+  ContentCarouselSliceDefaultPrimaryCardsItem,
+  InsightDocument,
+  Simplify,
+} from "../../../prismicio-types";
+
+export type CategoryCarouselProps = {
+  slice: SliceComponentProps<Content.ContentCarouselSlice>["slice"];
+};
+
+export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    skipSnaps: false,
+    loop: false,
+  });
+  const insightPageData = GetAllInsights("en-ca").data;
+  const itemsPerPage = getCategoryResponsiveItems();
+
+  const totalSlides = Math.max(
+    0,
+    slice.primary.cards.length - itemsPerPage + 1,
+  );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setCurrentSlide(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  const handleArrowClick = (direction: "next" | "prev") => {
+    if (!emblaApi) return;
+    if (direction === "next" && currentSlide < totalSlides - 1) {
+      emblaApi.scrollNext();
+    } else if (direction === "prev" && currentSlide > 0) {
+      emblaApi.scrollPrev();
+    }
+  };
+
+  const contentCardIds = slice.primary.cards
+    .filter(
+      (item): item is { item: ContentRelationshipField<"insight"> } =>
+        item !== null &&
+        isFilled.contentRelationship(
+          (item as Simplify<ContentCarouselSliceDefaultPrimaryCardsItem>).item,
+        ),
+    )
+    .map((item) => (item.item as FilledContentRelationshipField<"insight">).id);
+
+  const filteredData: InsightDocument[] = (insightPageData ?? []).filter(
+    (item) => contentCardIds.includes(item.id),
+  );
+
+  return (
+    <Section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      styling="overflow-x-hidden flex flex-col gap-8"
+    >
+      <Container containerClassName="flex flex-col">
+        <div className="flex justify-between items-start">
+          <ContentBox
+            title={slice.primary.title}
+            titleClassName="text-aqua"
+            content={
+              <div className="text-bodyLarge">
+                <PrismicRichText
+                  field={slice.primary.body}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="!mx-0">{children}</p>
+                    ),
+                  }}
+                />
+              </div>
+            }
+            width="full"
+            containerClassName="gap-4 text-start"
+          />
+          {filteredData.length > itemsPerPage && (
+            <CarouselButton
+              currentSlide={currentSlide + 1}
+              totalSlides={totalSlides}
+              onSlideChange={handleArrowClick}
+              styling="w-fit"
+            />
+          )}
+        </div>
+      </Container>
+      <Container>
+        <div>
+          <div
+            className="embla tabbed-carousel m-0 focus:focus focus:outline-offset-8 !overflow-visible"
+            ref={emblaRef}
+          >
+            <div className="embla__container">
+              {filteredData?.map((item, index) => {
+                const itemData = item.data;
+                const hasImage = (
+                  item: unknown,
+                ): item is { image: ImageField } =>
+                  typeof item === "object" &&
+                  item !== null &&
+                  "image" in item &&
+                  Boolean((item as { image?: unknown }).image);
+
+                const singleCategory = item.data?.categories?.[0]?.name;
+                const category = isFilled.contentRelationship(singleCategory)
+                  ? singleCategory.uid
+                  : "";
+
+                // Try to get category title from the relationship data
+                let categoryName = "";
+                if (isFilled.contentRelationship(singleCategory)) {
+                  const categoryTitle = (
+                    singleCategory as unknown as {
+                      data?: { title?: RichTextField };
+                    }
+                  )?.data?.title;
+                  if (categoryTitle) {
+                    categoryName = asText(categoryTitle);
+                  }
+                }
+
+                const url = `/insights/${category}/${item.uid}`;
+
+                const showLink = hasImage(itemData) && category;
+
+                return (
+                  <div key={index} className="embla__slide pr-3 md:pr-7 flex">
+                    {showLink ? (
+                      <GeneralCard
+                        href={url}
+                        image={itemData.image}
+                        title={asText(itemData.title)}
+                        description={itemData.body}
+                        tags={item.tags}
+                        variant="category"
+                        category={categoryName}
+                      />
+                    ) : (
+                      <div className="text-center py-8 h-full flex items-center justify-center">
+                        No content available
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          {((Array.isArray(slice.primary.button) &&
+            slice.primary.button[0]?.text) ||
+            (!Array.isArray(slice.primary.button) &&
+              slice.primary.button?.text)) && (
+            <div className=" w-fit">
+              <PrismicNextLink
+                field={
+                  Array.isArray(slice.primary.button)
+                    ? (slice.primary.button[0] ?? undefined)
+                    : slice.primary.button
+                }
+                className={`btn btn-primary justify-self-start `}
+              />
+            </div>
+          )}
+        </div>
+      </Container>
+    </Section>
+  );
+};

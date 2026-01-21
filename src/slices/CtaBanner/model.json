@@ -12,6 +12,27 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "text_alignment": {
+          "type": "Boolean",
+          "config": {
+            "label": "Text Alignment",
+            "placeholder_false": "Left",
+            "placeholder_true": "Center",
+            "default_value": true
+          }
+        },
+        "inner_background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Inner Background Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Gradient"
+            ],
+            "default_value": "Default"
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -40,31 +61,6 @@
             "allowText": true,
             "repeat": true
           }
-        },
-        "background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
-          }
-        },
-        "inner_background_color": {
-          "type": "Select",
-          "config": {
-            "label": "Inner Background Color",
-            "placeholder": "",
-            "options": [
-              "Default",
-              "Light",
-              "Dark"
-            ],
-            "default_value": "Default"
-          }
         }
       },
       "items": {}
@@ -77,16 +73,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "background_color": {
-          "type": "Select",
+        "text_alignment": {
+          "type": "Boolean",
           "config": {
-            "label": "Background Color",
-            "placeholder": "",
-            "options": [
-              "None",
-              "Light",
-              "Dark"
-            ]
+            "label": "Text Alignment",
+            "placeholder_false": "Left",
+            "placeholder_true": "Center",
+            "default_value": true
           }
         },
         "inner_background_color": {
@@ -96,8 +89,7 @@
             "placeholder": "",
             "options": [
               "Default",
-              "Light",
-              "Dark"
+              "Gradient"
             ],
             "default_value": "Default"
           }
@@ -136,6 +128,72 @@
           "config": {
             "label": "Form",
             "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "booking",
+      "name": "Booking",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text_alignment": {
+          "type": "Boolean",
+          "config": {
+            "label": "Text Alignment",
+            "placeholder_false": "Left",
+            "placeholder_true": "Center",
+            "default_value": true
+          }
+        },
+        "inner_background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Inner Background Color",
+            "placeholder": "",
+            "options": [
+              "Default",
+              "Gradient"
+            ],
+            "default_value": "Default"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
+          }
+        },
+        "booking_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Booking Button Text",
+            "placeholder": ""
+          }
+        },
+        "button_class": {
+          "type": "Boolean",
+          "config": {
+            "label": "Button Class",
+            "placeholder_false": "Button Primary",
+            "placeholder_true": "Button Secondary",
+            "default_value": true
           }
         }
       },

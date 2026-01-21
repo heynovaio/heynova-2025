@@ -58,11 +58,30 @@
           "thumbnails": []
         }
       },
+      "include_newsletter_sign_up": {
+        "type": "Boolean",
+        "config": {
+          "label": "Include Newsletter Sign Up",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "content_grid": {
+              "type": "SharedSlice"
+            },
+            "stats": {
+              "type": "SharedSlice"
+            },
+            "cta_banner": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

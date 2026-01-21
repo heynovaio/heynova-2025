@@ -25,24 +25,6 @@
             "default_value": "None"
           }
         },
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Title",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading2,heading3"
-          }
-        },
-        "body": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Body",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
-          }
-        },
         "team_member": {
           "type": "Group",
           "config": {
@@ -69,6 +51,26 @@
                 "config": {
                   "label": "Position",
                   "placeholder": ""
+                }
+              },
+              "bio": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Bio",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
+                }
+              },
+              "links": {
+                "type": "Link",
+                "config": {
+                  "label": "Links",
+                  "placeholder": "LinkedIn",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
                 }
               }
             }

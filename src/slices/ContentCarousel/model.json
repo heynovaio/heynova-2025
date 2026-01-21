@@ -43,6 +43,17 @@
             "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
           }
         },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
         "cards": {
           "type": "Group",
           "config": {
@@ -105,6 +116,149 @@
             "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
           }
         },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cards",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading3,heading4"
+                }
+              },
+              "body": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Body",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "preformatted,paragraph,hyperlink,image,embed,list-item,o-list-item,rtl,strong,em"
+                }
+              },
+              "tag_1": {
+                "type": "Link",
+                "config": {
+                  "label": "Tag 1",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "service"
+                  ]
+                }
+              },
+              "tag_2": {
+                "type": "Link",
+                "config": {
+                  "label": "Tag 2",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "service"
+                  ]
+                }
+              },
+              "tag_3": {
+                "type": "Link",
+                "config": {
+                  "label": "Tag 3",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "service"
+                  ]
+                }
+              },
+              "buttons": {
+                "type": "Link",
+                "config": {
+                  "label": "Buttons",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "generalCarousel",
+      "name": "General Carousel",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "None"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
         "cards": {
           "type": "Group",
           "config": {
@@ -157,6 +311,76 @@
                   "allowTargetBlank": true,
                   "allowText": true,
                   "repeat": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "pictureCarousel",
+      "name": "Picture Carousel",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light",
+              "Dark"
+            ],
+            "default_value": "None"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,em,strong,rtl,o-list-item,list-item,embed,image,hyperlink"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cards",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
                 }
               }
             }

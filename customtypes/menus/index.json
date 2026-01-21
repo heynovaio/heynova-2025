@@ -6,6 +6,13 @@
   "status": true,
   "json": {
     "Header": {
+      "call_to_action_text": {
+        "type": "Text",
+        "config": {
+          "label": "Call to Action Text",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
@@ -38,6 +45,39 @@
         "config": {
           "label": "Copyright",
           "placeholder": ""
+        }
+      },
+      "facebook": {
+        "type": "Link",
+        "config": {
+          "label": "Facebook",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "instagram": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "linkedin": {
+        "type": "Link",
+        "config": {
+          "label": "LinkedIn",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
         }
       },
       "slices1": {

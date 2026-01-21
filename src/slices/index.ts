@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   content_carousel: dynamic(() => import("./ContentCarousel")),
   content_column: dynamic(() => import("./ContentColumn")),
+  content_grid: dynamic(() => import("./ContentGrid")),
   cta_banner: dynamic(() => import("./CtaBanner")),
   horizontal_accordion: dynamic(() => import("./HorizontalAccordion")),
   image_text: dynamic(() => import("./ImageText")),
@@ -13,7 +14,7 @@ export const components = {
   numbered_list: dynamic(() => import("./NumberedList")),
   simple_text: dynamic(() => import("./SimpleText")),
   single_link: dynamic(() => import("./SingleLink")),
+  stats: dynamic(() => import("./Stats")),
   team_list: dynamic(() => import("./TeamList")),
   testimonials: dynamic(() => import("./Testimonials")),
-  tile_grid: dynamic(() => import("./TileGrid")),
 };

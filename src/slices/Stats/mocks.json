@@ -1,0 +1,81 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"background": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "+89%"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Increase in something"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "40"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Of something idk"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "$10"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Of money"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
