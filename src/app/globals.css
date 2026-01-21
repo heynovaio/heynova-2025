@@ -444,18 +444,18 @@ a {
     width: 0;
     height: 0;
     pointer-events: none;
+
     opacity: 0;
   }
 
   .btn::before {
     top: 0;
     left: 0;
+
     border-top-color: var(--color-white);
     border-left-color: var(--color-white);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    transition:
-      width 0.3s ease,
-      height 0.3s ease;
+    transition: all 0.3s 0.15s;
   }
 
   .btn::after {
@@ -464,9 +464,7 @@ a {
     border-bottom-color: var(--color-white);
     border-right-color: var(--color-white);
     box-shadow: 0 0 15px rgba(241, 240, 244, 0.6);
-    transition:
-      width 0.3s ease 0.15s,
-      height 0.3s ease 0.15s;
+    transition: all 0.3s 0.15s;
   }
 
   .btn:hover::before,
