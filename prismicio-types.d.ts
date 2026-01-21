@@ -580,7 +580,10 @@ export type InsightDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsCategoriesDocumentDataSlicesSlice = StatsSlice | CtaBannerSlice;
+type InsightsCategoriesDocumentDataSlicesSlice =
+  | ContentGridSlice
+  | StatsSlice
+  | CtaBannerSlice;
 
 /**
  * Content for Insights Categories documents
@@ -715,7 +718,7 @@ export type InsightsCategoriesDocument<Lang extends string = string> =
     Lang
   >;
 
-type InsightsListingDocumentDataSlicesSlice = StatsSlice;
+type InsightsListingDocumentDataSlicesSlice = ContentGridSlice | StatsSlice;
 
 /**
  * Content for Insights Listing documents
@@ -1138,6 +1141,7 @@ export type NewsletterSignupDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContentGridSlice
   | StatsSlice
   | TestimonialsSlice
   | SimpleTextSlice
@@ -1447,7 +1451,10 @@ export type ServiceDocument<Lang extends string = string> =
     Lang
   >;
 
-type ServicesListingDocumentDataSlicesSlice = StatsSlice | CtaBannerSlice;
+type ServicesListingDocumentDataSlicesSlice =
+  | ContentGridSlice
+  | StatsSlice
+  | CtaBannerSlice;
 
 /**
  * Content for Services Listing documents
