@@ -208,7 +208,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
           ) : isFilled.link(slice.primary.button) ? (
             <PrismicNextLink
               field={slice.primary.button}
-              className="btn btn-primary justify-self-start"
+              className="btn btn-primary justify-self-start "
             />
           ) : null}
         </Container>

@@ -204,7 +204,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
                   ? (slice.primary.button[0] ?? undefined)
                   : slice.primary.button
               }
-              className={`btn btn-primary justify-self-start`}
+              className={`btn btn-primary justify-self-start `}
             />
           )}
         </Container>
