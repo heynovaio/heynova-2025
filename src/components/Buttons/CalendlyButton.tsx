@@ -29,12 +29,11 @@ export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
     script.onload = () => {
       // Create link element for Calendly with data-calendly-inline-widget
       const link = document.createElement("a");
-      link.href =
-        "https://calendly.com/hey-nova/free-consult?hide_event_type_details=1&hide_gdpr_block=1";
+      link.href = "https://calendly.com/hey-nova/free-consult";
       link.className = `btn ${buttonClass}`;
       link.setAttribute(
         "data-calendly-url",
-        "https://calendly.com/hey-nova/free-consult?hide_event_type_details=1&hide_gdpr_block=1",
+        "https://calendly.com/hey-nova/free-consult",
       );
       link.textContent = text ?? "";
       link.style.opacity = "0";
