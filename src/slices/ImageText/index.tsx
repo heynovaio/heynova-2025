@@ -14,18 +14,26 @@ import { JSX } from "react";
 // import { components } from "@/utils";
 import { PrismicNextLink } from "@prismicio/next";
 
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
 /**
  * Props for `ImageText`.
  */
-export type ImageTextProps = SliceComponentProps<Content.ImageTextSlice>;
-
+export type ImageTextProps = SliceComponentProps<
+  Content.ImageTextSlice,
+  SliceContext
+>;
 /**
  * Component for "ImageText" Slices.
  */
-const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
+const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
   const imageSide =
     slice.primary.imageRight === false ? "md:flex-row" : "md:flex-row-reverse";
 
+  const isBlog = context?.isBlogPage ?? false;
   // const isVideo = slice.variation === "video";
   const isStats = slice.variation === "stats";
   const isVideo = slice.variation === "video";
@@ -51,6 +59,7 @@ const ImageText = ({ slice }: ImageTextProps): JSX.Element => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      isBlogPage={isBlog}
     >
       <AnimatedSection>
         <Container

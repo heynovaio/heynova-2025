@@ -2,7 +2,13 @@
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Section, Container, ResponsiveImage, ContentBox, AnimatedSection } from "@/components";
+import {
+  Section,
+  Container,
+  ResponsiveImage,
+  ContentBox,
+  AnimatedSection,
+} from "@/components";
 import { JSX } from "react";
 
 /**
