@@ -46,7 +46,6 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
 
         <PrismicRichText field={body} />
       </div>
-      {/** TODO: Figure out mobile layout not working */}
       <div
         className={`grid gap-6 ${getResponsiveGridCols(numCols || 3)}`}
       >
