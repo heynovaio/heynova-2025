@@ -597,7 +597,7 @@ a {
     border-top-color: var(--color-lavendar);
     border-left-color: var(--color-lavendar);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    transition: all 0.6s 0.15s;
+    transition: all 0.3s 0.15s;
   }
 
   .general-card::after {
@@ -606,7 +606,7 @@ a {
     border-bottom-color: var(--color-lavendar);
     border-right-color: var(--color-lavendar);
     box-shadow: 0 0 15px rgba(98, 47, 253, 0.7);
-    transition: all 0.6s 0.15s;
+    transition: all 0.3s 0.15s;
   }
 
   .general-card:hover::before,
