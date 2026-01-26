@@ -132,7 +132,7 @@ export const GeneralCard = ({
   );
 
   return href ? (
-    <Link href={href} className="block h-full">
+    <Link href={href} className="block h-full general-card-link">
       {cardInner}
     </Link>
   ) : (
