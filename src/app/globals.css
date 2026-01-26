@@ -565,7 +565,6 @@ a {
     border-radius: 0;
   }
 
-  /** CARD FOCUS/HOVER STATES TO MATCH THE BUTTON HOVER ANIMATION WIP **/
   .general-card {
     position: relative;
     display: inline-block;
