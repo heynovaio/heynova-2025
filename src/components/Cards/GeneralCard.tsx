@@ -60,12 +60,15 @@ export const GeneralCard = ({
   const bgColor = variant === "category" ? "bg-aqua" : "bg-teal-muted/20";
   const textColor = variant === "category" ? "text-midnight" : "text-white";
   const tagBgColor = variant === "category" ? "bg-aqua/10" : "bg-white/10";
-  const tagBorderColor = variant === "category" ? "border-aqua" : "border-white";
+  const tagBorderColor =
+    variant === "category" ? "border-aqua" : "border-white";
   const tagTextColor = variant === "category" ? "text-aqua" : "text-white";
 
   const cardInner = (
-    <div className="rounded-[20px] p-[0.5px] flex flex-col h-full glow-blur">
-      <div className={`${bgColor} border-aqua/20 border overflow-hidden rounded-[20px] flex flex-col h-full`}>
+    <div className="rounded-[20px] p-[0.5px] flex flex-col h-full glow-blur general-card">
+      <div
+        className={`${bgColor} border-aqua/20 border overflow-hidden rounded-[20px] flex flex-col h-full`}
+      >
         {image && (
           <PrismicNextImage
             field={image}
@@ -91,14 +94,15 @@ export const GeneralCard = ({
                   {category}
                 </span>
               )}
-              {tags?.length > 0 && tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className={`inline-block px-3 py-1 rounded-full border text-xs font-medium ${tagBgColor} ${tagBorderColor} ${tagTextColor}`}
-                >
-                  {tag}
-                </span>
-              ))}
+              {tags?.length > 0 &&
+                tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className={`inline-block px-3 py-1 rounded-full border text-xs font-medium ${tagBgColor} ${tagBorderColor} ${tagTextColor}`}
+                  >
+                    {tag}
+                  </span>
+                ))}
             </div>
           </div>
           {description && typeof description === "string" ? (

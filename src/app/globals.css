@@ -565,6 +565,63 @@ a {
     border-radius: 0;
   }
 
+  /** CARD FOCUS/HOVER STATES TO MATCH THE BUTTON HOVER ANIMATION WIP **/
+  .general-card {
+    position: relative;
+    display: inline-block;
+    padding: 10px 34px 12px 34px;
+    border-radius: 1.875em;
+    text-align: center;
+    overflow: visible;
+    z-index: 0;
+
+    transition: color 0.6s ease;
+  }
+
+  .general-card::before,
+  .general-card::after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    border-radius: inherit;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+
+    opacity: 0;
+  }
+
+  .general-card::before {
+    top: 0;
+    left: 0;
+
+    border-top-color: var(--color-lavendar);
+    border-left-color: var(--color-lavendar);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s 0.15s;
+  }
+
+  .general-card::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-color: var(--color-lavendar);
+    border-right-color: var(--color-lavendar);
+    box-shadow: 0 0 15px rgba(98, 47, 253, 0.7);
+    transition: all 0.3s 0.15s;
+  }
+
+  .general-card:hover::before,
+  .general-card:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  .general-card:hover {
+    color: var(--color-white);
+  }
+
   .gradient-light {
     background: linear-gradient(90deg, #97e1e5 0.01%, #d9caf8 89.82%);
     -webkit-background-clip: text;
