@@ -22,8 +22,10 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
     : "items-center text-center";
   const isForm = slice.variation === "ctaBannerWithForm";
   const isGradient = slice.primary.inner_background_color === "Gradient";
-  const textColor = isGradient ? "text-white" : "text-white";
-  const backgroundColor = isGradient ? "gradient-dark-bg" : "bg-purple-drk ";
+  const textColor = isGradient ? "text-white" : "text-midnight";
+  const backgroundColor = isGradient
+    ? "gradient-dark-bg"
+    : "bg-teal-muted cta-link";
   const borderColor = isGradient ? "border-aqua" : "border-wine";
 
   const showPrismicButtons =
@@ -61,13 +63,19 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
                       <PrismicNextLink
                         field={button}
                         key={index}
-                        className="btn btn-primary"
+                        className={
+                          isGradient ? "btn btn-primary" : "btn btn-secondary"
+                        }
                       />
                     ))
                   : [
                       <CalendlyButton
                         text={slice.primary.booking_button_text ?? "Book Now"}
-                        buttonClass="btn-primary"
+                        buttonClass={
+                          slice.primary.button_class == true
+                            ? "btn-secondary"
+                            : "btn-primary"
+                        }
                         key={slice.primary.booking_button_text}
                       />,
                     ]

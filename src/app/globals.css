@@ -533,8 +533,12 @@ a {
       box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
     }
   }
-  .pink-link .text-content a {
-    color: var(--color-wine);
+  .cta-link .text-content a {
+    color: var(--color-purple-drk) !important;
+  }
+  .cta-link .text-content a:hover {
+    border: 2px solid var(--color-purple-drk);
+    padding: 2px;
   }
 
   .gradient-text {
