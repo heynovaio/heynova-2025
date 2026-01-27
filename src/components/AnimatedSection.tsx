@@ -42,12 +42,16 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       (item as HTMLElement).style.opacity = "0";
     });
 
-    const imageCarouselItems = container.querySelectorAll(".image-carousel .embla__slide");
+    const imageCarouselItems = container.querySelectorAll(
+      ".image-carousel .embla__slide",
+    );
     imageCarouselItems.forEach((item) => {
       (item as HTMLElement).style.opacity = "0";
     });
 
-    const tabbedCarouselItems = container.querySelectorAll(".tabbed-carousel .embla__slide");
+    const tabbedCarouselItems = container.querySelectorAll(
+      ".tabbed-carousel .embla__slide",
+    );
     tabbedCarouselItems.forEach((item) => {
       (item as HTMLElement).style.opacity = "0";
     });
@@ -72,13 +76,15 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
             });
 
             // Animate rotated cards to straight (for content column cards)
-            const rotatedCards = container.querySelectorAll("[class*='rotate-']");
+            const rotatedCards =
+              container.querySelectorAll("[class*='rotate-']");
             rotatedCards.forEach((card, index) => {
               const element = card as HTMLElement;
               const classString = element.className || "";
-              const rotation = typeof classString === 'string' 
-                ? classString.match(/rotate-\[([^\]]+)\]/)?.[1] || "0deg"
-                : "0deg";
+              const rotation =
+                typeof classString === "string"
+                  ? classString.match(/rotate-\[([^\]]+)\]/)?.[1] || "0deg"
+                  : "0deg";
               element.style.setProperty("--rotation-angle", rotation);
               const delay = index * 150;
               element.style.animation = `rotateToStraight 0.8s ease-out ${delay}ms both`;
@@ -98,9 +104,9 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.15,
         rootMargin: "0px",
-      }
+      },
     );
 
     observer.observe(container);

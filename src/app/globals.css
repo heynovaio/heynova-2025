@@ -533,8 +533,12 @@ a {
       box-shadow: 0 0 10px rgba(164, 120, 255, 0.6);
     }
   }
-  .pink-link .text-content a {
-    color: var(--color-wine);
+  .cta-link .text-content a {
+    color: var(--color-purple-drk) !important;
+  }
+  .cta-link .text-content a:hover {
+    border: 2px solid var(--color-purple-drk);
+    padding: 2px;
   }
 
   .gradient-text {
@@ -563,6 +567,66 @@ a {
 
   .team-card img {
     border-radius: 0;
+  }
+
+  .general-card {
+    position: relative;
+    display: inline-block;
+    padding: 10px 34px 12px 34px;
+    border-radius: 1.875em;
+    text-align: center;
+    overflow: visible;
+    z-index: 0;
+    transition: color 0.6s ease;
+  }
+
+  .general-card::before,
+  .general-card::after {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    border-radius: inherit;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .general-card::before {
+    top: 0;
+    left: 0;
+
+    border-top-color: var(--color-lavendar);
+    border-left-color: var(--color-lavendar);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s 0.15s;
+  }
+
+  .general-card::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-color: var(--color-lavendar);
+    border-right-color: var(--color-lavendar);
+    box-shadow: 0 0 15px rgba(98, 47, 253, 0.7);
+    transition: all 0.3s 0.15s;
+  }
+
+  .general-card:hover::before,
+  .general-card:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  .general-card:hover {
+    color: var(--color-white);
+  }
+
+  .general-card-link:focus-visible {
+    outline: 3px solid var(--color-lavendar);
+    border-radius: 1.125em;
+    box-shadow: 0 0 15px rgba(98, 47, 253, 0.8);
   }
 
   .gradient-light {
