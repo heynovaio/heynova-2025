@@ -7,15 +7,24 @@ import { Container, ContentBox, Section, AnimatedSection } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 import { CalendlyButton } from "@/components/Buttons/CalendlyButton";
 
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
 /**
  * Props for `CtaBanner`.
  */
-export type CtaBannerProps = SliceComponentProps<Content.CtaBannerSlice>;
+export type CtaBannerProps = SliceComponentProps<
+  Content.CtaBannerSlice,
+  SliceContext
+>;
 
 /**
  * Component for "CtaBanner" Slices.
  */
-const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
+const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
+  const isBlog = context?.isBlogPage ?? false;
   const leftAligned = slice.primary.text_alignment === false;
   const textAlignment = leftAligned
     ? "items-start text-left"
@@ -35,6 +44,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      isBlogPage={isBlog}
     >
       <AnimatedSection>
         <Container>

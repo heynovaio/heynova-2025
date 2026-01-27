@@ -4,16 +4,19 @@ interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   styling?: string;
   props?: React.HTMLAttributes<HTMLDivElement>;
+  isBlogPage?: boolean;
 }
 export const Section: React.FC<SectionProps> = ({
   children,
   styling,
+  isBlogPage = false,
   ...props
 }) => {
+  const verticalPadding = isBlogPage ? "py-6 print:my-0" : "py-8 md:py-13  ";
   return (
     // Vertical Padding
     <section
-      className={`py-8 md:py-13 print:py-0 print:my-0 w-full ${styling}`}
+      className={`${verticalPadding} print:py-0 print:my-0 w-full ${styling}`}
       {...props}
     >
       {children}

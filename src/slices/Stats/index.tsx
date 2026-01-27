@@ -3,20 +3,28 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-export type StatsProps = SliceComponentProps<Content.StatsSlice>;
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
 
-const Stats: FC<StatsProps> = ({ slice }) => {
+export type StatsProps = SliceComponentProps<Content.StatsSlice, SliceContext>;
+
+const Stats: FC<StatsProps> = ({ slice, context }) => {
   const background = slice.primary.background;
   const bgColor = !background
     ? "bg-aqua text-purple-drk"
     : "bg-teal-drk text-white";
+
+  const isBlog = context?.isBlogPage ?? false;
+  const verticalPadding = isBlog ? "py-6 print:my-0" : "py-8 md:py-13";
 
   return (
     <AnimatedSection>
       <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className={`${bgColor} py-12 flex justify-center items-center w-full`}
+        className={`${bgColor} ${verticalPadding} flex justify-center items-center w-full`}
       >
         <div className="grid-animate w-full flex flex-col md:flex-row justify-around items-center max-w-6xl px-4 md:px-0 space-y-8 md:space-y-0 md:space-x-4">
           {slice.primary.stats.map((stat) => (

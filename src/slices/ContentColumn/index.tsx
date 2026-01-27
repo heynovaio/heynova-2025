@@ -11,20 +11,28 @@ import {
 } from "@/components";
 import { JSX } from "react";
 
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
 /**
  * Props for `ContentColumn`.
  */
-export type ContentColumnProps =
-  SliceComponentProps<Content.ContentColumnSlice>;
+export type ContentColumnProps = SliceComponentProps<
+  Content.ContentColumnSlice,
+  SliceContext
+>;
 
 /**
  * Component for "ContentColumn" Slices.
  */
-const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
+
+const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
   const contentItems = Array.isArray(slice.primary.content)
     ? slice.primary.content
     : [];
-
+  const isBlog = context?.isBlogPage ?? false;
   const isSingleColumn = contentItems.length === 1;
 
   let card_color = "";
@@ -141,6 +149,7 @@ const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       styling="overflow-x-hidden"
+      isBlogPage={isBlog}
     >
       <div className="hidden lg:block">
         <AnimatedSection>
