@@ -8,15 +8,25 @@ import { HorizontalAccordion } from "@/components/Accordions/HorizontalAccordion
 import { Container, ContentBox, AnimatedSection, Section } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 
-export type HorizontalAccordionSliceProps =
-  SliceComponentProps<Content.HorizontalAccordionSlice>;
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
+export type HorizontalAccordionSliceProps = SliceComponentProps<
+  Content.HorizontalAccordionSlice,
+  SliceContext
+>;
 
 const HorizontalAccordionSlice = ({
   slice,
+  context,
 }: HorizontalAccordionSliceProps): JSX.Element | null => {
   if (!slice.primary.accordion) {
     return null;
   }
+
+  const isBlog = context?.isBlogPage ?? false;
 
   const titles = slice.primary.accordion.map((item) => item.title || "");
   const contents = slice.primary.accordion.map((item) => item.body || "");
@@ -27,6 +37,7 @@ const HorizontalAccordionSlice = ({
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      isBlogPage={isBlog}
     >
       <AnimatedSection>
         <Container>

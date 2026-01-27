@@ -11,17 +11,24 @@ import {
 } from "@/components";
 import { JSX } from "react";
 
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
 /**
  * Props for `ContentColumn`.
  */
-export type ContentColumnProps =
-  SliceComponentProps<Content.ContentColumnSlice>;
+export type ContentColumnProps = SliceComponentProps<
+  Content.ContentColumnSlice,
+  SliceContext
+>;
 /**
  * Component for "ContentColumn" Slices.
  */
-const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
+const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
   const isSingleColumn = slice.primary.content.length === 1;
-
+  const isBlog = context?.isBlogPage ?? false;
   let card_color = "";
 
   // Type guard to check if card_color exists on primary
@@ -45,6 +52,7 @@ const ContentColumn = ({ slice }: ContentColumnProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       styling="overflow-x-hidden"
+      isBlogPage={isBlog}
     >
       <AnimatedSection>
         <Container

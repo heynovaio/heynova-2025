@@ -7,15 +7,24 @@ import { Container, ContentBox, Section, AnimatedSection } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 import { CalendlyButton } from "@/components/Buttons/CalendlyButton";
 
+type SliceContext = {
+  lang: string;
+  isBlogPage?: boolean;
+};
+
 /**
  * Props for `CtaBanner`.
  */
-export type CtaBannerProps = SliceComponentProps<Content.CtaBannerSlice>;
+export type CtaBannerProps = SliceComponentProps<
+  Content.CtaBannerSlice,
+  SliceContext
+>;
 
 /**
  * Component for "CtaBanner" Slices.
  */
-const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
+const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
+  const isBlog = context?.isBlogPage ?? false;
   const leftAligned = slice.primary.text_alignment === false;
   const textAlignment = leftAligned
     ? "items-start text-left"
@@ -35,55 +44,56 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      isBlogPage={isBlog}
     >
       <AnimatedSection>
         <Container>
-        <div
-          className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}
-        >
-          <ContentBox
-            title={slice.primary.title}
-            smallerTextWidth={true}
-            content={
-              <div>
-                <PrismicRichText field={slice.primary.body} />
-                {isForm && slice.primary.form?.html && (
-                  <div
-                    className="mt-6 w-full"
-                    dangerouslySetInnerHTML={{
-                      __html: slice.primary.form.html,
-                    }}
-                  />
-                )}
-              </div>
-            }
-            buttons={
-              showPrismicButtons
-                ? slice.primary.buttons?.map((button, index) => (
-                    <PrismicNextLink
-                      field={button}
-                      key={index}
-                      className={
-                        isGradient ? "btn btn-primary" : "btn btn-secondary"
-                      }
+          <div
+            className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}
+          >
+            <ContentBox
+              title={slice.primary.title}
+              smallerTextWidth={true}
+              content={
+                <div>
+                  <PrismicRichText field={slice.primary.body} />
+                  {isForm && slice.primary.form?.html && (
+                    <div
+                      className="mt-6 w-full"
+                      dangerouslySetInnerHTML={{
+                        __html: slice.primary.form.html,
+                      }}
                     />
-                  ))
-                : [
-                    <CalendlyButton
-                      text={slice.primary.booking_button_text ?? "Book Now"}
-                      buttonClass={
-                        slice.primary.button_class == true
-                          ? "btn-secondary"
-                          : "btn-primary"
-                      }
-                      key={slice.primary.booking_button_text}
-                    />,
-                  ]
-            }
-            containerClassName={textAlignment}
-          />
-        </div>
-      </Container>
+                  )}
+                </div>
+              }
+              buttons={
+                showPrismicButtons
+                  ? slice.primary.buttons?.map((button, index) => (
+                      <PrismicNextLink
+                        field={button}
+                        key={index}
+                        className={
+                          isGradient ? "btn btn-primary" : "btn btn-secondary"
+                        }
+                      />
+                    ))
+                  : [
+                      <CalendlyButton
+                        text={slice.primary.booking_button_text ?? "Book Now"}
+                        buttonClass={
+                          slice.primary.button_class == true
+                            ? "btn-secondary"
+                            : "btn-primary"
+                        }
+                        key={slice.primary.booking_button_text}
+                      />,
+                    ]
+              }
+              containerClassName={textAlignment}
+            />
+          </div>
+        </Container>
       </AnimatedSection>
     </Section>
   );
