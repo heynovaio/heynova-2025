@@ -34,7 +34,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
   const textColor = isGradient ? "text-white" : "text-midnight";
   const backgroundColor = isGradient
     ? "gradient-dark-bg"
-    : "bg-teal-muted pink-link";
+    : "bg-teal-muted cta-link";
   const borderColor = isGradient ? "border-aqua" : "border-wine";
 
   const showPrismicButtons =

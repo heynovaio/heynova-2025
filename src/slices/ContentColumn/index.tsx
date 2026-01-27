@@ -27,12 +27,12 @@ export type ContentColumnProps = SliceComponentProps<
 /**
  * Component for "ContentColumn" Slices.
  */
+
 const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
-  const isBlog = context?.isBlogPage ?? false;
   const contentItems = Array.isArray(slice.primary.content)
     ? slice.primary.content
     : [];
-
+  const isBlog = context?.isBlogPage ?? false;
   const isSingleColumn = contentItems.length === 1;
 
   let card_color = "";
