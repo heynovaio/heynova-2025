@@ -25,6 +25,13 @@
             "default_value": "Teal"
           }
         },
+        "number_of_columns": {
+          "type": "Number",
+          "config": {
+            "label": "Number of Columns",
+            "placeholder": ""
+          }
+        },
         "stats": {
           "type": "Group",
           "config": {

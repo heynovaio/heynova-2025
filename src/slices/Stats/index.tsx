@@ -12,6 +12,8 @@ export type StatsProps = SliceComponentProps<Content.StatsSlice, SliceContext>;
 
 const Stats: FC<StatsProps> = ({ slice, context }) => {
   const background = slice.primary.background;
+  const numColumns = slice.primary.number_of_columns;
+
   const bgColor =
     background === "Teal"
       ? "bg-teal-drk"
@@ -29,7 +31,10 @@ const Stats: FC<StatsProps> = ({ slice, context }) => {
         data-slice-variation={slice.variation}
         className={`${bgColor} ${verticalPadding} flex justify-center items-center w-full`}
       >
-        <div className="grid-animate w-full flex flex-col md:flex-row justify-around items-center max-w-6xl px-4 md:px-0 space-y-8 md:space-y-0 md:space-x-4">
+        <div
+          className="grid grid-animate w-full max-w-6xl px-4 md:px-0 gap-8 grid-cols-1 md:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]"
+          style={{ "--cols": numColumns } as React.CSSProperties}
+        >
           {slice.primary.stats.map((stat) => (
             <div key={stat.stat} className="text-center">
               <div className="text-massive font-[700]">{stat.stat}</div>
