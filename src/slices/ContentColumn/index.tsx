@@ -10,6 +10,8 @@ import {
   AnimatedSection,
 } from "@/components";
 import { JSX } from "react";
+import { text } from "stream/consumers";
+import { title } from "process";
 
 type SliceContext = {
   lang: string;
@@ -36,27 +38,37 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
   const isSingleColumn = contentItems.length === 1;
 
   let card_color = "";
+  let text_color = "text-white";
+  let title_color = "text-light-blue";
 
   if ("card_color" in slice.primary && slice.primary.card_color) {
     switch (slice.primary.card_color) {
       case "Blue":
         card_color = "bg-aqua";
+        title_color = "text-black";
+        text_color = "text-black";
         break;
       case "Purple":
-        card_color = "bg-purple";
+        card_color = "bg-purple-lt";
+        title_color = "text-black";
+        text_color = "text-black";
         break;
       case "None":
       default:
         card_color = "";
+        text_color = "text-white";
+        title_color = "text-light-blue";
         break;
     }
   }
 
+  const isStackedLayout = card_color !== "";
+
   const Cards = () => (
     <div
-      className={`${card_color} ${
+      className={` ${
         slice.variation === "default" ? "" : "mt-16"
-      } flex flex-col lg:flex-row justify-center items-center rounded gap-1 ${
+      } flex flex-col lg:flex-row justify-center items-stretch rounded gap-4 ${
         isSingleColumn ? "max-w-[860px] w-full" : "w-full"
       }`}
     >
@@ -82,7 +94,11 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
         return slice.variation === "default" ? (
           <div
             key={index}
-            className="flex flex-col-reverse md:flex-row items-center justify-center md:gap-6 p-2 md:p-10 w-full"
+            className={`${card_color} flex ${
+              isStackedLayout
+                ? "flex-col items-center md:gap-4"
+                : "flex-col-reverse md:flex-row items-center md:gap-6"
+            } justify-center p-2 md:p-10 w-full rounded-[1.25rem]`}
           >
             {item.icon && (
               <ResponsiveImage
@@ -95,18 +111,31 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
                 field={item.title}
                 components={{
                   heading2: ({ children }) => (
-                    <h2 className="!text-[1.375rem] text-light-blue font-extraBold">
+                    <h2
+                      className={`${title_color} !text-[1.375rem]  font-extraBold`}
+                    >
                       {children}
                     </h2>
                   ),
                   heading3: ({ children }) => (
-                    <h3 className="!text-[1.375rem] text-light-blue font-extraBold">
+                    <h3
+                      className={`${title_color} !text-[1.375rem]  font-extraBold`}
+                    >
                       {children}
                     </h3>
                   ),
                 }}
               />
-              {item.body && <PrismicRichText field={item.body} />}
+              {item.body && (
+                <PrismicRichText
+                  field={item.body}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className={`${text_color} `}>{children}</p>
+                    ),
+                  }}
+                />
+              )}
             </div>
           </div>
         ) : (
