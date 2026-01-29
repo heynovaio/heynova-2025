@@ -12,9 +12,12 @@ export type StatsProps = SliceComponentProps<Content.StatsSlice, SliceContext>;
 
 const Stats: FC<StatsProps> = ({ slice, context }) => {
   const background = slice.primary.background;
-  const bgColor = !background
-    ? "bg-aqua text-purple-drk"
-    : "bg-teal-drk text-white";
+  const bgColor =
+    background === "Teal"
+      ? "bg-teal-drk"
+      : background === "Blue"
+        ? "bg-aqua text-black"
+        : "bg-purple-lt text-black";
 
   const isBlog = context?.isBlogPage ?? false;
   const verticalPadding = isBlog ? "py-6 print:my-0" : "py-8 md:py-13";
