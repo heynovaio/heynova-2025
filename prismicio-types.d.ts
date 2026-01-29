@@ -3775,6 +3775,16 @@ export interface StatsSliceDefaultPrimary {
   background: prismic.SelectField<"Teal" | "Purple" | "Blue", "filled">;
 
   /**
+   * Number of Columns field in *Stats → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: stats.default.primary.number_of_columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number_of_columns: prismic.NumberField;
+
+  /**
    * Stats field in *Stats → Default → Primary*
    *
    * - **Field Type**: Group

@@ -75,6 +75,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "Teal",
 				"type": "Select"
+			},
+			"number_of_columns": {
+				"__TYPE__": "FieldContent",
+				"value": "10",
+				"type": "Number"
 			}
 		},
 		"items": []
