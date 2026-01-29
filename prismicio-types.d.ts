@@ -3766,13 +3766,13 @@ export interface StatsSliceDefaultPrimary {
   /**
    * Background field in *Stats → Default → Primary*
    *
-   * - **Field Type**: Boolean
+   * - **Field Type**: Select
    * - **Placeholder**: *None*
-   * - **Default Value**: true
+   * - **Default Value**: Teal
    * - **API ID Path**: stats.default.primary.background
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background: prismic.BooleanField;
+  background: prismic.SelectField<"Teal" | "Purple" | "Blue", "filled">;
 
   /**
    * Stats field in *Stats → Default → Primary*

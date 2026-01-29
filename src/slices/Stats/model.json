@@ -13,12 +13,16 @@
       "imageUrl": "",
       "primary": {
         "background": {
-          "type": "Boolean",
+          "type": "Select",
           "config": {
             "label": "Background",
-            "placeholder_false": "Light",
-            "placeholder_true": "Dark",
-            "default_value": true
+            "placeholder": "",
+            "options": [
+              "Teal",
+              "Purple",
+              "Blue"
+            ],
+            "default_value": "Teal"
           }
         },
         "stats": {
