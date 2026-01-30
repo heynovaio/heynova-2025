@@ -1926,7 +1926,7 @@ export interface ContentCarouselSliceDefaultPrimary {
    * - **API ID Path**: content_carousel.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → Default (Insight) → Primary*
@@ -1999,7 +1999,7 @@ export interface ContentCarouselSliceManualCarouselPrimary {
    * - **API ID Path**: content_carousel.manualCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → ManualCarousel (Our Works) → Primary*
@@ -2070,7 +2070,7 @@ export interface ContentCarouselSliceGeneralCarouselPrimary {
    * - **API ID Path**: content_carousel.generalCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → General Carousel → Primary*
@@ -2143,7 +2143,7 @@ export interface ContentCarouselSlicePictureCarouselPrimary {
    * - **API ID Path**: content_carousel.pictureCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → Picture Carousel → Primary*

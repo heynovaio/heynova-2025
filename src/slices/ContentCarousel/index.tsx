@@ -5,6 +5,7 @@ import {
   GeneralCarousel,
   PhotoCarousel,
   AnimatedSection,
+  Section,
 } from "@/components";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -13,6 +14,9 @@ export type ContentCarouselProps =
   SliceComponentProps<Content.ContentCarouselSlice>;
 
 const ContentCarousel = ({ slice }: ContentCarouselProps) => {
+  const background = slice.primary.background_color;
+  const bgColor = background === "Light" ? "bg-teal-muted/20 py-4 md:py-8" : "";
+
   const carousel = (() => {
     switch (slice.variation) {
       case "manualCarousel":
@@ -29,7 +33,11 @@ const ContentCarousel = ({ slice }: ContentCarouselProps) => {
     }
   })();
 
-  return <AnimatedSection>{carousel}</AnimatedSection>;
+  return (
+    <Section>
+      <AnimatedSection className={bgColor}>{carousel}</AnimatedSection>
+    </Section>
+  );
 };
 
 export default ContentCarousel;
