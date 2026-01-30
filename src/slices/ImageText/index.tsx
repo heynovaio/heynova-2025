@@ -32,11 +32,15 @@ export type ImageTextProps = SliceComponentProps<
 const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
   const imageSide =
     slice.primary.imageRight === false ? "md:flex-row" : "md:flex-row-reverse";
+  const background = slice.primary.background_color;
+  console.log("background", background);
 
   const isBlog = context?.isBlogPage ?? false;
   // const isVideo = slice.variation === "video";
   const isStats = slice.variation === "stats";
   const isVideo = slice.variation === "video";
+  const bgColor =
+    background === "Light" ? "bg-teal-muted/20 py-8 md:py-16" : "";
 
   const imageFit =
     (slice.primary as Record<string, unknown>).imageFit === "cover"
@@ -60,6 +64,7 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
+      className={`${bgColor} `}
     >
       <AnimatedSection>
         <Container

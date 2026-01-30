@@ -3001,7 +3001,7 @@ export interface ImageTextSliceDefaultPrimary {
    * - **API ID Path**: image_text.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Image field in *ImageText → Default → Primary*
