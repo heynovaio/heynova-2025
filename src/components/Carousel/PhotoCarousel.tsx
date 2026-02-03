@@ -25,7 +25,7 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
 
   const totalSlides = Math.max(
     0,
-    slice.primary.cards.length - itemsPerPage + 1
+    slice.primary.cards.length - itemsPerPage + 1,
   );
 
   useEffect(() => {
@@ -51,10 +51,10 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
   };
 
   return (
-    <Section
+    <div
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      styling="overflow-x-hidden flex flex-col gap-8"
+      className="overflow-x-hidden flex flex-col gap-8"
     >
       <Container containerClassName="flex justify-end">
         <ContentBox
@@ -119,6 +119,6 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
           </div>
         </div>
       </Container>
-    </Section>
+    </div>
   );
 };

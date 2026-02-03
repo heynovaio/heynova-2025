@@ -64,9 +64,8 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
-      className={`${bgColor} `}
     >
-      <AnimatedSection>
+      <AnimatedSection className={`${bgColor} `}>
         <Container
           containerClassName={`flex flex-col ${imageSide} gap-4 md:gap-16 w-full items-center`}
         >
