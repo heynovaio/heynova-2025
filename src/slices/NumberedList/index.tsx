@@ -25,16 +25,17 @@ const NumberedList: FC<NumberedListProps> = ({ slice, context }) => {
   const isBlog = context?.isBlogPage ?? false;
   const background = slice.primary.background_color;
   const bgColor =
-    background === "Light" ? `bg-teal-muted/20  ${isBlog ? "my-13" : ""}` : "";
+    background === "Light"
+      ? `bg-teal-muted/20 py-8 md:py-13 ${isBlog ? "my-6" : ""}`
+      : "";
 
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
-      className={`${bgColor} py-8 md:py-13`}
     >
-      <AnimatedSection>
+      <AnimatedSection className={`${bgColor} `}>
         <Container>
           <NumberList
             title={slice.primary.title}

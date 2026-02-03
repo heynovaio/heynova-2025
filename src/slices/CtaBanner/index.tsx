@@ -41,16 +41,16 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
     slice.variation === "default" || slice.variation === "ctaBannerWithForm";
 
   const background = slice.primary.background_color;
-  const bgColor = background === "Light" ? "bg-teal-muted/20  " : "";
+  const bgColor =
+    background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
 
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
-      className={`${bgColor} py-8 md:py-13`}
     >
-      <AnimatedSection>
+      <AnimatedSection className={`${bgColor} `}>
         <Container>
           <div
             className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}

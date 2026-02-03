@@ -2908,7 +2908,7 @@ export interface HorizontalAccordionSliceDefaultPrimary {
    * - **API ID Path**: horizontal_accordion.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *HorizontalAccordion → Default → Primary*
