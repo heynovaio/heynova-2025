@@ -12,7 +12,7 @@ export const Section: React.FC<SectionProps> = ({
   isBlogPage = false,
   ...props
 }) => {
-  const verticalPadding = isBlogPage ? "py-6 print:my-0" : "py-8 md:py-13  ";
+  const verticalPadding = isBlogPage ? "py-6 print:my-0" : "py-8 md:py-16  ";
   return (
     // Vertical Padding
     <section
