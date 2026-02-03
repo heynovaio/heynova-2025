@@ -410,7 +410,11 @@ a {
       padding-left: 1.25rem !important;
     }
     .li-content {
-      margin-top: 1.875rem !important;
+      margin-top: 1.875rem;
+    }
+
+    .li-content:has(> p:first-child) {
+      margin-top: 0.75rem;
     }
   }
 
