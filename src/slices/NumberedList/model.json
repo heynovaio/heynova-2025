@@ -30,6 +30,18 @@
             "multi": "paragraph,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink,preformatted"
           }
         },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
         "list": {
           "type": "Group",
           "config": {

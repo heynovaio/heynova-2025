@@ -3602,16 +3602,6 @@ export interface NumberedListSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
-   * List field in *NumberedList → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: numbered_list.default.primary.list[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list: prismic.GroupField<Simplify<NumberedListSliceDefaultPrimaryListItem>>;
-
-  /**
    * Background Color field in *NumberedList → Default → Primary*
    *
    * - **Field Type**: Select
@@ -3621,6 +3611,16 @@ export interface NumberedListSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * List field in *NumberedList → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: numbered_list.default.primary.list[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list: prismic.GroupField<Simplify<NumberedListSliceDefaultPrimaryListItem>>;
 }
 
 /**
