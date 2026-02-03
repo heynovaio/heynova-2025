@@ -2572,6 +2572,17 @@ export interface CtaBannerSliceDefaultPrimary {
   text_alignment: prismic.BooleanField;
 
   /**
+   * Background Color field in *CtaBanner → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
    * Inner Background Color field in *CtaBanner → Default → Primary*
    *
    * - **Field Type**: Select
@@ -2642,6 +2653,17 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   text_alignment: prismic.BooleanField;
+
+  /**
+   * Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Inner Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
@@ -2724,6 +2746,17 @@ export interface CtaBannerSliceBookingPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   text_alignment: prismic.BooleanField;
+
+  /**
+   * Background Color field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.booking.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Inner Background Color field in *CtaBanner → Booking → Primary*
@@ -3577,6 +3610,17 @@ export interface NumberedListSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   list: prismic.GroupField<Simplify<NumberedListSliceDefaultPrimaryListItem>>;
+
+  /**
+   * Background Color field in *NumberedList → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: numbered_list.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 }
 
 /**

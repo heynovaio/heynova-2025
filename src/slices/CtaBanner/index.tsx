@@ -40,11 +40,15 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
   const showPrismicButtons =
     slice.variation === "default" || slice.variation === "ctaBannerWithForm";
 
+  const background = slice.primary.background_color;
+  const bgColor = background === "Light" ? "bg-teal-muted/20  " : "";
+
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
+      className={`${bgColor} py-8 md:py-13`}
     >
       <AnimatedSection>
         <Container>
