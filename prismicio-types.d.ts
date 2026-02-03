@@ -4049,6 +4049,17 @@ export interface TestimonialsSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
+   * Background Color field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: testimonials.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
    * Testimonials field in *Testimonials → Default → Primary*
    *
    * - **Field Type**: Group
