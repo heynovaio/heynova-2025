@@ -21,6 +21,18 @@
             "default_value": true
           }
         },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
         "inner_background_color": {
           "type": "Select",
           "config": {
@@ -80,6 +92,18 @@
             "placeholder_false": "Left",
             "placeholder_true": "Center",
             "default_value": true
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
           }
         },
         "inner_background_color": {
@@ -148,6 +172,18 @@
             "placeholder_false": "Left",
             "placeholder_true": "Center",
             "default_value": true
+          }
+        },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
           }
         },
         "inner_background_color": {

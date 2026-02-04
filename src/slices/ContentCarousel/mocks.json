@@ -75,7 +75,7 @@
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
-				"value": "Dark",
+				"value": "Light",
 				"type": "Select"
 			},
 			"title": {
@@ -238,7 +238,7 @@
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
-				"value": "Light",
+				"value": "None",
 				"type": "Select"
 			},
 			"title": {
@@ -385,7 +385,7 @@
 		"primary": {
 			"background_color": {
 				"__TYPE__": "FieldContent",
-				"value": "None",
+				"value": "Light",
 				"type": "Select"
 			},
 			"title": {

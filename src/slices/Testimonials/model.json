@@ -30,6 +30,18 @@
             "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
           }
         },
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
         "testimonials": {
           "type": "Group",
           "config": {

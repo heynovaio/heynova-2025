@@ -62,10 +62,10 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
 
   return (
     <>
-      <Section
+      <div
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        styling="overflow-x-hidden flex flex-col gap-8"
+        className="overflow-x-hidden flex flex-col gap-8"
       >
         <Container containerClassName="flex flex-col">
           <div className="flex justify-between items-start">
@@ -218,7 +218,7 @@ export const GeneralCarousel = ({ slice }: GeneralCarouselProps) => {
             </div>
           ) : null}
         </Container>
-      </Section>
+      </div>
     </>
   );
 };
