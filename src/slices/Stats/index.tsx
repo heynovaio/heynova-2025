@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { Container } from "@/components";
 
 type SliceContext = {
   lang: string;
@@ -31,19 +32,21 @@ const Stats: FC<StatsProps> = ({ slice, context }) => {
         data-slice-variation={slice.variation}
         className={`${bgColor} ${verticalPadding} flex justify-center items-center w-full`}
       >
-        <div
-          className="grid grid-animate w-full max-w-6xl px-4 md:px-0 gap-8 grid-cols-1 md:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]"
-          style={{ "--cols": numColumns } as React.CSSProperties}
-        >
-          {slice.primary.stats.map((stat) => (
-            <div key={stat.stat} className="text-center">
-              <div className="text-massive font-[700]">{stat.stat}</div>
-              <div className="text-[1.375rem] font-[300]">
-                {stat.description}
+        <Container>
+          <div
+            className="grid grid-animate w-full  px-4 md:px-0 gap-8 grid-cols-1 md:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]"
+            style={{ "--cols": numColumns } as React.CSSProperties}
+          >
+            {slice.primary.stats.map((stat) => (
+              <div key={stat.stat} className="text-center">
+                <div className="text-massive font-[700]">{stat.stat}</div>
+                <div className="text-[1.375rem] font-[300]">
+                  {stat.description}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Container>
       </section>
     </AnimatedSection>
   );
