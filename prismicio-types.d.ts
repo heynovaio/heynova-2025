@@ -1141,6 +1141,7 @@ export type NewsletterSignupDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | PriceCardsSlice
   | ContentGridSlice
   | StatsSlice
   | TestimonialsSlice
@@ -1291,6 +1292,89 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+
+/**
+ * Item in *Prices → Options*
+ */
+export interface PricesDocumentDataOptionsItem {
+  /**
+   * Subtitle field in *Prices → Options*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: prices.options[].subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * Title field in *Prices → Options*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: prices.options[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Features field in *Prices → Options*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: prices.options[].features
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  features: prismic.RichTextField;
+
+  /**
+   * Button Label field in *Prices → Options*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: prices.options[].button_label
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_label: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Content for Prices documents
+ */
+interface PricesDocumentData {
+  /**
+   * Options field in *Prices*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: prices.options[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  options: prismic.GroupField<Simplify<PricesDocumentDataOptionsItem>>;
+}
+
+/**
+ * Prices document from Prismic
+ *
+ * - **API ID**: `prices`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PricesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<PricesDocumentData>,
+    "prices",
+    Lang
+  >;
 
 type ServiceDocumentDataSlicesSlice =
   | StatsSlice
@@ -1745,6 +1829,7 @@ export type AllDocumentTypes =
   | MenusDocument
   | NewsletterSignupDocument
   | PageDocument
+  | PricesDocument
   | ServiceDocument
   | ServicesListingDocument
   | TeamDocument;
@@ -3610,6 +3695,61 @@ export type NumberedListSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *PriceCards → Default → Primary*
+ */
+export interface PriceCardsSliceDefaultPrimary {
+  /**
+   * Title field in *PriceCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: price_cards.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *PriceCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: price_cards.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for PriceCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PriceCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PriceCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PriceCards*
+ */
+type PriceCardsSliceVariation = PriceCardsSliceDefault;
+
+/**
+ * PriceCards Shared Slice
+ *
+ * - **API ID**: `price_cards`
+ * - **Description**: PriceCards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PriceCardsSlice = prismic.SharedSlice<
+  "price_cards",
+  PriceCardsSliceVariation
+>;
+
+/**
  * Primary content in *SimpleText → Default → Primary*
  */
 export interface SimpleTextSliceDefaultPrimary {
@@ -4097,6 +4237,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      PricesDocument,
+      PricesDocumentData,
+      PricesDocumentDataOptionsItem,
       ServiceDocument,
       ServiceDocumentData,
       ServiceDocumentDataSlicesSlice,
@@ -4170,6 +4313,10 @@ declare module "@prismicio/client" {
       NumberedListSliceDefaultPrimary,
       NumberedListSliceVariation,
       NumberedListSliceDefault,
+      PriceCardsSlice,
+      PriceCardsSliceDefaultPrimary,
+      PriceCardsSliceVariation,
+      PriceCardsSliceDefault,
       SimpleTextSlice,
       SimpleTextSliceDefaultPrimary,
       SimpleTextSliceVariation,
