@@ -1,30 +1,34 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { Container, Section } from "@/components";
+import { PricesDocumentData } from "../../../prismicio-types";
 
+type SliceContext = {
+  pricesDocumentData?: PricesDocumentData;
+};
 /**
  * Props for `PriceCards`.
  */
-export type PriceCardsProps = SliceComponentProps<Content.PriceCardsSlice>;
+export type PriceCardsProps = SliceComponentProps<
+  Content.PriceCardsSlice,
+  SliceContext
+>;
 
 /**
  * Component for "PriceCards" Slices.
  */
-const PriceCards: FC<PriceCardsProps> = ({ slice }) => {
+const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
+  const prices = context?.pricesDocumentData;
+  console.log("prices document data:", prices);
+
   return (
-    <section
+    <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for price_cards (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use the Prismic MCP server with your code editor
-       * 📚 Docs: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-       */}
-    </section>
+      <Container>test blah blah</Container>
+    </Section>
   );
 };
 
