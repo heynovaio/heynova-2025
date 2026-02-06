@@ -64,7 +64,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         <SliceZone
           slices={page.data.slices}
           components={components}
-          context={{ lang }}
+          context={{ lang, globalDocumentData: global.data }}
         />
       </div>
     </Layout>
