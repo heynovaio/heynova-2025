@@ -1,0 +1,54 @@
+{
+  "format": "custom",
+  "id": "prices",
+  "label": "Prices",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "options": {
+        "type": "Group",
+        "config": {
+          "label": "Options",
+          "repeat": true,
+          "fields": {
+            "subtitle": {
+              "type": "Text",
+              "config": {
+                "label": "Subtitle",
+                "placeholder": ""
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "features": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Features",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "o-list-item"
+              }
+            },
+            "button_label": {
+              "type": "Link",
+              "config": {
+                "label": "Button Label",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
