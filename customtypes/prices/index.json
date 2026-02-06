@@ -32,7 +32,7 @@
                 "label": "Features",
                 "placeholder": "",
                 "allowTargetBlank": true,
-                "multi": "o-list-item"
+                "multi": "list-item"
               }
             },
             "button_label": {
