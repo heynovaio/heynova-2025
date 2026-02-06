@@ -25,6 +25,10 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
   const options = prices?.options || [];
   console.log("options:", options);
 
+  const mostPopularOption = options.find(
+    (option) => option.subtitle == "Most Popular",
+  );
+
   return (
     <Section
       data-slice-type={slice.slice_type}
@@ -39,7 +43,10 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-14 w-full">
           {options.map((option) => (
-            <PriceCard data={option} />
+            <PriceCard
+              data={option}
+              highlightedCard={option === mostPopularOption}
+            />
           ))}
         </div>
       </Container>
