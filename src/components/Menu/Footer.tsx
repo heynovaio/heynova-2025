@@ -62,11 +62,20 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             </div>
           </div>
           <SliceZone slices={slices} components={components} />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             <h4 className="footer-header">Contact Us</h4>
             <a className={"hover:underline"} href={`mailto:${global?.email}`}>
               {global?.email}
             </a>
+            <div className="flex flex-col gap-5 items-center justify-center md:justify-start">
+              {footerData?.logos.map((logo, index) => (
+                <ResponsiveImage
+                  image={logo.logo}
+                  containerClassName=" max-w-[120px] logo"
+                  key={index}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </nav>
