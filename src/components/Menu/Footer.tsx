@@ -69,11 +69,17 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             </a>
             <div className="flex flex-col gap-5 items-center justify-center md:justify-start">
               {footerData?.logos.map((logo, index) => (
-                <ResponsiveImage
-                  image={logo.logo}
-                  containerClassName=" max-w-[120px] logo"
+                <PrismicNextLink
                   key={index}
-                />
+                  field={logo.link_to_page}
+                  className=""
+                >
+                  <ResponsiveImage
+                    image={logo.logo}
+                    containerClassName=" max-w-[120px] logo"
+                    key={index}
+                  />
+                </PrismicNextLink>
               ))}
             </div>
           </div>
