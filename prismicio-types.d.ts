@@ -879,6 +879,22 @@ export interface MenusDocumentDataLogosItem {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   logo: prismic.ImageField<never>;
+
+  /**
+   * Link to Page field in *Menus → Logos*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menus.logos[].link_to_page
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link_to_page: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 type MenusDocumentDataSlices1Slice = MultiLinkColumnSlice;

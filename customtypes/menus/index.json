@@ -102,6 +102,17 @@
                 "constraint": {},
                 "thumbnails": []
               }
+            },
+            "link_to_page": {
+              "type": "Link",
+              "config": {
+                "label": "Link to Page",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
             }
           }
         }
