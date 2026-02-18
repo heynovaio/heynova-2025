@@ -12,6 +12,7 @@ export const components = {
   menu_panel: dynamic(() => import("./MenuPanel")),
   multi_link_column: dynamic(() => import("./MultiLinkColumn")),
   numbered_list: dynamic(() => import("./NumberedList")),
+  price_cards: dynamic(() => import("./PriceCards")),
   simple_text: dynamic(() => import("./SimpleText")),
   single_link: dynamic(() => import("./SingleLink")),
   stats: dynamic(() => import("./Stats")),

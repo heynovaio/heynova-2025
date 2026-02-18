@@ -5,7 +5,7 @@ import {
   MenusDocumentDataSlices1Slice,
 } from "../../../prismicio-types";
 import { ResponsiveImage } from "..";
-import { SliceZone } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import { FaFacebook, FaInstagram } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
@@ -62,9 +62,26 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
             </div>
           </div>
           <SliceZone slices={slices} components={components} />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             <h4 className="footer-header">Contact Us</h4>
-            <a className={"hover:underline"} href={`mailto:${global?.email}`}>{global?.email}</a>
+            <a className={"hover:underline"} href={`mailto:${global?.email}`}>
+              {global?.email}
+            </a>
+            <div className="flex flex-col gap-5 items-center justify-center md:justify-start">
+              {footerData?.logos.map((logo, index) => (
+                <PrismicNextLink
+                  key={index}
+                  field={logo.link_to_page}
+                  className=""
+                >
+                  <ResponsiveImage
+                    image={logo.logo}
+                    containerClassName=" max-w-[120px] logo"
+                    key={index}
+                  />
+                </PrismicNextLink>
+              ))}
+            </div>
           </div>
         </div>
       </nav>
@@ -82,6 +99,16 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
         <p className="mt-6 text-center text-[1.125rem]">
           {footerData?.copyright}
         </p>
+        <PrismicRichText
+          field={footerData?.land_acknowledgement}
+          components={{
+            paragraph: ({ children }) => (
+              <p className="p-6 md:p-0 mt-6 md:mt-12 text-center text-[1.125rem] max-w-[80ch]">
+                {children}
+              </p>
+            ),
+          }}
+        />
       </div>
     </footer>
   );
