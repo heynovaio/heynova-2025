@@ -5,7 +5,7 @@ import {
   MenusDocumentDataSlices1Slice,
 } from "../../../prismicio-types";
 import { ResponsiveImage } from "..";
-import { SliceZone } from "@prismicio/react";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 import { FaFacebook, FaInstagram } from "react-icons/fa6";
 import { PrismicNextLink } from "@prismicio/next";
@@ -64,7 +64,9 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
           <SliceZone slices={slices} components={components} />
           <div className="flex flex-col gap-4">
             <h4 className="footer-header">Contact Us</h4>
-            <a className={"hover:underline"} href={`mailto:${global?.email}`}>{global?.email}</a>
+            <a className={"hover:underline"} href={`mailto:${global?.email}`}>
+              {global?.email}
+            </a>
           </div>
         </div>
       </nav>
@@ -81,6 +83,9 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
 
         <p className="mt-6 text-center text-[1.125rem]">
           {footerData?.copyright}
+        </p>
+        <p className="p-6 md:p-0 mt-6 md:mt-12 text-center text-[1.125rem] max-w-[80ch]">
+          <PrismicRichText field={footerData?.land_acknowledgement} />
         </p>
       </div>
     </footer>
