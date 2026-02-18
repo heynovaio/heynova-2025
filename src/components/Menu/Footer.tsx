@@ -99,9 +99,16 @@ export const Footer = ({ global, slices, footerData }: FooterProps) => {
         <p className="mt-6 text-center text-[1.125rem]">
           {footerData?.copyright}
         </p>
-        <p className="p-6 md:p-0 mt-6 md:mt-12 text-center text-[1.125rem] max-w-[80ch]">
-          <PrismicRichText field={footerData?.land_acknowledgement} />
-        </p>
+        <PrismicRichText
+          field={footerData?.land_acknowledgement}
+          components={{
+            paragraph: ({ children }) => (
+              <p className="p-6 md:p-0 mt-6 md:mt-12 text-center text-[1.125rem] max-w-[80ch]">
+                {children}
+              </p>
+            ),
+          }}
+        />
       </div>
     </footer>
   );
