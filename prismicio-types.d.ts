@@ -866,6 +866,21 @@ export type InsightsListingDocument<Lang extends string = string> =
 
 type MenusDocumentDataSlicesSlice = MenuPanelSlice | SingleLinkSlice;
 
+/**
+ * Item in *Menus → Logos*
+ */
+export interface MenusDocumentDataLogosItem {
+  /**
+   * Logo field in *Menus → Logos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menus.logos[].logo
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+}
+
 type MenusDocumentDataSlices1Slice = MultiLinkColumnSlice;
 
 /**
@@ -966,6 +981,28 @@ interface MenusDocumentData {
     prismic.FieldState,
     never
   >;
+
+  /**
+   * Land Acknowledgement field in *Menus*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menus.land_acknowledgement
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  land_acknowledgement: prismic.RichTextField;
+
+  /**
+   * Logos field in *Menus*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menus.logos[]
+   * - **Tab**: Footer
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  logos: prismic.GroupField<Simplify<MenusDocumentDataLogosItem>>;
 
   /**
    * Slice Zone field in *Menus*
@@ -4229,6 +4266,7 @@ declare module "@prismicio/client" {
       MenusDocument,
       MenusDocumentData,
       MenusDocumentDataSlicesSlice,
+      MenusDocumentDataLogosItem,
       MenusDocumentDataSlices1Slice,
       NewsletterSignupDocument,
       NewsletterSignupDocumentData,

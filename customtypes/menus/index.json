@@ -80,6 +80,32 @@
           "repeat": false
         }
       },
+      "land_acknowledgement": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Land Acknowledgement",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "logos": {
+        "type": "Group",
+        "config": {
+          "label": "Logos",
+          "repeat": true,
+          "fields": {
+            "logo": {
+              "type": "Image",
+              "config": {
+                "label": "Logo",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
       "slices1": {
         "type": "Slices",
         "fieldset": "Slice Zone",
