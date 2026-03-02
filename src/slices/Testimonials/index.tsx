@@ -36,13 +36,17 @@ const Testimonials = ({ slice, context }: TestimonialsProps): JSX.Element => {
 
   const isBlogPage = context?.isBlogPage ?? false;
 
+  const background = slice.primary.background_color;
+  const bgColor =
+    background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
+
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlogPage}
     >
-      <AnimatedSection>
+      <AnimatedSection className={`${bgColor} `}>
         <Container containerClassName="flex flex-col gap-12 items-center">
           <div className="rounded-[1.25rem] overflow-hidden bg-midnight w-full">
             <div
