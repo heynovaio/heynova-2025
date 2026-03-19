@@ -48,7 +48,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                       className={({ selected }) =>
                         `hover:cursor-pointer w-full px-6 py-10 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none ${
                           selected
-                            ? "selected-tab-style"
+                            ? "selected-tab-style focus-visible:ring-2 focus-visible:ring-lavendar text-white"
                             : "text-gradient-light"
                         }`
                       }
