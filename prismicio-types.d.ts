@@ -2064,7 +2064,7 @@ export interface ContentCarouselSliceDefaultPrimary {
    * - **API ID Path**: content_carousel.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → Default (Insight) → Primary*
@@ -2137,7 +2137,7 @@ export interface ContentCarouselSliceManualCarouselPrimary {
    * - **API ID Path**: content_carousel.manualCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → ManualCarousel (Our Works) → Primary*
@@ -2208,7 +2208,7 @@ export interface ContentCarouselSliceGeneralCarouselPrimary {
    * - **API ID Path**: content_carousel.generalCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → General Carousel → Primary*
@@ -2281,7 +2281,7 @@ export interface ContentCarouselSlicePictureCarouselPrimary {
    * - **API ID Path**: content_carousel.pictureCarousel.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *ContentCarousel → Picture Carousel → Primary*
@@ -2710,6 +2710,17 @@ export interface CtaBannerSliceDefaultPrimary {
   text_alignment: prismic.BooleanField;
 
   /**
+   * Background Color field in *CtaBanner → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
    * Inner Background Color field in *CtaBanner → Default → Primary*
    *
    * - **Field Type**: Select
@@ -2780,6 +2791,17 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   text_alignment: prismic.BooleanField;
+
+  /**
+   * Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Inner Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
@@ -2862,6 +2884,17 @@ export interface CtaBannerSliceBookingPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   text_alignment: prismic.BooleanField;
+
+  /**
+   * Background Color field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: cta_banner.booking.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Inner Background Color field in *CtaBanner → Booking → Primary*
@@ -3013,7 +3046,7 @@ export interface HorizontalAccordionSliceDefaultPrimary {
    * - **API ID Path**: horizontal_accordion.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Title field in *HorizontalAccordion → Default → Primary*
@@ -3139,7 +3172,7 @@ export interface ImageTextSliceDefaultPrimary {
    * - **API ID Path**: image_text.default.primary.background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  background_color: prismic.SelectField<"None" | "Light" | "Dark", "filled">;
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Image field in *ImageText → Default → Primary*
@@ -3707,6 +3740,17 @@ export interface NumberedListSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
+   * Background Color field in *NumberedList → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: numbered_list.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
    * List field in *NumberedList → Default → Primary*
    *
    * - **Field Type**: Group
@@ -4196,6 +4240,17 @@ export interface TestimonialsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Background Color field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: testimonials.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
    * Testimonials field in *Testimonials → Default → Primary*

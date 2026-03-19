@@ -98,10 +98,14 @@
 									]
 								}
 							]
-						],
-						"key": "20dea3e6-ad12-4824-a567-28a6b897a909"
+						]
 					}
 				]
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": []

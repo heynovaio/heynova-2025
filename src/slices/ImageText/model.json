@@ -19,8 +19,7 @@
             "placeholder": "",
             "options": [
               "None",
-              "Light",
-              "Dark"
+              "Light"
             ],
             "default_value": "None"
           }
