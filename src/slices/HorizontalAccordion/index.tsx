@@ -33,13 +33,17 @@ const HorizontalAccordionSlice = ({
   const images = slice.primary.accordion.map((item) => item.icon || null);
   const buttons = slice.primary.accordion.map((item) => item.buttons || null);
 
+  const background = slice.primary.background_color;
+  const bgColor =
+    background === "Light" ? "bg-teal-muted/20 py-8 md:py-13 " : "";
+
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
     >
-      <AnimatedSection>
+      <AnimatedSection className={`${bgColor} `}>
         <Container>
           <ContentBox
             title={slice.primary.title}

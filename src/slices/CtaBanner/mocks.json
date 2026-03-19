@@ -48,6 +48,11 @@
 			"text_alignment": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": []
@@ -126,6 +131,11 @@
 			"text_alignment": {
 				"__TYPE__": "BooleanContent",
 				"value": false
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": [
@@ -178,6 +188,11 @@
 			"button_class": {
 				"__TYPE__": "BooleanContent",
 				"value": false
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": [
