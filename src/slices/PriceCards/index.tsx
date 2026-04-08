@@ -33,6 +33,7 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="bg-navy-blue text-white"
     >
       <Container containerClassName="flex flex-col gap-6">
         <ContentBox
