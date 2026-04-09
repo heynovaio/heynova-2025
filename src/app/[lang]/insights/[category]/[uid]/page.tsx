@@ -167,7 +167,7 @@ export async function generateStaticParams() {
       const insightCategories = insight.data.categories;
 
       if (insightCategories && insightCategories.length > 0) {
-        insightCategories.forEach((categoryItem: any) => {
+        insightCategories.forEach((categoryItem) => {
           // Access the category relationship - it could be under 'name' or direct
           const categoryRef = categoryItem.name || categoryItem;
           if (categoryRef?.uid) {
