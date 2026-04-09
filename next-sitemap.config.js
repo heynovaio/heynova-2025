@@ -15,8 +15,10 @@ export default {
     const paths = [];
 
     try {
-      const { createClient } = await import('./src/prismicio.ts');
-      const client = createClient();
+      const prismic = await import('@prismicio/client');
+      const client = prismic.createClient(
+        process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || 'heynova'
+      );
 
       // Fetch all insights with all languages
       const insights = await client.getAllByType('insight', {
