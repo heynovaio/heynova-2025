@@ -42,6 +42,9 @@ export async function generateMetadata({
         },
       ],
     },
+    alternates: {
+      canonical: `https://heynova.io/${lang}/${uid}`,
+    },
   };
 }
 
