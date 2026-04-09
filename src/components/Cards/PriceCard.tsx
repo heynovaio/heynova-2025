@@ -16,10 +16,11 @@ export const PriceCard = ({
   data,
   highlightedCard = false,
 }: PriceCardProps) => {
-  //TODO: once cyndis done the final design can use this to accent the card that has the most popular tag like the exmaple design she gave me
-  console.log("highlighted card:", highlightedCard);
+  const isHighlightedCard = highlightedCard ? "scale-108 bg-purple-drk" : "";
   return (
-    <div className="border border-white rounded-[1.25rem] p-6 w-full">
+    <div
+      className={`border border-white rounded-[1.25rem] p-6 w-full ${isHighlightedCard}`}
+    >
       <p>{data.subtitle}</p>
       <h3>{data.title}</h3>
       <PrismicRichText field={data.features} />

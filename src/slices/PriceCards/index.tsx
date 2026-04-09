@@ -21,10 +21,7 @@ export type PriceCardsProps = SliceComponentProps<
  */
 const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
   const prices = context?.pricesDocumentData;
-  console.log("prices document data:", prices);
   const options = prices?.options || [];
-  console.log("options:", options);
-
   const mostPopularOption = options.find(
     (option) => option.subtitle == "Most Popular",
   );
@@ -33,16 +30,12 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-navy-blue text-white"
+      styling="bg-midnight"
     >
-      <Container containerClassName="flex flex-col gap-6">
-        <ContentBox
-          title={slice.primary.title}
-          smallerTextWidth={true}
-          content={<PrismicRichText field={slice.primary.body} />}
-        />
-
-        <div className="flex flex-col md:flex-row gap-6 md:gap-14 w-full">
+      <Container containerClassName="flex flex-col gap-4">
+        <PrismicRichText field={slice.primary.title} />
+        <PrismicRichText field={slice.primary.body} />
+        <div className="flex flex-col md:flex-row gap-6 md:gap-14 w-full mt-4">
           {options.map((option) => (
             <PriceCard
               data={option}
