@@ -36,10 +36,11 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
         <PrismicRichText field={slice.primary.title} />
         <PrismicRichText field={slice.primary.body} />
         <div className="flex flex-col md:flex-row gap-6 md:gap-14 w-full mt-4">
-          {options.map((option) => (
+          {options.map((option, index) => (
             <PriceCard
               data={option}
               highlightedCard={option === mostPopularOption}
+              key={index}
             />
           ))}
         </div>
