@@ -42,8 +42,16 @@ export async function generateMetadata({
         },
       ],
     },
+    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
     alternates: {
-      canonical: `https://heynova.io/${lang}/${uid}`,
+      canonical: `/${lang}/${uid}`,
+      languages: (() => {
+        const langs: Record<string, string> = {};
+        page.alternate_languages?.forEach((alt) => {
+          langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
+        });
+        return langs;
+      })(),
     },
   };
 }

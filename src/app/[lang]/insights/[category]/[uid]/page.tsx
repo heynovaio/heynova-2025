@@ -39,7 +39,7 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid, lang = "en-ca" } = await params;
+  const { uid, category, lang = "en-ca" } = await params;
 
   const client = createClient();
   const page = await client
@@ -67,6 +67,17 @@ export async function generateMetadata({
           url: page.data.meta_image.url || "",
         },
       ],
+    },
+    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    alternates: {
+      canonical: `/${lang}/insights/${category}/${uid}`,
+      languages: (() => {
+        const langs: Record<string, string> = {};
+        page.alternate_languages?.forEach((alt) => {
+          langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
+        });
+        return langs;
+      })(),
     },
   };
 }
