@@ -19,11 +19,15 @@ export const PriceCard = ({
   const isHighlightedCard = highlightedCard ? "scale-108 bg-purple-drk" : "";
   return (
     <div
-      className={`border border-white rounded-[1.25rem] p-6 w-full ${isHighlightedCard}`}
+      className={` border border-white rounded-[1.25rem] p-6 w-full ${isHighlightedCard}`}
     >
       <p>{data.subtitle}</p>
       <h3>{data.title}</h3>
-      <PrismicRichText field={data.features} />
+      <div className="ml-6 md:ml-0">
+        {" "}
+        <PrismicRichText field={data.features} />
+      </div>
+
       <PrismicNextLink field={data.button_label} className="btn btn-outline">
         {data.button_label?.text || "Buy Now"}
       </PrismicNextLink>
