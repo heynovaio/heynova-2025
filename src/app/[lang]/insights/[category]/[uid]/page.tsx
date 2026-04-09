@@ -164,16 +164,16 @@ export async function generateStaticParams() {
     const params: Array<{ uid: string; category: string; lang: string }> = [];
 
     insights.forEach((insight) => {
-      const insightCategories = insight.data.categories as Array<{
-        category: prismic.FilledContentRelationshipField;
-      }>;
+      const insightCategories = insight.data.categories;
 
       if (insightCategories && insightCategories.length > 0) {
-        insightCategories.forEach((categoryItem) => {
-          if (categoryItem.category?.uid) {
+        insightCategories.forEach((categoryItem: any) => {
+          // Access the category relationship - it could be under 'name' or direct
+          const categoryRef = categoryItem.name || categoryItem;
+          if (categoryRef?.uid) {
             params.push({
               uid: insight.uid,
-              category: categoryItem.category.uid,
+              category: categoryRef.uid,
               lang: insight.lang,
             });
           }
