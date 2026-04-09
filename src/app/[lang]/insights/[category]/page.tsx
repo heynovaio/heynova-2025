@@ -43,10 +43,13 @@ export async function generateMetadata({
         },
       ],
     },
+    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
     alternates: {
-
-      canonical: `https://heynova.io/${lang}/insights/${category}`,
-
+      canonical: `/${lang}/insights/${category}`,
+      languages: {
+        "en-CA": `/en-ca/insights/${category}`,
+        "fr-CA": `/fr-ca/insights/${category}`,
+      },
     },
   };
 }
