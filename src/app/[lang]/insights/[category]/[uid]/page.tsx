@@ -168,12 +168,11 @@ export async function generateStaticParams() {
 
       if (insightCategories && insightCategories.length > 0) {
         insightCategories.forEach((categoryItem) => {
-          // Access the category relationship - it could be under 'name' or direct
-          const categoryRef = categoryItem.name || categoryItem;
-          if (categoryRef?.uid) {
+          // Access the category relationship using isFilled
+          if (isFilled.contentRelationship(categoryItem.name)) {
             params.push({
               uid: insight.uid,
-              category: categoryRef.uid,
+              category: categoryItem.name.uid,
               lang: insight.lang,
             });
           }
