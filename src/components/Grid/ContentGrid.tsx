@@ -26,7 +26,16 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
   title,
   body,
 }) => {
-  const columns = numCols && numCols > 0 ? numCols : 3;
+
+  const getResponsiveGridCols = (cols: number) => {
+    const colsMap: Record<number, string> = {
+      1: 'grid-cols-1',
+      2: 'grid-cols-1 md:grid-cols-2',
+      3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+      4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
+    };
+    return colsMap[cols] || 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'; // Default
+  };
 
   return (
     <div>
@@ -37,12 +46,8 @@ export const ContentGrid: React.FC<ContentGridProps> = ({
 
         <PrismicRichText field={body} />
       </div>
-      {/** TODO: Figure out mobile layout not working */}
       <div
-        className="grid gap-6"
-        style={{
-          gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-        }}
+        className={`grid gap-6 ${getResponsiveGridCols(numCols || 3)}`}
       >
         {cards.map((card, index) => (
           <ReusableCard

@@ -39,7 +39,7 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { uid, lang = "en-ca" } = await params;
+  const { uid, category, lang = "en-ca" } = await params;
 
   const client = createClient();
   const page = await client
@@ -67,6 +67,17 @@ export async function generateMetadata({
           url: page.data.meta_image.url || "",
         },
       ],
+    },
+    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    alternates: {
+      canonical: `/${lang}/insights/${category}/${uid}`,
+      languages: (() => {
+        const langs: Record<string, string> = {};
+        page.alternate_languages?.forEach((alt) => {
+          langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
+        });
+        return langs;
+      })(),
     },
   };
 }
@@ -153,16 +164,15 @@ export async function generateStaticParams() {
     const params: Array<{ uid: string; category: string; lang: string }> = [];
 
     insights.forEach((insight) => {
-      const insightCategories = insight.data.categories as Array<{
-        category: prismic.FilledContentRelationshipField;
-      }>;
+      const insightCategories = insight.data.categories;
 
       if (insightCategories && insightCategories.length > 0) {
         insightCategories.forEach((categoryItem) => {
-          if (categoryItem.category?.uid) {
+          // Access the category relationship using isFilled
+          if (isFilled.contentRelationship(categoryItem.name) && categoryItem.name.uid) {
             params.push({
               uid: insight.uid,
-              category: categoryItem.category.uid,
+              category: categoryItem.name.uid,
               lang: insight.lang,
             });
           }
