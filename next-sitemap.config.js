@@ -1,5 +1,5 @@
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
+export default {
   siteUrl: process.env.SITE_URL || 'https://heynova.io',
   generateRobotsTxt: true,
   robotsTxtOptions: {
@@ -15,10 +15,8 @@ module.exports = {
     const paths = [];
 
     try {
-      const { createClient } = require('@prismicio/client');
-      const client = createClient({
-        repositoryName: process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || 'heynova',
-      });
+      const { createClient } = await import('./src/prismicio.ts');
+      const client = createClient();
 
       // Fetch all insights with all languages
       const insights = await client.getAllByType('insight', {
@@ -46,8 +44,13 @@ module.exports = {
           });
         }
       });
+
+      if (paths.length === 0) {
+        console.warn('Warning: No insight paths generated for sitemap. Check Prismic connection.');
+      }
     } catch (error) {
       console.error('Error generating sitemap paths for insights:', error);
+      throw error; // Fail the build if sitemap generation fails
     }
 
     return paths;
