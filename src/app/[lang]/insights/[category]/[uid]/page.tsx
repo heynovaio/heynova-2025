@@ -169,7 +169,7 @@ export async function generateStaticParams() {
       if (insightCategories && insightCategories.length > 0) {
         insightCategories.forEach((categoryItem) => {
           // Access the category relationship using isFilled
-          if (isFilled.contentRelationship(categoryItem.name)) {
+          if (isFilled.contentRelationship(categoryItem.name) && categoryItem.name.uid) {
             params.push({
               uid: insight.uid,
               category: categoryItem.name.uid,
