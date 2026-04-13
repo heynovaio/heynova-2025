@@ -2448,6 +2448,17 @@ export interface ContentColumnSliceDefaultPrimary {
   card_color: prismic.SelectField<"None" | "Purple" | "Blue", "filled">;
 
   /**
+   * Text Align field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: content_column.default.primary.text_align
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  text_align: prismic.BooleanField;
+
+  /**
    * Title field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2466,6 +2477,17 @@ export interface ContentColumnSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Columns field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 1
+   * - **API ID Path**: content_column.default.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  columns: prismic.SelectField<"1" | "2" | "3" | "4", "filled">;
 
   /**
    * Content field in *ContentColumn → Default → Primary*
@@ -2497,6 +2519,28 @@ export type ContentColumnSliceDefault = prismic.SharedSliceVariation<
  * Primary content in *ContentColumn → ContentColumn with Cards → Primary*
  */
 export interface ContentColumnSliceContentColumnWithCardsPrimary {
+  /**
+   * Text Align field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.text_align
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  text_align: prismic.BooleanField;
+
+  /**
+   * Columns field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 1
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  columns: prismic.SelectField<"1" | "2" | "3" | "4", "filled">;
+
   /**
    * Title field in *ContentColumn → ContentColumn with Cards → Primary*
    *
