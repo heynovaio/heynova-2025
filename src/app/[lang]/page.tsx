@@ -61,6 +61,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });
   const locales = await getLocales(page, client);
+  const prices = await client.getSingle("prices", { lang });
 
   return (
     <Layout
@@ -75,7 +76,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         <SliceZone
           slices={page.data.slices}
           components={components}
-          context={{ lang }}
+          context={{
+            lang,
+            globalDocumentData: global.data,
+            pricesDocumentData: prices.data,
+          }}
         />
       </div>
     </Layout>
