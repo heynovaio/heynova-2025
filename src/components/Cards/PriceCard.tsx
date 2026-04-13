@@ -16,7 +16,7 @@ export const PriceCard = ({
   data,
   highlightedCard = false,
 }: PriceCardProps) => {
-  const isHighlightedCard = highlightedCard ? "scale-108 bg-purple-drk" : "";
+  const isHighlightedCard = highlightedCard ? "md:scale-108 bg-purple-drk" : "";
   return (
     <div
       className={` border border-white rounded-[1.25rem] p-6 w-full ${isHighlightedCard}`}
