@@ -502,11 +502,11 @@ a {
 
   .btn-secondary {
     border-radius: 1.875em;
-    border: 3px solid transparent;
+    border: 3px solid var(--color-purple-drk);
     padding: 10px 34px 12px 34px;
     font-size: var(--text-button);
-    background: var(--color-purple-drk);
-    color: var(--color-white);
+    background: transparent;
+    color: var(--color-purple-drk) !important;
 
     &:focus {
       outline: 0;

@@ -327,11 +327,6 @@
 			"text_align": {
 				"__TYPE__": "BooleanContent",
 				"value": true
-			},
-			"columns": {
-				"__TYPE__": "FieldContent",
-				"value": "1",
-				"type": "Select"
 			}
 		},
 		"items": [

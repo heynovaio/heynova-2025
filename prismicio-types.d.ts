@@ -2531,17 +2531,6 @@ export interface ContentColumnSliceContentColumnWithCardsPrimary {
   text_align: prismic.BooleanField;
 
   /**
-   * Columns field in *ContentColumn → ContentColumn with Cards → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **Default Value**: 1
-   * - **API ID Path**: content_column.contentColumnWithCards.primary.columns
-   * - **Documentation**: https://prismic.io/docs/fields/select
-   */
-  columns: prismic.SelectField<"1" | "2" | "3" | "4", "filled">;
-
-  /**
    * Title field in *ContentColumn → ContentColumn with Cards → Primary*
    *
    * - **Field Type**: Rich Text
