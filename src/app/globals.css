@@ -341,7 +341,7 @@ a {
     p {
       margin-bottom: 1.25em;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 0;
       letter-spacing: 0.1px;
     }
 

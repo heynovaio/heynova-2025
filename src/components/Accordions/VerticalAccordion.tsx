@@ -16,7 +16,6 @@ interface VerticalAccordionProps {
   image?: ImageField;
   bgColorClass?: string;
   textColorClass?: string;
-  button?: ReactNode;
   boldTitle?: boolean;
   background?: string;
 }
@@ -25,12 +24,11 @@ export const VerticalAccordion: React.FC<VerticalAccordionProps> = ({
   title,
   content,
   image,
-  button,
   boldTitle = true,
   background = "default",
 }) => {
   return (
-    <section className={`${background} w-full font-primary my-4 antialiased`}>
+    <section className={`${background} w-full font-primary my-4 antialiased max-w-215`}>
       <div className="p-px rounded-[10px] bg-midnight">
         <div className="rounded-[9px] bg-midnight/25 border border-aqua/60 glow-blur">
           <Disclosure>

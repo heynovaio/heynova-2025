@@ -57,7 +57,6 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
               content={item.description}
               key={index}
               boldTitle={true}
-              background={bgColor || "bg-midnight"}
             />
           ))}
         </Container>
