@@ -35,7 +35,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
       isBlogPage={isBlog}
     >
       <AnimatedSection className={`${bgColor} `}>
-        <Container containerClassName="flex items-center text-center flex-col">
+        <Container containerClassName="flex items-center flex-col">
           <ContentBox
             title={slice.primary.title}
             content={<PrismicRichText field={slice.primary.description} />}
