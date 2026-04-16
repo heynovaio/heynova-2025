@@ -34,7 +34,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
     >
-      <AnimatedSection className={"bg-black"}>
+      <AnimatedSection className={`${bgColor} `}>
         <Container containerClassName="flex items-center text-center flex-col">
           <ContentBox
             title={slice.primary.title}
