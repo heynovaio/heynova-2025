@@ -28,16 +28,18 @@ export const VerticalAccordion: React.FC<VerticalAccordionProps> = ({
   background = "default",
 }) => {
   return (
-    <section className={`${background} w-full font-primary my-4 antialiased max-w-215`}>
+    <section
+      className={`${background} w-full font-primary my-4 antialiased max-w-215`}
+    >
       <div className="p-px rounded-[10px] bg-midnight">
         <div className="rounded-[9px] bg-midnight/25 border border-aqua/60 glow-blur">
           <Disclosure>
             {({ open }) => (
               <div>
                 <DisclosureButton
-                  className={`focus print-reveal hover:cursor-pointer w-full px-6 py-7 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none rounded-[9px] print:p-2 print:font-bold ${
+                  className={`focus:ring-2 mb-[0.7px] focus:ring-lavendar print-reveal hover:cursor-pointer w-full px-6 py-7 flex flex-row justify-between items-center font-bold transition-all duration-300 outline-none rounded-[9px] print:p-2 print:font-bold ${
                     open
-                      ? "selected-tab-style shadow-none border-none bg-midnight focus-visible:ring-2 focus-visible:ring-lavendar text-white"
+                      ? "selected-tab-style shadow-none border-none bg-midnight text-white"
                       : "text-gradient-light hover:bg-midnight/40"
                   }`}
                 >

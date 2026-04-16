@@ -34,8 +34,8 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
     >
-      <AnimatedSection className={`${bgColor}`}>
-        <Container>
+      <AnimatedSection className={"bg-black"}>
+        <Container containerClassName="flex items-center text-center flex-col">
           <ContentBox
             title={slice.primary.title}
             content={<PrismicRichText field={slice.primary.description} />}
@@ -48,7 +48,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
                 />
               );
             })}
-            containerClassName="mb-8 items-center text-center"
+            containerClassName="mb-8 flex text-center items-center"
             titleClassName="text-aqua"
           />
           {slice.primary.accordion.map((item, index) => (
