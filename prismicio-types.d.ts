@@ -131,6 +131,7 @@ export type AuthorDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AuthorDocumentData>, "author", Lang>;
 
 type ContactDocumentDataSlicesSlice =
+  | AccordionSlice
   | CtaBannerSlice
   | TestimonialsSlice
   | NumberedListSlice
@@ -1194,6 +1195,7 @@ export type NewsletterSignupDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | AccordionSlice
   | PriceCardsSlice
   | ContentGridSlice
   | StatsSlice
@@ -1430,6 +1432,7 @@ export type PricesDocument<Lang extends string = string> =
   >;
 
 type ServiceDocumentDataSlicesSlice =
+  | AccordionSlice
   | StatsSlice
   | TeamListSlice
   | ContentCarouselSlice
@@ -1886,6 +1889,121 @@ export type AllDocumentTypes =
   | ServiceDocument
   | ServicesListingDocument
   | TeamDocument;
+
+/**
+ * Item in *Accordion → Default → Primary → Accordion*
+ */
+export interface AccordionSliceDefaultPrimaryAccordionItem {
+  /**
+   * Title field in *Accordion → Default → Primary → Accordion*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.accordion[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Accordion → Default → Primary → Accordion*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.accordion[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Accordion → Default → Primary*
+ */
+export interface AccordionSliceDefaultPrimary {
+  /**
+   * Background Color field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: accordion.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Title field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Accordion field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accordion.default.primary.accordion[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  accordion: prismic.GroupField<
+    Simplify<AccordionSliceDefaultPrimaryAccordionItem>
+  >;
+}
+
+/**
+ * Default variation for Accordion Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccordionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AccordionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Accordion*
+ */
+type AccordionSliceVariation = AccordionSliceDefault;
+
+/**
+ * Accordion Shared Slice
+ *
+ * - **API ID**: `accordion`
+ * - **Description**: Accordion
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccordionSlice = prismic.SharedSlice<
+  "accordion",
+  AccordionSliceVariation
+>;
 
 /**
  * Item in *ContentCarousel → Default (Insight) → Primary → Cards*
@@ -2448,6 +2566,17 @@ export interface ContentColumnSliceDefaultPrimary {
   card_color: prismic.SelectField<"None" | "Purple" | "Blue", "filled">;
 
   /**
+   * Text Align field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: content_column.default.primary.text_align
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  text_align: prismic.BooleanField;
+
+  /**
    * Title field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2466,6 +2595,17 @@ export interface ContentColumnSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Columns field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 1
+   * - **API ID Path**: content_column.default.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  columns: prismic.SelectField<"1" | "2" | "3" | "4", "filled">;
 
   /**
    * Content field in *ContentColumn → Default → Primary*
@@ -2497,6 +2637,17 @@ export type ContentColumnSliceDefault = prismic.SharedSliceVariation<
  * Primary content in *ContentColumn → ContentColumn with Cards → Primary*
  */
 export interface ContentColumnSliceContentColumnWithCardsPrimary {
+  /**
+   * Text Align field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.text_align
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  text_align: prismic.BooleanField;
+
   /**
    * Title field in *ContentColumn → ContentColumn with Cards → Primary*
    *
@@ -4359,6 +4510,11 @@ declare module "@prismicio/client" {
       TeamDocumentData,
       TeamDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AccordionSlice,
+      AccordionSliceDefaultPrimaryAccordionItem,
+      AccordionSliceDefaultPrimary,
+      AccordionSliceVariation,
+      AccordionSliceDefault,
       ContentCarouselSlice,
       ContentCarouselSliceDefaultPrimaryCardsItem,
       ContentCarouselSliceDefaultPrimary,

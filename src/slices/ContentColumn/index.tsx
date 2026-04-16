@@ -12,6 +12,7 @@ import {
 import { JSX } from "react";
 import { text } from "stream/consumers";
 import { title } from "process";
+import { Grid } from "@/components/Grid";
 
 type SliceContext = {
   lang: string;
@@ -63,9 +64,12 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
   }
 
   const isStackedLayout = card_color !== "";
+  const hasColumns =
+    "columns" in slice.primary ? String(slice.primary.columns ?? 1) : "1";
 
   const Cards = () => (
-    <div
+    <Grid
+      maxColumns={parseInt(hasColumns) || 1}
       className={` ${
         slice.variation === "default" ? "" : "mt-16"
       } flex flex-col lg:flex-row justify-center items-stretch rounded gap-4 ${
@@ -154,12 +158,12 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
                 field={item.title}
                 components={{
                   heading2: ({ children }) => (
-                    <h2 className="!text-[1.375rem] text-light-blue font-extraBold">
+                    <h2 className="text-[1.375rem]! text-light-blue font-extraBold">
                       {children}
                     </h2>
                   ),
                   heading3: ({ children }) => (
-                    <h3 className="!text-[1.375rem] text-light-blue font-extraBold">
+                    <h3 className="text-[1.375rem]! text-light-blue font-extraBold">
                       {children}
                     </h3>
                   ),
@@ -170,7 +174,7 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
           </div>
         );
       })}
-    </div>
+    </Grid>
   );
 
   return (
@@ -183,7 +187,7 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
       <div className="hidden lg:block">
         <AnimatedSection>
           <Container
-            containerClassName={isSingleColumn ? "flex justify-center" : ""}
+            containerClassName={`${isSingleColumn ? "flex justify-center" : ""} flex flex-col`}
           >
             <ContentBox
               title={slice.primary.title}
@@ -201,7 +205,7 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
                 </div>
               }
               width="standard"
-              containerClassName="flex text-center justify-center"
+              containerClassName={`flex justify-center mb-16 ${slice.primary.text_align ? "items-center text-center" : "items-start text-start"}`}
             />
             <Cards />
           </Container>
@@ -228,7 +232,7 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
               </div>
             }
             width="standard"
-            containerClassName="flex text-center justify-center"
+            containerClassName={`flex justify-center mb-16 ${slice.primary.text_align ? "items-center text-center" : "items-start text-start"}`}
           />
           <Cards />
         </Container>

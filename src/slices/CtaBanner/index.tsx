@@ -73,28 +73,33 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
               }
               buttons={
                 showPrismicButtons
-                  ? slice.primary.buttons?.map((button, index) => (
-                      <PrismicNextLink
-                        field={button}
-                        key={index}
-                        className={
-                          isGradient ? "btn btn-primary" : "btn btn-secondary"
-                        }
-                      />
-                    ))
+                  ? [
+                      <div
+                        key="buttons"
+                        className="w-full flex flex-row justify-center items-center gap-4 flex-wrap"
+                      >
+                        {slice.primary.buttons?.map((button, index) => (
+                          <PrismicNextLink
+                            field={button}
+                            key={index}
+                            className={
+                              index === 0
+                                ? "btn btn-primary"
+                                : "btn btn-secondary"
+                            }
+                          />
+                        ))}
+                      </div>,
+                    ]
                   : [
                       <CalendlyButton
                         text={slice.primary.booking_button_text ?? "Book Now"}
-                        buttonClass={
-                          slice.primary.button_class == true
-                            ? "btn-secondary"
-                            : "btn-primary"
-                        }
+                        buttonClass={"btn-primary"}
                         key={slice.primary.booking_button_text}
                       />,
                     ]
               }
-              containerClassName={textAlignment}
+              containerClassName={`${textAlignment} items-center`}
             />
           </div>
         </Container>
