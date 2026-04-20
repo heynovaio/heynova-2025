@@ -57,7 +57,7 @@ const HorizontalAccordionSlice = ({
                 />
               );
             })}
-            containerClassName="mb-8"
+            containerClassName="mb-8 items-start text-start"
             titleClassName="text-aqua"
           />
           <HorizontalAccordion
