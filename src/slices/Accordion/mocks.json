@@ -61,12 +61,10 @@
 									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
-											"type": "heading2",
+											"type": "heading3",
 											"content": {
-												"text": "pdifjnvpdfojn",
-												"spans": []
-											},
-											"direction": "ltr"
+												"text": "Pound"
+											}
 										}
 									]
 								}
@@ -91,7 +89,22 @@
 					},
 					{
 						"__TYPE__": "GroupItemContent",
-						"value": []
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Chose"
+											}
+										}
+									]
+								}
+							]
+						]
 					}
 				]
 			}

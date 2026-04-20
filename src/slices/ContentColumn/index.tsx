@@ -65,11 +65,11 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
 
   const isStackedLayout = card_color !== "";
   const hasColumns =
-    "columns" in slice.primary ? String(slice.primary.columns ?? 1) : "1";
+    "columns" in slice.primary ? String(slice.primary.columns ?? 1) : "4";
 
   const Cards = () => (
     <Grid
-      maxColumns={parseInt(hasColumns) || 1}
+      maxColumns={parseInt(hasColumns) || 4}
       className={` ${
         slice.variation === "default" ? "" : "mt-16"
       } flex flex-col lg:flex-row justify-center items-stretch rounded gap-4 ${

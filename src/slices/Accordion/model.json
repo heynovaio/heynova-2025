@@ -65,7 +65,7 @@
                   "label": "Title",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "heading3,heading4,heading5,heading2"
+                  "multi": "heading3,heading4,heading5"
                 }
               },
               "description": {
