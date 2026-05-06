@@ -10,13 +10,13 @@ function getLocale(request: NextRequest) {
   const acceptedLanguage = request.headers.get("accept-language");
   if (!acceptedLanguage) return defaultLocale;
 
-  const languages = new Negotiator({
-    headers: { "accept-language": acceptedLanguage },
-  }).languages();
-
   try {
+    const languages = new Negotiator({
+      headers: { "accept-language": acceptedLanguage },
+    }).languages();
     return match(languages, locales, defaultLocale);
-  } catch {
+  } catch (err) {
+    console.warn("[middleware] locale resolution failed, using default", err);
     return defaultLocale;
   }
 }
