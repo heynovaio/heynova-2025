@@ -52,5 +52,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|assets|slice-simulator|auth/.*|.*\\..*|_next).*)"],
+  matcher: ["/((?!api|assets|slice-simulator|auth/.*|.*\\..*|_next|_form).*)"],
 };
