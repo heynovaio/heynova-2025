@@ -67,7 +67,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
       className="flex flex-col gap-5"
       style={{ color: textColor }}
     >
-      <input type="hidden" name="form-name" value="website-audit" />
+      <input type="hidden" name="form-name" value="accessibility-form" />
       <input type="hidden" name="_subject" value="New website audit request" />
       <p hidden>
         <label>{`Don't fill this out:`} <input name="bot-field" /></label>
