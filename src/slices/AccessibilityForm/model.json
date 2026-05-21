@@ -10,7 +10,19 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "enabled": {
+          "type": "Boolean",
+          "config": {
+            "label": "Enabled?",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

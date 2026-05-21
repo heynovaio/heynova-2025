@@ -11,7 +11,7 @@ const AccessibilityForm: FC<AccessibilityFormProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <AccessibilityFormComponent />
+      {slice.primary.enabled && <AccessibilityFormComponent />}
     </section>
   );
 };

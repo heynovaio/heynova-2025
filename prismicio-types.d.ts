@@ -1892,6 +1892,22 @@ export type AllDocumentTypes =
   | TeamDocument;
 
 /**
+ * Primary content in *AccessibilityForm → Default → Primary*
+ */
+export interface AccessibilityFormSliceDefaultPrimary {
+  /**
+   * Enabled? field in *AccessibilityForm → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: accessibility_form.default.primary.enabled
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  enabled: prismic.BooleanField;
+}
+
+/**
  * Default variation for AccessibilityForm Slice
  *
  * - **API ID**: `default`
@@ -1900,7 +1916,7 @@ export type AllDocumentTypes =
  */
 export type AccessibilityFormSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<AccessibilityFormSliceDefaultPrimary>,
   never
 >;
 
@@ -4542,6 +4558,7 @@ declare module "@prismicio/client" {
       TeamDocumentDataSlicesSlice,
       AllDocumentTypes,
       AccessibilityFormSlice,
+      AccessibilityFormSliceDefaultPrimary,
       AccessibilityFormSliceVariation,
       AccessibilityFormSliceDefault,
       AccordionSlice,
