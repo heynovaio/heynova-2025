@@ -42,6 +42,14 @@ export async function generateMetadata({
         },
       ],
     },
+    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    alternates: {
+      canonical: `/${lang}/contact`,
+      languages: {
+        "en-CA": `/en-ca/contact`,
+        "fr-CA": `/fr-ca/contact`,
+      },
+    },
   };
 }
 

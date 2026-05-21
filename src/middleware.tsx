@@ -7,11 +7,18 @@ const defaultLocale = "en-ca";
 const locales = Object.keys(fullLangList);
 
 function getLocale(request: NextRequest) {
-  const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
-  const headers = { "accept-language": acceptedLanguage };
-  const languages = new Negotiator({ headers }).languages();
+  const acceptedLanguage = request.headers.get("accept-language");
+  if (!acceptedLanguage) return defaultLocale;
 
-  return match(languages, locales, defaultLocale);
+  try {
+    const languages = new Negotiator({
+      headers: { "accept-language": acceptedLanguage },
+    }).languages();
+    return match(languages, locales, defaultLocale);
+  } catch (err) {
+    console.warn("[middleware] locale resolution failed, using default", err);
+    return defaultLocale;
+  }
 }
 
 export function middleware(request: NextRequest) {
