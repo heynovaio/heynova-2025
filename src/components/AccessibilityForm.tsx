@@ -26,7 +26,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
     const data = new FormData(form);
 
     try {
-      const res = await fetch("/_form.html", {
+      const res = await fetch("/favicon.ico", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
