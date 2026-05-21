@@ -6,6 +6,16 @@
 			"enabled": {
 				"__TYPE__": "BooleanContent",
 				"value": false
+			},
+			"card_style": {
+				"__TYPE__": "FieldContent",
+				"value": "Inverted",
+				"type": "Select"
+			},
+			"background": {
+				"__TYPE__": "FieldContent",
+				"value": "Inverted",
+				"type": "Select"
 			}
 		},
 		"items": []

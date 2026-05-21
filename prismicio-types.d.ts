@@ -1905,6 +1905,17 @@ export interface AccessibilityFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   enabled: prismic.BooleanField;
+
+  /**
+   * Card Style field in *AccessibilityForm → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: accessibility_form.default.primary.card_style
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_style: prismic.SelectField<"None" | "White" | "Outline", "filled">;
 }
 
 /**

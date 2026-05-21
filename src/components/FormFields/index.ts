@@ -35,3 +35,6 @@ export type { RadioGroupFieldProps, RadioOption } from "./RadioGroupField";
 
 export { HiddenField } from "./HiddenField";
 export type { HiddenFieldProps } from "./HiddenField";
+
+export { UrlField } from "./UrlField";
+export type { UrlFieldProps } from "./UrlField";

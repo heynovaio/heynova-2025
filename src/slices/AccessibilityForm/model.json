@@ -20,6 +20,18 @@
             "placeholder_true": "true",
             "default_value": true
           }
+        },
+        "card_style": {
+          "type": "Select",
+          "config": {
+            "label": "Card Style",
+            "options": [
+              "None",
+              "White",
+              "Outline"
+            ],
+            "default_value": "None"
+          }
         }
       },
       "items": {}
