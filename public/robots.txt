@@ -1,9 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/private
 
 # Host
-Host: https://heynova.io/
+Host: https://heynova.io
 
 # Sitemaps
 Sitemap: https://heynova.io/sitemap.xml
