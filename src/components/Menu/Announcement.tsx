@@ -19,6 +19,14 @@ export const Announcement: React.FC<AnnouncementProps> = ({
         field={text}
         components={{
           paragraph: ({ children }) => <p className="text-sm">{children}</p>,
+          hyperlink: ({ node, children }) => (
+            <a
+              href={node.data.url ?? "#"}
+              className="!text-inherit hover:!text-inherit hover:underline"
+            >
+              {children}
+            </a>
+          ),
         }}
       />
 
