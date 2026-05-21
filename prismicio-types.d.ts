@@ -1891,6 +1891,36 @@ export type AllDocumentTypes =
   | TeamDocument;
 
 /**
+ * Default variation for AccessibilityForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccessibilityFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *AccessibilityForm*
+ */
+type AccessibilityFormSliceVariation = AccessibilityFormSliceDefault;
+
+/**
+ * AccessibilityForm Shared Slice
+ *
+ * - **API ID**: `accessibility_form`
+ * - **Description**: AccessibilityForm
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AccessibilityFormSlice = prismic.SharedSlice<
+  "accessibility_form",
+  AccessibilityFormSliceVariation
+>;
+
+/**
  * Item in *Accordion → Default → Primary → Accordion*
  */
 export interface AccordionSliceDefaultPrimaryAccordionItem {
@@ -4510,6 +4540,9 @@ declare module "@prismicio/client" {
       TeamDocumentData,
       TeamDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AccessibilityFormSlice,
+      AccessibilityFormSliceVariation,
+      AccessibilityFormSliceDefault,
       AccordionSlice,
       AccordionSliceDefaultPrimaryAccordionItem,
       AccordionSliceDefaultPrimary,

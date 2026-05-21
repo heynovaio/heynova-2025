@@ -1,0 +1,16 @@
+{
+  "id": "accessibility_form",
+  "type": "SharedSlice",
+  "name": "AccessibilityForm",
+  "description": "AccessibilityForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

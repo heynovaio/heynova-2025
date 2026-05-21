@@ -9,7 +9,8 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "UID"
+          "label": "UID",
+          "placeholder": ""
         }
       },
       "name": {
