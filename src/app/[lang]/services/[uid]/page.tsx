@@ -83,12 +83,43 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     areaServed: "CA",
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `https://heynova.io/${lang}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `https://heynova.io/${lang}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: prismic.asText(page.data.title) || "Service",
+        item: `https://heynova.io/${lang}/services/${uid}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
       <Layout
