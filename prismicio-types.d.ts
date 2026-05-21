@@ -1195,6 +1195,7 @@ export type NewsletterSignupDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | AccessibilityFormSlice
   | AccordionSlice
   | PriceCardsSlice
   | ContentGridSlice
