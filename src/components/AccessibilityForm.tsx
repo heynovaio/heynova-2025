@@ -73,7 +73,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
         <label>{`Don't fill this out:`} <input name="bot-field" /></label>
       </p>
 
-      <h2>{`Request a free accessibility audit`}</h2>
+      <h2>{`Claim your free review`}</h2>
 
       <UrlField
         name="website_url"
