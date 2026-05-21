@@ -37,7 +37,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
         formRef.current?.reset();
         setTimeout(() => {
           const top = wrapperRef.current?.getBoundingClientRect().top ?? 0;
-          window.scrollTo({ top: window.scrollY + top - 108, behavior: "smooth" });
+          window.scrollTo({ top: window.scrollY + top - 128, behavior: "smooth" });
           wrapperRef.current?.focus();
         }, 50);
       } else {
