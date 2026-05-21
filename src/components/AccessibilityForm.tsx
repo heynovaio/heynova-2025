@@ -26,7 +26,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
     const data = new FormData(form);
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch("/_form.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
@@ -60,7 +60,7 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      name="website-audit"
+      name="accessibility-form"
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
