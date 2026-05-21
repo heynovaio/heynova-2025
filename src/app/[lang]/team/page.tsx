@@ -41,7 +41,7 @@ export async function generateMetadata({
         },
       ],
     },
-    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    metadataBase: new URL(process.env.SITE_URL || "https://heynova.io"),
     alternates: {
       canonical: `/${lang}/team`,
       languages: (() => {

@@ -68,7 +68,7 @@ export async function generateMetadata({
         },
       ],
     },
-    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    metadataBase: new URL(process.env.SITE_URL || "https://heynova.io"),
     alternates: {
       canonical: `/${lang}/insights/${category}/${uid}`,
       languages: (() => {
@@ -101,50 +101,118 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     const menus = await client.getSingle("menus", { lang });
     const locales = await getLocales(page, client);
 
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: prismic.asText(page.data.title) || "",
+      description: page.data.meta_description || "",
+      url: `https://heynova.io/${lang}/insights/${category}/${uid}`,
+      datePublished: page.first_publication_date,
+      dateModified: page.last_publication_date,
+      author: {
+        "@type": "Organization",
+        name: "Hey Nova",
+        url: "https://heynova.io",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Hey Nova",
+        url: "https://heynova.io",
+      },
+      image: page.data.meta_image?.url || "",
+    };
+
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `https://heynova.io/${lang}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Insights",
+          item: `https://heynova.io/${lang}/insights`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: category,
+          item: `https://heynova.io/${lang}/insights/${category}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: prismic.asText(page.data.title) || "Article",
+          item: `https://heynova.io/${lang}/insights/${category}/${uid}`,
+        },
+      ],
+    };
+
     return (
-      <Layout
-        backgroundType="primary"
-        locales={locales}
-        global={global.data}
-        menus={menus.data}
-        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
-      >
-        <TagsIntro
-          data={page.data}
-          tags={page.tags}
-          content={<PrismicRichText field={page.data.body} />}
-          uid={page.uid}
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+          }}
         />
-
-        <SliceZone
-          slices={page.data.slices}
-          components={components}
-          context={{ lang, category, isBlogPage: true }}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+          }}
         />
+        <Layout
+          backgroundType="primary"
+          locales={locales}
+          global={global.data}
+          menus={menus.data}
+          include_newsletter_sign_up_banner={
+            page.data.include_newsletter_sign_up
+          }
+        >
+          <TagsIntro
+            data={page.data}
+            tags={page.tags}
+            content={<PrismicRichText field={page.data.body} />}
+            uid={page.uid}
+          />
 
-        {page.data.authors.length > 0 && (
-          <Container>
-            <div className="w-full flex flex-col md:flex-row gap-10 justify-center items-center">
-              {page.data.authors?.map((item: InsightAuthorItem, index) => {
-                const author = item.author;
+          <SliceZone
+            slices={page.data.slices}
+            components={components}
+            context={{ lang, category, isBlogPage: true }}
+          />
 
-                if (!isFilled.contentRelationship(author)) return null;
+          {page.data.authors.length > 0 && (
+            <Container>
+              <div className="w-full flex flex-col md:flex-row gap-10 justify-center items-center">
+                {page.data.authors?.map((item: InsightAuthorItem, index) => {
+                  const author = item.author;
 
-                const data = author.data as AuthorDocumentData;
+                  if (!isFilled.contentRelationship(author)) return null;
 
-                return (
-                  <Author
-                    key={index}
-                    image={data.image}
-                    author={data.name}
-                    jobTitle={data.job_title}
-                  />
-                );
-              })}
-            </div>
-          </Container>
-        )}
-      </Layout>
+                  const data = author.data as AuthorDocumentData;
+
+                  return (
+                    <Author
+                      key={index}
+                      image={data.image}
+                      author={data.name}
+                      jobTitle={data.job_title}
+                    />
+                  );
+                })}
+              </div>
+            </Container>
+          )}
+        </Layout>
+      </>
     );
   } catch (error) {
     console.error("Error fetching insight:", error);
@@ -169,7 +237,10 @@ export async function generateStaticParams() {
       if (insightCategories && insightCategories.length > 0) {
         insightCategories.forEach((categoryItem) => {
           // Access the category relationship using isFilled
-          if (isFilled.contentRelationship(categoryItem.name) && categoryItem.name.uid) {
+          if (
+            isFilled.contentRelationship(categoryItem.name) &&
+            categoryItem.name.uid
+          ) {
             params.push({
               uid: insight.uid,
               category: categoryItem.name.uid,

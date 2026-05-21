@@ -43,7 +43,7 @@ export async function generateMetadata({
         },
       ],
     },
-    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
+    metadataBase: new URL(process.env.SITE_URL || "https://heynova.io"),
     alternates: {
       canonical: `/${lang}/services/${uid}`,
       languages: (() => {
@@ -68,21 +68,75 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const menus = await client.getSingle("menus", { lang });
   const locales = await getLocales(page, client);
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: prismic.asText(page.data.title) || "Service",
+    provider: {
+      "@type": "Organization",
+      name: "Hey Nova",
+      url: "https://heynova.io",
+    },
+    url: `https://heynova.io/${lang}/services/${uid}`,
+    description: page.data.meta_description || "",
+    serviceType: "Web Accessibility Consulting",
+    areaServed: "CA",
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `https://heynova.io/${lang}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `https://heynova.io/${lang}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: prismic.asText(page.data.title) || "Service",
+        item: `https://heynova.io/${lang}/services/${uid}`,
+      },
+    ],
+  };
+
   return (
-    <Layout
-      backgroundType="primary"
-      locales={locales}
-      global={global.data}
-      menus={menus.data}
-      include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
-    >
-      <DefaultIntro data={page.data} />
-      <SliceZone
-        slices={page.data.slices}
-        components={components}
-        context={{ lang: "en-ca" }}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema).replace(/</g, "\\u003c"),
+        }}
       />
-    </Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Layout
+        backgroundType="primary"
+        locales={locales}
+        global={global.data}
+        menus={menus.data}
+        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
+      >
+        <DefaultIntro data={page.data} />
+        <SliceZone
+          slices={page.data.slices}
+          components={components}
+          context={{ lang: "en-ca" }}
+        />
+      </Layout>
+    </>
   );
 }
 
