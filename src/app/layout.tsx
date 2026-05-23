@@ -1,8 +1,11 @@
+import Script from "next/script";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+
+const GA_MEASUREMENT_ID = "G-MJ9S956LHS";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -92,6 +95,18 @@ export default function RootLayout({
       <body>
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <PrismicPreview repositoryName={repositoryName} />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
+          `}
+        </Script>
       </body>
     </html>
   );
