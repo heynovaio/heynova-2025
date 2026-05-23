@@ -28,6 +28,8 @@ const organizationSchema = {
   },
   knowsAbout: [
     "WCAG 2.2 accessibility compliance",
+    "Accessible Canada Act (ACA) compliance",
+    "AODA compliance",
     "web accessibility audits and remediation",
     "inclusive web design",
     "Next.js development",
@@ -35,6 +37,17 @@ const organizationSchema = {
     "nonprofit web development Canada",
     "digital accessibility consulting",
     "usability strategy and UX design",
+    "headless CMS migration",
+    "design systems for nonprofits",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "info@heynova.io",
+      areaServed: "CA",
+      availableLanguage: ["en", "fr"],
+    },
   ],
   memberOf: [
     {
@@ -90,6 +103,13 @@ export default function RootLayout({
           }}
         />
 
+        <link rel="preconnect" href="https://use.typekit.net" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://use.typekit.net"
+          crossOrigin=""
+        />
         <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
       </head>
       <body>

@@ -6,7 +6,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { Container, Layout } from "@/components";
-import { getLocales } from "@/utils";
+import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
 import { TagsIntro } from "@/components/Intros/TagsIntro";
 import Author from "@/components/Author/Author";
 import {
@@ -54,32 +54,26 @@ export async function generateMetadata({
     })
     .catch(() => notFound());
 
-  return {
-    title:
-      page.data.meta_title ||
-      prismic.asText(page.data.title) ||
-      "Insight | Hey Nova",
+  const title =
+    page.data.meta_title ||
+    prismic.asText(page.data.title) ||
+    "Insight | Hey Nova";
+
+  return buildMetadata({
+    title,
     description: page.data.meta_description,
-    openGraph: {
-      title: page.data.meta_title || undefined,
-      images: [
-        {
-          url: page.data.meta_image.url || "",
-        },
-      ],
-    },
-    metadataBase: new URL(process.env.SITE_URL || "https://heynova.io"),
-    alternates: {
-      canonical: `/${lang}/insights/${category}/${uid}`,
-      languages: (() => {
-        const langs: Record<string, string> = {};
-        page.alternate_languages?.forEach((alt) => {
-          langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
-        });
-        return langs;
-      })(),
-    },
-  };
+    canonical: `/${lang}/insights/${category}/${uid}`,
+    languages: buildAlternateLanguages(
+      lang,
+      (l, u) => `/${l}/insights/${category}/${u}`,
+      page.alternate_languages,
+      uid,
+    ),
+    ogImage: page.data.meta_image?.url,
+    ogType: "article",
+    publishedTime: page.first_publication_date,
+    modifiedTime: page.last_publication_date,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {
@@ -101,6 +95,20 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     const menus = await client.getSingle("menus", { lang });
     const locales = await getLocales(page, client);
 
+    const authors = (page.data.authors || [])
+      .map((item: InsightAuthorItem) => {
+        const a = item.author;
+        if (!isFilled.contentRelationship(a)) return null;
+        const d = a.data as AuthorDocumentData;
+        if (!d?.name) return null;
+        return {
+          "@type": "Person" as const,
+          name: d.name,
+          ...(d.job_title ? { jobTitle: d.job_title } : {}),
+        };
+      })
+      .filter(Boolean);
+
     const articleSchema = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -109,17 +117,26 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       url: `https://heynova.io/${lang}/insights/${category}/${uid}`,
       datePublished: page.first_publication_date,
       dateModified: page.last_publication_date,
-      author: {
-        "@type": "Organization",
-        name: "Hey Nova",
-        url: "https://heynova.io",
-      },
+      author:
+        authors.length > 0
+          ? authors
+          : {
+              "@type": "Organization",
+              name: "Hey Nova",
+              url: "https://heynova.io",
+            },
       publisher: {
         "@type": "Organization",
         name: "Hey Nova",
         url: "https://heynova.io",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://heynova.io/logo.png",
+        },
       },
-      image: page.data.meta_image?.url || "",
+      image: page.data.meta_image?.url || "https://heynova.io/icon.png",
+      inLanguage: lang,
+      mainEntityOfPage: `https://heynova.io/${lang}/insights/${category}/${uid}`,
     };
 
     const breadcrumbSchema = {

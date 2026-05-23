@@ -9,7 +9,7 @@ import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
 import { HomeIntro } from "@/components/Intros/HomeIntro";
-import { getLocales } from "@/utils";
+import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
 
 type Params = { lang: string };
 
@@ -24,32 +24,22 @@ export async function generateMetadata({
     .getByUID("page", "home", { lang })
     .catch(() => notFound());
 
-  return {
-    title:
-      page.data.meta_title ||
-      prismic.asText(page.data.title) ||
-      "Home | Hey Nova",
+  const title =
+    page.data.meta_title ||
+    prismic.asText(page.data.title) ||
+    "Home | Hey Nova";
+
+  return buildMetadata({
+    title,
     description: page.data.meta_description,
-    openGraph: {
-      title: page.data.meta_title || undefined,
-      images: [
-        {
-          url: page.data.meta_image.url || "",
-        },
-      ],
-    },
-    metadataBase: new URL(process.env.SITE_URL || 'https://heynova.io'),
-    alternates: {
-      canonical: `/${lang}`,
-      languages: (() => {
-          const langs: Record<string, string> = {};
-          page.alternate_languages?.forEach((alt) => {
-            langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
-          });
-          return langs;
-        })(),
-    },
-  };
+    canonical: `/${lang}`,
+    languages: buildAlternateLanguages(
+      lang,
+      (l) => `/${l}`,
+      page.alternate_languages,
+    ),
+    ogImage: page.data.meta_image?.url,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {

@@ -1,0 +1,28 @@
+# Hey Nova
+
+> Hey Nova is a Canadian, women-led digital agency specializing in inclusive,
+> accessible web design and development for nonprofits, public sector, and
+> mission-driven organizations. We build with Next.js and headless CMSs
+> (Prismic), and we are WCAG 2.2, AODA, and Accessible Canada Act (ACA)
+> focused. IAAP and WBE Canada certified.
+
+## Core pages
+
+- [Home](https://heynova.io/en-ca): Overview of services, approach, and
+  recent work.
+- [Services](https://heynova.io/en-ca/services): Accessibility audits and
+  remediation, inclusive web design, headless CMS development, digital
+  strategy, and ongoing care.
+- [Insights](https://heynova.io/en-ca/insights): Articles on accessibility,
+  inclusive design, nonprofit web strategy, and headless CMS implementation.
+- [Team](https://heynova.io/en-ca/team): Meet the people behind Hey Nova.
+- [Contact](https://heynova.io/en-ca/contact): Get in touch about a project.
+
+## Languages
+
+The site is published in English (en-ca) and French (fr-ca). Replace
+`/en-ca/` with `/fr-ca/` for French equivalents.
+
+## Sitemap
+
+- [XML sitemap](https://heynova.io/sitemap.xml)
