@@ -1,6 +1,7 @@
 "use client";
 import { KeyTextField } from "@prismicio/client";
 import { useEffect, useRef } from "react";
+import { trackEvent } from "@/utils/analytics";
 
 interface CalendlyButtonProps {
   text: string | KeyTextField;
@@ -39,6 +40,14 @@ export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
       link.style.opacity = "0";
       link.style.transition = "opacity 0.5s ease-out";
       link.target = "_blank";
+
+      link.addEventListener("click", () => {
+        trackEvent("book_call_click", {
+          cta_text: typeof text === "string" ? text : "",
+          cta_location: "calendly_button",
+          destination: "https://calendly.com/hey-nova/free-consult",
+        });
+      });
 
       // Clear container and add link
       containerRef.current!.innerHTML = "";
