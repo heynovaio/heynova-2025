@@ -99,6 +99,7 @@ export const Header: React.FC<HeaderProps> = ({
             <CalendlyButton
               text={global?.calendly_button_text || "Book a Discovery Call"}
               buttonClass="btn-primary"
+              location="header_desktop"
             />
           </div>
 
@@ -144,6 +145,7 @@ export const Header: React.FC<HeaderProps> = ({
                             "Book a Discovery Call"
                           }
                           buttonClass="btn-primary"
+                          location="header_mobile"
                         />
                       </div>
                       {locales && locales.length > 1 && (
