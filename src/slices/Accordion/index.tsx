@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Content, asHTML, asText } from "@prismicio/client";
+import { Content, asText } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Section } from "@/components/Layout/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -35,7 +35,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
         mainEntity: slice.primary.accordion
           .map((item) => {
             const question = asText(item.title).trim();
-            const answer = asHTML(item.description).trim();
+            const answer = asText(item.description).trim();
             if (!question || !answer) return null;
             return {
               "@type": "Question",
