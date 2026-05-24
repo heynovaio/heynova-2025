@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, asHTML, asText } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Section } from "@/components/Layout/Section";
 import { AnimatedSection } from "@/components/AnimatedSection";
@@ -28,12 +28,42 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
     background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
   const isBlog = context?.isBlogPage ?? false;
 
+  const faqSchema = slice.primary.is_faq
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: slice.primary.accordion
+          .map((item) => {
+            const question = asText(item.title).trim();
+            const answer = asHTML(item.description).trim();
+            if (!question || !answer) return null;
+            return {
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: answer,
+              },
+            };
+          })
+          .filter(Boolean),
+      }
+    : null;
+
   return (
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
     >
+      {faqSchema && faqSchema.mainEntity.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <AnimatedSection className={`${bgColor} `}>
         <Container containerClassName="flex items-center flex-col">
           <ContentBox
