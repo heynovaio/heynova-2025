@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const STORAGE_KEY = "heynova-consent-v1";
+const HEADING_ID = "cookie-consent-title";
 
 type Choice = "granted" | "denied";
 
@@ -40,6 +41,8 @@ function applyConsent(choice: Choice): void {
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
   const [locale, setLocale] = useState("en-ca");
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldFocusOnShowRef = useRef(false);
 
   useEffect(() => {
     const pathLocale = window.location.pathname.split("/")[1];
@@ -62,6 +65,7 @@ export function CookieConsent() {
       try {
         localStorage.removeItem(STORAGE_KEY);
       } catch {}
+      shouldFocusOnShowRef.current = true;
       setVisible(true);
     };
 
@@ -69,6 +73,16 @@ export function CookieConsent() {
       delete window.resetCookieConsent;
     };
   }, []);
+
+  // Move focus to the banner when the user re-opens it via resetCookieConsent.
+  // We deliberately do NOT focus on initial appearance — yanking focus on page
+  // load would disrupt screen reader users mid-scan.
+  useEffect(() => {
+    if (visible && shouldFocusOnShowRef.current) {
+      sectionRef.current?.focus();
+      shouldFocusOnShowRef.current = false;
+    }
+  }, [visible]);
 
   const handleChoice = (choice: Choice) => {
     try {
@@ -82,8 +96,10 @@ export function CookieConsent() {
 
   return (
     <section
+      ref={sectionRef}
       role="region"
-      aria-label="Cookie consent"
+      aria-labelledby={HEADING_ID}
+      tabIndex={-1}
       style={{
         position: "fixed",
         left: 16,
@@ -101,6 +117,7 @@ export function CookieConsent() {
       }}
     >
       <h2
+        id={HEADING_ID}
         style={{
           margin: 0,
           marginBottom: 8,
