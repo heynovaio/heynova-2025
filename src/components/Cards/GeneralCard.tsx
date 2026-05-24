@@ -73,6 +73,7 @@ export const GeneralCard = ({
           <PrismicNextImage
             field={image}
             fallbackAlt=""
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-cover general-card-image"
           />
         )}

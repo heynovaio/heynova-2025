@@ -85,6 +85,8 @@ export const Header: React.FC<HeaderProps> = ({
             <PrismicNextImage
               field={logo}
               fallbackAlt=""
+              priority
+              sizes="(max-width: 768px) 140px, 180px"
               className="md:px-5 py-5 px-0"
             />
           </PrismicNextLink>
