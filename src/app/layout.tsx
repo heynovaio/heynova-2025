@@ -4,6 +4,7 @@ import { repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const GA_MEASUREMENT_ID = "G-MJ9S956LHS";
 
@@ -123,10 +124,18 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500,
+            });
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
           `}
         </Script>
+        <CookieConsent />
       </body>
     </html>
   );
