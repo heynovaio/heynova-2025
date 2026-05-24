@@ -44,17 +44,21 @@ function entryFor(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const client = createClient();
 
-  const [
-    pages,
-    services,
-    insights,
-    insightCategories,
-  ] = await Promise.all([
-    client.getAllByType("page", { lang: "*" }).catch(() => []),
-    client.getAllByType("service", { lang: "*" }).catch(() => []),
-    client.getAllByType("insight", { lang: "*" }).catch(() => []),
-    client.getAllByType("insights_categories", { lang: "*" }).catch(() => []),
-  ]);
+  // Fail loudly rather than serve a partial sitemap. A 500 makes crawlers
+  // retry; a silently-truncated sitemap gets cached and quietly drops URLs
+  // from the index.
+  const [pages, services, insights, insightCategories] = await Promise.all([
+    client.getAllByType("page", { lang: "*" }),
+    client.getAllByType("service", { lang: "*" }),
+    client.getAllByType("insight", { lang: "*" }),
+    client.getAllByType("insights_categories", { lang: "*" }),
+  ]).catch((err: unknown) => {
+    console.error("[sitemap] Prismic fetch failed:", err);
+    throw new Error(
+      "Sitemap generation failed: unable to fetch Prismic content",
+      { cause: err },
+    );
+  });
 
   const entries: SitemapEntry[] = [];
 
