@@ -48,7 +48,13 @@ const Testimonials = ({ slice, context }: TestimonialsProps): JSX.Element => {
     >
       <AnimatedSection className={bgColor}>
         <Container containerClassName="flex flex-col gap-12 items-center">
-          <div className="w-full py-4 px-6 md:py-16 md:px-28">
+          <div
+            className="w-full rounded-[1.25rem] py-4 px-6 md:py-16 md:px-28"
+            style={{
+              background:
+                "linear-gradient(66deg, rgba(53, 252, 255, 0.36) 4.86%, rgba(81, 58, 145, 0.36) 84.35%)",
+            }}
+          >
             <div
               className={`flex flex-col gap-4 md:gap-12 ${
                 hasImage
