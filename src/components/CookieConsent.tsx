@@ -39,8 +39,12 @@ function applyConsent(choice: Choice): void {
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
+  const [locale, setLocale] = useState("en-ca");
 
   useEffect(() => {
+    const pathLocale = window.location.pathname.split("/")[1];
+    if (pathLocale === "fr-ca") setLocale("fr-ca");
+
     let stored: string | null = null;
     try {
       stored = localStorage.getItem(STORAGE_KEY);
@@ -109,7 +113,17 @@ export function CookieConsent() {
       <p style={{ margin: 0, marginBottom: 16, fontSize: "0.95rem" }}>
         We use Google Analytics to understand how visitors use this site. No
         analytics cookies are set until you choose Accept. You can change your
-        choice at any time.
+        choice at any time.{" "}
+        <a
+          href={`/${locale}/privacy-policy`}
+          style={{
+            color: "var(--color-aqua, #97e1e5)",
+            textDecoration: "underline",
+          }}
+        >
+          Read our privacy policy
+        </a>
+        .
       </p>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
         <button
