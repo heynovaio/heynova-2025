@@ -2,6 +2,7 @@ import { useNewsletterSignupData } from "@/hooks/use-newsletter-signup-data-hook
 import { PrismicRichText } from "@prismicio/react";
 import { Container, Section } from "@/components";
 import { useState, useRef } from "react";
+import { trackEvent } from "@/utils/analytics";
 
 type Props = {
   lang: string;
@@ -114,6 +115,7 @@ const NewsletterSignupBanner = ({ lang }: Props) => {
 
       // Success is assumed in no-cors mode — no readable response
       setSuccess(true);
+      trackEvent("sign_up", { method: "newsletter_mailchimp" });
       form.reset();
     } catch (error) {
       console.error("Mailchimp submission failed", error);

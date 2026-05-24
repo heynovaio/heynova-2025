@@ -105,6 +105,7 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
                       <PrismicNextImage
                         field={item.image}
                         fallbackAlt=""
+                        sizes="(min-width: 768px) 50vw, 90vw"
                         className="object-cover w-full h-full"
                       />
                     </div>

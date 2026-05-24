@@ -85,6 +85,8 @@ export const Header: React.FC<HeaderProps> = ({
             <PrismicNextImage
               field={logo}
               fallbackAlt=""
+              priority
+              sizes="(max-width: 768px) 140px, 180px"
               className="md:px-5 py-5 px-0"
             />
           </PrismicNextLink>
@@ -99,6 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
             <CalendlyButton
               text={global?.calendly_button_text || "Book a Discovery Call"}
               buttonClass="btn-primary"
+              location="header_desktop"
             />
           </div>
 
@@ -144,6 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
                             "Book a Discovery Call"
                           }
                           buttonClass="btn-primary"
+                          location="header_mobile"
                         />
                       </div>
                       {locales && locales.length > 1 && (

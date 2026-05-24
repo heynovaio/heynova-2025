@@ -8,7 +8,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
-import { getLocales } from "@/utils";
+import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
 import { InsightListingGrid } from "@/components/Grid";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
@@ -30,32 +30,23 @@ export async function generateMetadata({
     .getSingle("insights_listing", { lang })
     .catch(() => notFound());
 
-  return {
-    title:
-      page.data.meta_title ||
-      prismic.asText(page.data.title) ||
-      "Insights | Hey Nova",
+  const title =
+    page.data.meta_title ||
+    prismic.asText(page.data.title) ||
+    "Insights | Hey Nova";
+
+  return buildMetadata({
+    title,
     description: page.data.meta_description,
-    openGraph: {
-      title: page.data.meta_title || undefined,
-      images: [
-        {
-          url: page.data.meta_image.url || "",
-        },
-      ],
-    },
-    metadataBase: new URL(process.env.SITE_URL || "https://heynova.io"),
-    alternates: {
-      canonical: `/${lang}/insights`,
-      languages: (() => {
-        const langs: Record<string, string> = {};
-        page.alternate_languages?.forEach((alt) => {
-          langs[alt.lang] = `/${alt.lang}/${alt.uid}`;
-        });
-        return langs;
-      })(),
-    },
-  };
+    canonical: `/${lang}/insights`,
+    lang,
+    languages: buildAlternateLanguages(
+      lang,
+      (l) => `/${l}/insights`,
+      page.alternate_languages,
+    ),
+    ogImage: page.data.meta_image?.url,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<Params> }) {

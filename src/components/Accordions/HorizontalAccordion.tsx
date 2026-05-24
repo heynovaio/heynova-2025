@@ -11,7 +11,7 @@ import {
 } from "@prismicio/client";
 
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { useState } from "react";
 
 interface HorizontalAccordionProps {
@@ -89,9 +89,10 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                       <div className="h-full flex items-center justify-start">
                         <div className="text-white text-left px-8 w-full max-w-2xl flex flex-col items-start">
                           {images[idx]?.url && (
-                            <img
-                              src={images[idx].url}
-                              alt={images[idx].alt || `Image ${idx}`}
+                            <PrismicNextImage
+                              field={images[idx]}
+                              fallbackAlt=""
+                              sizes="100px"
                               className="mb-6 max-h-[100px] p-3 object-contain block rounded-40 bg-midnight/60 border border-teal/90"
                             />
                           )}
@@ -187,9 +188,10 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                   <div className="h-full flex items-center justify-center">
                     <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
                       {images[index]?.url && (
-                        <img
-                          src={images[index].url}
-                          alt={images[index].alt || `Image ${index}`}
+                        <PrismicNextImage
+                          field={images[index]}
+                          fallbackAlt=""
+                          sizes="80px"
                           className="mb-6 max-h-[80px] object-contain block mx-auto"
                         />
                       )}

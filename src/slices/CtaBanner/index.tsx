@@ -95,6 +95,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
                       <CalendlyButton
                         text={slice.primary.booking_button_text ?? "Book Now"}
                         buttonClass={"btn-primary"}
+                        location="cta_banner"
                         key={slice.primary.booking_button_text}
                       />,
                     ]
