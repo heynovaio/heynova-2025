@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { toOgLocale } from "@/constants/languages";
 
 export const SITE_URL = process.env.SITE_URL || "https://heynova.io";
 
@@ -33,6 +34,7 @@ type BuildMetadataOpts = {
   description?: string | null;
   canonical: string;
   languages: Record<string, string>;
+  lang?: string;
   ogImage?: string | null;
   ogType?: "website" | "article";
   publishedTime?: string | null;
@@ -44,6 +46,7 @@ export function buildMetadata({
   description,
   canonical,
   languages,
+  lang,
   ogImage,
   ogType = "website",
   publishedTime,
@@ -67,7 +70,7 @@ export function buildMetadata({
       siteName: "Hey Nova",
       images: [{ url: image }],
       type: ogType,
-      locale: "en_CA",
+      locale: toOgLocale(lang),
       ...(ogType === "article" && publishedTime
         ? { publishedTime, modifiedTime: modifiedTime ?? undefined }
         : {}),

@@ -26,16 +26,31 @@ declare global {
 
 function applyConsent(choice: Choice): void {
   if (typeof window === "undefined") return;
-  const gtag = (
-    window as unknown as { gtag?: (...args: GtagConsentArgs) => void }
-  ).gtag;
-  if (typeof gtag !== "function") return;
-  gtag("consent", "update", {
+
+  const params = {
     ad_storage: choice,
     ad_user_data: choice,
     ad_personalization: choice,
     analytics_storage: choice,
-  });
+  };
+
+  const w = window as typeof window & {
+    gtag?: (...args: GtagConsentArgs) => void;
+    dataLayer?: unknown[];
+  };
+
+  // Common path: the ga-bootstrap script (beforeInteractive) defined gtag
+  // before any React effect ran.
+  if (typeof w.gtag === "function") {
+    w.gtag("consent", "update", params);
+    return;
+  }
+
+  // Fallback: queue directly into dataLayer. gtag.js replays queued
+  // commands when it loads, so this works even if the bootstrap script
+  // hasn't executed yet for some reason.
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push(["consent", "update", params]);
 }
 
 export function CookieConsent() {

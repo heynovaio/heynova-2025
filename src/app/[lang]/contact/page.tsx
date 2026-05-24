@@ -37,6 +37,7 @@ export async function generateMetadata({
     title,
     description: page.data.meta_description,
     canonical: `/${lang}/contact`,
+    lang,
     languages: buildAlternateLanguages(
       lang,
       (l) => `/${l}/contact`,

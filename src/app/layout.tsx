@@ -112,18 +112,19 @@ export default function RootLayout({
           crossOrigin=""
         />
         <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
-      </head>
-      <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
-        <PrismicPreview repositoryName={repositoryName} />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
+        {/*
+          GA bootstrap runs beforeInteractive so window.gtag and the default
+          consent state are guaranteed to exist before any React effect runs
+          (including CookieConsent's effect that reads localStorage and may
+          immediately call gtag('consent', 'update', ...)). The external
+          gtag.js library + config stay afterInteractive so they don't block
+          page load.
+        */}
+        <Script id="ga-bootstrap" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = gtag;
             gtag('consent', 'default', {
               ad_storage: 'denied',
               ad_user_data: 'denied',
@@ -132,8 +133,18 @@ export default function RootLayout({
               wait_for_update: 500,
             });
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });
           `}
+        </Script>
+      </head>
+      <body>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <PrismicPreview repositoryName={repositoryName} />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-config" strategy="afterInteractive">
+          {`window.gtag && window.gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });`}
         </Script>
         <CookieConsent />
       </body>

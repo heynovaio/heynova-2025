@@ -63,6 +63,7 @@ export async function generateMetadata({
     title,
     description: page.data.meta_description,
     canonical: `/${lang}/insights/${category}/${uid}`,
+    lang,
     languages: buildAlternateLanguages(
       lang,
       (l, u) => `/${l}/insights/${category}/${u}`,
