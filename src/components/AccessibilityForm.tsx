@@ -5,6 +5,7 @@ import { EmailField } from "@/components/FormFields/EmailField";
 import { UrlField } from "@/components/FormFields/UrlField";
 import { SelectField } from "@/components/FormFields/SelectField";
 import { LongTextField } from "@/components/FormFields/LongTextField";
+import { trackEvent } from "@/utils/analytics";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -34,6 +35,10 @@ export function AccessibilityForm({ invertText = false }: AccessibilityFormProps
 
       if (res.ok) {
         setFormState("success");
+        trackEvent("generate_lead", {
+          form_name: "accessibility-form",
+          form_destination: "/_form.html",
+        });
         formRef.current?.reset();
         setTimeout(() => {
           const top = wrapperRef.current?.getBoundingClientRect().top ?? 0;

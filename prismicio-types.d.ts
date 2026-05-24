@@ -1989,6 +1989,17 @@ export interface AccordionSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
+   * Render as FAQ field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: accordion.default.primary.is_faq
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  is_faq: prismic.BooleanField;
+
+  /**
    * Title field in *Accordion → Default → Primary*
    *
    * - **Field Type**: Rich Text

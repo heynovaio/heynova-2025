@@ -1,8 +1,12 @@
+import Script from "next/script";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { CookieConsent } from "@/components/CookieConsent";
+
+const GA_MEASUREMENT_ID = "G-MJ9S956LHS";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -25,6 +29,8 @@ const organizationSchema = {
   },
   knowsAbout: [
     "WCAG 2.2 accessibility compliance",
+    "Accessible Canada Act (ACA) compliance",
+    "AODA compliance",
     "web accessibility audits and remediation",
     "inclusive web design",
     "Next.js development",
@@ -32,6 +38,17 @@ const organizationSchema = {
     "nonprofit web development Canada",
     "digital accessibility consulting",
     "usability strategy and UX design",
+    "headless CMS migration",
+    "design systems for nonprofits",
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "info@heynova.io",
+      areaServed: "CA",
+      availableLanguage: ["en", "fr"],
+    },
   ],
   memberOf: [
     {
@@ -87,11 +104,49 @@ export default function RootLayout({
           }}
         />
 
+        <link rel="preconnect" href="https://use.typekit.net" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://use.typekit.net"
+          crossOrigin=""
+        />
         <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
+        {/*
+          GA bootstrap runs beforeInteractive so window.gtag and the default
+          consent state are guaranteed to exist before any React effect runs
+          (including CookieConsent's effect that reads localStorage and may
+          immediately call gtag('consent', 'update', ...)). The external
+          gtag.js library + config stay afterInteractive so they don't block
+          page load.
+        */}
+        <Script id="ga-bootstrap" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500,
+            });
+            gtag('js', new Date());
+          `}
+        </Script>
       </head>
       <body>
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <PrismicPreview repositoryName={repositoryName} />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-config" strategy="afterInteractive">
+          {`window.gtag && window.gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });`}
+        </Script>
+        <CookieConsent />
       </body>
     </html>
   );

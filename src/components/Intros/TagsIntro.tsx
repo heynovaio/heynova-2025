@@ -169,7 +169,8 @@ export const TagsIntro: React.FC<TagsIntroProps> = ({
                 field={data.image}
                 className="w-auto object-cover object-center rounded"
                 fallbackAlt=""
-                priority={true}
+                priority
+                sizes="(min-width: 640px) 50vw, 100vw"
               />
             </div>
           )}

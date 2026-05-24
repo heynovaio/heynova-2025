@@ -24,6 +24,15 @@
             "default_value": "None"
           }
         },
+        "is_faq": {
+          "type": "Boolean",
+          "config": {
+            "label": "Render as FAQ (adds FAQPage schema for AI search)",
+            "placeholder_false": "no",
+            "placeholder_true": "yes",
+            "default_value": false
+          }
+        },
         "title": {
           "type": "StructuredText",
           "config": {

@@ -1,75 +1,67 @@
 "use client";
 import { KeyTextField } from "@prismicio/client";
-import { useEffect, useRef } from "react";
+import { trackEvent } from "@/utils/analytics";
 
 interface CalendlyButtonProps {
   text: string | KeyTextField;
   buttonClass: "btn-primary" | "btn-secondary";
+  location?: string;
 }
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initBadgeWidget: (options: Record<string, unknown>) => void;
-    };
-  }
-}
+const CALENDLY_URL = "https://calendly.com/hey-nova/free-consult";
 
-export function CalendlyButton({ text, buttonClass }: CalendlyButtonProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+export function CalendlyButton({
+  text,
+  buttonClass,
+  location = "site",
+}: CalendlyButtonProps) {
+  const visibleText = typeof text === "string" ? text : (text ?? "");
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Load Calendly script
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-
-    script.onload = () => {
-      // Create link element for Calendly with data-calendly-inline-widget
-      const link = document.createElement("a");
-      link.href = "https://calendly.com/hey-nova/free-consult";
-      link.className = `btn ${buttonClass}`;
-      link.setAttribute(
-        "data-calendly-url",
-        "https://calendly.com/hey-nova/free-consult",
-      );
-      link.textContent = text ?? "";
-      link.style.opacity = "0";
-      link.style.transition = "opacity 0.5s ease-out";
-      link.target = "_blank";
-
-      // Clear container and add link
-      containerRef.current!.innerHTML = "";
-      containerRef.current!.appendChild(link);
-
-      // Fade in
-      setTimeout(() => {
-        link.style.opacity = "1";
-      }, 50);
-    };
-
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, [text, buttonClass]);
+  const href = (() => {
+    const url = new URL(CALENDLY_URL);
+    url.searchParams.set("utm_source", "heynova.io");
+    url.searchParams.set("utm_medium", "cta");
+    url.searchParams.set("utm_campaign", location);
+    return url.toString();
+  })();
 
   return (
-    <div
-      ref={containerRef}
-      suppressHydrationWarning
-      style={{
-        minHeight: "44px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn ${buttonClass}`}
+      onClick={() => {
+        trackEvent("book_call_click", {
+          cta_text: visibleText,
+          cta_location: location,
+          destination: CALENDLY_URL,
+        });
       }}
-    />
+    >
+      <span>{visibleText}</span>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        style={{
+          marginLeft: "0.4em",
+          verticalAlign: "-0.1em",
+          display: "inline-block",
+        }}
+      >
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
+      </svg>
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
   );
 }
