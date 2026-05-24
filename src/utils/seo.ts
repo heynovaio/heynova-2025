@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { toOgLocale } from "@/constants/languages";
 
-export const SITE_URL = process.env.SITE_URL || "https://heynova.io";
+// Strip any trailing slashes so downstream concatenation (e.g. `${SITE_URL}/sitemap.xml`) stays canonical regardless of how the env var is set.
+export const SITE_URL = (
+  process.env.SITE_URL || "https://heynova.io"
+).replace(/\/+$/, "");
 
 export const DEFAULT_LOCALE = "en-ca";
 
