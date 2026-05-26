@@ -123,7 +123,7 @@ function buildOrganizationSchema(
       "https://www.instagram.com/heynovaio/",
       "https://clutch.co/profile/hey-nova",
       "https://www.wikidata.org/wiki/Q139936327",
-      "https://maps.app.goo.gl/giXuhu6Rksqq11jU9",
+      "https://www.google.com/maps/place/Hey+Nova/@62.6573279,-95.989235,3z/data=!4m14!1m7!3m6!1s0x4b9e797b8bf1970d:0xb10219a13ef5ce44!2sHey+Nova!8m2!3d62.6573279!4d-95.989235!16s%2Fg%2F11nk6w5z8s!3m5!1s0x4b9e797b8bf1970d:0xb10219a13ef5ce44!8m2!3d62.6573279!4d-95.989235!16s%2Fg%2F11nk6w5z8s",
     ],
     ...(offerCatalog ? { hasOfferCatalog: offerCatalog } : {}),
   };
