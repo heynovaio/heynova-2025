@@ -123,6 +123,7 @@ function buildOrganizationSchema(
       "https://www.instagram.com/heynovaio/",
       "https://clutch.co/profile/hey-nova",
       "https://www.wikidata.org/wiki/Q139936327",
+      "https://maps.app.goo.gl/giXuhu6Rksqq11jU9",
     ],
     ...(offerCatalog ? { hasOfferCatalog: offerCatalog } : {}),
   };
