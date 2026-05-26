@@ -69,7 +69,7 @@ function buildOrganizationSchema(
     },
     image: OG_IMAGE_URL,
     description:
-      "Hey Nova is a women-led Canadian digital agency specializing in web accessibility auditing and implementation, UX strategy, and accessible web development. Clients include nonprofits, government agencies, and purpose-driven businesses across Canada.",
+      "Hey Nova is a women-led digital agency based in Nova Scotia, founded by Kirsten Dodd. We design and build accessible websites and digital products — and we help organizations make accessibility stick through audits, implementation support, and training that builds the internal capacity to keep it that way.",
     foundingDate: "2018",
     numberOfEmployees: {
       "@type": "QuantitativeValue",

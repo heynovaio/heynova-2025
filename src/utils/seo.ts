@@ -28,13 +28,13 @@ export const KIRSTEN_ID = `${SITE_URL}/#kirsten-dodd`;
 
 // Kirsten's Person entity, defined once so Organization.founder and the
 // /about-us ProfilePage emit identical content under the same `@id`.
-// TODO: add `sameAs: ["https://www.linkedin.com/in/<slug>"]` once we have
-// the LinkedIn URL slug.
 export const KIRSTEN_PERSON = {
   "@type": "Person",
   "@id": KIRSTEN_ID,
   name: "Kirsten Dodd",
   jobTitle: "Founder and CEO, Hey Nova",
+  description:
+    "Founder and CEO of Hey Nova, a women-led digital agency based in Nova Scotia. Kirsten and her team design and build accessible websites and digital products, and help organizations make accessibility stick through audits, implementation support, and training that builds internal capacity.",
   email: "kirsten@heynova.io",
   url: `${SITE_URL}/en-ca/about-us`,
   knowsAbout: [
@@ -46,6 +46,7 @@ export const KIRSTEN_PERSON = {
     "inclusive design",
     "accessible web development",
   ],
+  sameAs: ["https://www.linkedin.com/in/kirsten-dodd-heynova/"],
   worksFor: { "@id": ORG_ID },
 } as const;
 
