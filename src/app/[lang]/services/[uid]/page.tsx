@@ -7,7 +7,14 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
-import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
+import {
+  buildAlternateLanguages,
+  buildMetadata,
+  getLocales,
+  ORG_ID,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/utils";
 import { Layout } from "@/components";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
@@ -63,16 +70,18 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_URL}/${lang}/services/${uid}#service`,
     name: prismic.asText(page.data.title) || "Service",
-    provider: {
-      "@type": "Organization",
-      name: "Hey Nova",
-      url: "https://heynova.io",
+    description: page.data.meta_description || undefined,
+    url: `${SITE_URL}/${lang}/services/${uid}`,
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Canada" },
+    audience: {
+      "@type": "Audience",
+      audienceType:
+        "Nonprofits, government agencies, and purpose-driven businesses",
     },
-    url: `https://heynova.io/${lang}/services/${uid}`,
-    description: page.data.meta_description || "",
-    serviceType: "Web Accessibility Consulting",
-    areaServed: "CA",
+    isPartOf: { "@id": WEBSITE_ID },
   };
 
   const breadcrumbSchema = {
@@ -83,19 +92,19 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: `https://heynova.io/${lang}`,
+        item: `${SITE_URL}/${lang}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: `https://heynova.io/${lang}/services`,
+        item: `${SITE_URL}/${lang}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: prismic.asText(page.data.title) || "Service",
-        item: `https://heynova.io/${lang}/services/${uid}`,
+        item: `${SITE_URL}/${lang}/services/${uid}`,
       },
     ],
   };

@@ -9,7 +9,15 @@ import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
 import { HomeIntro } from "@/components/Intros/HomeIntro";
-import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
+import {
+  buildAlternateLanguages,
+  buildMetadata,
+  getLocales,
+  ORG_ID,
+  OG_IMAGE_URL,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/utils";
 
 type Params = { lang: string };
 
@@ -54,27 +62,56 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const locales = await getLocales(page, client);
   const prices = await client.getSingle("prices", { lang });
 
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/${lang}/#webpage`,
+    url: `${SITE_URL}/${lang}`,
+    name:
+      page.data.meta_title ||
+      prismic.asText(page.data.title) ||
+      "Hey Nova | Accessible Web Design and Development",
+    description:
+      page.data.meta_description ||
+      "Women-led Canadian digital agency specializing in web accessibility, UX strategy, and accessible web development for nonprofits, government, and purpose-driven organizations.",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: page.data.meta_image?.url || OG_IMAGE_URL,
+    },
+    inLanguage: lang,
+  };
+
   return (
-    <Layout
-      backgroundType="primary"
-      locales={locales}
-      global={global.data}
-      menus={menus.data}
-      include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
-    >
-      <div>
-        <HomeIntro data={page.data} />
-        <SliceZone
-          slices={page.data.slices}
-          components={components}
-          context={{
-            lang,
-            globalDocumentData: global.data,
-            pricesDocumentData: prices.data,
-          }}
-        />
-      </div>
-    </Layout>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <Layout
+        backgroundType="primary"
+        locales={locales}
+        global={global.data}
+        menus={menus.data}
+        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
+      >
+        <div>
+          <HomeIntro data={page.data} />
+          <SliceZone
+            slices={page.data.slices}
+            components={components}
+            context={{
+              lang,
+              globalDocumentData: global.data,
+              pricesDocumentData: prices.data,
+            }}
+          />
+        </div>
+      </Layout>
+    </>
   );
 }
 

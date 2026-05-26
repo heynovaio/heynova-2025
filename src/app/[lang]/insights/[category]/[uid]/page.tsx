@@ -6,7 +6,17 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { Container, Layout } from "@/components";
-import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
+import {
+  buildAlternateLanguages,
+  buildMetadata,
+  getLocales,
+  KIRSTEN_PERSON,
+  LOGO_URL,
+  OG_IMAGE_URL,
+  ORG_ID,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/utils";
 import { TagsIntro } from "@/components/Intros/TagsIntro";
 import Author from "@/components/Author/Author";
 import {
@@ -110,34 +120,38 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       })
       .filter(Boolean);
 
+    const articleUrl = `${SITE_URL}/${lang}/insights/${category}/${uid}`;
+
+    // Block 6 — BlogPosting (subtype of Article). Author defaults to the
+    // Prismic-defined authors when present; falls back to Kirsten's Person
+    // entity via @id so Google links the article to her cross-page identity.
     const articleSchema = {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
+      "@id": `${articleUrl}#article`,
       headline: prismic.asText(page.data.title) || "",
-      description: page.data.meta_description || "",
-      url: `https://heynova.io/${lang}/insights/${category}/${uid}`,
+      description: page.data.meta_description || undefined,
+      url: articleUrl,
       datePublished: page.first_publication_date,
       dateModified: page.last_publication_date,
       author:
         authors.length > 0
           ? authors
-          : {
-              "@type": "Organization",
-              name: "Hey Nova",
-              url: "https://heynova.io",
-            },
+          : { "@id": KIRSTEN_PERSON["@id"] },
       publisher: {
+        "@id": ORG_ID,
         "@type": "Organization",
         name: "Hey Nova",
-        url: "https://heynova.io",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://heynova.io/logo.png",
-        },
+        logo: { "@type": "ImageObject", url: LOGO_URL },
       },
-      image: page.data.meta_image?.url || "https://heynova.io/icon.png",
+      image: {
+        "@type": "ImageObject",
+        url: page.data.meta_image?.url || OG_IMAGE_URL,
+      },
       inLanguage: lang,
-      mainEntityOfPage: `https://heynova.io/${lang}/insights/${category}/${uid}`,
+      mainEntityOfPage: articleUrl,
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": ORG_ID },
     };
 
     const breadcrumbSchema = {

@@ -8,7 +8,46 @@ export const SITE_URL = (
 
 export const DEFAULT_LOCALE = "en-ca";
 
-export const DEFAULT_OG_IMAGE = "/icon.png";
+// Brand asset URLs. The brief recommends self-hosting in /public; using
+// Prismic CDN per Kirsten's choice. If we ever need stable, immutable
+// URLs (e.g. for AI training corpora that crawl once), download and swap
+// these for /public paths.
+export const BRAND_IMAGE_URL =
+  "https://images.prismic.io/heynova/aXJXCwIvOtkhB09N_Screenshot2026-01-22at12.57.39PM.png";
+export const LOGO_URL = BRAND_IMAGE_URL;
+export const OG_IMAGE_URL = BRAND_IMAGE_URL;
+
+export const DEFAULT_OG_IMAGE = OG_IMAGE_URL;
+
+// Stable entity identifiers. Every schema block that references the
+// organization or founder should use these exact `@id` strings so Google
+// stitches them into a single entity node across pages.
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const KIRSTEN_ID = `${SITE_URL}/#kirsten-dodd`;
+
+// Kirsten's Person entity, defined once so Organization.founder and the
+// /about-us ProfilePage emit identical content under the same `@id`.
+// TODO: add `sameAs: ["https://www.linkedin.com/in/<slug>"]` once we have
+// the LinkedIn URL slug.
+export const KIRSTEN_PERSON = {
+  "@type": "Person",
+  "@id": KIRSTEN_ID,
+  name: "Kirsten Dodd",
+  jobTitle: "Founder and CEO, Hey Nova",
+  email: "kirsten@heynova.io",
+  url: `${SITE_URL}/en-ca/about-us`,
+  knowsAbout: [
+    "web accessibility",
+    "WCAG 2.1 and 2.2",
+    "Accessible Canada Act",
+    "AODA",
+    "UX strategy",
+    "inclusive design",
+    "accessible web development",
+  ],
+  worksFor: { "@id": ORG_ID },
+} as const;
 
 type AlternateLanguage = { lang: string; uid?: string | null };
 

@@ -1,93 +1,149 @@
 import Script from "next/script";
 import { PrismicPreview } from "@prismicio/next";
-import { repositoryName } from "@/prismicio";
+import { asText } from "@prismicio/client";
+import { createClient, repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { CookieConsent } from "@/components/CookieConsent";
+import {
+  KIRSTEN_PERSON,
+  LOGO_URL,
+  OG_IMAGE_URL,
+  ORG_ID,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/utils/seo";
 
 const GA_MEASUREMENT_ID = "G-MJ9S956LHS";
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Organization", "ProfessionalService"],
-  name: "Hey Nova",
-  legalName: "Hey Nova Inc.",
-  url: "https://heynova.io",
-  logo: {
-    "@type": "ImageObject",
-    url: "https://heynova.io/logo.png",
-  },
-  description:
-    "Canadian, women-led digital agency specializing in inclusive, accessible web design and development for mission-driven organizations. We serve nonprofits, public sector, and purpose-driven businesses across Canada.",
-  areaServed: "CA",
-  email: "info@heynova.io",
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "Nova Scotia",
-    addressCountry: "CA",
-  },
-  knowsAbout: [
-    "WCAG 2.2 accessibility compliance",
-    "Accessible Canada Act (ACA) compliance",
-    "AODA compliance",
-    "web accessibility audits and remediation",
-    "inclusive web design",
-    "Next.js development",
-    "Prismic headless CMS",
-    "nonprofit web development Canada",
-    "digital accessibility consulting",
-    "usability strategy and UX design",
-    "headless CMS migration",
-    "design systems for nonprofits",
-  ],
-  contactPoint: [
-    {
+// Services that exist in Prismic but should never appear in published schema.
+const SERVICE_UID_BLOCKLIST = new Set(["test-service"]);
+
+async function buildOfferCatalog() {
+  try {
+    const client = createClient();
+    const services = await client.getAllByType("service", { lang: "en-ca" });
+    const filtered = services.filter(
+      (s) => s.uid && !SERVICE_UID_BLOCKLIST.has(s.uid),
+    );
+    if (filtered.length === 0) return null;
+
+    return {
+      "@type": "OfferCatalog",
+      name: "Hey Nova Services",
+      itemListElement: filtered.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          "@id": `${SITE_URL}/#service-${service.uid}`,
+          name: asText(service.data.title) || "Service",
+          description: service.data.meta_description || undefined,
+          url: `${SITE_URL}/en-ca/services/${service.uid}`,
+          provider: { "@id": ORG_ID },
+          areaServed: { "@type": "Country", name: "Canada" },
+        },
+      })),
+    };
+  } catch (err) {
+    // OfferCatalog is enhancement, not essential — never block layout render
+    // because Prismic flaked.
+    console.error("[layout] OfferCatalog build failed:", err);
+    return null;
+  }
+}
+
+function buildOrganizationSchema(
+  offerCatalog: Awaited<ReturnType<typeof buildOfferCatalog>>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "Hey Nova",
+    legalName: "Hey Nova Inc.",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: LOGO_URL,
+    },
+    image: OG_IMAGE_URL,
+    description:
+      "Hey Nova is a women-led Canadian digital agency specializing in web accessibility auditing and implementation, UX strategy, and accessible web development. Clients include nonprofits, government agencies, and purpose-driven businesses across Canada.",
+    foundingDate: "2018",
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      value: 10,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "Canada",
+    },
+    knowsAbout: [
+      "Web Content Accessibility Guidelines (WCAG)",
+      "WCAG 2.1",
+      "WCAG 2.2",
+      "Accessible Canada Act",
+      "Accessibility for Ontarians with Disabilities Act (AODA)",
+      "web accessibility auditing",
+      "accessible web development",
+      "UX strategy and optimization",
+      "inclusive design",
+      "assistive technology compatibility",
+      "screen reader optimization",
+      "government procurement accessibility",
+      "Next.js development",
+      "Shopify accessibility optimization",
+      "AI workflow advisory",
+      "VPAT documentation",
+    ],
+    founder: {
+      ...KIRSTEN_PERSON,
+      // worksFor is implicit when the Person is referenced from
+      // Organization.founder — drop to keep this nesting clean.
+      worksFor: undefined,
+    },
+    contactPoint: {
       "@type": "ContactPoint",
-      contactType: "customer support",
-      email: "info@heynova.io",
-      areaServed: "CA",
-      availableLanguage: ["en", "fr"],
+      contactType: "customer service",
+      email: "kirsten@heynova.io",
+      availableLanguage: "English",
     },
-  ],
-  memberOf: [
-    {
-      "@type": "Organization",
-      name: "International Association of Accessibility Professionals",
-      url: "https://www.accessibilityassociation.org/",
+    hasCertification: {
+      "@type": "Certification",
+      name: "WBE Canada Certified Women Business Enterprise",
+      issuedBy: {
+        "@type": "Organization",
+        name: "WBE Canada",
+        url: "https://wbecanada.ca",
+      },
     },
-    {
-      "@type": "Organization",
-      name: "WBE Canada",
-      url: "https://wbecanada.ca/",
-    },
-  ],
-  sameAs: [
-    "https://www.instagram.com/heynovaio/",
-    "https://ca.linkedin.com/company/hey-nova",
-  ],
-};
+    sameAs: [
+      "https://ca.linkedin.com/company/hey-nova",
+      "https://www.instagram.com/heynovaio/",
+      "https://clutch.co/profile/hey-nova",
+      "https://www.wikidata.org/wiki/Q139936327",
+    ],
+    ...(offerCatalog ? { hasOfferCatalog: offerCatalog } : {}),
+  };
+}
 
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": WEBSITE_ID,
+  url: SITE_URL,
   name: "Hey Nova",
-  url: "https://heynova.io",
-  inLanguage: "en-CA",
-  description:
-    "Digital systems for real people — inclusive web design, accessibility consulting, and digital strategy for mission-driven organizations.",
-  publisher: {
-    "@type": "Organization",
-    name: "Hey Nova",
-    url: "https://heynova.io",
-  },
+  publisher: { "@id": ORG_ID },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const offerCatalog = await buildOfferCatalog();
+  const organizationSchema = buildOrganizationSchema(offerCatalog);
   return (
     <html lang="en">
       <head>
