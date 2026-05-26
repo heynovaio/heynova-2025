@@ -34,7 +34,7 @@ export const KIRSTEN_PERSON = {
   name: "Kirsten Dodd",
   jobTitle: "Founder and CEO, Hey Nova",
   description:
-    "Founder and CEO of Hey Nova, a women-led digital agency based in Nova Scotia. Kirsten and her team design and build accessible websites and digital products, and help organizations make accessibility stick through audits, implementation support, and training that builds internal capacity.",
+    "Founder and CEO of Hey Nova, a women-led digital agency based in Nova Scotia. Kirsten and her team design and build high performing, unique websites and digital products, and help organizations embed digital accessibility through audits, implementation support, and training that starts with people rather than jargon filled criteria lists.",
   email: "kirsten@heynova.io",
   url: `${SITE_URL}/en-ca/about-us`,
   knowsAbout: [
