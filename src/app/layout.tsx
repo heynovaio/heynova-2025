@@ -119,7 +119,7 @@ function buildOrganizationSchema(
       },
     },
     sameAs: [
-      "https://ca.linkedin.com/company/hey-nova",
+      "https://www.linkedin.com/company/hey-nova",
       "https://www.instagram.com/heynovaio/",
       "https://clutch.co/profile/hey-nova",
       "https://www.wikidata.org/wiki/Q139936327",
