@@ -1,11 +1,21 @@
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import { PrismicPreview } from "@prismicio/next";
 import { asText } from "@prismicio/client";
 import { createClient, repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
-import { CookieConsent } from "@/components/CookieConsent";
+
+// CookieConsent reads localStorage and calls gtag — its visible UI is
+// gated behind a `useEffect`, so SSR renders nothing useful. Loading it
+// dynamically pulls its JS out of the initial bundle that every page
+// pays for. `ssr: false` isn't allowed in server components in Next 15,
+// but plain `dynamic()` still code-splits, which is the goal here.
+const CookieConsent = dynamic(
+  () => import("@/components/CookieConsent").then((m) => m.CookieConsent),
+  { loading: () => null },
+);
 import {
   KIRSTEN_PERSON,
   LOGO_URL,
@@ -174,7 +184,44 @@ export default async function RootLayout({
           href="https://use.typekit.net"
           crossOrigin=""
         />
-        <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
+        {/*
+          Non-blocking Typekit load. The original `<link rel="stylesheet">`
+          was a render-blocking resource (~1.6 s LCP hit per Lighthouse).
+          Pattern:
+            1. `rel="preload"` kicks off the fetch immediately, in parallel
+               with everything else.
+            2. The matching `rel="stylesheet"` with `media="print"` parses
+               into a CSSOM that doesn't apply to screen, so render isn't
+               blocked.
+            3. The inline script flips media to `all` on load, making the
+               styles apply.
+            4. `<noscript>` falls back to a blocking load for JS-disabled
+               clients.
+          Trade-off: brief FOUT (text shows in fallback fonts, then swaps
+          when Typekit lands). Acceptable for the LCP gain; same effect
+          you'd get from `font-display: swap` if we controlled the CSS.
+        */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://use.typekit.net/sty6ouh.css"
+        />
+        <link
+          id="typekit-css"
+          rel="stylesheet"
+          href="https://use.typekit.net/sty6ouh.css"
+          media="print"
+        />
+        <Script id="typekit-media-swap" strategy="afterInteractive">
+          {`(function(){var l=document.getElementById('typekit-css');if(l){if(l.sheet){l.media='all';}else{l.addEventListener('load',function(){l.media='all';});}}})();`}
+        </Script>
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-css-tags */}
+          <link
+            rel="stylesheet"
+            href="https://use.typekit.net/sty6ouh.css"
+          />
+        </noscript>
         {/*
           GA bootstrap runs beforeInteractive so window.gtag and the default
           consent state are guaranteed to exist before any React effect runs
