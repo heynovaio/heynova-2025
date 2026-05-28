@@ -95,7 +95,11 @@ export function buildMetadata({
   publishedTime,
   modifiedTime,
 }: BuildMetadataOpts): Metadata {
-  const image = ogImage || `${SITE_URL}${DEFAULT_OG_IMAGE}`;
+  // `ogImage` from callers may be either a relative path (legacy
+  // `/icon.png`) or an absolute URL (Prismic CDN). `new URL(input, base)`
+  // returns the input unchanged when it's already absolute, and resolves
+  // relative inputs against `SITE_URL`.
+  const image = new URL(ogImage || DEFAULT_OG_IMAGE, SITE_URL).toString();
   const desc = description || undefined;
 
   return {

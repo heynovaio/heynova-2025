@@ -7,7 +7,12 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
-import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
+import {
+  buildAlternateLanguages,
+  buildMetadata,
+  getLocales,
+  SITE_URL,
+} from "@/utils";
 import { Layout } from "@/components";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { ServiceGrid } from "@/components/Grid/ServiceGrid";
@@ -69,13 +74,13 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: `https://heynova.io/${lang}`,
+        item: `${SITE_URL}/${lang}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: `https://heynova.io/${lang}/services`,
+        item: `${SITE_URL}/${lang}/services`,
       },
     ],
   };

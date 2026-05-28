@@ -7,7 +7,12 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
-import { buildAlternateLanguages, buildMetadata, getLocales } from "@/utils";
+import {
+  buildAlternateLanguages,
+  buildMetadata,
+  getLocales,
+  SITE_URL,
+} from "@/utils";
 import { Layout } from "@/components";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 import { InsightCategoryGrid } from "@/components/Grid/InsightCategoryGrid";
@@ -68,19 +73,19 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: `https://heynova.io/${lang}`,
+        item: `${SITE_URL}/${lang}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Insights",
-        item: `https://heynova.io/${lang}/insights`,
+        item: `${SITE_URL}/${lang}/insights`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: prismic.asText(page.data.title) || category,
-        item: `https://heynova.io/${lang}/insights/${category}`,
+        item: `${SITE_URL}/${lang}/insights/${category}`,
       },
     ],
   };

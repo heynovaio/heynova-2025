@@ -32,18 +32,24 @@ async function buildOfferCatalog() {
     return {
       "@type": "OfferCatalog",
       name: "Hey Nova Services",
-      itemListElement: filtered.map((service) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          "@id": `${SITE_URL}/#service-${service.uid}`,
-          name: asText(service.data.title) || "Service",
-          description: service.data.meta_description || undefined,
-          url: `${SITE_URL}/en-ca/services/${service.uid}`,
-          provider: { "@id": ORG_ID },
-          areaServed: { "@type": "Country", name: "Canada" },
-        },
-      })),
+      itemListElement: filtered.map((service) => {
+        const serviceUrl = `${SITE_URL}/en-ca/services/${service.uid}`;
+        return {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            // Must exactly match the `@id` emitted on the per-service page
+            // (`[lang]/services/[uid]/page.tsx`) so Google treats both as
+            // the same entity.
+            "@id": `${serviceUrl}#service`,
+            name: asText(service.data.title) || "Service",
+            description: service.data.meta_description || undefined,
+            url: serviceUrl,
+            provider: { "@id": ORG_ID },
+            areaServed: { "@type": "Country", name: "Canada" },
+          },
+        };
+      }),
     };
   } catch (err) {
     // OfferCatalog is enhancement, not essential — never block layout render
