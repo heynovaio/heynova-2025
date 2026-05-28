@@ -97,8 +97,12 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
                       <PrismicRichText
                         field={slice.primary.subtitle}
                         components={{
+                          // Slice title is rendered as h2 via ContentBox, so
+                          // the subtitle must be h3 — using h4 here skipped
+                          // a level and tripped Lighthouse's heading-order
+                          // check.
                           heading4: ({ children }) => (
-                            <h4 className="mb-4 gradient-light">{children}</h4>
+                            <h3 className="mb-4 gradient-light">{children}</h3>
                           ),
                         }}
                       />
@@ -141,8 +145,12 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
                       <PrismicRichText
                         field={slice.primary.subtitle}
                         components={{
+                          // Slice title is rendered as h2 via ContentBox, so
+                          // the subtitle must be h3 — using h4 here skipped
+                          // a level and tripped Lighthouse's heading-order
+                          // check.
                           heading4: ({ children }) => (
-                            <h4 className="mb-4 gradient-light">{children}</h4>
+                            <h3 className="mb-4 gradient-light">{children}</h3>
                           ),
                         }}
                       />

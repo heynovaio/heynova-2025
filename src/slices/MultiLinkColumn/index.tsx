@@ -16,9 +16,12 @@ export type MultiLinkColumnProps =
   SliceComponentProps<Content.MultiLinkColumnSlice>;
 
 const MultiLinkColumn = ({ slice }: MultiLinkColumnProps): JSX.Element => {
+  // Editor picks heading4 in Prismic for the visual weight, but render
+  // as h3 so the heading order stays sequential below the page's h2
+  // section titles.
   const footerComponentStyling = {
     heading4: ({ children }: { children: React.ReactNode }) => (
-      <h4 className="text-[1.625rem] font-[600]">{children}</h4>
+      <h3 className="text-[1.625rem] font-[600]">{children}</h3>
     ),
   };
 
