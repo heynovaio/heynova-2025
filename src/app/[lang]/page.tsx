@@ -54,27 +54,60 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const locales = await getLocales(page, client);
   const prices = await client.getSingle("prices", { lang });
 
+  const testimonialsSlice = page.data.slices.find(
+    (slice: any) => slice.slice_type === "testimonials",
+  ) as any;
+
+  const reviewSchemas =
+    testimonialsSlice?.primary?.testimonials
+      ?.filter((t: any) => t.quote && t.author)
+      .map((t: any) => ({
+        "@context": "https://schema.org",
+        "@type": "Review",
+        reviewBody: prismic.asText(t.quote),
+        author: {
+          "@type": "Person",
+          name: t.author,
+          ...(t.author_title && { jobTitle: t.author_title }),
+        },
+        itemReviewed: {
+          "@type": "Organization",
+          name: "Hey Nova",
+          url: "https://heynova.io",
+        },
+      })) ?? [];
+
   return (
-    <Layout
-      backgroundType="primary"
-      locales={locales}
-      global={global.data}
-      menus={menus.data}
-      include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
-    >
-      <div>
-        <HomeIntro data={page.data} />
-        <SliceZone
-          slices={page.data.slices}
-          components={components}
-          context={{
-            lang,
-            globalDocumentData: global.data,
-            pricesDocumentData: prices.data,
+    <>
+      {reviewSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(reviewSchemas).replace(/</g, "\\u003c"),
           }}
         />
-      </div>
-    </Layout>
+      )}
+      <Layout
+        backgroundType="primary"
+        locales={locales}
+        global={global.data}
+        menus={menus.data}
+        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
+      >
+        <div>
+          <HomeIntro data={page.data} />
+          <SliceZone
+            slices={page.data.slices}
+            components={components}
+            context={{
+              lang,
+              globalDocumentData: global.data,
+              pricesDocumentData: prices.data,
+            }}
+          />
+        </div>
+      </Layout>
+    </>
   );
 }
 
