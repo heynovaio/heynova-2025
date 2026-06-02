@@ -38,7 +38,6 @@ export const Layout = ({
       <Link
         href="#main-content"
         className="bg-primary skip-content text-white rounded p-2 text-center transition-transform duration-300 transform -translate-y-full -translate-x-1/2 fixed left-1/2 z-[100] focus:translate-y-0"
-        tabIndex={1}
       >
         Skip to Content
       </Link>
@@ -56,7 +55,7 @@ export const Layout = ({
           global={global}
         />
       </div>
-      <main id="main-content" className="relative focus:outline-0" tabIndex={0}>
+      <main id="main-content" className="relative focus:outline-0" tabIndex={-1}>
         {children}
       </main>
       {include_newsletter_sign_up_banner && (

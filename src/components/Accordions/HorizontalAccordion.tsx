@@ -1,6 +1,15 @@
 "use client";
 
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+} from "@headlessui/react";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import React from "react";
 import {
@@ -132,28 +141,31 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
         </TabGroup>
       </div>
 
+      {/*
+        Mobile: switched from Tab/TabPanel (which would require a TabList
+        ancestor that doesn't fit this interleaved title-then-panel layout)
+        to Disclosure. Disclosure renders a proper button[aria-expanded] +
+        region, which is the correct accordion semantic and satisfies the
+        Lighthouse "[role]s contained by required parent" check.
+      */}
       <div className="block md:hidden">
-        <TabGroup>
-          <div className="flex flex-col gap-6">
-            {titles.map((title, index) => (
-              <div key={index} className="flex flex-col gap-2">
-                <Tab
-                  className={() =>
-                    `px-6 py-7 rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none `
-                  }
-                >
-                  {({ selected }) => (
-                    <div className="flex items-center justify-between w-full ">
-                      <div
-                        className={selected ? "text-white" : "text-[#003D73]"}
-                      >
+        <div className="flex flex-col gap-6">
+          {titles.map((title, index) => (
+            <Disclosure key={index} as="div" className="flex flex-col gap-2">
+              {({ open }) => (
+                <>
+                  <DisclosureButton
+                    className={`px-6 py-7 rounded-[10px] flex justify-between font-bold transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-lavendar`}
+                  >
+                    <div className="flex items-center justify-between w-full">
+                      <div className={open ? "text-white" : "text-[#003D73]"}>
                         <PrismicRichText
                           field={title}
                           components={{
                             heading3: ({ children }) => (
                               <h3
                                 className={`${
-                                  selected
+                                  open
                                     ? "gradient-light text-white"
                                     : "gradient-light"
                                 }`}
@@ -164,7 +176,7 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                             heading4: ({ children }) => (
                               <h4
                                 className={`${
-                                  selected
+                                  open
                                     ? "gradient-light text-white"
                                     : "gradient-light"
                                 }`}
@@ -176,56 +188,56 @@ export const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({
                         />
                       </div>
                       <FaChevronDown
-                        className={`h-4 w-4 ${
-                          selected ? "text-lavendar" : "text-lavendar"
+                        className={`h-4 w-4 text-lavendar transition-transform ${
+                          open ? "rotate-180" : ""
                         }`}
                       />
                     </div>
-                  )}
-                </Tab>
+                  </DisclosureButton>
 
-                <TabPanel className="border rounded-[10px] min-h-[400px] gradient-card-bg py-10">
-                  <div className="h-full flex items-center justify-center">
-                    <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
-                      {images[index]?.url && (
-                        <PrismicNextImage
-                          field={images[index]}
-                          fallbackAlt=""
-                          sizes="80px"
-                          className="mb-6 max-h-[80px] object-contain block mx-auto"
-                        />
-                      )}
-                      <div className="mb-2 text-2xl font-semibold text-center text-purple-lt">
-                        <PrismicRichText
-                          field={titles[index]}
-                          components={{
-                            heading3: ({ children }) => (
-                              <h3 className="text-purple-lt">{children}</h3>
-                            ),
-                            heading4: ({ children }) => (
-                              <h4 className="text-purple-lt">{children}</h4>
-                            ),
-                          }}
-                        />
+                  <DisclosurePanel className="border rounded-[10px] min-h-[400px] gradient-card-bg py-10">
+                    <div className="h-full flex items-center justify-center">
+                      <div className="text-white text-center px-8 w-full max-w-2xl mx-auto flex flex-col items-center">
+                        {images[index]?.url && (
+                          <PrismicNextImage
+                            field={images[index]}
+                            fallbackAlt=""
+                            sizes="80px"
+                            className="mb-6 max-h-[80px] object-contain block mx-auto"
+                          />
+                        )}
+                        <div className="mb-2 text-2xl font-semibold text-center text-purple-lt">
+                          <PrismicRichText
+                            field={titles[index]}
+                            components={{
+                              heading3: ({ children }) => (
+                                <h3 className="text-purple-lt">{children}</h3>
+                              ),
+                              heading4: ({ children }) => (
+                                <h4 className="text-purple-lt">{children}</h4>
+                              ),
+                            }}
+                          />
+                        </div>
+
+                        <div className="text-base mt-5 space-y-4">
+                          <PrismicRichText field={contents[index]} />
+                        </div>
+
+                        {isFilled.link(buttons[index]) && (
+                          <PrismicNextLink
+                            className="btn btn-primary mt-4"
+                            field={buttons[index]}
+                          />
+                        )}
                       </div>
-
-                      <div className="text-base mt-5 space-y-4">
-                        <PrismicRichText field={contents[index]} />
-                      </div>
-
-                      {isFilled.link(buttons[index]) && (
-                        <PrismicNextLink
-                          className="btn btn-primary mt-4"
-                          field={buttons[index]}
-                        />
-                      )}
                     </div>
-                  </div>
-                </TabPanel>
-              </div>
-            ))}
-          </div>
-        </TabGroup>
+                  </DisclosurePanel>
+                </>
+              )}
+            </Disclosure>
+          ))}
+        </div>
       </div>
     </>
   );

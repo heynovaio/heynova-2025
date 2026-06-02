@@ -175,9 +175,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("/background-primary.png");
+    /* WebP cuts the original 442 KB PNG to ~145 KB. `background-attachment:
+       fixed` was removed: the pseudo is already viewport-pinned via
+       `position: fixed`, so it was redundant and forced extra paint work
+       during scroll. */
+    background-image: url("/background-primary.webp");
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     animation: backgroundFadeIn 1.2s ease-out both;
@@ -192,11 +195,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 0, 46, 0.2);
-    backdrop-filter: blur(3px);
+    /* Slightly stronger rgba darken so mobile (no blur) still feels
+       layered. Tablet+ adds the frosted-glass blur. */
+    background: rgba(15, 0, 46, 0.25);
     animation: backgroundFadeIn 1.2s ease-out both;
     pointer-events: none;
     z-index: -1;
+  }
+
+  /* backdrop-filter is GPU-expensive — especially painful on low-end
+     mobile where the visual benefit (blurring a small viewport) is
+     least noticeable. Apply only at tablet width and up. */
+  @media (min-width: 768px) {
+    body.bg-primary::after {
+      backdrop-filter: blur(3px);
+      background: rgba(15, 0, 46, 0.2);
+    }
   }
 
   body.bg-secondary {
@@ -210,9 +224,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("/background-secondary.png");
+    /* WebP cuts the original 4.9 MB PNG to ~1.3 MB — biggest single
+       page-weight win on the site. */
+    background-image: url("/background-secondary.webp");
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     animation: backgroundFadeIn 1.2s ease-out both;
