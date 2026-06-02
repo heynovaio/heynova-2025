@@ -12,7 +12,7 @@ import {
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Container, Section } from "../Layout";
+import { Container } from "../Layout";
 import { getCategoryResponsiveItems } from "./responsive";
 import { ContentBox, GeneralCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";

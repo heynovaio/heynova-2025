@@ -33,7 +33,6 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
   const imageSide =
     slice.primary.imageRight === false ? "md:flex-row" : "md:flex-row-reverse";
   const background = slice.primary.background_color;
-  console.log("background", background);
 
   const isBlog = context?.isBlogPage ?? false;
   // const isVideo = slice.variation === "video";
