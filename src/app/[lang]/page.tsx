@@ -54,14 +54,27 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const locales = await getLocales(page, client);
   const prices = await client.getSingle("prices", { lang });
 
+  interface TestimonialItem {
+    quote: prismic.RichTextField;
+    author: string;
+    author_title?: string;
+  }
+
+  interface TestimonialsSlice {
+    slice_type: string;
+    primary: {
+      testimonials: TestimonialItem[];
+    };
+  }
+
   const testimonialsSlice = page.data.slices.find(
-    (slice: any) => slice.slice_type === "testimonials",
-  ) as any;
+    (slice) => slice.slice_type === "testimonials",
+  ) as TestimonialsSlice | undefined;
 
   const reviewSchemas =
     testimonialsSlice?.primary?.testimonials
-      ?.filter((t: any) => t.quote && t.author)
-      .map((t: any) => ({
+      ?.filter((t: TestimonialItem) => t.quote && t.author)
+      .map((t: TestimonialItem) => ({
         "@context": "https://schema.org",
         "@type": "Review",
         reviewBody: prismic.asText(t.quote),
