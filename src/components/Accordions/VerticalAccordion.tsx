@@ -6,7 +6,6 @@ import {
 } from "@headlessui/react";
 import { RichTextField, KeyTextField, ImageField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import { ReactNode } from "react";
 import { FaChevronUp } from "react-icons/fa";
 import { ResponsiveImage } from "../ResponsiveImage";
 

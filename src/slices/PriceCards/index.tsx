@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Container, ContentBox, Section } from "@/components";
+import { Container, Section } from "@/components";
 import { PricesDocumentData } from "../../../prismicio-types";
 import { PriceCard } from "@/components/Cards/PriceCard";
 
