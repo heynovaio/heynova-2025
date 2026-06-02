@@ -10,8 +10,6 @@ import {
   AnimatedSection,
 } from "@/components";
 import { JSX } from "react";
-import { text } from "stream/consumers";
-import { title } from "process";
 import { Grid } from "@/components/Grid";
 
 type SliceContext = {

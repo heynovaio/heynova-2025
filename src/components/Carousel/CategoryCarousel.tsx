@@ -6,7 +6,6 @@ import {
   FilledContentRelationshipField,
   ImageField,
   isFilled,
-  LinkField,
   RichTextField,
 } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
