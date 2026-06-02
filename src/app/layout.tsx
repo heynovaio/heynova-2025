@@ -40,6 +40,23 @@ const organizationSchema = {
     "usability strategy and UX design",
     "headless CMS migration",
     "design systems for nonprofits",
+    "website design Nova Scotia",
+    "web development Nova Scotia",
+    "website development Canada",
+    "custom website design Halifax",
+    "small business website Canada",
+    "nonprofit website design Canada",
+    "government website accessibility Canada",
+    "federal procurement digital services",
+    "AODA compliance auditing",
+    "Shopify accessibility optimization",
+    "UX strategy for nonprofits",
+    "user experience research Canada",
+    "digital transformation nonprofits",
+    "women-owned digital agency Canada",
+    "WBE certified technology company",
+    "remote digital agency Canada",
+    "accessible content strategy",
   ],
   contactPoint: [
     {
@@ -106,11 +123,7 @@ export default function RootLayout({
 
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
-        <link
-          rel="preconnect"
-          href="https://use.typekit.net"
-          crossOrigin=""
-        />
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
         <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
         {/*
           GA bootstrap runs beforeInteractive so window.gtag and the default
