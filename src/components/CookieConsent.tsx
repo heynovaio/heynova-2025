@@ -60,6 +60,11 @@ export function CookieConsent() {
   const shouldFocusOnShowRef = useRef(false);
 
   useEffect(() => {
+    // Slice Machine renders slices in /slice-simulator outside the real
+    // Layout. The consent banner has nothing to consent to there and
+    // obscures the preview — bail out early on that route.
+    if (window.location.pathname.startsWith("/slice-simulator")) return;
+
     const pathLocale = window.location.pathname.split("/")[1];
     if (pathLocale === "fr-ca") setLocale("fr-ca");
 

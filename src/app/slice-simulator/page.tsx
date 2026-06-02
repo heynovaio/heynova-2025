@@ -7,6 +7,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { components } from "../../slices";
 import { createClient } from "@/prismicio";
+import { SliceSimulatorBackground } from "./SliceSimulatorBackground";
 
 export default async function SliceSimulatorPage({
   searchParams,
@@ -19,12 +20,15 @@ export default async function SliceSimulatorPage({
   const prices = await client.getSingle("prices").catch(() => null);
 
   return (
-    <SliceSimulator>
-      <SliceZone
-        slices={slices}
-        components={components}
-        context={{ pricesDocumentData: prices?.data }}
-      />
-    </SliceSimulator>
+    <>
+      <SliceSimulatorBackground />
+      <SliceSimulator>
+        <SliceZone
+          slices={slices}
+          components={components}
+          context={{ pricesDocumentData: prices?.data }}
+        />
+      </SliceSimulator>
+    </>
   );
 }
