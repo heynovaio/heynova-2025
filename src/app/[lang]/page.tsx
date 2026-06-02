@@ -83,6 +83,42 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     inLanguage: lang,
   };
 
+  interface TestimonialItem {
+    quote: prismic.RichTextField;
+    author: string;
+    author_title?: string;
+  }
+
+  interface TestimonialsSlice {
+    slice_type: string;
+    primary: {
+      testimonials: TestimonialItem[];
+    };
+  }
+
+  const testimonialsSlice = page.data.slices.find(
+    (slice) => slice.slice_type === "testimonials",
+  ) as TestimonialsSlice | undefined;
+
+  const reviewSchemas =
+    testimonialsSlice?.primary?.testimonials
+      ?.filter((t: TestimonialItem) => t.quote && t.author)
+      .map((t: TestimonialItem) => ({
+        "@context": "https://schema.org",
+        "@type": "Review",
+        reviewBody: prismic.asText(t.quote),
+        author: {
+          "@type": "Person",
+          name: t.author,
+          ...(t.author_title && { jobTitle: t.author_title }),
+        },
+        itemReviewed: {
+          "@type": "Organization",
+          name: "Hey Nova",
+          url: "https://heynova.io",
+        },
+      })) ?? [];
+
   return (
     <>
       <script
@@ -91,6 +127,15 @@ export default async function Page({ params }: { params: Promise<Params> }) {
           __html: JSON.stringify(webPageSchema).replace(/</g, "\\u003c"),
         }}
       />
+
+      {reviewSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(reviewSchemas).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <Layout
         backgroundType="primary"
         locales={locales}

@@ -112,6 +112,33 @@ function buildOrganizationSchema(
       "Shopify accessibility optimization",
       "AI workflow advisory",
       "VPAT documentation",
+      "web accessibility audits and remediation",
+      "digital accessibility consulting",
+      "usability strategy and UX design",
+      "headless CMS migration",
+      "design systems for nonprofits",
+      "nonprofit web development Canada",
+      "website design Nova Scotia",
+      "web development Nova Scotia",
+      "website development Canada",
+      "custom website design Halifax",
+      "small business website Canada",
+      "nonprofit website design Canada",
+      "website makers Nova Scotia",
+      "website builders Canada",
+      "government website accessibility Canada",
+      "federal procurement digital services",
+      "UX strategy for nonprofits",
+      "user experience research Canada",
+      "conversion rate optimization",
+      "digital transformation nonprofits",
+      "women-owned digital agency Canada",
+      "WBE certified technology company",
+      "remote digital agency Canada",
+      "accessible content strategy",
+      "hire someone to build a website Canada",
+      "website creation for small business",
+      "website help for nonprofits",
     ],
     founder: {
       ...KIRSTEN_PERSON,
@@ -179,11 +206,7 @@ export default async function RootLayout({
 
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
-        <link
-          rel="preconnect"
-          href="https://use.typekit.net"
-          crossOrigin=""
-        />
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
         {/*
           Non-blocking Typekit load. The original `<link rel="stylesheet">`
           was a render-blocking resource (~1.6 s LCP hit per Lighthouse).
@@ -217,10 +240,7 @@ export default async function RootLayout({
         </Script>
         <noscript>
           {/* eslint-disable-next-line @next/next/no-css-tags */}
-          <link
-            rel="stylesheet"
-            href="https://use.typekit.net/sty6ouh.css"
-          />
+          <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
         </noscript>
         {/*
           GA bootstrap runs beforeInteractive so window.gtag and the default
