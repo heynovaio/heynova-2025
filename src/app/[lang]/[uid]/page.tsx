@@ -60,21 +60,48 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const prices = await client.getSingle("prices", { lang });
   const locales = await getLocales(page, client);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `https://heynova.io/${lang}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: prismic.asText(page.data.title) || uid,
+        item: `https://heynova.io/${lang}/${uid}`,
+      },
+    ],
+  };
+
   return (
-    <Layout
-      backgroundType="primary"
-      locales={locales}
-      global={global.data}
-      menus={menus.data}
-      include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
-    >
-      <DefaultIntro data={page.data} />
-      <SliceZone
-        slices={page.data.slices}
-        components={components}
-        context={{ lang: "en-ca", pricesDocumentData: prices.data }}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
       />
-    </Layout>
+      <Layout
+        backgroundType="primary"
+        locales={locales}
+        global={global.data}
+        menus={menus.data}
+        include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
+      >
+        <DefaultIntro data={page.data} />
+        <SliceZone
+          slices={page.data.slices}
+          components={components}
+          context={{ lang: "en-ca", pricesDocumentData: prices.data }}
+        />
+      </Layout>
+    </>
   );
 }
 
