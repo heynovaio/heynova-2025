@@ -37,6 +37,9 @@ const routes: Route[] = [
   },
   { type: "services_listing", path: "/:lang?/services" },
   { type: "service", path: "/:lang?/services/:uid" },
+
+  { type: "work_sectors_listing", path: "/:lang?/work_sectors" },
+  { type: "work_sector", path: "/:lang?/work_sectors/:uid" },
 ];
 
 export async function debugRoutes() {
