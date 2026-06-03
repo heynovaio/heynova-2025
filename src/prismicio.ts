@@ -40,6 +40,8 @@ const routes: Route[] = [
 
   { type: "work_sectors_listing", path: "/:lang?/work_sectors" },
   { type: "work_sector", path: "/:lang?/work_sectors/:uid" },
+
+  { type: "work_example", path: "/:lang?/work_examples/:uid" },
 ];
 
 export async function debugRoutes() {
