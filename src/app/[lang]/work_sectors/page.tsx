@@ -15,7 +15,7 @@ import {
 } from "@/utils";
 import { Layout } from "@/components";
 import { DefaultIntro } from "@/components/Intros/DefaultIntro";
-import { ServiceGrid } from "@/components/Grid/ServiceGrid";
+import { WorkSectorsGrid } from "@/components/Grid";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -101,7 +101,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
         <DefaultIntro data={page.data} />
-        <ServiceGrid lang={lang} />
+        <WorkSectorsGrid lang={lang} />
         <SliceZone
           slices={page.data.slices}
           components={components}
