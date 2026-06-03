@@ -1,0 +1,260 @@
+{
+  "format": "page",
+  "id": "work_example",
+  "label": "Work Example",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "tagline": {
+        "type": "Text",
+        "config": {
+          "label": "Tagline",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,heading2,heading3"
+        }
+      },
+      "background_color": {
+        "type": "Select",
+        "config": {
+          "label": "Background Color",
+          "placeholder": "",
+          "options": ["None", "Light", "Dark"],
+          "default_value": "None"
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image (Featured Image)",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Link",
+              "config": {
+                "label": "Service",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "service",
+                    "fields": [
+                      "background_color",
+                      "tagline",
+                      "title",
+                      "body",
+                      "buttons",
+                      "image",
+                      "include_newsletter_sign_up",
+                      "meta_title",
+                      "meta_description",
+                      "meta_image"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "sectors": {
+        "type": "Group",
+        "config": {
+          "label": "Sectors",
+          "repeat": true,
+          "fields": {
+            "sector": {
+              "type": "Link",
+              "config": {
+                "label": "Sector",
+                "select": "document",
+                "repeat": false,
+                "customtypes": []
+              }
+            }
+          }
+        }
+      },
+      "insights": {
+        "type": "Group",
+        "config": {
+          "label": "Insights",
+          "repeat": true,
+          "fields": {
+            "insight": {
+              "type": "Link",
+              "config": {
+                "label": "Insight",
+                "select": "document",
+                "repeat": false,
+                "customtypes": [
+                  {
+                    "id": "insight",
+                    "fields": [
+                      "background_color",
+                      "tagline",
+                      "title",
+                      "body",
+                      "image",
+                      {
+                        "id": "categories",
+                        "fields": [
+                          {
+                            "id": "name",
+                            "customtypes": [
+                              {
+                                "id": "insights_categories",
+                                "fields": ["title", "body", "buttons"]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "authors",
+                        "fields": [
+                          {
+                            "id": "author",
+                            "customtypes": [
+                              {
+                                "id": "author",
+                                "fields": ["name"]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "meta_title",
+                      "meta_description"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "include_newsletter_sign_up": {
+        "type": "Boolean",
+        "config": {
+          "label": "Include Newsletter Sign Up",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "numbered_list": {
+              "type": "SharedSlice"
+            },
+            "cta_banner": {
+              "type": "SharedSlice"
+            },
+            "price_cards": {
+              "type": "SharedSlice"
+            },
+            "testimonials": {
+              "type": "SharedSlice"
+            },
+            "content_column": {
+              "type": "SharedSlice"
+            },
+            "image_text": {
+              "type": "SharedSlice"
+            },
+            "content_carousel": {
+              "type": "SharedSlice"
+            },
+            "stats": {
+              "type": "SharedSlice"
+            },
+            "simple_text": {
+              "type": "SharedSlice"
+            },
+            "horizontal_accordion": {
+              "type": "SharedSlice"
+            },
+            "accordion": {
+              "type": "SharedSlice"
+            },
+            "content_grid": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}
