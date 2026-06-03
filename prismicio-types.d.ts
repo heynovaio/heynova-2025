@@ -1958,6 +1958,12 @@ export interface WorkExampleDocumentDataInsightsItem {
                     fields: ["title", "body", "buttons"];
                   },
                 ];
+                fields: [
+                  {
+                    id: "insights_categories";
+                    fields: ["title", "body", "buttons"];
+                  },
+                ];
               },
             ];
           },
@@ -1967,6 +1973,7 @@ export interface WorkExampleDocumentDataInsightsItem {
               {
                 id: "author";
                 customtypes: [{ id: "author"; fields: ["name"] }];
+                fields: [{ id: "author"; fields: ["name"] }];
               },
             ];
           },
@@ -2219,15 +2226,15 @@ interface WorkSectorDocumentData {
   title: prismic.RichTextField;
 
   /**
-   * Description field in *Work Sector*
+   * Body field in *Work Sector*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: work_sector.description
+   * - **API ID Path**: work_sector.body
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  description: prismic.RichTextField;
+  body: prismic.RichTextField;
 
   /**
    * Image field in *Work Sector*
