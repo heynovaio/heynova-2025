@@ -9,7 +9,7 @@ import { PrismicNextLink } from "@prismicio/next";
 interface GeneralHeroProps {
   data: {
     title: RichTextField;
-    body: RichTextField;
+    body?: RichTextField;
     button?: LinkField[];
     tagline?: string | KeyTextField;
   };
@@ -46,6 +46,7 @@ export const DefaultIntro: React.FC<GeneralHeroProps> = ({ data }) => {
             />
           </div>
 
+        {data.body &&          
           <div
             style={{
               animation: "fadeInUp 0.8s ease-out 0.4s both",
@@ -60,6 +61,7 @@ export const DefaultIntro: React.FC<GeneralHeroProps> = ({ data }) => {
               }}
             />
           </div>
+        }
 
           <div
             style={{

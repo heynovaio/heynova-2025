@@ -5,3 +5,4 @@ export * from "./getAllInsights";
 export * from "./prismicRichTextComponents";
 export * from "./seo";
 export * from "./analytics";
+export * from  "./getAllWorkSectors";
