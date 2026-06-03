@@ -131,6 +131,7 @@ export type AuthorDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AuthorDocumentData>, "author", Lang>;
 
 type ContactDocumentDataSlicesSlice =
+  | StatsSlice
   | AccordionSlice
   | CtaBannerSlice
   | TestimonialsSlice
@@ -1989,7 +1990,7 @@ export interface AccordionSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
-   * Render as FAQ field in *Accordion → Default → Primary*
+   * Render as FAQ (adds FAQPage schema for AI search) field in *Accordion → Default → Primary*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
