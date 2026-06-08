@@ -39,6 +39,7 @@ const ServicesGrid: FC<ServicesGridProps> = ({ slice }) => {
                   titleLevel={3}
                   description={data.meta_description || data.body}
                   titleClassName={"text-aqua"}
+                  textAlignment={"left"}
                 />
               );
             })}
