@@ -110,7 +110,12 @@
                 "label": "Sector",
                 "select": "document",
                 "repeat": false,
-                "customtypes": []
+                "customtypes": [
+                  {
+                    "id": "work_sector",
+                    "fields": ["title"]
+                  }
+                ]
               }
             }
           }
@@ -147,12 +152,6 @@
                                 "id": "insights_categories",
                                 "fields": ["title", "body", "buttons"]
                               }
-                            ],
-                            "fields": [
-                              {
-                                "id": "insights_categories",
-                                "fields": ["title", "body", "buttons"]
-                              }
                             ]
                           }
                         ]
@@ -163,12 +162,6 @@
                           {
                             "id": "author",
                             "customtypes": [
-                              {
-                                "id": "author",
-                                "fields": ["name"]
-                              }
-                            ],
-                            "fields": [
                               {
                                 "id": "author",
                                 "fields": ["name"]

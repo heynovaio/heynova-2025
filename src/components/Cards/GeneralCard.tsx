@@ -12,7 +12,7 @@ import Link from "next/link";
 
 interface GeneralCardProps {
   image?: ImageField;
-  title: string | RichTextField;
+  title?: string | RichTextField;
   tags?: string[];
   description?: RichTextField | KeyTextField;
   buttons?: LinkField[] | undefined;
@@ -63,6 +63,12 @@ export const GeneralCard = ({
   const tagBorderColor =
     variant === "category" ? "border-aqua" : "border-white";
   const tagTextColor = variant === "category" ? "text-aqua" : "text-white";
+
+  const buttonArray = buttons
+    ? Array.isArray(buttons)
+      ? buttons
+      : [buttons]
+    : [];
 
   const cardInner = (
     <div className="rounded-[20px] p-[0.5px] flex flex-col h-full glow-blur general-card">
@@ -115,9 +121,9 @@ export const GeneralCard = ({
             />
           ) : null}
           <div className="flex-grow"></div>
-          {buttons && (
+          {buttonArray.length > 0 && (
             <div className="flex gap-2.5 flex-wrap">
-              {buttons.map((button, index) => (
+              {buttonArray.map((button, index) => (
                 <Button
                   key={index}
                   className={`btn ${index === 1 ? "btn-secondary" : "btn-primary"} flex-shrink-0`}

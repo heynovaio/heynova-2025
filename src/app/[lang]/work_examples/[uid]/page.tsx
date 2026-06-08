@@ -8,7 +8,6 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
-import { DefaultIntro } from "@/components/Intros/DefaultIntro";
 
 import {
   buildAlternateLanguages,
@@ -17,6 +16,7 @@ import {
   KIRSTEN_PERSON,
   SITE_URL,
 } from "@/utils";
+import { WorkExampleIntro } from "@/components/Intros/WorkExampleIntro";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -120,7 +120,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
-        <DefaultIntro data={page.data} />
+        <WorkExampleIntro data={page.data} />
         <SliceZone
           slices={page.data.slices}
           components={components}
