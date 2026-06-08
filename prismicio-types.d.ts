@@ -1594,6 +1594,7 @@ export type ServiceDocument<Lang extends string = string> =
   >;
 
 type ServicesListingDocumentDataSlicesSlice =
+  | ServicesGridSlice
   | ContentGridSlice
   | StatsSlice
   | CtaBannerSlice;
