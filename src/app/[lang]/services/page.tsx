@@ -32,7 +32,16 @@ export async function generateMetadata({
 
   const client = createClient();
   const page = await client
-    .getSingle("services_listing", { lang })
+    .getSingle("services_listing", {
+      lang,
+      fetchLinks: [
+        "service.title",
+        "service.body",
+        "service.meta_title",
+        "service.meta_description",
+        "service.meta_image",
+      ],
+    })
     .catch(() => notFound());
 
   const title =
