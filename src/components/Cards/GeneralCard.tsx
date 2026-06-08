@@ -24,6 +24,7 @@ interface GeneralCardProps {
   href?: string;
   variant?: "default" | "category";
   category?: string;
+  textAlignment?: "left" | "center";
 }
 
 export const GeneralCard = ({
@@ -37,6 +38,7 @@ export const GeneralCard = ({
   buttons,
   href,
   variant = "default",
+  textAlignment = "center",
   category,
 }: GeneralCardProps) => {
   const TitleHeading = ({ children }: { children: ReactNode }) => {
@@ -63,6 +65,7 @@ export const GeneralCard = ({
   const tagBorderColor =
     variant === "category" ? "border-aqua" : "border-white";
   const tagTextColor = variant === "category" ? "text-aqua" : "text-white";
+  const textAlignClass = textAlignment === "left" ? "text-left" : "text-center";
 
   const buttonArray = buttons
     ? Array.isArray(buttons)
@@ -80,10 +83,12 @@ export const GeneralCard = ({
             field={image}
             fallbackAlt=""
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover general-card-image"
+            className={`object-cover general-card-image`}
           />
         )}
-        <div className="p-5 flex flex-col gap-4 h-full z-10">
+        <div
+          className={`p-5 flex flex-col gap-4 h-full z-10 ${textAlignClass}`}
+        >
           <div className={`flex flex-col gap-4 ${textColor}`}>
             {title && typeof title === "string" ? (
               <TitleHeading>{title}</TitleHeading>
