@@ -433,6 +433,14 @@ a {
     }
   }
 
+  .focus-ring:focus {
+    outline-width: 2px !important;
+    outline-style: solid !important;
+    outline-color: var(--color-lavendar) !important;
+    outline-offset: 6px !important;
+    border-radius: 100px;
+  }
+
   .underline {
     text-decoration: underline;
     text-underline-offset: 0.4px;
@@ -541,6 +549,20 @@ a {
     border-radius: 1.875em;
     border: 3px solid transparent;
     padding: 10px 34px 12px 34px;
+    font-size: var(--text-button);
+    background: transparent;
+    border-color: var(--color-aqua);
+    color: var(--color-aqua);
+
+    &:focus {
+      outline: 0;
+      border-color: var(--color-purple-lt);
+      background: var(--color-teal-drk);
+    }
+  }
+
+  .btn-no-outline {
+    border-radius: 1.875em;
     font-size: var(--text-button);
     background: transparent;
     border-color: var(--color-aqua);
