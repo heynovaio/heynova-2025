@@ -1922,7 +1922,9 @@ export interface WorkExampleDocumentDataSectorsItem {
    * - **API ID Path**: work_example.sectors[].sector
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
-  sector: prismic.ContentRelationshipField;
+  sector: ContentRelationshipFieldWithData<
+    [{ id: "work_sector"; fields: ["title"] }]
+  >;
 }
 
 /**
@@ -1958,12 +1960,6 @@ export interface WorkExampleDocumentDataInsightsItem {
                     fields: ["title", "body", "buttons"];
                   },
                 ];
-                fields: [
-                  {
-                    id: "insights_categories";
-                    fields: ["title", "body", "buttons"];
-                  },
-                ];
               },
             ];
           },
@@ -1973,7 +1969,6 @@ export interface WorkExampleDocumentDataInsightsItem {
               {
                 id: "author";
                 customtypes: [{ id: "author"; fields: ["name"] }];
-                fields: [{ id: "author"; fields: ["name"] }];
               },
             ];
           },
