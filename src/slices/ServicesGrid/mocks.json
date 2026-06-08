@@ -1,0 +1,52 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Spent"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco enim cillum do mollit id proident nostrud nostrud. Lorem cillum nulla sunt culpa in voluptate magna eu reprehenderit incididunt laborum dolore sit esse velit. Non eu velit in ad est adipisicing dolor velit."
+						}
+					}
+				]
+			},
+			"services": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"service",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "16121537-3a28-40ab-a233-2c78644edb0b",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

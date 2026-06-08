@@ -4758,6 +4758,101 @@ export type PriceCardsSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ServicesGrid → Default → Primary → Services*
+ */
+export interface ServicesGridSliceDefaultPrimaryServicesItem {
+  /**
+   * Service field in *ServicesGrid → Default → Primary → Services*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_grid.default.primary.services[].service
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  service: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "service";
+        fields: [
+          "title",
+          "body",
+          "meta_title",
+          "meta_description",
+          "meta_image",
+        ];
+      },
+    ]
+  >;
+}
+
+/**
+ * Primary content in *ServicesGrid → Default → Primary*
+ */
+export interface ServicesGridSliceDefaultPrimary {
+  /**
+   * Title field in *ServicesGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_grid.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ServicesGrid → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_grid.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Services field in *ServicesGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services_grid.default.primary.services[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  services: prismic.GroupField<
+    Simplify<ServicesGridSliceDefaultPrimaryServicesItem>
+  >;
+}
+
+/**
+ * Default variation for ServicesGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServicesGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServicesGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServicesGrid*
+ */
+type ServicesGridSliceVariation = ServicesGridSliceDefault;
+
+/**
+ * ServicesGrid Shared Slice
+ *
+ * - **API ID**: `services_grid`
+ * - **Description**: ServicesGrid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServicesGridSlice = prismic.SharedSlice<
+  "services_grid",
+  ServicesGridSliceVariation
+>;
+
+/**
  * Primary content in *SimpleText → Default → Primary*
  */
 export interface SimpleTextSliceDefaultPrimary {
@@ -5361,6 +5456,11 @@ declare module "@prismicio/client" {
       PriceCardsSliceDefaultPrimary,
       PriceCardsSliceVariation,
       PriceCardsSliceDefault,
+      ServicesGridSlice,
+      ServicesGridSliceDefaultPrimaryServicesItem,
+      ServicesGridSliceDefaultPrimary,
+      ServicesGridSliceVariation,
+      ServicesGridSliceDefault,
       SimpleTextSlice,
       SimpleTextSliceDefaultPrimary,
       SimpleTextSliceVariation,

@@ -15,6 +15,7 @@ export const components = {
   multi_link_column: dynamic(() => import("./MultiLinkColumn")),
   numbered_list: dynamic(() => import("./NumberedList")),
   price_cards: dynamic(() => import("./PriceCards")),
+  services_grid: dynamic(() => import("./ServicesGrid")),
   simple_text: dynamic(() => import("./SimpleText")),
   single_link: dynamic(() => import("./SingleLink")),
   stats: dynamic(() => import("./Stats")),
