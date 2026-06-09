@@ -16,7 +16,7 @@ import {
   KIRSTEN_PERSON,
   SITE_URL,
 } from "@/utils";
-import { WorkExampleIntro } from "@/components/Intros/WorkExampleIntro";
+import { WorkIntro } from "@/components/Intros/WorkIntro";
 
 /**
  * This page renders a Prismic Document dynamically based on the URL.
@@ -37,7 +37,9 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   const title =
-    page.data.meta_title || prismic.asText(page.data.title) || "Work Example | Hey Nova";
+    page.data.meta_title ||
+    prismic.asText(page.data.title) ||
+    "Work Example | Hey Nova";
 
   return buildMetadata({
     title,
@@ -120,7 +122,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
-        <WorkExampleIntro data={page.data} />
+        {/* <WorkExampleIntro data={page.data} /> */}
+        <WorkIntro data={page.data} lang={lang} uid={uid} />
         <SliceZone
           slices={page.data.slices}
           components={components}
