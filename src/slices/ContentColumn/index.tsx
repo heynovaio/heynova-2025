@@ -187,24 +187,26 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
           <Container
             containerClassName={`${isSingleColumn ? "flex justify-center" : ""} flex flex-col`}
           >
-            <ContentBox
-              title={slice.primary.title}
-              titleClassName="text-aqua"
-              content={
-                <div className="text-bodyLarge">
-                  <PrismicRichText
-                    field={slice.primary.body}
-                    components={{
-                      paragraph: ({ children }) => (
-                        <p className="!mx-0">{children}</p>
-                      ),
-                    }}
-                  />
-                </div>
-              }
-              width="standard"
-              containerClassName={`flex justify-center mb-16 ${slice.primary.text_align ? "items-center text-center" : "items-start text-start"}`}
-            />
+            {slice.primary.title && (
+              <ContentBox
+                title={slice.primary.title}
+                titleClassName="text-aqua"
+                content={
+                  <div className="text-bodyLarge">
+                    <PrismicRichText
+                      field={slice.primary.body}
+                      components={{
+                        paragraph: ({ children }) => (
+                          <p className="!mx-0">{children}</p>
+                        ),
+                      }}
+                    />
+                  </div>
+                }
+                width="standard"
+                containerClassName={`flex justify-center mb-16 ${slice.primary.text_align ? "items-center text-center" : "items-start text-start"}`}
+              />
+            )}
             <Cards />
           </Container>
         </AnimatedSection>
