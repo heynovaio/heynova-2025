@@ -48,7 +48,7 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
                 ),
               }}
             />
-            {/* {data.body && <PrismicRichText field={data.body} />} */}
+            {data.body && <PrismicRichText field={data.body} />}
           </div>
 
           {imageExists && (
