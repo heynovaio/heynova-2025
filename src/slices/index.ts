@@ -19,6 +19,7 @@ export const components = {
   simple_text: dynamic(() => import("./SimpleText")),
   single_link: dynamic(() => import("./SingleLink")),
   stats: dynamic(() => import("./Stats")),
+  tag_list: dynamic(() => import("./TagList")),
   team_list: dynamic(() => import("./TeamList")),
   testimonials: dynamic(() => import("./Testimonials")),
 };
