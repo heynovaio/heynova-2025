@@ -537,7 +537,43 @@ a {
       background: var(--color-midnight);
     }
   }
+  .btn-teal {
+    border-radius: 1.875em;
+    border: 3px solid transparent;
+    padding: 10px 34px 12px 34px;
+    font-size: var(--text-button);
+    background: var(--color-teal-drk);
+    color: var(--color-black);
+    text-decoration: none !important;
 
+    &:focus {
+      outline: 0;
+      border-color: var(--color-lavendar);
+      background: var(--color-wine);
+    }
+    @media screen and (max-width: 768px) {
+      padding: 10px 16px;
+    }
+  }
+
+  .btn-wine {
+    border-radius: 1.875em;
+    border: 3px solid transparent;
+    padding: 10px 34px 12px 34px;
+    font-size: var(--text-button);
+    background: var(--color-wine);
+    color: var(--color-black);
+    text-decoration: none !important;
+
+    &:focus {
+      outline: 0;
+      border-color: var(--color-lavendar);
+      background: var(--color-wine);
+    }
+    @media screen and (max-width: 768px) {
+      padding: 10px 16px;
+    }
+  }
   .bg-teal-muted {
     .btn-secondary {
       border: 3px solid var(--color-purple-drk);
