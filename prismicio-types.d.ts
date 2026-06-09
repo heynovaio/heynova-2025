@@ -2021,6 +2021,17 @@ interface WorkExampleDocumentData {
   title: prismic.RichTextField;
 
   /**
+   * Body field in *Work Example*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work_example.body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
    * Background Color field in *Work Example*
    *
    * - **Field Type**: Select
