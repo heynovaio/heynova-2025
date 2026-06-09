@@ -1982,6 +1982,7 @@ export interface WorkExampleDocumentDataInsightsItem {
 }
 
 type WorkExampleDocumentDataSlicesSlice =
+  | TagListSlice
   | NumberedListSlice
   | CtaBannerSlice
   | PriceCardsSlice
@@ -5073,6 +5074,61 @@ type StatsSliceVariation = StatsSliceDefault;
 export type StatsSlice = prismic.SharedSlice<"stats", StatsSliceVariation>;
 
 /**
+ * Primary content in *TagList → Default → Primary*
+ */
+export interface TagListSliceDefaultPrimary {
+  /**
+   * Title field in *TagList → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tag_list.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *TagList → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tag_list.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TagList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TagListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TagListSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TagList*
+ */
+type TagListSliceVariation = TagListSliceDefault;
+
+/**
+ * TagList Shared Slice
+ *
+ * - **API ID**: `tag_list`
+ * - **Description**: TagList
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TagListSlice = prismic.SharedSlice<
+  "tag_list",
+  TagListSliceVariation
+>;
+
+/**
  * Item in *TeamList → Default → Primary → Team Member*
  */
 export interface TeamListSliceDefaultPrimaryTeamMemberItem {
@@ -5481,6 +5537,10 @@ declare module "@prismicio/client" {
       StatsSliceDefaultPrimary,
       StatsSliceVariation,
       StatsSliceDefault,
+      TagListSlice,
+      TagListSliceDefaultPrimary,
+      TagListSliceVariation,
+      TagListSliceDefault,
       TeamListSlice,
       TeamListSliceDefaultPrimaryTeamMemberItem,
       TeamListSliceDefaultPrimary,
