@@ -2,7 +2,7 @@
 import React from "react";
 import { Container } from "../Layout";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { ContentRelationshipField } from "@prismicio/client";
 import Link from "next/link";
 import { Simplify, WorkExampleDocumentData } from "../../../prismicio-types";
@@ -17,8 +17,6 @@ interface WorkIntroProps {
 
 export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
   const imageExists = data.image?.url;
-
-  console.log("UID in WorkIntro:", uid);
   return (
     <section
       className={`${
@@ -52,6 +50,19 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
               }}
             />
             {data.body && <PrismicRichText field={data.body} />}
+            {data.link && (
+              <div
+                className="flex flex-row gap-4 md:gap-8"
+                style={{
+                  animation: "fadeInUp 0.8s ease-out 0.6s both",
+                }}
+              >
+                <PrismicNextLink
+                  field={data.link}
+                  className="btn btn-primary"
+                />
+              </div>
+            )}
           </div>
 
           {imageExists && (
