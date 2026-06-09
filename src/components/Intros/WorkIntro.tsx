@@ -45,7 +45,7 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
               field={data.title}
               components={{
                 heading1: ({ children }) => (
-                  <h1 className="gradient-text">{children}</h1>
+                  <h1 className="gradient-text pb-2">{children}</h1>
                 ),
               }}
             />
