@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Container, ContentBox, Section } from "@/components";
 
 /**
  * Props for `TagList`.
@@ -12,18 +13,30 @@ export type TagListProps = SliceComponentProps<Content.TagListSlice>;
  */
 const TagList: FC<TagListProps> = ({ slice }) => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
-      Placeholder component for tag_list (variation: {slice.variation}) slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use your own AI agent with the Prismic CLI
-       * 📚 Docs: https://prismic.io/docs/ai#create-slices
-       */}
-    </section>
+    <Section>
+      <Container>
+        {slice.primary.title && (
+          <ContentBox
+            title={slice.primary.title}
+            titleClassName="text-aqua 
+            "
+            content={
+              <div className="text-bodyLarge">
+                <PrismicRichText
+                  field={slice.primary.body}
+                  components={{
+                    paragraph: ({ children }) => (
+                      <p className="!mx-0 ">{children}</p>
+                    ),
+                  }}
+                />
+              </div>
+            }
+            width="standard"
+          />
+        )}
+      </Container>
+    </Section>
   );
 };
 
