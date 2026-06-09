@@ -18,6 +18,7 @@ interface WorkIntroProps {
 export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
   const imageExists = data.image?.url;
 
+  console.log("UID in WorkIntro:", uid);
   return (
     <section
       className={`${
@@ -35,10 +36,12 @@ export const WorkIntro: React.FC<WorkIntroProps> = ({ data, uid }) => {
               imageExists ? "basis-1/2" : "text-center grow mx-auto"
             } hero-container flex flex-col gap-8  order-1 max-w-[750px] sm:order-0 print-text`}
           >
+            {/** TODO: UPDATE THE BREADCRUMB LINKS TO work-examples ONCE I SWITCH THE UNDERSCORE FOR HYPHEN */}
             <span>
               <Link href={"/"}>Home</Link> /{" "}
-              <Link href={"/our-work"}>Work Examples</Link>
-              <Link href={`/${uid || ""}`}></Link>
+              <Link href={"/our-work"}>Work Examples</Link> /{" "}
+              <Link href={`/work_examples/${uid || ""}`}>{uid}</Link>{" "}
+              {/** TODO: ^^^^^^^^^^^^^ check w/ kirsten on whether this should be title or url and make not clickable  */}
             </span>
             <PrismicRichText
               field={data.title}
