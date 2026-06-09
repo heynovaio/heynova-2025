@@ -203,6 +203,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "tag_list": {
+              "type": "SharedSlice"
+            },
             "numbered_list": {
               "type": "SharedSlice"
             },
