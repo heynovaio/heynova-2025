@@ -44,7 +44,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
   const hasServices = services && services.length > 0;
 
   return (
-    <Section>
+    <Section className="my-20 md:my-40">
       <Container>
         {slice.primary.title && (
           <div className="flex flex-col gap-6 items-center text-center w-full">
@@ -75,7 +75,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
                     <Link
                       key={`sector-${index}`}
                       href={item.sector.url ?? "#"}
-                      className="btn btn-teal"
+                      className="btn btn-ghost-teal"
                     >
                       {getTitle(item.sector)}
                     </Link>
@@ -85,7 +85,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
                     <Link
                       key={`service-${index}`}
                       href={item.service.url ?? "#"}
-                      className="btn btn-wine"
+                      className="btn btn-ghost"
                     >
                       {getTitle(item.service)}
                     </Link>
