@@ -43,8 +43,11 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
   const hasSectors = sectors && sectors.length > 0;
   const hasServices = services && services.length > 0;
 
+  const background = slice.primary.background_color;
+  const bgColor = background === "Light" ? "bg-teal-muted/20 " : "";
+
   return (
-    <Section className="my-20 md:my-40">
+    <Section className={`${bgColor} py-20 md:py-40`}>
       <Container>
         {slice.primary.title && (
           <div className="flex flex-col gap-6 items-center text-center w-full">
