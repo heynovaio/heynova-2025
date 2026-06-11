@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Content, KeyTextField, RichTextField } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { Container, ContentBox, Section } from "@/components";
+import { Container, Section } from "@/components";
 import Link from "next/link";
 
 export type TagListProps = SliceComponentProps<Content.TagListSlice>;
@@ -22,6 +22,11 @@ interface ServiceItem {
   };
 }
 
+interface TagListContext {
+  services?: ServiceItem[];
+  sectors?: SectorItem[];
+}
+
 function getTitle(item: {
   url?: string;
   slug?: string;
@@ -37,8 +42,7 @@ function getTitle(item: {
 }
 
 const TagList: FC<TagListProps> = ({ slice, context }) => {
-  const services = (context as any).services as ServiceItem[] | undefined;
-  const sectors = (context as any).sectors as SectorItem[] | undefined;
+  const { services, sectors } = context as TagListContext;
 
   const hasSectors = sectors && sectors.length > 0;
   const hasServices = services && services.length > 0;
