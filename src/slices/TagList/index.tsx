@@ -46,57 +46,56 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
   return (
     <Section>
       <Container>
-        <div className="flex flex-col gap-8 items-center w-full justify-center">
-          {slice.primary.title && (
-            <ContentBox
-              title={slice.primary.title}
-              titleClassName="text-aqua"
-              content={
-                <div className="flex flex-col gap-6">
-                  <div className="text-bodyLarge">
-                    <PrismicRichText
-                      field={slice.primary.body}
-                      components={{
-                        paragraph: ({ children }) => (
-                          <p className="!mx-0">{children}</p>
-                        ),
-                      }}
-                    />
-                  </div>
-
-                  {(hasSectors || hasServices) && (
-                    <div className="flex flex-wrap gap-2">
-                      {hasSectors &&
-                        sectors!.map((item, index) => (
-                          <Link
-                            key={`sector-${index}`}
-                            href={item.sector.url ?? "#"}
-                            className="btn btn-teal"
-                          >
-                            {getTitle(item.sector)}
-                          </Link>
-                        ))}
-                      {hasServices &&
-                        services!.map((item, index) => (
-                          <Link
-                            key={`service-${index}`}
-                            href={item.service.url ?? "#"}
-                            className="btn btn-wine"
-                          >
-                            {getTitle(item.service)}
-                          </Link>
-                        ))}
-                    </div>
-                  )}
-                </div>
-              }
-              width="standard"
+        {slice.primary.title && (
+          <div className="flex flex-col gap-6 items-center text-center w-full">
+            <PrismicRichText
+              field={slice.primary.title}
+              components={{
+                heading2: ({ children }) => (
+                  <h2 className="text-aqua">{children}</h2>
+                ),
+              }}
             />
-          )}
-        </div>
+
+            <div className="text-bodyLarge max-w-[70ch]">
+              <PrismicRichText
+                field={slice.primary.body}
+                components={{
+                  paragraph: ({ children }) => (
+                    <p className="!mx-0">{children}</p>
+                  ),
+                }}
+              />
+            </div>
+
+            {(hasSectors || hasServices) && (
+              <div className="flex flex-wrap gap-2 justify-center">
+                {hasSectors &&
+                  sectors!.map((item, index) => (
+                    <Link
+                      key={`sector-${index}`}
+                      href={item.sector.url ?? "#"}
+                      className="btn btn-teal"
+                    >
+                      {getTitle(item.sector)}
+                    </Link>
+                  ))}
+                {hasServices &&
+                  services!.map((item, index) => (
+                    <Link
+                      key={`service-${index}`}
+                      href={item.service.url ?? "#"}
+                      className="btn btn-wine"
+                    >
+                      {getTitle(item.service)}
+                    </Link>
+                  ))}
+              </div>
+            )}
+          </div>
+        )}
       </Container>
     </Section>
   );
 };
-
 export default TagList;
