@@ -57,7 +57,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
               }}
             />
 
-            <div className="text-bodyLarge max-w-[70ch]">
+            <div className="text-bodyLarge max-w-[70ch] ">
               <PrismicRichText
                 field={slice.primary.body}
                 components={{
@@ -69,7 +69,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
             </div>
 
             {(hasSectors || hasServices) && (
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-wrap gap-2 justify-center mt-6">
                 {hasSectors &&
                   sectors!.map((item, index) => (
                     <Link
