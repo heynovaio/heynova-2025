@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { Content, isFilled, asText } from "@prismicio/client";
+import {
+  Content,
+  isFilled,
+  asText,
+  RichTextField,
+  ImageField,
+} from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, Section } from "@/components/Layout";
 import { Grid } from "@/components/Grid/Grid";
@@ -24,11 +30,11 @@ const ServicesGrid: FC<ServicesGridProps> = ({ slice }) => {
                 return null;
 
               const data = service.data as {
-                title?: any;
-                body?: any;
+                title?: RichTextField;
+                body?: RichTextField;
                 meta_title?: string;
                 meta_description?: string;
-                meta_image?: any;
+                meta_image?: ImageField;
               };
 
               return (
