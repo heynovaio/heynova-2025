@@ -65,7 +65,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     .catch(() => notFound());
   const global = await client.getSingle("global", { lang });
   const menus = await client.getSingle("menus", { lang });
-  const prices = await client.getSingle("prices", { lang });
   const locales = await getLocales(page, client);
 
   const breadcrumbSchema = {
