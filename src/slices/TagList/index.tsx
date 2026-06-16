@@ -1,8 +1,10 @@
-import { FC } from "react";
+"use client";
+import { FC, useRef } from "react";
 import { Content, KeyTextField, RichTextField } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, Section } from "@/components";
 import Link from "next/link";
+import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
 
 export type TagListProps = SliceComponentProps<Content.TagListSlice>;
 
@@ -50,6 +52,9 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
   const background = slice.primary.background_color;
   const bgColor = background === "Light" ? "bg-teal-muted/20 " : "";
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  useFadeInOnScroll(containerRef);
+
   return (
     <Section className={`${bgColor} py-20 md:py-40`}>
       <Container>
@@ -76,13 +81,19 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
             </div>
 
             {(hasSectors || hasServices) && (
-              <div className="flex flex-wrap gap-2 justify-center mt-6">
+              <div
+                className="flex flex-wrap gap-2 justify-center mt-6"
+                ref={containerRef}
+              >
                 {hasSectors &&
                   sectors!.map((item, index) => (
                     <Link
                       key={`sector-${index}`}
                       href={item.sector.url ?? "#"}
-                      className="btn btn-ghost-teal"
+                      className="btn btn-ghost-teal fade-in"
+                      style={
+                        { "--delay": `${index * 0.1}s` } as React.CSSProperties
+                      }
                     >
                       {getTitle(item.sector)}
                     </Link>
@@ -92,7 +103,10 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
                     <Link
                       key={`service-${index}`}
                       href={item.service.url ?? "#"}
-                      className="btn btn-ghost"
+                      className="btn btn-ghost fade-in"
+                      style={
+                        { "--delay": `${index * 0.1}s` } as React.CSSProperties
+                      }
                     >
                       {getTitle(item.service)}
                     </Link>
