@@ -82,7 +82,7 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
 
             {(hasSectors || hasServices) && (
               <div
-                className="flex flex-wrap gap-2 justify-center mt-6"
+                className="flex flex-wrap gap-4  justify-center mt-6"
                 ref={containerRef}
               >
                 {hasSectors &&
