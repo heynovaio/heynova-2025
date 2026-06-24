@@ -304,6 +304,11 @@ a {
   }
 }
 
+p > a {
+  text-decoration: underline !important;
+  color: var(--color-aqua);
+}
+
 .menu-panel-hover {
   cursor: pointer;
 }
