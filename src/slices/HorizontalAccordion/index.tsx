@@ -46,6 +46,7 @@ const HorizontalAccordionSlice = ({
       <AnimatedSection className={`${bgColor} `}>
         <Container>
           <ContentBox
+            textAlign="left"
             title={slice.primary.title}
             content={<PrismicRichText field={slice.primary.body} />}
             buttons={slice.primary.buttons.map((button, index) => {
