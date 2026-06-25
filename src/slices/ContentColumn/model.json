@@ -12,6 +12,18 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
         "card_color": {
           "type": "Select",
           "config": {
@@ -112,6 +124,18 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
         "text_align": {
           "type": "Boolean",
           "config": {
