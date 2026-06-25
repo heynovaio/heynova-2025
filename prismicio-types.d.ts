@@ -3323,6 +3323,17 @@ export interface ContentColumnSliceContentColumnWithCardsPrimaryContentItem {
  */
 export interface ContentColumnSliceDefaultPrimary {
   /**
+   * Background Color field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_column.default.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
    * Card Color field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Select
@@ -3405,6 +3416,17 @@ export type ContentColumnSliceDefault = prismic.SharedSliceVariation<
  * Primary content in *ContentColumn → ContentColumn with Cards → Primary*
  */
 export interface ContentColumnSliceContentColumnWithCardsPrimary {
+  /**
+   * Background Color field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
   /**
    * Text Align field in *ContentColumn → ContentColumn with Cards → Primary*
    *

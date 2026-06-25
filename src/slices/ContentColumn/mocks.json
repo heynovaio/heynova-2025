@@ -230,6 +230,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "3",
 				"type": "Select"
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": []
@@ -327,6 +332,11 @@
 			"text_align": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "None",
+				"type": "Select"
 			}
 		},
 		"items": [
