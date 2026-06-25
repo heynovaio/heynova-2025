@@ -18,6 +18,7 @@ interface ContentBoxProps {
   };
   titleLevel?: 2 | 3; // New prop to control heading level
   smallerTextWidth?: boolean;
+  textAlign?: "normal" | "left";
 }
 
 export const ContentBox: React.FC<ContentBoxProps> = ({
@@ -32,6 +33,7 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
   titleComponents,
   titleLevel = 2,
   smallerTextWidth = false,
+  textAlign = "normal",
   ...props
 }) => {
   const widthClassName = getWidthClassNames(width);
@@ -86,7 +88,13 @@ export const ContentBox: React.FC<ContentBoxProps> = ({
             />
           )}
         </div>
-        {content && <div className="text-content">{content}</div>}
+        {content && (
+          <div
+            className={`text-content ${textAlign === "left" ? "[&_p]:!mx-0" : ""}  `}
+          >
+            {content}
+          </div>
+        )}
       </div>
       {buttons && buttons.length > 0 && (
         <div className="flex gap-6">{buttons}</div>
