@@ -40,6 +40,10 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
   let text_color = "text-white";
   let title_color = "text-light-blue";
 
+  const background = slice.primary.background_color;
+  const bgColor =
+    background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
+
   if ("card_color" in slice.primary && slice.primary.card_color) {
     switch (slice.primary.card_color) {
       case "Blue":
@@ -179,7 +183,7 @@ const ContentColumn = ({ slice, context }: ContentColumnProps): JSX.Element => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      styling="overflow-x-hidden"
+      styling={`overflow-x-hidden  ${bgColor}`}
       isBlogPage={isBlog}
     >
       <div className="hidden lg:block">
