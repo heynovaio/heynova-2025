@@ -866,7 +866,10 @@ export type InsightsListingDocument<Lang extends string = string> =
     Lang
   >;
 
-type MenusDocumentDataSlicesSlice = MenuPanelSlice | SingleLinkSlice;
+type MenusDocumentDataSlicesSlice =
+  | CategoryMenuPanelSlice
+  | MenuPanelSlice
+  | SingleLinkSlice;
 
 /**
  * Item in *Menus → Logos*
@@ -2660,6 +2663,176 @@ type AccordionSliceVariation = AccordionSliceDefault;
 export type AccordionSlice = prismic.SharedSlice<
   "accordion",
   AccordionSliceVariation
+>;
+
+/**
+ * Item in *CategoryMenuPanel → Default → Primary → Blocks*
+ */
+export interface CategoryMenuPanelSliceDefaultPrimaryBlocksItem {
+  /**
+   * Title field in *CategoryMenuPanel → Default → Primary → Blocks*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.blocks[].title
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  title: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Body field in *CategoryMenuPanel → Default → Primary → Blocks*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.blocks[].body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Item in *CategoryMenuPanel → Default → Primary → Pills*
+ */
+export interface CategoryMenuPanelSliceDefaultPrimaryPillsItem {
+  /**
+   * Title field in *CategoryMenuPanel → Default → Primary → Pills*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.pills[].title
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  title: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Body field in *CategoryMenuPanel → Default → Primary → Pills*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.pills[].body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CategoryMenuPanel → Default → Primary*
+ */
+export interface CategoryMenuPanelSliceDefaultPrimary {
+  /**
+   * Menu Display field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.menu_display
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  menu_display: prismic.KeyTextField;
+
+  /**
+   * Title field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Columns field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: category_menu_panel.default.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  columns: prismic.BooleanField;
+
+  /**
+   * Blocks Title field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.blocks_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  blocks_title: prismic.KeyTextField;
+
+  /**
+   * Blocks field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.blocks[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  blocks: prismic.GroupField<
+    Simplify<CategoryMenuPanelSliceDefaultPrimaryBlocksItem>
+  >;
+
+  /**
+   * Pills Title field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.pills_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  pills_title: prismic.KeyTextField;
+
+  /**
+   * Pills field in *CategoryMenuPanel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category_menu_panel.default.primary.pills[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  pills: prismic.GroupField<
+    Simplify<CategoryMenuPanelSliceDefaultPrimaryPillsItem>
+  >;
+}
+
+/**
+ * Default variation for CategoryMenuPanel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CategoryMenuPanelSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CategoryMenuPanelSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CategoryMenuPanel*
+ */
+type CategoryMenuPanelSliceVariation = CategoryMenuPanelSliceDefault;
+
+/**
+ * CategoryMenuPanel Shared Slice
+ *
+ * - **API ID**: `category_menu_panel`
+ * - **Description**: CategoryMenuPanel
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CategoryMenuPanelSlice = prismic.SharedSlice<
+  "category_menu_panel",
+  CategoryMenuPanelSliceVariation
 >;
 
 /**
@@ -5482,6 +5655,12 @@ declare module "@prismicio/client" {
       AccordionSliceDefaultPrimary,
       AccordionSliceVariation,
       AccordionSliceDefault,
+      CategoryMenuPanelSlice,
+      CategoryMenuPanelSliceDefaultPrimaryBlocksItem,
+      CategoryMenuPanelSliceDefaultPrimaryPillsItem,
+      CategoryMenuPanelSliceDefaultPrimary,
+      CategoryMenuPanelSliceVariation,
+      CategoryMenuPanelSliceDefault,
       ContentCarouselSlice,
       ContentCarouselSliceDefaultPrimaryCardsItem,
       ContentCarouselSliceDefaultPrimary,
