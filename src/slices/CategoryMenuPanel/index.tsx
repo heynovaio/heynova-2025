@@ -23,7 +23,6 @@ export type CategoryMenuPanelProps =
 /**
  * Component for "MenuPanel" Slices.
  */
-console.log("🔥🔥🔥 CATEGORY MENU FILE LOADED 🔥🔥🔥");
 
 const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
   const numColumns3 = slice.primary.columns === true;
@@ -57,7 +56,7 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                       content={
                         <div className="flex flex-col gap-6">
                           <PrismicRichText field={slice.primary.body} />
-                          <div className="bg-teal-muted text-black p-4 rounded-lg">
+                          <div className="bg-teal-muted  text-black p-4 rounded-lg">
                             <p className="font-extraBold">
                               Not sure where to start?
                             </p>
@@ -67,32 +66,28 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                           </div>
                         </div>
                       }
-                      containerClassName="border-r-[0.5px] border-white basis-1/3 lg:pr-32 pr-16 py-5"
+                      containerClassName="border-r-[0.5px] border-white basis-1/3 lg:pr-18 pr-16 py-5"
                     />
-                    <div className="flex flex-col basis-2/3 justify-center text-white lg:pl-32 pl-16 py-5 w-full">
+                    <div className="flex flex-col basis-2/3 justify-center text-white lg:pl-10 pl-8 py-5 w-full">
                       {/* Blocks */}
                       {slice.primary.blocks?.length > 0 && (
                         <div className="mb-8">
                           {slice.primary.blocks_title && (
-                            <h3 className="mb-3 text-lg font-bold">
+                            <h3 className="mb-3 text-lg font-bold text-aqua uppercase text-[1.25rem]">
                               {slice.primary.blocks_title}
                             </h3>
                           )}
 
-                          <div
-                            className={`grid gap-4 text-left ${
-                              numColumns3 ? "grid-cols-3" : "grid-cols-2"
-                            }`}
-                          >
+                          <div className="flex flex-wrap gap-4 text-left">
                             {slice.primary.blocks.map((item, index) => (
                               <div
                                 key={index}
-                                className="flex flex-col rounded-lg border border-aqua p-4"
+                                className="flex flex-col rounded-lg border border-aqua p-4 basis-[calc(33.333%-1rem)] bg-aqua/20 "
                               >
                                 {item.title && (
                                   <PrismicNextLink
                                     field={item.title}
-                                    className="mb-2 text-base font-bold hover:underline"
+                                    className="mb-2 text-base font-bold hover:underline text-aqua"
                                     prefetch={false}
                                   />
                                 )}
@@ -112,7 +107,7 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                       {slice.primary.pills?.length > 0 && (
                         <div>
                           {slice.primary.pills_title && (
-                            <h3 className="mb-3 text-lg font-bold">
+                            <h3 className="mb-3 text-lg font-bold text-lavendar uppercase text-[1.25rem]">
                               {slice.primary.pills_title}
                             </h3>
                           )}
@@ -122,7 +117,7 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                               <PrismicNextLink
                                 key={index}
                                 field={item.title}
-                                className="rounded-full border border-aqua px-4 py-2 text-sm transition-colors hover:bg-white/10"
+                                className="rounded-full border border-lavendar  bg-lavendar/20  px-4 py-2 text-sm transition-colors hover:bg-white/10"
                                 prefetch={false}
                               />
                             ))}
@@ -208,7 +203,7 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                             {slice.primary.blocks.map((item, index) => (
                               <div
                                 key={index}
-                                className="flex flex-col rounded-lg border border-aqua p-4"
+                                className="flex flex-col rounded-lg border border-aqua bg-aqua/20 backdrop-blur-lg p-4"
                               >
                                 {item.title && (
                                   <PrismicNextLink
