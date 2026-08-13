@@ -2186,6 +2186,7 @@ export type WorkExampleDocument<Lang extends string = string> =
   >;
 
 type WorkSectorDocumentDataSlicesSlice =
+  | ServicesGridSlice
   | NumberedListSlice
   | ImageTextSlice
   | TestimonialsSlice
