@@ -5,7 +5,7 @@ import {
   GlobalDocumentData,
   MenusDocumentData,
 } from "../../../prismicio-types";
-import { PrismicDocument } from "@prismicio/client";
+import { isFilled, PrismicDocument } from "@prismicio/client";
 import { Announcement, Footer, Header } from "../Menu";
 import Link from "next/link";
 import NewsletterSignupBanner from "../Newsletter";
@@ -41,11 +41,13 @@ export const Layout = ({
       >
         Skip to Content
       </Link>
-      <Announcement
-        text={menus.banner_text}
-        locales={locales}
-        global={global}
-      />
+      {isFilled.richText(menus.banner_text) && (
+        <Announcement
+          text={menus.banner_text}
+          locales={locales}
+          global={global}
+        />
+      )}
       <div className="sticky top-0 z-50 ">
         <Header
           menus={menus}
@@ -55,7 +57,11 @@ export const Layout = ({
           global={global}
         />
       </div>
-      <main id="main-content" className="relative focus:outline-0" tabIndex={-1}>
+      <main
+        id="main-content"
+        className="relative focus:outline-0"
+        tabIndex={-1}
+      >
         {children}
       </main>
       {include_newsletter_sign_up_banner && (

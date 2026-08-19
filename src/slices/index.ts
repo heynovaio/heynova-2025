@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 export const components = {
   accessibility_form: dynamic(() => import("./AccessibilityForm")),
   accordion: dynamic(() => import("./Accordion")),
+  category_menu_panel: dynamic(() => import("./CategoryMenuPanel")),
   content_carousel: dynamic(() => import("./ContentCarousel")),
   content_column: dynamic(() => import("./ContentColumn")),
   content_grid: dynamic(() => import("./ContentGrid")),

@@ -79,6 +79,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "services_grid": {
+              "type": "SharedSlice"
+            },
             "numbered_list": {
               "type": "SharedSlice"
             },

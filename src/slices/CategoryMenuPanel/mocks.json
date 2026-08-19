@@ -1,0 +1,104 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"menu_display": {
+				"__TYPE__": "FieldContent",
+				"value": "either",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Dangerous"
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim sint proident anim incididunt amet cillum. Aliqua ex mollit ea aliquip occaecat veniam aliqua."
+						}
+					}
+				]
+			},
+			"blocks": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"key": "1ea011b1-aab6-4bcc-b116-591f81660f50",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "spoken"
+									}
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident consequat labore cillum irure amet nostrud tempor."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"pills": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"key": "95246347-5ac8-4b75-a546-727e88471aac",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "nails"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"pills_title": {
+				"__TYPE__": "FieldContent",
+				"value": "roar",
+				"type": "Text"
+			},
+			"blocks_title": {
+				"__TYPE__": "FieldContent",
+				"value": "country",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
