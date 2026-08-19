@@ -22,6 +22,7 @@ export type CategoryMenuPanelProps =
 
 /**
  * Component for "MenuPanel" Slices.
+ *
  */
 
 const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
