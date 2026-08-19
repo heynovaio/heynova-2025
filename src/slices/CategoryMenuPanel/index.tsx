@@ -26,8 +26,6 @@ export type CategoryMenuPanelProps =
  */
 
 const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
-  const numColumns3 = slice.primary.columns === true;
-
   return (
     <AnimatedSection>
       <>
@@ -62,7 +60,14 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                               Not sure where to start?
                             </p>
                             <p className="text-[1rem]">
-                              Book a 30 minute free call
+                              <a
+                                className="!text-black no-underline hover:underline"
+                                href="https://calendly.com/hey-nova/free-consult"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Book a 30 minute free call
+                              </a>
                             </p>
                           </div>
                         </div>
