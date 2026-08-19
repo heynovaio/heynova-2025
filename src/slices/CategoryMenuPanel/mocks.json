@@ -87,20 +87,6 @@
 										"text": "nails"
 									}
 								}
-							],
-							[
-								"body",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Anim esse laboris Lorem minim."
-											}
-										}
-									]
-								}
 							]
 						]
 					}

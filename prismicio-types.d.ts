@@ -2703,16 +2703,6 @@ export interface CategoryMenuPanelSliceDefaultPrimaryPillsItem {
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
   title: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Body field in *CategoryMenuPanel → Default → Primary → Pills*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: category_menu_panel.default.primary.pills[].body
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  body: prismic.RichTextField;
 }
 
 /**
