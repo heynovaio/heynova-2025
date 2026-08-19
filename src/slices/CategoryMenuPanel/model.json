@@ -37,15 +37,6 @@
             "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "columns": {
-          "type": "Boolean",
-          "config": {
-            "label": "Columns",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
-          }
-        },
         "blocks_title": {
           "type": "Text",
           "config": {
