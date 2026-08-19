@@ -2741,17 +2741,6 @@ export interface CategoryMenuPanelSliceDefaultPrimary {
   body: prismic.RichTextField;
 
   /**
-   * Columns field in *CategoryMenuPanel → Default → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: category_menu_panel.default.primary.columns
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  columns: prismic.BooleanField;
-
-  /**
    * Blocks Title field in *CategoryMenuPanel → Default → Primary*
    *
    * - **Field Type**: Text
