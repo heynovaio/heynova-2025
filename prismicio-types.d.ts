@@ -3029,27 +3029,7 @@ export interface ContentCarouselSliceServicesPrimaryCardsItem {
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
   item: ContentRelationshipFieldWithData<
-    [
-      {
-        id: "work_example";
-        fields: [
-          "tagline",
-          "title",
-          "image",
-          "link",
-          {
-            id: "services";
-            fields: [
-              {
-                id: "service";
-                customtypes: [{ id: "service"; fields: ["title"] }];
-              },
-            ];
-          },
-          { id: "sectors"; fields: ["sector"] },
-        ];
-      },
-    ]
+    [{ id: "service"; fields: ["tagline", "title", "image"] }]
   >;
 }
 

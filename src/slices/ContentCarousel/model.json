@@ -550,34 +550,11 @@
                   "repeat": false,
                   "customtypes": [
                     {
-                      "id": "work_example",
+                      "id": "service",
                       "fields": [
                         "tagline",
                         "title",
-                        "image",
-                        "link",
-                        {
-                          "id": "services",
-                          "fields": [
-                            {
-                              "id": "service",
-                              "customtypes": [
-                                {
-                                  "id": "service",
-                                  "fields": [
-                                    "title"
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "id": "sectors",
-                          "fields": [
-                            "sector"
-                          ]
-                        }
+                        "image"
                       ]
                     }
                   ]
