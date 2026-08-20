@@ -1,10 +1,5 @@
 "use client";
-import {
-  asText,
-  Content,
-  FilledContentRelationshipField,
-  isFilled,
-} from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
@@ -12,7 +7,6 @@ import { Container } from "../Layout";
 import { getCategoryResponsiveItems } from "./responsive";
 import { ContentBox, ManualCarouselCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";
-import { PrismicNextLink } from "@prismicio/next";
 import getAllWorkExamples from "@/utils/getAllWorkExamples";
 import { WorkExampleDocument } from "../../../prismicio-types";
 
@@ -28,6 +22,15 @@ export const WorkExamplesCarousel = ({ slice }: WorkExamplesCarouselProps) => {
     loop: false,
   });
 
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setCurrentSlide(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
   const itemsPerPage = getCategoryResponsiveItems();
 
   const workExampleData = getAllWorkExamples("en-ca").data;
@@ -41,18 +44,8 @@ export const WorkExamplesCarousel = ({ slice }: WorkExamplesCarouselProps) => {
   const filteredData: WorkExampleDocument[] = (workExampleData ?? []).filter(
     (item) => cardIds.includes(item.id),
   );
-  console.log("filteredData", filteredData);
 
   const totalSlides = Math.max(0, filteredData.length - itemsPerPage + 1);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const onSelect = () => setCurrentSlide(emblaApi.selectedScrollSnap());
-    emblaApi.on("select", onSelect);
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
 
   const handleArrowClick = (direction: "next" | "prev") => {
     if (!emblaApi) return;
@@ -105,14 +98,6 @@ export const WorkExamplesCarousel = ({ slice }: WorkExamplesCarouselProps) => {
         >
           <div className="embla__container">
             {filteredData.map((item, index) => {
-              const services = item.data.services
-                ?.map((s: any) => {
-                  const service = s.service;
-                  if (!isFilled.contentRelationship(service)) return null;
-                  return asText((service as any).data?.title);
-                })
-                .filter(Boolean) as string[];
-
               return (
                 <div key={index} className="embla__slide pr-3 md:pr-7 flex">
                   {item.data.image?.url ? (
