@@ -136,7 +136,6 @@ export const CategoryCarousel = ({ slice }: CategoryCarouselProps) => {
                   ? singleCategory.uid
                   : "";
 
-                // Try to get category title from the relationship data
                 let categoryName = "";
                 if (isFilled.contentRelationship(singleCategory)) {
                   const categoryTitle = (
