@@ -7,7 +7,7 @@ import { Container } from "../Layout";
 import { getCategoryResponsiveItems } from "./responsive";
 import { ContentBox, ManualCarouselCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";
-import getAllWorkExamples from "@/utils/getAllWorkExamples";
+import useAllWorkExamples from "@/utils/getAllWorkExamples";
 import { WorkExampleDocument } from "../../../prismicio-types";
 
 export type WorkExamplesCarouselProps = {
@@ -33,7 +33,7 @@ export const WorkExamplesCarousel = ({ slice }: WorkExamplesCarouselProps) => {
 
   const itemsPerPage = getCategoryResponsiveItems();
 
-  const workExampleData = getAllWorkExamples("en-ca").data;
+  const workExampleData = useAllWorkExamples("en-ca").data;
 
   if (slice.variation !== "workExamples") return null;
 
