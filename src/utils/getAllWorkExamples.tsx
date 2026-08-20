@@ -8,11 +8,11 @@ const fetchData = async (lang: string) => {
   return response as WorkExampleDocument[];
 };
 
-const getAllWorkExamples = (lang: string) => {
+const useAllWorkExamples = (lang: string) => {
   return useQuery({
     queryKey: [`work-example-${lang}`],
     queryFn: () => fetchData(lang),
   });
 };
 
-export default getAllWorkExamples;
+export default useAllWorkExamples;
