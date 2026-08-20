@@ -3017,6 +3017,43 @@ export interface ContentCarouselSliceWorkExamplesPrimaryCardsItem {
 }
 
 /**
+ * Item in *ContentCarousel → Services → Primary → Cards*
+ */
+export interface ContentCarouselSliceServicesPrimaryCardsItem {
+  /**
+   * Item field in *ContentCarousel → Services → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.cards[].item
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  item: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "work_example";
+        fields: [
+          "tagline",
+          "title",
+          "image",
+          "link",
+          {
+            id: "services";
+            fields: [
+              {
+                id: "service";
+                customtypes: [{ id: "service"; fields: ["title"] }];
+              },
+            ];
+          },
+          { id: "sectors"; fields: ["sector"] },
+        ];
+      },
+    ]
+  >;
+}
+
+/**
  * Primary content in *ContentCarousel → Default (Insight) → Primary*
  */
 export interface ContentCarouselSliceDefaultPrimary {
@@ -3380,6 +3417,79 @@ export type ContentCarouselSliceWorkExamples = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ContentCarousel → Services → Primary*
+ */
+export interface ContentCarouselSliceServicesPrimary {
+  /**
+   * Background Color field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_carousel.services.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Title field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Cards field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<ContentCarouselSliceServicesPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Services variation for ContentCarousel Slice
+ *
+ * - **API ID**: `services`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentCarouselSliceServices = prismic.SharedSliceVariation<
+  "services",
+  Simplify<ContentCarouselSliceServicesPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ContentCarousel*
  */
 type ContentCarouselSliceVariation =
@@ -3387,7 +3497,8 @@ type ContentCarouselSliceVariation =
   | ContentCarouselSliceManualCarousel
   | ContentCarouselSliceGeneralCarousel
   | ContentCarouselSlicePictureCarousel
-  | ContentCarouselSliceWorkExamples;
+  | ContentCarouselSliceWorkExamples
+  | ContentCarouselSliceServices;
 
 /**
  * ContentCarousel Shared Slice
@@ -5652,12 +5763,15 @@ declare module "@prismicio/client" {
       ContentCarouselSlicePictureCarouselPrimary,
       ContentCarouselSliceWorkExamplesPrimaryCardsItem,
       ContentCarouselSliceWorkExamplesPrimary,
+      ContentCarouselSliceServicesPrimaryCardsItem,
+      ContentCarouselSliceServicesPrimary,
       ContentCarouselSliceVariation,
       ContentCarouselSliceDefault,
       ContentCarouselSliceManualCarousel,
       ContentCarouselSliceGeneralCarousel,
       ContentCarouselSlicePictureCarousel,
       ContentCarouselSliceWorkExamples,
+      ContentCarouselSliceServices,
       ContentColumnSlice,
       ContentColumnSliceDefaultPrimaryContentItem,
       ContentColumnSliceDefaultPrimary,
