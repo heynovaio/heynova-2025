@@ -55,7 +55,7 @@ const CategoryMenuPanel = ({ slice }: CategoryMenuPanelProps): JSX.Element => {
                       content={
                         <div className="flex flex-col gap-6">
                           <PrismicRichText field={slice.primary.body} />
-                          <div className="bg-teal-muted  text-black p-4 rounded-lg">
+                          <div className="bg-teal-muted text-black p-4 rounded-lg surface-light">
                             <p className="font-extraBold">
                               Not sure where to start?
                             </p>

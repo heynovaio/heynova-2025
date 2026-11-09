@@ -21,6 +21,48 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
+    // Respect reduced motion: leave everything visible and still.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    // Long stacked lists: fade each item in as it reaches the viewport,
+    // instead of animating the whole list when the section first appears.
+    const revealItems = Array.from(
+      container.querySelectorAll<HTMLElement>(".reveal-on-scroll"),
+    );
+    revealItems.forEach((item) => {
+      item.style.opacity = "0";
+    });
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        // Items that come into view together (a row of cards) arrive in a
+        // short stagger; items that scroll in one at a time have no delay.
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, order) => {
+            const element = entry.target as HTMLElement;
+            element.style.animation = `fadeInUp 0.7s ease-out ${order * 120}ms both`;
+            // Once it has landed, drop the animation so it stops holding
+            // `transform` (which would block hover effects on the card).
+            element.addEventListener(
+              "animationend",
+              () => {
+                element.style.animation = "";
+                element.style.opacity = "";
+              },
+              { once: true },
+            );
+            revealObserver.unobserve(element);
+          });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+    );
+    revealItems.forEach((item) => revealObserver.observe(item));
+
     // Hide elements initially
     const h2Elements = container.querySelectorAll("h2");
     h2Elements.forEach((h2) => {
@@ -113,6 +155,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
 
     return () => {
       observer.disconnect();
+      revealObserver.disconnect();
     };
   }, []);
 

@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { PrismicNextLink, PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import {
   GlobalDocumentData,
   MenusDocumentData,
@@ -34,18 +34,47 @@ export const Header: React.FC<HeaderProps> = ({
   locales,
   global,
 }) => {
-  const [bgOpacity, setBgOpacity] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
 
+  // Deepen the nav pill's background over the first 200px of scroll, from
+  // 55% to 75% opacity. This writes a CSS variable directly, at most once per
+  // frame, instead of re-rendering the whole header and menu on every scroll.
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Fade in from 0 to 0.34 opacity over 200px scroll
-      const opacity = Math.min(scrollY / 200, 0.54);
-      setBgOpacity(opacity);
+    const header = headerRef.current;
+    if (!header) return;
+    let frame = 0;
+    let current = -1;
+    const update = () => {
+      frame = 0;
+      const opacity = Math.round(
+        (0.55 + Math.min(window.scrollY / 200, 1) * 0.2) * 100,
+      );
+      if (opacity === current) return;
+      current = opacity;
+      header.style.setProperty("--nav-bg-alpha", `${opacity / 100}`);
     };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  // Publish the header's height as --header-height so full-screen sections
+  // (like the homepage hero) can fill exactly the space below it.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const root = document.documentElement;
+    const observer = new ResizeObserver(() => {
+      root.style.setProperty("--header-height", `${header.offsetHeight}px`);
+    });
+    observer.observe(header);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -65,13 +94,9 @@ export const Header: React.FC<HeaderProps> = ({
           animation: fadeInZoom 0.8s ease-out both;
         }
       `}</style>
-      <header
-        className="sticky top-0 z-50 header-bg"
-        style={{
-          backdropFilter: "blur(25px)",
-          background: `rgba(14, 1, 46, ${bgOpacity})`,
-        }}
-      >
+      {/* The header itself is transparent; only the links sit on a rounded,
+          translucent pill (.nav-pill). */}
+      <header ref={headerRef} className="sticky top-0 z-50 header-bg">
         <nav
           aria-label="Main Nav"
           className="flex items-center px-5 py-3 gap-3 justify-between"
@@ -92,8 +117,16 @@ export const Header: React.FC<HeaderProps> = ({
           </PrismicNextLink>
 
           {/* Desktop Menu - flex-1 to take space */}
-          <div className="hidden lg:flex items-center xl:gap-10 gap-3 z-50 flex-1 justify-center">
-            <SliceZone slices={slices} components={components} />
+          <div className="hidden lg:flex z-50 flex-1 justify-center">
+            <div className="relative isolate flex items-center xl:gap-10 gap-3 px-4">
+              {/* Drawn as a sibling layer, not a wrapper, so its blur doesn't
+                  affect how the dropdown panels are positioned. */}
+              <span
+                aria-hidden="true"
+                className="nav-pill absolute inset-0 -z-10 rounded-full"
+              />
+              <SliceZone slices={slices} components={components} />
+            </div>
           </div>
 
           {/* Button - always visible, fixed width */}
@@ -106,7 +139,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Mobile Menu */}
-          <div className="lg:hidden">
+          <div className="lg:hidden relative isolate">
+            <span
+              aria-hidden="true"
+              className="nav-pill absolute inset-0 -z-10 rounded-full"
+            />
             <Popover className="relative">
               {({ open }) => (
                 <>
@@ -139,7 +176,10 @@ export const Header: React.FC<HeaderProps> = ({
                       anchor="bottom"
                       className="w-screen h-screen bg-midnight bg-gradient-dark lg:mt-4 pb-10 z-40"
                     >
-                      <div data-menu="hamburger" className="flex flex-col px-6 my-10 items-center justify-center w-full">
+                      <div
+                        data-menu="hamburger"
+                        className="flex flex-col px-6 my-10 items-center justify-center w-full"
+                      >
                         <SliceZone slices={slices} components={components} />
                         <CalendlyButton
                           text={

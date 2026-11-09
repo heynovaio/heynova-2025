@@ -7,12 +7,14 @@ import {
   ResponsiveImage,
   ContentBox,
   AnimatedSection,
+  FactRow,
 } from "@/components";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
 // import { components } from "@/utils";
 import { PrismicNextLink } from "@prismicio/next";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   lang: string;
@@ -29,7 +31,12 @@ export type ImageTextProps = SliceComponentProps<
 /**
  * Component for "ImageText" Slices.
  */
-const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
+const ImageText = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}: ImageTextProps): JSX.Element => {
   const imageSide =
     slice.primary.imageRight === false ? "md:flex-row" : "md:flex-row-reverse";
   const background = slice.primary.background_color;
@@ -60,6 +67,7 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
@@ -158,6 +166,9 @@ const ImageText = ({ slice, context }: ImageTextProps): JSX.Element => {
                       field={slice.primary.body}
                       // components={components} **TODO: setup components in utils
                     />
+                    {slice.variation === "facts" && (
+                      <FactRow facts={slice.primary.facts} />
+                    )}
                   </div>
                 )
               }

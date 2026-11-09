@@ -125,6 +125,8 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-light-blue: #ddf5f7;
+  --color-periwinkle: #b0bbf4;
+  --color-card-navy: #271d54;
   --color-navy: rgba(0, 96, 117, 0.4);
   --color-primary: var(--color-red);
   --color-secondary: var(--color-purple-drk);
@@ -203,12 +205,17 @@
     z-index: -1;
   }
 
-  /* backdrop-filter is GPU-expensive — especially painful on low-end
-     mobile where the visual benefit (blurring a small viewport) is
-     least noticeable. Apply only at tablet width and up. */
+  /* Tablet and up get a soft blur on the background image. It is applied to
+     the image layer itself with `filter` (drawn once, since the layer never
+     changes) rather than as a full-screen `backdrop-filter` on the overlay,
+     which the GPU re-ran on every scroll frame. The layer is pulled out past
+     the viewport edges so the blur doesn't leave soft edges. */
   @media (min-width: 768px) {
+    body.bg-primary::before {
+      inset: -12px;
+      filter: blur(3px);
+    }
     body.bg-primary::after {
-      backdrop-filter: blur(3px);
       background: rgba(15, 0, 46, 0.2);
     }
   }
@@ -298,14 +305,36 @@ ol {
   list-style-type: decimal;
   text-align: start;
 }
-a {
-  &:hover {
-    color: var(--color-aqua);
-  }
+/* Aqua link hover is for dark backgrounds only. On light fills it is nearly
+   invisible, so links inside a .surface-light element are handled below. */
+a:not(.surface-light *):hover {
+  color: var(--color-aqua);
 }
+
+/* Light surfaces (aqua, lavender, light blue, teal and white cards and
+   banners). Hover states here must keep strong contrast: text links stay
+   their colour and underline; buttons fill with the bright pink. */
+.surface-light a:not(.btn):hover,
+.surface-light a:not(.btn):focus-visible {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+/* Button hover rules for light surfaces live in the components layer at the
+   end of this file: the button styles they override use !important inside
+   that layer, which an unlayered rule cannot beat. */
 
 .menu-panel-hover {
   cursor: pointer;
+}
+
+/* Rounded, translucent background behind the main nav links (and the
+   mobile menu button). --nav-bg-alpha is set by the Header on scroll. */
+.nav-pill {
+  background: rgba(14, 1, 46, var(--nav-bg-alpha, 0.55));
+  border: 1px solid rgb(151 225 229 / 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .menu-panel-hover:hover,
@@ -403,6 +432,11 @@ a {
       }
     }
 
+    ol.no-dividers > li {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
     ul,
     ul li {
       counter-reset: none;
@@ -423,6 +457,10 @@ a {
     }
     ul {
       padding-left: 1.25rem !important;
+    }
+    /* The facts row is a row of tags, not a bulleted list: no indent. */
+    ul.fact-row {
+      padding-left: 0 !important;
     }
     .li-content {
       margin-top: 1.875rem;
@@ -576,6 +614,39 @@ a {
     }
   }
 
+  /* White button for the wine CTA banner. */
+  .btn-light {
+    border-radius: 1.875em;
+    border: 3px solid var(--color-white);
+    padding: 10px 34px 12px 34px;
+    font-size: var(--text-button);
+    background: var(--color-white);
+    color: var(--color-wine) !important;
+
+    &::before,
+    &::after {
+      border-top-color: var(--color-midnight);
+      border-left-color: var(--color-midnight);
+      border-bottom-color: var(--color-midnight);
+      border-right-color: var(--color-midnight);
+    }
+    &:hover {
+      color: var(--color-midnight) !important;
+    }
+    &:focus-visible {
+      outline: 3px solid var(--color-white);
+      outline-offset: 4px;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 10px 16px;
+    }
+  }
+
+  .cta-wine .text-content a {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
   .btn-outline {
     border-radius: 1.875em;
     border: 3px solid transparent;
@@ -628,9 +699,11 @@ a {
     color: transparent;
   }
 
+  /* No backdrop-filter here: these cards sit over an already-soft background,
+     so a backdrop blur was invisible but made every card re-blur its
+     background on each scroll frame. */
   .glow-blur {
     box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
-    backdrop-filter: blur(15px);
   }
   img {
     border-radius: 1.25rem;
@@ -774,7 +847,6 @@ a {
     border: 1px solid #ffffff2c;
     background: var(--color-teal-drk);
     box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
-    backdrop-filter: blur(15px);
   }
 
   [role="tabpanel"]:focus-visible {
@@ -910,4 +982,108 @@ a {
 .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Angled background band (Section `band` prop). Neighbouring slices with
+   "Angled Background" on share one band: the first gets the angled top
+   edge, the last gets the angled bottom edge. */
+.angled-section {
+  --band-angle: clamp(2rem, 5vw, 5.5rem);
+  position: relative;
+  isolation: isolate;
+}
+.angled-section--single,
+.angled-section--start {
+  padding-top: calc(var(--band-angle) + 2rem);
+}
+.angled-section--single,
+.angled-section--end {
+  padding-bottom: calc(var(--band-angle) + 2rem);
+}
+.angled-band {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-midnight);
+  pointer-events: none;
+}
+/* Overlap joins by 1px so no hairline shows between joined sections. */
+.angled-band--start,
+.angled-band--middle {
+  bottom: -1px;
+}
+.angled-band--single {
+  clip-path: polygon(
+    0 var(--band-angle),
+    100% 0,
+    100% calc(100% - var(--band-angle)),
+    0 100%
+  );
+}
+.angled-band--start {
+  clip-path: polygon(0 var(--band-angle), 100% 0, 100% 100%, 0 100%);
+}
+.angled-band--end {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--band-angle)), 0 100%);
+}
+/* Overhang (testimonial ending a band, as in the Figma "How We Work"): the
+   band's angled bottom edge cuts across the lower part of the card instead
+   of passing below it, so the card sits on the line. The card's bottom hangs
+   --overhang below the band's low corner, and more on the high side. */
+.angled-section.angled-section--overhang {
+  --overhang-space: 3rem; /* space between the card and the next section */
+  --overhang: 1.25rem;
+  padding-bottom: var(--overhang-space);
+}
+@media (min-width: 768px) {
+  .angled-section.angled-section--overhang {
+    --overhang-space: 5rem;
+  }
+}
+.angled-section--overhang > .angled-band {
+  bottom: calc(var(--overhang-space) + var(--overhang));
+}
+@media print {
+  .angled-band {
+    display: none;
+  }
+}
+
+/* Answers inside the light FAQ cards: keep links readable on light fills. */
+.faq-answer a {
+  color: var(--color-midnight);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.faq-answer p + p {
+  margin-top: 0.75em;
+}
+
+/* Buttons on light surfaces (see .surface-light above): hover fills with the
+   bright pink and white text (5.2:1), never a light or midnight-on-pink
+   state. In this layer, and more specific than the button colour rules
+   (e.g. `.bg-teal-muted .btn-secondary`, `.btn-light:hover`), so it wins. */
+@layer components {
+  .surface-light .btn:hover,
+  .surface-light .btn:focus-visible {
+    background: var(--color-red) !important;
+    border-color: var(--color-red) !important;
+    color: var(--color-white) !important;
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+  }
+  /* The animated white border on buttons disappears on light fills. */
+  .surface-light .btn::before,
+  .surface-light .btn::after {
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .surface-light .btn::before {
+    border-top-color: var(--color-midnight);
+    border-left-color: var(--color-midnight);
+  }
+  .surface-light .btn::after {
+    border-bottom-color: var(--color-midnight);
+    border-right-color: var(--color-midnight);
+  }
 }

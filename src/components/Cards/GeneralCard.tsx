@@ -59,7 +59,8 @@ export const GeneralCard = ({
 
   const titleRichTextComponents = titleComponents || richTextComponents;
 
-  const bgColor = variant === "category" ? "bg-aqua" : "bg-teal-muted/20";
+  const bgColor =
+    variant === "category" ? "bg-aqua surface-light" : "bg-teal-muted/20";
   const textColor = variant === "category" ? "text-midnight" : "text-white";
   const tagBgColor = variant === "category" ? "bg-aqua/10" : "bg-white/10";
   const tagBorderColor =

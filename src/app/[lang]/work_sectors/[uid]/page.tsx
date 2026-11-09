@@ -84,29 +84,26 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     isPartOf: { "@id": WEBSITE_ID },
   };
 
+  // One list drives both the visible breadcrumb and its structured data,
+  // so the two never drift apart.
+  const breadcrumbs = [
+    { name: "Home", href: `/${lang}` },
+    { name: "Who We Work With", href: `/${lang}/work_sectors` },
+    {
+      name: prismic.asText(page.data.title) || "Work Sector",
+      href: `/${lang}/work_sectors/${uid}`,
+    },
+  ];
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: `${SITE_URL}/${lang}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Work Sectors",
-        item: `${SITE_URL}/${lang}/work_sectors`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: prismic.asText(page.data.title) || "Work Sector",
-        item: `${SITE_URL}/${lang}/work_sectors/${uid}`,
-      },
-    ],
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: `${SITE_URL}${crumb.href}`,
+    })),
   };
 
   return (
@@ -130,11 +127,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
-        <DefaultIntro data={page.data} />
+        <DefaultIntro data={page.data} breadcrumbs={breadcrumbs} />
         <SliceZone
           slices={page.data.slices}
           components={components}
-          context={{ lang: "en-ca" }}
+          context={{ lang }}
         />
       </Layout>
     </>

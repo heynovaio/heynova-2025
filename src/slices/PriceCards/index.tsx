@@ -4,6 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, Section } from "@/components";
 import { PricesDocumentData } from "../../../prismicio-types";
 import { PriceCard } from "@/components/Cards/PriceCard";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   pricesDocumentData?: PricesDocumentData;
@@ -19,7 +20,12 @@ export type PriceCardsProps = SliceComponentProps<
 /**
  * Component for "PriceCards" Slices.
  */
-const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
+const PriceCards: FC<PriceCardsProps> = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}) => {
   const prices = context?.pricesDocumentData;
   const options = prices?.options || [];
   const mostPopularOption = options.find(
@@ -28,6 +34,7 @@ const PriceCards: FC<PriceCardsProps> = ({ slice, context }) => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       styling="bg-midnight"

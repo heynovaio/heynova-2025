@@ -5,6 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, Section } from "@/components";
 import Link from "next/link";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
+import { getBandPosition } from "@/utils/angledBand";
 
 export type TagListProps = SliceComponentProps<Content.TagListSlice>;
 
@@ -43,7 +44,12 @@ function getTitle(item: {
   return item.slug ?? "";
 }
 
-const TagList: FC<TagListProps> = ({ slice, context }) => {
+const TagList: FC<TagListProps> = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}) => {
   const { services, sectors } = context as TagListContext;
 
   const hasSectors = sectors && sectors.length > 0;
@@ -56,7 +62,10 @@ const TagList: FC<TagListProps> = ({ slice, context }) => {
   useFadeInOnScroll(containerRef);
 
   return (
-    <Section className={`${bgColor} py-20 md:py-40`}>
+    <Section
+      band={getBandPosition(slices, sliceIndex)}
+      className={`${bgColor} py-20 md:py-40`}
+    >
       <Container>
         {slice.primary.title && (
           <div className="flex flex-col gap-6 items-center text-center w-full">

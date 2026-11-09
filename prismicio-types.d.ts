@@ -1198,6 +1198,42 @@ export type NewsletterSignupDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Page → Hero Tags (homepage only)*
+ */
+export interface PageDocumentDataHeroTagsItem {
+  /**
+   * Icon field in *Page → Hero Tags (homepage only)*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.hero_tags[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Text field in *Page → Hero Tags (homepage only)*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Inclusive & Accessible by Design
+   * - **API ID Path**: page.hero_tags[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Colour field in *Page → Hero Tags (homepage only)*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Aqua
+   * - **API ID Path**: page.hero_tags[].color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  color: prismic.SelectField<"Aqua" | "Periwinkle" | "Lavender", "filled">;
+}
+
 type PageDocumentDataSlicesSlice =
   | AccessibilityFormSlice
   | AccordionSlice
@@ -1274,6 +1310,17 @@ interface PageDocumentData {
   buttons: prismic.Repeatable<
     prismic.LinkField<string, string, unknown, prismic.FieldState, never>
   >;
+
+  /**
+   * Hero Tags (homepage only) field in *Page*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.hero_tags[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  hero_tags: prismic.GroupField<Simplify<PageDocumentDataHeroTagsItem>>;
 
   /**
    * Image field in *Page*
@@ -2508,6 +2555,17 @@ export interface AccessibilityFormSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   card_style: prismic.SelectField<"None" | "White" | "Outline", "filled">;
+
+  /**
+   * Angled Background field in *AccessibilityForm → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: accessibility_form.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -2634,6 +2692,17 @@ export interface AccordionSliceDefaultPrimary {
   accordion: prismic.GroupField<
     Simplify<AccordionSliceDefaultPrimaryAccordionItem>
   >;
+
+  /**
+   * Angled Background field in *Accordion → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: accordion.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3017,6 +3086,88 @@ export interface ContentCarouselSliceWorkExamplesPrimaryCardsItem {
 }
 
 /**
+ * Item in *ContentCarousel → Services → Primary → Cards*
+ */
+export interface ContentCarouselSliceServicesPrimaryCardsItem {
+  /**
+   * Item field in *ContentCarousel → Services → Primary → Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.cards[].item
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  item: ContentRelationshipFieldWithData<
+    [{ id: "service"; fields: ["tagline", "title", "image"] }]
+  >;
+}
+
+/**
+ * Item in *ContentCarousel → Featured Work Grid → Primary → Cards*
+ */
+export interface ContentCarouselSliceFeaturedWorkGridPrimaryCardsItem {
+  /**
+   * Image field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Tag 1 field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].tag_1
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag_1: prismic.KeyTextField;
+
+  /**
+   * Tag 2 field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].tag_2
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag_2: prismic.KeyTextField;
+
+  /**
+   * Tag 3 field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].tag_3
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag_3: prismic.KeyTextField;
+
+  /**
+   * Button field in *ContentCarousel → Featured Work Grid → Primary → Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[].button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
  * Primary content in *ContentCarousel → Default (Insight) → Primary*
  */
 export interface ContentCarouselSliceDefaultPrimary {
@@ -3074,6 +3225,17 @@ export interface ContentCarouselSliceDefaultPrimary {
   cards: prismic.GroupField<
     Simplify<ContentCarouselSliceDefaultPrimaryCardsItem>
   >;
+
+  /**
+   * Angled Background field in *ContentCarousel → Default (Insight) → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3145,6 +3307,17 @@ export interface ContentCarouselSliceManualCarouselPrimary {
   cards: prismic.GroupField<
     Simplify<ContentCarouselSliceManualCarouselPrimaryCardsItem>
   >;
+
+  /**
+   * Angled Background field in *ContentCarousel → ManualCarousel (Our Works) → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.manualCarousel.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3218,6 +3391,17 @@ export interface ContentCarouselSliceGeneralCarouselPrimary {
   cards: prismic.GroupField<
     Simplify<ContentCarouselSliceGeneralCarouselPrimaryCardsItem>
   >;
+
+  /**
+   * Angled Background field in *ContentCarousel → General Carousel → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.generalCarousel.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3291,6 +3475,17 @@ export interface ContentCarouselSlicePictureCarouselPrimary {
   cards: prismic.GroupField<
     Simplify<ContentCarouselSlicePictureCarouselPrimaryCardsItem>
   >;
+
+  /**
+   * Angled Background field in *ContentCarousel → Picture Carousel → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.pictureCarousel.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3364,6 +3559,17 @@ export interface ContentCarouselSliceWorkExamplesPrimary {
   cards: prismic.GroupField<
     Simplify<ContentCarouselSliceWorkExamplesPrimaryCardsItem>
   >;
+
+  /**
+   * Angled Background field in *ContentCarousel → Work Examples → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.workExamples.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3380,6 +3586,228 @@ export type ContentCarouselSliceWorkExamples = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ContentCarousel → Services → Primary*
+ */
+export interface ContentCarouselSliceServicesPrimary {
+  /**
+   * Background Color field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_carousel.services.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Title field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Cards field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.services.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<ContentCarouselSliceServicesPrimaryCardsItem>
+  >;
+
+  /**
+   * Angled Background field in *ContentCarousel → Services → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.services.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
+}
+
+/**
+ * Services variation for ContentCarousel Slice
+ *
+ * - **API ID**: `services`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentCarouselSliceServices = prismic.SharedSliceVariation<
+  "services",
+  Simplify<ContentCarouselSliceServicesPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ContentCarousel → Featured Work Grid → Primary*
+ */
+export interface ContentCarouselSliceFeaturedWorkGridPrimary {
+  /**
+   * Background Color field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Angled Background field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
+
+  /**
+   * Title field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Featured Image field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.featured_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * Featured Eyebrow field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Case study · Education · Custom platform
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.featured_eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  featured_eyebrow: prismic.KeyTextField;
+
+  /**
+   * Featured Title field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.featured_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  featured_title: prismic.RichTextField;
+
+  /**
+   * Featured Body field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.featured_body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  featured_body: prismic.RichTextField;
+
+  /**
+   * Featured Link field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.featured_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  featured_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Cards field in *ContentCarousel → Featured Work Grid → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_carousel.featuredWorkGrid.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<ContentCarouselSliceFeaturedWorkGridPrimaryCardsItem>
+  >;
+}
+
+/**
+ * Featured Work Grid variation for ContentCarousel Slice
+ *
+ * - **API ID**: `featuredWorkGrid`
+ * - **Description**: One featured case study above a grid of work cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContentCarouselSliceFeaturedWorkGrid = prismic.SharedSliceVariation<
+  "featuredWorkGrid",
+  Simplify<ContentCarouselSliceFeaturedWorkGridPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ContentCarousel*
  */
 type ContentCarouselSliceVariation =
@@ -3387,7 +3815,9 @@ type ContentCarouselSliceVariation =
   | ContentCarouselSliceManualCarousel
   | ContentCarouselSliceGeneralCarousel
   | ContentCarouselSlicePictureCarousel
-  | ContentCarouselSliceWorkExamples;
+  | ContentCarouselSliceWorkExamples
+  | ContentCarouselSliceServices
+  | ContentCarouselSliceFeaturedWorkGrid;
 
 /**
  * ContentCarousel Shared Slice
@@ -3434,6 +3864,35 @@ export interface ContentColumnSliceDefaultPrimaryContentItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Card Colour (overrides the section setting) field in *ContentColumn → Default → Primary → Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Default
+   * - **API ID Path**: content_column.default.primary.content[].card_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_color: prismic.SelectField<
+    | "Default"
+    | "Aqua"
+    | "Lavender"
+    | "Light Blue"
+    | "Light Purple"
+    | "Periwinkle",
+    "filled"
+  >;
+
+  /**
+   * Link field in *ContentColumn → Default → Primary → Content*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.default.primary.content[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -3469,6 +3928,35 @@ export interface ContentColumnSliceContentColumnWithCardsPrimaryContentItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Card Colour (overrides the section setting) field in *ContentColumn → ContentColumn with Cards → Primary → Content*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Default
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[].card_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  card_color: prismic.SelectField<
+    | "Default"
+    | "Aqua"
+    | "Lavender"
+    | "Light Blue"
+    | "Light Purple"
+    | "Periwinkle",
+    "filled"
+  >;
+
+  /**
+   * Link field in *ContentColumn → ContentColumn with Cards → Primary → Content*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.content[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -3487,7 +3975,7 @@ export interface ContentColumnSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
-   * Card Color field in *ContentColumn → Default → Primary*
+   * Card Colour (None = dark bordered card) field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -3495,7 +3983,10 @@ export interface ContentColumnSliceDefaultPrimary {
    * - **API ID Path**: content_column.default.primary.card_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  card_color: prismic.SelectField<"None" | "Purple" | "Blue", "filled">;
+  card_color: prismic.SelectField<
+    "None" | "Purple" | "Blue" | "Lavender" | "Light Blue" | "Periwinkle",
+    "filled"
+  >;
 
   /**
    * Text Align field in *ContentColumn → Default → Primary*
@@ -3540,6 +4031,17 @@ export interface ContentColumnSliceDefaultPrimary {
   columns: prismic.SelectField<"1" | "2" | "3" | "4", "filled">;
 
   /**
+   * Layout field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Grid
+   * - **API ID Path**: content_column.default.primary.layout
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout: prismic.SelectField<"Grid" | "Vertical", "filled">;
+
+  /**
    * Content field in *ContentColumn → Default → Primary*
    *
    * - **Field Type**: Group
@@ -3550,6 +4052,17 @@ export interface ContentColumnSliceDefaultPrimary {
   content: prismic.GroupField<
     Simplify<ContentColumnSliceDefaultPrimaryContentItem>
   >;
+
+  /**
+   * Angled Background field in *ContentColumn → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_column.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3622,6 +4135,17 @@ export interface ContentColumnSliceContentColumnWithCardsPrimary {
   content: prismic.GroupField<
     Simplify<ContentColumnSliceContentColumnWithCardsPrimaryContentItem>
   >;
+
+  /**
+   * Angled Background field in *ContentColumn → ContentColumn with Cards → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_column.contentColumnWithCards.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3756,6 +4280,17 @@ export interface ContentGridSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   cards: prismic.GroupField<Simplify<ContentGridSliceDefaultPrimaryCardsItem>>;
+
+  /**
+   * Angled Background field in *ContentGrid → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_grid.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3815,7 +4350,7 @@ export interface CtaBannerSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
-   * Inner Background Color field in *CtaBanner → Default → Primary*
+   * Inner Background Color (Default = wine) field in *CtaBanner → Default → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -3823,7 +4358,10 @@ export interface CtaBannerSliceDefaultPrimary {
    * - **API ID Path**: cta_banner.default.primary.inner_background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
+  inner_background_color: prismic.SelectField<
+    "Default" | "Gradient" | "Teal",
+    "filled"
+  >;
 
   /**
    * Title field in *CtaBanner → Default → Primary*
@@ -3856,6 +4394,17 @@ export interface CtaBannerSliceDefaultPrimary {
   buttons: prismic.Repeatable<
     prismic.LinkField<string, string, unknown, prismic.FieldState, never>
   >;
+
+  /**
+   * Angled Background field in *CtaBanner → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cta_banner.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3898,7 +4447,7 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
-   * Inner Background Color field in *CtaBanner → CtaBanner - With Form → Primary*
+   * Inner Background Color (Default = wine) field in *CtaBanner → CtaBanner - With Form → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -3906,7 +4455,10 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.inner_background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
+  inner_background_color: prismic.SelectField<
+    "Default" | "Gradient" | "Teal",
+    "filled"
+  >;
 
   /**
    * Title field in *CtaBanner → CtaBanner - With Form → Primary*
@@ -3949,6 +4501,17 @@ export interface CtaBannerSliceCtaBannerWithFormPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/embed
    */
   form: prismic.EmbedField;
+
+  /**
+   * Angled Background field in *CtaBanner → CtaBanner - With Form → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cta_banner.ctaBannerWithForm.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -3991,7 +4554,7 @@ export interface CtaBannerSliceBookingPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
-   * Inner Background Color field in *CtaBanner → Booking → Primary*
+   * Inner Background Color (Default = wine) field in *CtaBanner → Booking → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -3999,7 +4562,10 @@ export interface CtaBannerSliceBookingPrimary {
    * - **API ID Path**: cta_banner.booking.primary.inner_background_color
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
-  inner_background_color: prismic.SelectField<"Default" | "Gradient", "filled">;
+  inner_background_color: prismic.SelectField<
+    "Default" | "Gradient" | "Teal",
+    "filled"
+  >;
 
   /**
    * Title field in *CtaBanner → Booking → Primary*
@@ -4041,6 +4607,17 @@ export interface CtaBannerSliceBookingPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   button_class: prismic.BooleanField;
+
+  /**
+   * Angled Background field in *CtaBanner → Booking → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: cta_banner.booking.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4185,6 +4762,17 @@ export interface HorizontalAccordionSliceDefaultPrimary {
   accordion: prismic.GroupField<
     Simplify<HorizontalAccordionSliceDefaultPrimaryAccordionItem>
   >;
+
+  /**
+   * Angled Background field in *HorizontalAccordion → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: horizontal_accordion.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4251,6 +4839,42 @@ export interface ImageTextSliceStatsPrimaryStatsItem {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   percentage: prismic.BooleanField;
+}
+
+/**
+ * Item in *ImageText → Facts → Primary → Facts*
+ */
+export interface ImageTextSliceFactsPrimaryFactsItem {
+  /**
+   * Text field in *ImageText → Facts → Primary → Facts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: e.g. Woman-owned, WBE Canada certified
+   * - **API ID Path**: image_text.facts.primary.facts[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+
+  /**
+   * Icon (optional) field in *ImageText → Facts → Primary → Facts*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.facts[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Colour field in *ImageText → Facts → Primary → Facts*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Aqua
+   * - **API ID Path**: image_text.facts.primary.facts[].color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  color: prismic.SelectField<"Aqua" | "Periwinkle" | "Lavender", "filled">;
 }
 
 /**
@@ -4341,6 +4965,17 @@ export interface ImageTextSliceDefaultPrimary {
   button: prismic.Repeatable<
     prismic.LinkField<string, string, unknown, prismic.FieldState, never>
   >;
+
+  /**
+   * Angled Background field in *ImageText → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_text.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4454,6 +5089,17 @@ export interface ImageTextSliceStatsPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   imageFit: prismic.SelectField<"contain" | "cover", "filled">;
+
+  /**
+   * Angled Background field in *ImageText → Stats → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_text.stats.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4567,6 +5213,17 @@ export interface ImageTextSliceVideoPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   imageFit: prismic.SelectField<"contain" | "cover", "filled">;
+
+  /**
+   * Angled Background field in *ImageText → Video → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_text.video.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4583,12 +5240,137 @@ export type ImageTextSliceVideo = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ImageText → Facts → Primary*
+ */
+export interface ImageTextSliceFactsPrimary {
+  /**
+   * Background Color field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: None
+   * - **API ID Path**: image_text.facts.primary.background_color
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Image field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Orientation field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_text.facts.primary.imageRight
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  imageRight: prismic.BooleanField;
+
+  /**
+   * Image Fit field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: contain
+   * - **API ID Path**: image_text.facts.primary.imageFit
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  imageFit: prismic.SelectField<"contain" | "cover", "filled">;
+
+  /**
+   * Title field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Body field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * Angled Background field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: image_text.facts.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
+
+  /**
+   * Facts field in *ImageText → Facts → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_text.facts.primary.facts[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  facts: prismic.GroupField<Simplify<ImageTextSliceFactsPrimaryFactsItem>>;
+}
+
+/**
+ * Facts variation for ImageText Slice
+ *
+ * - **API ID**: `facts`
+ * - **Description**: Image and text with a row of fact tags
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageTextSliceFacts = prismic.SharedSliceVariation<
+  "facts",
+  Simplify<ImageTextSliceFactsPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ImageText*
  */
 type ImageTextSliceVariation =
   | ImageTextSliceDefault
   | ImageTextSliceStats
-  | ImageTextSliceVideo;
+  | ImageTextSliceVideo
+  | ImageTextSliceFacts;
 
 /**
  * ImageText Shared Slice
@@ -4845,6 +5627,17 @@ export interface NumberedListSliceDefaultPrimary {
   background_color: prismic.SelectField<"None" | "Light", "filled">;
 
   /**
+   * Show Dividers Between Items field in *NumberedList → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: numbered_list.default.primary.show_dividers
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_dividers: prismic.BooleanField;
+
+  /**
    * List field in *NumberedList → Default → Primary*
    *
    * - **Field Type**: Group
@@ -4853,6 +5646,17 @@ export interface NumberedListSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   list: prismic.GroupField<Simplify<NumberedListSliceDefaultPrimaryListItem>>;
+
+  /**
+   * Angled Background field in *NumberedList → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: numbered_list.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -4908,6 +5712,17 @@ export interface PriceCardsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   body: prismic.RichTextField;
+
+  /**
+   * Angled Background field in *PriceCards → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: price_cards.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5003,6 +5818,17 @@ export interface ServicesGridSliceDefaultPrimary {
   services: prismic.GroupField<
     Simplify<ServicesGridSliceDefaultPrimaryServicesItem>
   >;
+
+  /**
+   * Angled Background field in *ServicesGrid → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: services_grid.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5059,6 +5885,17 @@ export interface SimpleTextSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   text: prismic.RichTextField;
+
+  /**
+   * Angled Background field in *SimpleText → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: simple_text.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5282,6 +6119,17 @@ export interface TagListSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   background_color: prismic.SelectField<"None" | "Light", "filled">;
+
+  /**
+   * Angled Background field in *TagList → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: tag_list.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5395,6 +6243,17 @@ export interface TeamListSliceDefaultPrimary {
   team_member: prismic.GroupField<
     Simplify<TeamListSliceDefaultPrimaryTeamMemberItem>
   >;
+
+  /**
+   * Angled Background field in *TeamList → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: team_list.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5518,6 +6377,17 @@ export interface TestimonialsSliceDefaultPrimary {
   testimonials: prismic.GroupField<
     Simplify<TestimonialsSliceDefaultPrimaryTestimonialsItem>
   >;
+
+  /**
+   * Angled Background field in *Testimonials → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: testimonials.default.primary.angled_background
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  angled_background: prismic.BooleanField;
 }
 
 /**
@@ -5600,6 +6470,7 @@ declare module "@prismicio/client" {
       NewsletterSignupDocumentDataSubmitButtonItem,
       PageDocument,
       PageDocumentData,
+      PageDocumentDataHeroTagsItem,
       PageDocumentDataSlicesSlice,
       PricesDocument,
       PricesDocumentData,
@@ -5652,12 +6523,18 @@ declare module "@prismicio/client" {
       ContentCarouselSlicePictureCarouselPrimary,
       ContentCarouselSliceWorkExamplesPrimaryCardsItem,
       ContentCarouselSliceWorkExamplesPrimary,
+      ContentCarouselSliceServicesPrimaryCardsItem,
+      ContentCarouselSliceServicesPrimary,
+      ContentCarouselSliceFeaturedWorkGridPrimaryCardsItem,
+      ContentCarouselSliceFeaturedWorkGridPrimary,
       ContentCarouselSliceVariation,
       ContentCarouselSliceDefault,
       ContentCarouselSliceManualCarousel,
       ContentCarouselSliceGeneralCarousel,
       ContentCarouselSlicePictureCarousel,
       ContentCarouselSliceWorkExamples,
+      ContentCarouselSliceServices,
+      ContentCarouselSliceFeaturedWorkGrid,
       ContentColumnSlice,
       ContentColumnSliceDefaultPrimaryContentItem,
       ContentColumnSliceDefaultPrimary,
@@ -5689,10 +6566,13 @@ declare module "@prismicio/client" {
       ImageTextSliceStatsPrimaryStatsItem,
       ImageTextSliceStatsPrimary,
       ImageTextSliceVideoPrimary,
+      ImageTextSliceFactsPrimaryFactsItem,
+      ImageTextSliceFactsPrimary,
       ImageTextSliceVariation,
       ImageTextSliceDefault,
       ImageTextSliceStats,
       ImageTextSliceVideo,
+      ImageTextSliceFacts,
       MenuPanelSlice,
       MenuPanelSliceDefaultPrimaryLinkWithParagraphItem,
       MenuPanelSliceDefaultPrimary,
