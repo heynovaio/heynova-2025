@@ -50,7 +50,7 @@ export function ContactForm() {
       >
         <p className="font-bold text-xl">Thanks, your message is on its way.</p>
         <p className="text-purple-lt">
-          We usually reply within two business days.
+          We will get back to you soon.
         </p>
       </div>
     );

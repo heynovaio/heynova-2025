@@ -101,6 +101,7 @@ const ColumnCard = ({
       {isFilled.image(item.icon) && (
         <ResponsiveImage
           image={item.icon}
+          sizes="48px"
           containerClassName="h-11 w-11 flex items-center justify-start"
         />
       )}
@@ -166,6 +167,7 @@ const AngledCard = ({ item, index }: { item: ContentItem; index: number }) => {
       {isFilled.image(item.icon) && (
         <ResponsiveImage
           image={item.icon}
+          sizes="120px"
           containerClassName="h-[100px] w-auto aspect-square flex items-center justify-center"
         />
       )}

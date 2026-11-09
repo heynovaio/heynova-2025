@@ -39,7 +39,7 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
   return (
     // Fills the screen below the sticky header, so the next section starts
     // below the fold. `svh` stays stable while mobile browser bars move.
-    <section className="relative flex items-center w-full min-h-[calc(100svh-var(--header-height,80px))] pt-10 pb-16 md:pt-24 md:pb-20">
+    <section className="relative flex items-center w-full min-h-[calc(100svh-var(--header-height))] pt-10 pb-16 md:pt-24 md:pb-20">
       <Container containerClassName="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] items-center">
         <div className="text-white flex flex-col items-start text-left gap-7 max-w-[800px]">
           {data.tagline && (
@@ -51,7 +51,10 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
             </p>
           )}
 
-          <div style={{ animation: "fadeInDown 0.8s ease-out 0.2s both" }}>
+          {/* The title and intro are the page's largest paint, so they
+              slide in without starting invisible (an opacity fade made the
+              browser wait for the animation before counting them). */}
+          <div style={{ animation: "slideDownIn 0.8s ease-out both" }}>
             <PrismicRichText
               field={data.title}
               components={{
@@ -62,7 +65,7 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
             />
           </div>
 
-          <div style={{ animation: "fadeInUp 0.8s ease-out 0.4s both" }}>
+          <div style={{ animation: "slideUpIn 0.8s ease-out 0.1s both" }}>
             <PrismicRichText
               field={data.body}
               components={{

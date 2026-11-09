@@ -89,6 +89,24 @@
   }
 }
 
+/* Slide-only entrances for above-the-fold text that may be the largest
+   paint: visible from the first frame, so they don't delay LCP. */
+@keyframes slideDownIn {
+  from {
+    transform: translateY(-16px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes slideUpIn {
+  from {
+    transform: translateY(16px);
+  }
+  to {
+    transform: none;
+  }
+}
 @keyframes backgroundFadeIn {
   from {
     opacity: 0;
@@ -170,13 +188,17 @@
     position: relative;
   }
 
+  /* The body gets `bg-primary` in the server HTML (root layout), so the
+     background is there at first paint instead of popping in after
+     hydration. Sized to the large viewport (`lvh`) so it doesn't rescale
+     and jump when mobile browser bars show or hide. */
   body.bg-primary::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 100lvh;
     /* WebP cuts the original 442 KB PNG to ~145 KB. `background-attachment:
        fixed` was removed: the pseudo is already viewport-pinned via
        `position: fixed`, so it was redundant and forced extra paint work
@@ -185,7 +207,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: backgroundFadeIn 1.2s ease-out both;
+    animation: backgroundFadeIn 0.4s ease-out both;
     pointer-events: none;
     z-index: -2;
   }
@@ -196,11 +218,10 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: 100lvh;
     /* Slightly stronger rgba darken so mobile (no blur) still feels
        layered. Tablet+ adds the frosted-glass blur. */
     background: rgba(15, 0, 46, 0.25);
-    animation: backgroundFadeIn 1.2s ease-out both;
     pointer-events: none;
     z-index: -1;
   }
@@ -212,7 +233,9 @@
      the viewport edges so the blur doesn't leave soft edges. */
   @media (min-width: 768px) {
     body.bg-primary::before {
-      inset: -12px;
+      inset: -12px auto auto -12px;
+      width: calc(100% + 24px);
+      height: calc(100lvh + 24px);
       filter: blur(3px);
     }
     body.bg-primary::after {
@@ -326,6 +349,25 @@ a:not(.surface-light *):hover {
 
 .menu-panel-hover {
   cursor: pointer;
+}
+
+/* Header height before JavaScript measures it (the Header keeps it in sync
+   after that). Matching the real heights means full-screen sections like
+   the homepage hero are the right size at first paint, with no shift.
+   Update these if the header's logo or padding changes. */
+:root {
+  --header-height: 130px;
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 108px;
+  }
+}
+
+/* Cookie banner is server-rendered; hide it before first paint for visitors
+   who have already chosen (class set by an inline script in <head>). */
+.consent-decided [data-cookie-consent] {
+  display: none;
 }
 
 /* Rounded, translucent background behind the main nav links (and the

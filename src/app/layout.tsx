@@ -6,12 +6,12 @@ import { createClient, repositoryName } from "@/prismicio";
 
 import "./globals.css";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { CONSENT_STATE_SCRIPT } from "@/utils/consentState";
 
-// CookieConsent reads localStorage and calls gtag — its visible UI is
-// gated behind a `useEffect`, so SSR renders nothing useful. Loading it
-// dynamically pulls its JS out of the initial bundle that every page
-// pays for. `ssr: false` isn't allowed in server components in Next 15,
-// but plain `dynamic()` still code-splits, which is the goal here.
+// CookieConsent is server-rendered (so first-time visitors see it at first
+// paint) and hidden for returning visitors by CONSENT_STATE_SCRIPT + CSS.
+// Loading it with dynamic() still code-splits its JS out of the initial
+// bundle that every page pays for.
 const CookieConsent = dynamic(
   () => import("@/components/CookieConsent").then((m) => m.CookieConsent),
   { loading: () => null },
@@ -189,7 +189,7 @@ export default async function RootLayout({
   const offerCatalog = await buildOfferCatalog();
   const organizationSchema = buildOrganizationSchema(offerCatalog);
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -204,6 +204,18 @@ export default async function RootLayout({
           }}
         />
 
+        {/* Must run during parsing, before first paint (a Next <Script> runs
+            too late): hides the cookie banner for returning visitors. */}
+        <script dangerouslySetInnerHTML={{ __html: CONSENT_STATE_SCRIPT }} />
+        {/* The page background is a CSS image, which the browser would only
+            discover after parsing the stylesheet. Fetch it straight away. */}
+        <link
+          rel="preload"
+          as="image"
+          href="/background-primary.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="" />
         <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
@@ -234,10 +246,16 @@ export default async function RootLayout({
           rel="stylesheet"
           href="https://use.typekit.net/sty6ouh.css"
           media="print"
+          // The inline script below flips media to "all" before hydration.
+          suppressHydrationWarning
         />
-        <Script id="typekit-media-swap" strategy="afterInteractive">
-          {`(function(){var l=document.getElementById('typekit-css');if(l){if(l.sheet){l.media='all';}else{l.addEventListener('load',function(){l.media='all';});}}})();`}
-        </Script>
+        {/* Plain inline script (runs during parsing) rather than a Next
+            <Script>, which waited for hydration and applied the fonts late. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var l=document.getElementById('typekit-css');if(l){if(l.sheet){l.media='all';}else{l.addEventListener('load',function(){l.media='all';});}}})();`,
+          }}
+        />
         <noscript>
           {/* eslint-disable-next-line @next/next/no-css-tags */}
           <link rel="stylesheet" href="https://use.typekit.net/sty6ouh.css" />
@@ -247,7 +265,8 @@ export default async function RootLayout({
           consent state are guaranteed to exist before any React effect runs
           (including CookieConsent's effect that reads localStorage and may
           immediately call gtag('consent', 'update', ...)). The external
-          gtag.js library + config stay afterInteractive so they don't block
+          gtag.js library + config load lazyOnload (after the page is idle) so they
+          stay off the critical path and don't block
           page load.
         */}
         <Script id="ga-bootstrap" strategy="beforeInteractive">
@@ -266,14 +285,17 @@ export default async function RootLayout({
           `}
         </Script>
       </head>
-      <body>
+      {/* `bg-primary` is set here, in the server HTML, so the page background
+          is present at first paint (it used to be added after hydration and
+          pop in late). <Layout> still swaps it if a page asks for another. */}
+      <body className="bg-primary">
         <ReactQueryProvider>{children}</ReactQueryProvider>
         <PrismicPreview repositoryName={repositoryName} />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="ga-config" strategy="afterInteractive">
+        <Script id="ga-config" strategy="lazyOnload">
           {`window.gtag && window.gtag('config', '${GA_MEASUREMENT_ID}', { anonymize_ip: true });`}
         </Script>
         <CookieConsent />

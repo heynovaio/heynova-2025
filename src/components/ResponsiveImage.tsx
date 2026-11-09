@@ -7,6 +7,12 @@ interface PrismicImageProps {
   containerClassName?: string;
   className?: string;
   imageHeightClassName?: string;
+  /**
+   * How wide the image renders, e.g. "48px" or "(min-width: 1024px) 400px,
+   * 90vw". Without it the browser is offered 1x/2x versions of the image's
+   * full original width, so small icons can download 3840px files.
+   */
+  sizes?: string;
 }
 
 export const ResponsiveImage: React.FC<PrismicImageProps> = ({
