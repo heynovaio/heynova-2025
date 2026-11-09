@@ -4,7 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Container } from "../Layout";
-import { getResponsiveItems } from "./responsive";
+import { useResponsiveItems } from "./responsive";
 import { CarouselButton } from "../Buttons/CarouselButtons";
 import { PrismicNextImage } from "@prismicio/next";
 import { ContentBox } from "../ContentBox";
@@ -21,7 +21,7 @@ export const PhotoCarousel = ({ slice }: PhotoCarouselProps) => {
     loop: false,
   });
 
-  const itemsPerPage = getResponsiveItems();
+  const itemsPerPage = useResponsiveItems();
 
   const totalSlides = Math.max(
     0,

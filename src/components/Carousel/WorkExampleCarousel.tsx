@@ -4,7 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Container } from "../Layout";
-import { getCategoryResponsiveItems } from "./responsive";
+import { useCategoryResponsiveItems } from "./responsive";
 import { ContentBox, ManualCarouselCard } from "..";
 import { CarouselButton } from "../Buttons/CarouselButtons";
 import useAllWorkExamples from "@/utils/getAllWorkExamples";
@@ -31,7 +31,7 @@ export const WorkExamplesCarousel = ({ slice }: WorkExamplesCarouselProps) => {
     };
   }, [emblaApi]);
 
-  const itemsPerPage = getCategoryResponsiveItems();
+  const itemsPerPage = useCategoryResponsiveItems();
 
   const workExampleData = useAllWorkExamples("en-ca").data;
 
