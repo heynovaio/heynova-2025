@@ -45,7 +45,7 @@ const CtaBanner: FC<CtaBannerProps> = ({
   const backgroundColor = isGradient
     ? "gradient-dark-bg border border-aqua"
     : isTeal
-      ? "bg-teal-muted cta-link border border-wine"
+      ? "bg-teal-muted cta-link border border-wine surface-light"
       : "bg-wine cta-wine";
   const primaryButtonClass =
     isGradient || isTeal ? "btn btn-primary" : "btn btn-light";
@@ -90,7 +90,11 @@ const CtaBanner: FC<CtaBannerProps> = ({
                   ? [
                       <div
                         key="buttons"
-                        className="w-full flex flex-row justify-center items-center gap-4 flex-wrap"
+                        className={`flex flex-row items-center gap-4 flex-wrap ${
+                          leftAligned
+                            ? "justify-start md:justify-end"
+                            : "w-full justify-center"
+                        }`}
                       >
                         {slice.primary.buttons?.map((button, index) => (
                           <PrismicNextLink
@@ -116,7 +120,13 @@ const CtaBanner: FC<CtaBannerProps> = ({
                       />,
                     ]
               }
-              containerClassName={`${textAlignment} items-center`}
+              textAlign={leftAligned ? "left" : "normal"}
+              containerClassName={
+                leftAligned
+                  ? // Text on the left, button on the right (stacked on phones).
+                    "items-start text-left md:flex-row md:items-center md:justify-between md:gap-12 md:[&>*:last-child]:shrink-0"
+                  : `${textAlignment} items-center`
+              }
             />
           </div>
         </Container>

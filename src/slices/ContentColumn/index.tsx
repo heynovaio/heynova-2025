@@ -304,14 +304,19 @@ const ContentColumn = ({
           )}
           <Grid
             maxColumns={isDefault ? parseInt(String(columns ?? 1)) || 1 : 4}
-            className={`${isDefault ? "grid-animate" : "mt-16"} items-stretch gap-6 ${
+            className={`${isDefault ? "" : "mt-16"} items-stretch gap-6 ${
               isSingleColumn ? "max-w-[860px] w-full" : "w-full"
             } ${isDefault ? "" : "justify-items-center"}`}
           >
             {contentItems.map((item, index) =>
               isDefault ? (
                 <div key={index}>
-                  <ColumnCard item={item} sectionColor={sectionColor} />
+                  {/* Each card fades in as it scrolls into view. */}
+                  <ColumnCard
+                    item={item}
+                    sectionColor={sectionColor}
+                    revealOnScroll
+                  />
                 </div>
               ) : (
                 <AngledCard key={index} item={item} index={index} />

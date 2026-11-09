@@ -63,7 +63,7 @@ export const FactRow = ({ facts }: FactRowProps) => {
   const items = facts.filter((fact) => fact.text && fact.text.trim());
   if (items.length === 0) return null;
   return (
-    <ul className="list-none! p-0! my-6! flex! flex-wrap gap-3">
+    <ul className="fact-row list-none! p-0! my-6! flex! flex-wrap gap-3">
       {items.map((fact, index) => (
         <HeroTag
           key={index}

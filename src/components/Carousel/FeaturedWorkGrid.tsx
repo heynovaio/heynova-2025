@@ -58,7 +58,7 @@ export const FeaturedWorkGrid = ({ slice }: { slice: FeaturedWorkSlice }) => {
         </div>
 
         {hasFeatured && (
-          <article className="group grid md:grid-cols-2 rounded-[2rem] overflow-hidden bg-light-blue text-midnight">
+          <article className="group grid md:grid-cols-2 rounded-[2rem] overflow-hidden bg-light-blue text-midnight surface-light">
             <div className="bg-purple-drk p-6 md:p-12 flex items-center justify-center">
               {isFilled.image(primary.featured_image) && (
                 <PrismicNextImage
@@ -111,7 +111,7 @@ export const FeaturedWorkGrid = ({ slice }: { slice: FeaturedWorkSlice }) => {
                     className={`${gradientBorder} h-full rounded-[20px] glow-blur flex flex-col gap-8 p-6 md:px-11 md:pt-[4.5rem] md:pb-11`}
                   >
                     {isFilled.image(card.image) && (
-                      <div className="aspect-[621/370] overflow-hidden rounded-[20px] bg-purple-lt">
+                      <div className="aspect-[621/370] overflow-hidden rounded-[20px]">
                         <PrismicNextImage
                           field={card.image}
                           sizes="(min-width: 905px) 40vw, 90vw"

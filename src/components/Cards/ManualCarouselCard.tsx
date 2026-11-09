@@ -23,11 +23,13 @@ export const ManualCarouselCard = ({
     <div className="rounded-[20px] p-[0.5px] flex flex-col glow-blur">
       <div className="bg-teal-muted/25 border-aqua/20 border overflow-hidden rounded-[20px] flex flex-col gap-5 h-full px-8 py-11">
         {image && (
-          <div className="h-[12em]">
+          // The photo fills the whole image area (cropped from the top, so
+          // site screenshots keep their header), with no backing colour.
+          <div className="h-[12em] overflow-hidden rounded-[12px]">
             <ResponsiveImage
               image={image}
-              imageHeightClassName="object-cover"
-              containerClassName="w-full h-full flex items-center justify-center"
+              imageHeightClassName="w-full h-full object-cover object-top rounded-none!"
+              containerClassName="w-full h-full"
             />
           </div>
         )}

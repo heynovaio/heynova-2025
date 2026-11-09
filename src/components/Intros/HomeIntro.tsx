@@ -37,7 +37,9 @@ export const HomeIntro: React.FC<HomeIntroProps> = ({ data }) => {
   const tags = (data.hero_tags ?? []).filter((tag) => tag.text?.trim());
 
   return (
-    <section className="relative flex items-center w-full min-h-[560px] pt-10 pb-16 md:pt-24 md:pb-20">
+    // Fills the screen below the sticky header, so the next section starts
+    // below the fold. `svh` stays stable while mobile browser bars move.
+    <section className="relative flex items-center w-full min-h-[calc(100svh-var(--header-height,80px))] pt-10 pb-16 md:pt-24 md:pb-20">
       <Container containerClassName="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] items-center">
         <div className="text-white flex flex-col items-start text-left gap-7 max-w-[800px]">
           {data.tagline && (

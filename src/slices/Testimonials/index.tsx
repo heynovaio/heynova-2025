@@ -46,9 +46,15 @@ const Testimonials = ({
   const bgColor =
     background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
 
+  const band = getBandPosition(slices, sliceIndex);
+  // When the band ends on this slice, the quote card sits on the band's
+  // angled bottom edge (as in the design) rather than inside it.
+  const sitsOnBandEdge = !isBlogPage && (band === "end" || band === "single");
+
   return (
     <Section
-      band={getBandPosition(slices, sliceIndex)}
+      band={band}
+      styling={sitsOnBandEdge ? "angled-section--overhang" : ""}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlogPage}
@@ -73,7 +79,7 @@ const Testimonials = ({
               <PrismicRichText field={slice.primary.body} />
             </div>
           )}
-          <figure className="m-0 w-full max-w-[1070px] rounded-[2rem] bg-lavendar text-midnight p-8 md:p-14 flex flex-col md:flex-row gap-6 md:gap-8">
+          <figure className="m-0 w-full max-w-[1070px] rounded-[2rem] bg-lavendar text-midnight surface-light p-8 md:p-14 flex flex-col md:flex-row gap-6 md:gap-8">
             {hasImage ? (
               <div className="w-28 h-28 md:w-40 md:h-40 shrink-0">
                 <PrismicNextImage

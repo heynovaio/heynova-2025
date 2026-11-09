@@ -205,12 +205,17 @@
     z-index: -1;
   }
 
-  /* backdrop-filter is GPU-expensive — especially painful on low-end
-     mobile where the visual benefit (blurring a small viewport) is
-     least noticeable. Apply only at tablet width and up. */
+  /* Tablet and up get a soft blur on the background image. It is applied to
+     the image layer itself with `filter` (drawn once, since the layer never
+     changes) rather than as a full-screen `backdrop-filter` on the overlay,
+     which the GPU re-ran on every scroll frame. The layer is pulled out past
+     the viewport edges so the blur doesn't leave soft edges. */
   @media (min-width: 768px) {
+    body.bg-primary::before {
+      inset: -12px;
+      filter: blur(3px);
+    }
     body.bg-primary::after {
-      backdrop-filter: blur(3px);
       background: rgba(15, 0, 46, 0.2);
     }
   }
@@ -300,14 +305,36 @@ ol {
   list-style-type: decimal;
   text-align: start;
 }
-a {
-  &:hover {
-    color: var(--color-aqua);
-  }
+/* Aqua link hover is for dark backgrounds only. On light fills it is nearly
+   invisible, so links inside a .surface-light element are handled below. */
+a:not(.surface-light *):hover {
+  color: var(--color-aqua);
 }
+
+/* Light surfaces (aqua, lavender, light blue, teal and white cards and
+   banners). Hover states here must keep strong contrast: text links stay
+   their colour and underline; buttons fill with the bright pink. */
+.surface-light a:not(.btn):hover,
+.surface-light a:not(.btn):focus-visible {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+/* Button hover rules for light surfaces live in the components layer at the
+   end of this file: the button styles they override use !important inside
+   that layer, which an unlayered rule cannot beat. */
 
 .menu-panel-hover {
   cursor: pointer;
+}
+
+/* Rounded, translucent background behind the main nav links (and the
+   mobile menu button). --nav-bg-alpha is set by the Header on scroll. */
+.nav-pill {
+  background: rgba(14, 1, 46, var(--nav-bg-alpha, 0.55));
+  border: 1px solid rgb(151 225 229 / 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .menu-panel-hover:hover,
@@ -430,6 +457,10 @@ a {
     }
     ul {
       padding-left: 1.25rem !important;
+    }
+    /* The facts row is a row of tags, not a bulleted list: no indent. */
+    ul.fact-row {
+      padding-left: 0 !important;
     }
     .li-content {
       margin-top: 1.875rem;
@@ -668,9 +699,11 @@ a {
     color: transparent;
   }
 
+  /* No backdrop-filter here: these cards sit over an already-soft background,
+     so a backdrop blur was invisible but made every card re-blur its
+     background on each scroll frame. */
   .glow-blur {
     box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
-    backdrop-filter: blur(15px);
   }
   img {
     border-radius: 1.25rem;
@@ -814,7 +847,6 @@ a {
     border: 1px solid #ffffff2c;
     background: var(--color-teal-drk);
     box-shadow: 0px 0px 16px 6px rgba(151, 225, 229, 0.12);
-    backdrop-filter: blur(15px);
   }
 
   [role="tabpanel"]:focus-visible {
@@ -994,6 +1026,23 @@ a {
 .angled-band--end {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--band-angle)), 0 100%);
 }
+/* Overhang (testimonial ending a band, as in the Figma "How We Work"): the
+   band's angled bottom edge cuts across the lower part of the card instead
+   of passing below it, so the card sits on the line. The card's bottom hangs
+   --overhang below the band's low corner, and more on the high side. */
+.angled-section.angled-section--overhang {
+  --overhang-space: 3rem; /* space between the card and the next section */
+  --overhang: 1.25rem;
+  padding-bottom: var(--overhang-space);
+}
+@media (min-width: 768px) {
+  .angled-section.angled-section--overhang {
+    --overhang-space: 5rem;
+  }
+}
+.angled-section--overhang > .angled-band {
+  bottom: calc(var(--overhang-space) + var(--overhang));
+}
 @media print {
   .angled-band {
     display: none;
@@ -1008,4 +1057,33 @@ a {
 }
 .faq-answer p + p {
   margin-top: 0.75em;
+}
+
+/* Buttons on light surfaces (see .surface-light above): hover fills with the
+   bright pink and white text (5.2:1), never a light or midnight-on-pink
+   state. In this layer, and more specific than the button colour rules
+   (e.g. `.bg-teal-muted .btn-secondary`, `.btn-light:hover`), so it wins. */
+@layer components {
+  .surface-light .btn:hover,
+  .surface-light .btn:focus-visible {
+    background: var(--color-red) !important;
+    border-color: var(--color-red) !important;
+    color: var(--color-white) !important;
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+  }
+  /* The animated white border on buttons disappears on light fills. */
+  .surface-light .btn::before,
+  .surface-light .btn::after {
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .surface-light .btn::before {
+    border-top-color: var(--color-midnight);
+    border-left-color: var(--color-midnight);
+  }
+  .surface-light .btn::after {
+    border-bottom-color: var(--color-midnight);
+    border-right-color: var(--color-midnight);
+  }
 }

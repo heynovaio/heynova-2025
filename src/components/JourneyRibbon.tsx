@@ -9,6 +9,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
  * A thin lavender line sits on top of the groove, and a rocket travels along
  * it as the visitor scrolls. Purely decorative and hidden from assistive tech.
  * With reduced motion the rocket stays parked just below the curl.
+ *
+ * Performance: the ribbon is one static SVG that is painted once. The rocket
+ * is a separate small element moved with a GPU transform, and its position
+ * comes from a table of points sampled once per width, so a scroll frame
+ * never measures the SVG path (that cost several ms per frame).
  */
 
 const MIN_WIDTH = 905; // matches the md breakpoint; hidden on phones
@@ -38,6 +43,15 @@ const LINE_INTRO = [
 const LINE_OUT = [1421.71, 731.48, 1640.07, 767.18, 1640.07, 928.72];
 const HOOK_LENGTH = 96; // how far the end of the rail turns back to the left
 const ROCKET_PARK_Y = 757; // where the rocket sits in the Figma frame
+const SAMPLE_STEP = 3; // px between sampled points on the curved part
+// Screen height the rocket holds once following. Higher means a longer, calmer
+// trip round the curl (it has until the parked rocket scrolls up to here).
+const ROCKET_FOLLOW_AT = 0.4;
+const ROCKET_MENU_CLEARANCE = 120; // design px kept between rocket and menu
+
+// The rocket artwork's anchor point (where it sits on the path).
+const ROCKET_ANCHOR_X = 74;
+const ROCKET_ANCHOR_Y = 68;
 
 type Geometry = {
   width: number;
@@ -47,6 +61,8 @@ type Geometry = {
   line: string;
   bandIntro: string; // swoop + curl only, used to measure lengths
   bandHero: string; // swoop + curl + curve out to the rail
+  railX: number;
+  railEnd: number; // y where the straight rail turns into the hook
 };
 
 function buildPath(width: number, height: number): Geometry {
@@ -67,26 +83,87 @@ function buildPath(width: number, height: number): Geometry {
 
   const bandIntro = curves(BAND_INTRO);
   const bandHero = `${bandIntro} C ${pt(BAND_OUT)}`;
-  const bandRail = x(BAND_OUT[4]);
-  const band = `${bandHero} V ${end} H ${bandRail - hook}`;
+  const railX = x(BAND_OUT[4]);
+  const band = `${bandHero} V ${end} H ${railX - hook}`;
 
   const lineRail = x(LINE_OUT[4]);
   const corner = 20 * scale;
   const line =
     `${curves(LINE_INTRO)} C ${pt(LINE_OUT)} V ${end - corner} ` +
     `C ${lineRail} ${end - corner * 0.45} ${lineRail - corner * 0.45} ${end} ${lineRail - corner} ${end} ` +
-    `H ${bandRail - hook}`;
+    `H ${railX - hook}`;
 
-  return { width, height, scale, band, line, bandIntro, bandHero };
+  return {
+    width,
+    height,
+    scale,
+    band,
+    line,
+    bandIntro,
+    bandHero,
+    railX,
+    railEnd: end,
+  };
+}
+
+/** Points along the curved hero part of the path, sampled once per width. */
+type Track = {
+  xs: Float32Array;
+  ys: Float32Array;
+  angles: Float32Array; // direction of travel at each point, in degrees
+  start: number; // index where the rocket starts
+  park: number; // index where it rests below the curl
+};
+
+function buildTrack(
+  hero: SVGPathElement,
+  introLength: number,
+  scale: number,
+): Track {
+  const total = hero.getTotalLength();
+  const count = Math.ceil(total / SAMPLE_STEP) + 1;
+  const xs = new Float32Array(count);
+  const ys = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    const p = hero.getPointAtLength(Math.min(total, i * SAMPLE_STEP));
+    xs[i] = p.x;
+    ys[i] = p.y;
+  }
+  const angles = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    const a = Math.min(i, count - 2);
+    angles[i] =
+      (Math.atan2(ys[a + 1] - ys[a], xs[a + 1] - xs[a]) * 180) / Math.PI;
+  }
+  const introEnd = Math.min(count - 1, Math.round(introLength / SAMPLE_STEP));
+  const start = Math.round(introEnd * 0.08);
+  // After the curl the path only heads down, so y rises with the index.
+  const parkY = ROCKET_PARK_Y * scale;
+  let park = introEnd;
+  while (park < count - 1 && ys[park] < parkY) park++;
+  return { xs, ys, angles, start, park };
+}
+
+/** First index in [from, to] whose y reaches `target` (y rises with index). */
+function indexAtY(ys: Float32Array, from: number, to: number, target: number) {
+  let lo = from;
+  let hi = to;
+  while (lo < hi) {
+    const mid = (lo + hi) >> 1;
+    if (ys[mid] < target) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
 }
 
 export const JourneyRibbon: React.FC = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const pathRef = useRef<SVGPathElement>(null);
   const introRef = useRef<SVGPathElement>(null);
   const heroRef = useRef<SVGPathElement>(null);
-  const rocketRef = useRef<SVGGElement>(null);
+  const rocketRef = useRef<SVGSVGElement>(null);
+  const headerHeightRef = useRef(0);
   const [geo, setGeo] = useState<Geometry | null>(null);
+  const [track, setTrack] = useState<Track | null>(null);
 
   // Size the drawing to the full height of the homepage content.
   useEffect(() => {
@@ -95,7 +172,13 @@ export const JourneyRibbon: React.FC = () => {
     const measure = () => {
       const width = host.clientWidth;
       const height = host.scrollHeight;
-      setGeo(width >= MIN_WIDTH ? buildPath(width, height) : null);
+      setGeo((prev) =>
+        width < MIN_WIDTH
+          ? null
+          : prev && prev.width === width && prev.height === height
+            ? prev
+            : buildPath(width, height),
+      );
     };
     measure();
     const observer = new ResizeObserver(measure);
@@ -103,96 +186,126 @@ export const JourneyRibbon: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Sample the curved part once per width. The page height changes as images
+  // load, but that only moves the end of the straight rail, so it is skipped.
+  const width = geo?.width;
+  const scale = geo?.scale;
+  // Sampling takes tens of ms, so it waits for an idle moment rather than
+  // competing with the page becoming interactive.
+  useEffect(() => {
+    const intro = introRef.current;
+    const hero = heroRef.current;
+    if (!width || !scale || !intro || !hero) {
+      setTrack(null);
+      return;
+    }
+    const build = () =>
+      setTrack(buildTrack(hero, intro.getTotalLength(), scale));
+    // Safari has no requestIdleCallback.
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(build, { timeout: 500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(build, 50);
+    return () => clearTimeout(id);
+  }, [width, scale]);
+
   const placeRocket = useCallback(() => {
-    const path = pathRef.current;
     const rocket = rocketRef.current;
     const host = wrapRef.current;
-    if (
-      !path ||
-      !rocket ||
-      !host ||
-      !geo ||
-      !introRef.current ||
-      !heroRef.current
-    )
-      return;
+    if (!rocket || !host || !geo || !track) return;
+    const { xs, ys, angles, start, park } = track;
+    const last = xs.length - 1;
 
-    const total = path.getTotalLength();
-    const introEnd = introRef.current.getTotalLength(); // end of the curl
-    const railStart = heroRef.current.getTotalLength(); // top of the rail
-
-    // Find the length along a stretch of path where y first reaches a value.
-    const lengthAtY = (from: number, to: number, target: number) => {
-      let lo = from;
-      let hi = to;
-      for (let i = 0; i < 24; i++) {
-        const mid = (lo + hi) / 2;
-        if (path.getPointAtLength(mid).y < target) lo = mid;
-        else hi = mid;
-      }
-      return lo;
-    };
-    const parkLength = lengthAtY(
-      introEnd,
-      railStart,
-      ROCKET_PARK_Y * geo.scale,
-    );
-    const startLength = introEnd * 0.08;
+    let x = xs[park];
+    let y = ys[park];
+    let angle = angles[park];
 
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    let length = reduce ? parkLength : startLength;
-
     if (!reduce) {
-      const hostTop = host.getBoundingClientRect().top + window.scrollY;
-      const scrolled = Math.max(0, window.scrollY - hostTop);
-      const heroRange = window.innerHeight * 0.6;
-      if (scrolled < heroRange) {
-        // While the hero is in view, travel round the curl to the parking spot.
-        length =
-          startLength + (scrolled / heroRange) * (parkLength - startLength);
+      const scrollY = window.scrollY;
+      const hostTop = host.getBoundingClientRect().top + scrollY;
+      // Once it has left the curl, the rocket holds this height on screen.
+      const followAt = window.innerHeight * ROCKET_FOLLOW_AT;
+      // Scroll position where the parked rocket reaches that height. The
+      // trip round the curl is timed to end exactly there, so the hand-off
+      // to following the screen has no jump.
+      const handoff = Math.max(1, hostTop + ys[park] - followAt);
+      if (scrollY < handoff) {
+        // Start at the first point on the path that is clear of the sticky
+        // menu when the page is at the top.
+        const minY =
+          headerHeightRef.current + ROCKET_MENU_CLEARANCE * geo.scale;
+        let from = start;
+        while (from < park && hostTop + ys[from] < minY) from++;
+        // Ease out: quickest on the first bit of scroll, settling as it parks.
+        const t = scrollY / handoff;
+        const eased = 1 - (1 - t) * (1 - t);
+        let i = Math.round(from + eased * (park - from));
+        // And never let it slide back under the menu as the page scrolls.
+        while (i < park && hostTop - scrollY + ys[i] < minY) i++;
+        x = xs[i];
+        y = ys[i];
+        angle = angles[i];
       } else {
-        // Then keep the rocket near the middle of the screen on the rail.
-        const targetY = window.scrollY - hostTop + window.innerHeight * 0.55;
-        const parkY = path.getPointAtLength(parkLength).y;
-        const railEnd = total - HOOK_LENGTH * geo.scale;
-        const y = Math.min(
-          Math.max(targetY, parkY),
-          path.getPointAtLength(railEnd).y - 1,
-        );
-        length = lengthAtY(parkLength, railEnd, y);
+        // Then keep the rocket at the follow height on the path.
+        const targetY = scrollY - hostTop + followAt;
+        if (targetY <= ys[last]) {
+          const i = indexAtY(ys, park, last, targetY);
+          x = xs[i];
+          y = ys[i];
+          angle = angles[i];
+        } else {
+          // Straight rail: no lookup needed.
+          x = geo.railX;
+          y = Math.min(targetY, geo.railEnd - 1);
+          angle = 90;
+        }
       }
     }
 
-    const p = path.getPointAtLength(length);
-    const q = path.getPointAtLength(Math.min(total, length + 1));
-    const angle = (Math.atan2(q.y - p.y, q.x - p.x) * 180) / Math.PI;
     // The rocket artwork points about 30° below horizontal.
-    rocket.setAttribute(
-      "transform",
-      `translate(${p.x} ${p.y}) rotate(${angle - 30}) scale(${geo.scale}) translate(-74 -68)`,
-    );
-  }, [geo]);
+    rocket.style.transform = `translate3d(${x - ROCKET_ANCHOR_X}px, ${y - ROCKET_ANCHOR_Y}px, 0) rotate(${angle - 30}deg) scale(${geo.scale})`;
+    rocket.style.visibility = "visible";
+  }, [geo, track]);
 
   useEffect(() => {
-    if (!geo) return;
+    if (!geo || !track) return;
+    // Height of the sticky menu, published by the Header as --header-height.
+    const readHeader = () => {
+      headerHeightRef.current =
+        parseFloat(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--header-height",
+          ),
+        ) || 0;
+    };
+    readHeader();
     placeRocket();
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduce.matches) return;
     let frame = 0;
     const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(placeRocket);
+      if (frame) return; // one update per frame, however many events fire
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        placeRocket();
+      });
+    };
+    const onResize = () => {
+      readHeader();
+      onScroll();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
-  }, [geo, placeRocket]);
+  }, [geo, track, placeRocket]);
 
   return (
     <div
@@ -201,36 +314,50 @@ export const JourneyRibbon: React.FC = () => {
       className="journey-ribbon pointer-events-none absolute inset-0 -z-10 overflow-hidden"
     >
       {geo && (
-        <svg
-          width={geo.width}
-          height={geo.height}
-          viewBox={`0 0 ${geo.width} ${geo.height}`}
-          className="absolute top-0 left-0"
-          focusable="false"
-        >
-          {/* Measuring paths only, never painted. */}
-          <path ref={introRef} d={geo.bandIntro} fill="none" stroke="none" />
-          <path ref={heroRef} d={geo.bandHero} fill="none" stroke="none" />
+        <>
+          <svg
+            width={geo.width}
+            height={geo.height}
+            viewBox={`0 0 ${geo.width} ${geo.height}`}
+            className="absolute top-0 left-0"
+            focusable="false"
+          >
+            {/* Measuring paths only, never painted. */}
+            <path ref={introRef} d={geo.bandIntro} fill="none" stroke="none" />
+            <path ref={heroRef} d={geo.bandHero} fill="none" stroke="none" />
 
-          <path
-            ref={pathRef}
-            d={geo.band}
-            fill="none"
-            stroke="#0F002E"
-            strokeWidth={BAND_WIDTH * geo.scale}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d={geo.line}
-            fill="none"
-            stroke="#C0A2FF"
-            strokeOpacity="0.36"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <g ref={rocketRef} className="journey-rocket">
+            <path
+              d={geo.band}
+              fill="none"
+              stroke="#0F002E"
+              strokeWidth={BAND_WIDTH * geo.scale}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d={geo.line}
+              fill="none"
+              stroke="#C0A2FF"
+              strokeOpacity="0.36"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+
+          <svg
+            ref={rocketRef}
+            width="130"
+            height="100"
+            viewBox="0 0 130 100"
+            className="journey-rocket absolute top-0 left-0 overflow-visible"
+            style={{
+              transformOrigin: `${ROCKET_ANCHOR_X}px ${ROCKET_ANCHOR_Y}px`,
+              willChange: "transform",
+              visibility: "hidden",
+            }}
+            focusable="false"
+          >
             <path
               d="M113.545 99.2856L122.747 99.0843C125.959 99.0128 127.911 95.5172 126.287 92.7452L121.632 84.8054C116.844 76.64 109.96 69.8985 101.694 65.2822L37.8068 29.6042L22.5796 56.8708L86.4665 92.5489C94.7327 97.1651 104.081 99.4884 113.546 99.2832L113.545 99.2856Z"
               fill="#063A59"
@@ -256,8 +383,8 @@ export const JourneyRibbon: React.FC = () => {
               <path d="M58.1829 12.2216L52.8264 21.8132" />
               <path d="M23.1497 74.956L17.7918 84.55" />
             </g>
-          </g>
-        </svg>
+          </svg>
+        </>
       )}
     </div>
   );

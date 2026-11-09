@@ -39,12 +39,25 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     });
     const revealObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const element = entry.target as HTMLElement;
-          element.style.animation = "fadeInUp 0.7s ease-out both";
-          revealObserver.unobserve(element);
-        });
+        // Items that come into view together (a row of cards) arrive in a
+        // short stagger; items that scroll in one at a time have no delay.
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .forEach((entry, order) => {
+            const element = entry.target as HTMLElement;
+            element.style.animation = `fadeInUp 0.7s ease-out ${order * 120}ms both`;
+            // Once it has landed, drop the animation so it stops holding
+            // `transform` (which would block hover effects on the card).
+            element.addEventListener(
+              "animationend",
+              () => {
+                element.style.animation = "";
+                element.style.opacity = "";
+              },
+              { once: true },
+            );
+            revealObserver.unobserve(element);
+          });
       },
       { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
     );
