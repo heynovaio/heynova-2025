@@ -5,6 +5,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { TeamCard } from "@/components/Cards/TeamCard";
 import { Container, Section, AnimatedSection } from "@/components";
+import { getBandPosition } from "@/utils/angledBand";
 
 /**
  * Props for `TeamList`.
@@ -14,9 +15,10 @@ export type TeamListProps = SliceComponentProps<Content.TeamListSlice>;
 /**
  * Component for "TeamList" Slices.
  */
-const TeamList: FC<TeamListProps> = ({ slice }) => {
+const TeamList: FC<TeamListProps> = ({ slice, slices, index: sliceIndex }) => {
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

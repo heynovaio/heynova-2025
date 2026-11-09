@@ -9,6 +9,7 @@ import { components } from "@/slices";
 import React from "react";
 import { Layout } from "@/components";
 import { HomeIntro } from "@/components/Intros/HomeIntro";
+import { JourneyRibbon } from "@/components/JourneyRibbon";
 import {
   buildAlternateLanguages,
   buildMetadata,
@@ -143,7 +144,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
-        <div>
+        <div className="relative isolate">
+          <JourneyRibbon />
           <HomeIntro data={page.data} />
           <SliceZone
             slices={page.data.slices}

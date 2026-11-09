@@ -5,3 +5,5 @@ export * from "./Carousel";
 export * from "./Cards";
 export { AnimatedSection } from "./AnimatedSection";
 export * from "./Accordions";
+export * from "./HeroTag";
+export * from "./JourneyRibbon";

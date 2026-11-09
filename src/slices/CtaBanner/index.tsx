@@ -6,6 +6,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, ContentBox, Section, AnimatedSection } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
 import { CalendlyButton } from "@/components/Buttons/CalendlyButton";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   lang: string;
@@ -23,19 +24,31 @@ export type CtaBannerProps = SliceComponentProps<
 /**
  * Component for "CtaBanner" Slices.
  */
-const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
+const CtaBanner: FC<CtaBannerProps> = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}) => {
   const isBlog = context?.isBlogPage ?? false;
   const leftAligned = slice.primary.text_alignment === false;
   const textAlignment = leftAligned
     ? "items-start text-left"
     : "items-center text-center";
   const isForm = slice.variation === "ctaBannerWithForm";
-  const isGradient = slice.primary.inner_background_color === "Gradient";
-  const textColor = isGradient ? "text-white" : "text-midnight";
+  // "Default" is the wine banner from the 2027 refresh; "Teal" keeps the
+  // previous light teal banner available.
+  const innerColor = slice.primary.inner_background_color ?? "Default";
+  const isGradient = innerColor === "Gradient";
+  const isTeal = innerColor === "Teal";
+  const textColor = isTeal ? "text-midnight" : "text-white";
   const backgroundColor = isGradient
-    ? "gradient-dark-bg"
-    : "bg-teal-muted cta-link";
-  const borderColor = isGradient ? "border-aqua" : "border-wine";
+    ? "gradient-dark-bg border border-aqua"
+    : isTeal
+      ? "bg-teal-muted cta-link border border-wine"
+      : "bg-wine cta-wine";
+  const primaryButtonClass =
+    isGradient || isTeal ? "btn btn-primary" : "btn btn-light";
 
   const showPrismicButtons =
     slice.variation === "default" || slice.variation === "ctaBannerWithForm";
@@ -46,6 +59,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
@@ -53,7 +67,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
       <AnimatedSection className={`${bgColor} `}>
         <Container>
           <div
-            className={`rounded-[1.5rem] ${backgroundColor} ${textColor} p-6 md:p-24 ${textAlignment} flex flex-col gap-6 border ${borderColor}`}
+            className={`rounded-[2.5rem] ${backgroundColor} ${textColor} p-6 md:p-16 ${textAlignment} flex flex-col gap-6`}
           >
             <ContentBox
               title={slice.primary.title}
@@ -84,7 +98,7 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
                             key={index}
                             className={
                               index === 0
-                                ? "btn btn-primary"
+                                ? primaryButtonClass
                                 : "btn btn-secondary"
                             }
                           />
@@ -94,7 +108,9 @@ const CtaBanner: FC<CtaBannerProps> = ({ slice, context }) => {
                   : [
                       <CalendlyButton
                         text={slice.primary.booking_button_text ?? "Book Now"}
-                        buttonClass={"btn-primary"}
+                        buttonClass={
+                          isGradient || isTeal ? "btn-primary" : "btn-light"
+                        }
                         location="cta_banner"
                         key={slice.primary.booking_button_text}
                       />,

@@ -17,7 +17,11 @@
         "config": {
           "label": "Background Color",
           "placeholder": "",
-          "options": ["None", "Light", "Dark"],
+          "options": [
+            "None",
+            "Light",
+            "Dark"
+          ],
           "default_value": "None"
         }
       },
@@ -55,6 +59,43 @@
           "allowTargetBlank": true,
           "allowText": true,
           "repeat": true
+        }
+      },
+      "hero_tags": {
+        "type": "Group",
+        "config": {
+          "label": "Hero Tags (homepage only)",
+          "repeat": true,
+          "fields": {
+            "icon": {
+              "type": "Image",
+              "config": {
+                "label": "Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "text": {
+              "type": "Text",
+              "config": {
+                "label": "Text",
+                "placeholder": "e.g. Inclusive & Accessible by Design"
+              }
+            },
+            "color": {
+              "type": "Select",
+              "config": {
+                "label": "Colour",
+                "placeholder": "",
+                "default_value": "Aqua",
+                "options": [
+                  "Aqua",
+                  "Periwinkle",
+                  "Lavender"
+                ]
+              }
+            }
+          }
         }
       },
       "image": {

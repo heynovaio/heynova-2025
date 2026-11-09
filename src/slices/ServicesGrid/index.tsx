@@ -10,13 +10,19 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Container, Section } from "@/components/Layout";
 import { Grid } from "@/components/Grid/Grid";
 import { GeneralCard } from "@/components/Cards";
+import { getBandPosition } from "@/utils/angledBand";
 
 export type ServicesGridProps = SliceComponentProps<Content.ServicesGridSlice>;
 
-const ServicesGrid: FC<ServicesGridProps> = ({ slice }) => {
+const ServicesGrid: FC<ServicesGridProps> = ({
+  slice,
+  slices,
+  index: sliceIndex,
+}) => {
   console.log("ServicesGrid slice data:", slice);
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

@@ -27,12 +27,15 @@
         "card_color": {
           "type": "Select",
           "config": {
-            "label": "Card Color",
+            "label": "Card Colour (None = dark bordered card)",
             "placeholder": "",
             "options": [
               "None",
               "Purple",
-              "Blue"
+              "Blue",
+              "Lavender",
+              "Light Blue",
+              "Periwinkle"
             ],
             "default_value": "None"
           }
@@ -78,6 +81,18 @@
             "default_value": "1"
           }
         },
+        "layout": {
+          "type": "Select",
+          "config": {
+            "label": "Layout",
+            "placeholder": "",
+            "default_value": "Grid",
+            "options": [
+              "Grid",
+              "Vertical"
+            ]
+          }
+        },
         "content": {
           "type": "Group",
           "config": {
@@ -109,8 +124,44 @@
                   "allowTargetBlank": true,
                   "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
                 }
+              },
+              "card_color": {
+                "type": "Select",
+                "config": {
+                  "label": "Card Colour (overrides the section setting)",
+                  "placeholder": "",
+                  "default_value": "Default",
+                  "options": [
+                    "Default",
+                    "Aqua",
+                    "Lavender",
+                    "Light Blue",
+                    "Light Purple",
+                    "Periwinkle"
+                  ]
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
               }
             }
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
           }
         }
       },
@@ -194,8 +245,44 @@
                   "allowTargetBlank": true,
                   "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,list-item,embed,image,hyperlink"
                 }
+              },
+              "card_color": {
+                "type": "Select",
+                "config": {
+                  "label": "Card Colour (overrides the section setting)",
+                  "placeholder": "",
+                  "default_value": "Default",
+                  "options": [
+                    "Default",
+                    "Aqua",
+                    "Lavender",
+                    "Light Blue",
+                    "Light Purple",
+                    "Periwinkle"
+                  ]
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
               }
             }
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
           }
         }
       },

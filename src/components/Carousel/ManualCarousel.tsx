@@ -10,7 +10,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import React, { useState, useEffect } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Container } from "../Layout";
-import { getCategoryResponsiveItems } from "./responsive";
+import { useCategoryResponsiveItems } from "./responsive";
 import { ContentBox, ManualCarouselCard } from "..";
 import { useInsightCategoryData } from "@/hooks/use-all-insights-category-data";
 import { CarouselButton } from "../Buttons/CarouselButtons";
@@ -29,7 +29,7 @@ export const ManualCarousel = ({ slice }: ManualCarouselProps) => {
   });
   const { insightCategoryData } = useInsightCategoryData("en-ca");
 
-  const itemsPerPage = getCategoryResponsiveItems();
+  const itemsPerPage = useCategoryResponsiveItems();
 
   const totalSlides = Math.max(
     0,

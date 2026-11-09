@@ -5,6 +5,7 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { NumberList } from "@/components/NumberedList";
 import { Section, Container, AnimatedSection } from "@/components";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   lang: string;
@@ -21,7 +22,12 @@ export type NumberedListProps = SliceComponentProps<
 /**
  * Component for "NumberedList" Slices.
  */
-const NumberedList: FC<NumberedListProps> = ({ slice, context }) => {
+const NumberedList: FC<NumberedListProps> = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}) => {
   const isBlog = context?.isBlogPage ?? false;
   const background = slice.primary.background_color;
   const bgColor =
@@ -31,6 +37,7 @@ const NumberedList: FC<NumberedListProps> = ({ slice, context }) => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
@@ -41,6 +48,7 @@ const NumberedList: FC<NumberedListProps> = ({ slice, context }) => {
             title={slice.primary.title}
             body={slice.primary.body}
             listItems={slice.primary.list}
+            showDividers={slice.primary.show_dividers === true}
           />
         </Container>
       </AnimatedSection>

@@ -23,8 +23,22 @@ function getLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // Prismic opens previews as `<page>?session=…`. The v5 Prismic toolbar only
+  // starts once /api/preview has set the preview cookies and Next.js draft
+  // mode, so send those links through it first; it redirects back to `path`.
+  const previewSession = request.nextUrl.searchParams.get("session");
+  if (previewSession) {
+    const pageUrl = request.nextUrl.clone();
+    pageUrl.searchParams.delete("session");
+    const previewUrl = new URL("/api/preview", request.url);
+    previewUrl.searchParams.set("session", previewSession);
+    previewUrl.searchParams.set("path", `${pageUrl.pathname}${pageUrl.search}`);
+    return NextResponse.redirect(previewUrl);
+  }
   const pathnameIsMissingLocale = locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
   if (pathnameIsMissingLocale) {

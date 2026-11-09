@@ -5,6 +5,7 @@ import { Container, Section, AnimatedSection } from "@/components";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { JSX } from "react";
 import { componentsTextSmall } from "@/utils";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   lang: string;
@@ -22,7 +23,12 @@ export type SimpleTextProps = SliceComponentProps<
 /**
  * Component for "SimpleText" Slices.
  */
-const SimpleText = ({ slice, context }: SimpleTextProps): JSX.Element => {
+const SimpleText = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}: SimpleTextProps): JSX.Element => {
   const leftAligned = slice.primary.text_alignment === false;
   const textAlignment = leftAligned
     ? "items-start text-left"
@@ -32,6 +38,7 @@ const SimpleText = ({ slice, context }: SimpleTextProps): JSX.Element => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}

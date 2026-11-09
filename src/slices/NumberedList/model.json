@@ -42,6 +42,15 @@
             "default_value": "None"
           }
         },
+        "show_dividers": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Dividers Between Items",
+            "default_value": false,
+            "placeholder_true": "Show",
+            "placeholder_false": "Hide"
+          }
+        },
         "list": {
           "type": "Group",
           "config": {
@@ -67,6 +76,15 @@
                 }
               }
             }
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
           }
         }
       },

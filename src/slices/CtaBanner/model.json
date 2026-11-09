@@ -36,11 +36,12 @@
         "inner_background_color": {
           "type": "Select",
           "config": {
-            "label": "Inner Background Color",
+            "label": "Inner Background Color (Default = wine)",
             "placeholder": "",
             "options": [
               "Default",
-              "Gradient"
+              "Gradient",
+              "Teal"
             ],
             "default_value": "Default"
           }
@@ -72,6 +73,15 @@
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": true
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
           }
         }
       },
@@ -109,11 +119,12 @@
         "inner_background_color": {
           "type": "Select",
           "config": {
-            "label": "Inner Background Color",
+            "label": "Inner Background Color (Default = wine)",
             "placeholder": "",
             "options": [
               "Default",
-              "Gradient"
+              "Gradient",
+              "Teal"
             ],
             "default_value": "Default"
           }
@@ -153,6 +164,15 @@
             "label": "Form",
             "placeholder": ""
           }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
+          }
         }
       },
       "items": {}
@@ -189,11 +209,12 @@
         "inner_background_color": {
           "type": "Select",
           "config": {
-            "label": "Inner Background Color",
+            "label": "Inner Background Color (Default = wine)",
             "placeholder": "",
             "options": [
               "Default",
-              "Gradient"
+              "Gradient",
+              "Teal"
             ],
             "default_value": "Default"
           }
@@ -230,6 +251,15 @@
             "placeholder_false": "Button Primary",
             "placeholder_true": "Button Secondary",
             "default_value": true
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
           }
         }
       },
