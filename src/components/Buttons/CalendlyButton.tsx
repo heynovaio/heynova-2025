@@ -4,7 +4,7 @@ import { trackEvent } from "@/utils/analytics";
 
 interface CalendlyButtonProps {
   text: string | KeyTextField;
-  buttonClass: "btn-primary" | "btn-secondary";
+  buttonClass: "btn-primary" | "btn-secondary" | "btn-light";
   location?: string;
 }
 

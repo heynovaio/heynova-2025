@@ -11,9 +11,16 @@ interface NumberListProps {
   title: RichTextField;
   body: RichTextField;
   listItems: NumberListItem[];
+  /** Thin rule between items. Off by default in the 2027 design. */
+  showDividers?: boolean;
 }
 
-export const NumberList = ({ title, body, listItems }: NumberListProps) => {
+export const NumberList = ({
+  title,
+  body,
+  listItems,
+  showDividers = false,
+}: NumberListProps) => {
   return (
     <div className="flex flex-col md:flex-row gap-20">
       <div className="w-full md:w-2/5">
@@ -25,7 +32,7 @@ export const NumberList = ({ title, body, listItems }: NumberListProps) => {
       </div>
 
       <div className="w-full md:w-3/5 text-content">
-        <ol className="text-content">
+        <ol className={`text-content ${showDividers ? "" : "no-dividers"}`}>
           {listItems.map((item, index) => (
             <li key={index} className="">
               <div>

@@ -125,6 +125,8 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-light-blue: #ddf5f7;
+  --color-periwinkle: #b0bbf4;
+  --color-card-navy: #271d54;
   --color-navy: rgba(0, 96, 117, 0.4);
   --color-primary: var(--color-red);
   --color-secondary: var(--color-purple-drk);
@@ -403,6 +405,11 @@ a {
       }
     }
 
+    ol.no-dividers > li {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
     ul,
     ul li {
       counter-reset: none;
@@ -574,6 +581,39 @@ a {
       border: 3px solid var(--color-purple-drk);
       color: var(--color-purple-drk) !important;
     }
+  }
+
+  /* White button for the wine CTA banner. */
+  .btn-light {
+    border-radius: 1.875em;
+    border: 3px solid var(--color-white);
+    padding: 10px 34px 12px 34px;
+    font-size: var(--text-button);
+    background: var(--color-white);
+    color: var(--color-wine) !important;
+
+    &::before,
+    &::after {
+      border-top-color: var(--color-midnight);
+      border-left-color: var(--color-midnight);
+      border-bottom-color: var(--color-midnight);
+      border-right-color: var(--color-midnight);
+    }
+    &:hover {
+      color: var(--color-midnight) !important;
+    }
+    &:focus-visible {
+      outline: 3px solid var(--color-white);
+      outline-offset: 4px;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 10px 16px;
+    }
+  }
+
+  .cta-wine .text-content a {
+    color: var(--color-white);
+    text-decoration: underline;
   }
 
   .btn-outline {
@@ -910,4 +950,62 @@ a {
 .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Angled background band (Section `band` prop). Neighbouring slices with
+   "Angled Background" on share one band: the first gets the angled top
+   edge, the last gets the angled bottom edge. */
+.angled-section {
+  --band-angle: clamp(2rem, 5vw, 5.5rem);
+  position: relative;
+  isolation: isolate;
+}
+.angled-section--single,
+.angled-section--start {
+  padding-top: calc(var(--band-angle) + 2rem);
+}
+.angled-section--single,
+.angled-section--end {
+  padding-bottom: calc(var(--band-angle) + 2rem);
+}
+.angled-band {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-midnight);
+  pointer-events: none;
+}
+/* Overlap joins by 1px so no hairline shows between joined sections. */
+.angled-band--start,
+.angled-band--middle {
+  bottom: -1px;
+}
+.angled-band--single {
+  clip-path: polygon(
+    0 var(--band-angle),
+    100% 0,
+    100% calc(100% - var(--band-angle)),
+    0 100%
+  );
+}
+.angled-band--start {
+  clip-path: polygon(0 var(--band-angle), 100% 0, 100% 100%, 0 100%);
+}
+.angled-band--end {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--band-angle)), 0 100%);
+}
+@media print {
+  .angled-band {
+    display: none;
+  }
+}
+
+/* Answers inside the light FAQ cards: keep links readable on light fills. */
+.faq-answer a {
+  color: var(--color-midnight);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.faq-answer p + p {
+  margin-top: 0.75em;
 }

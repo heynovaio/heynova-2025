@@ -90,6 +90,15 @@
             "allowText": true,
             "repeat": true
           }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
+          }
         }
       },
       "items": {}
@@ -217,6 +226,15 @@
             ],
             "default_value": "contain"
           }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
+          }
         }
       },
       "items": {}
@@ -314,6 +332,151 @@
               "cover"
             ],
             "default_value": "contain"
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "facts",
+      "name": "Facts",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Image and text with a row of fact tags",
+      "imageUrl": "",
+      "primary": {
+        "background_color": {
+          "type": "Select",
+          "config": {
+            "label": "Background Color",
+            "placeholder": "",
+            "options": [
+              "None",
+              "Light"
+            ],
+            "default_value": "None"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "imageRight": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Orientation",
+            "placeholder_false": "Left",
+            "placeholder_true": "Right",
+            "default_value": false
+          }
+        },
+        "imageFit": {
+          "type": "Select",
+          "config": {
+            "label": "Image Fit",
+            "placeholder": "",
+            "options": [
+              "contain",
+              "cover"
+            ],
+            "default_value": "contain"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em,rtl,o-list-item,embed,list-item,image,hyperlink"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true
+          }
+        },
+        "angled_background": {
+          "type": "Boolean",
+          "config": {
+            "label": "Angled Background",
+            "default_value": false,
+            "placeholder_true": "On",
+            "placeholder_false": "Off"
+          }
+        },
+        "facts": {
+          "type": "Group",
+          "config": {
+            "label": "Facts",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "e.g. Woman-owned, WBE Canada certified"
+                }
+              },
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon (optional)",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "color": {
+                "type": "Select",
+                "config": {
+                  "label": "Colour",
+                  "placeholder": "",
+                  "default_value": "Aqua",
+                  "options": [
+                    "Aqua",
+                    "Periwinkle",
+                    "Lavender"
+                  ]
+                }
+              }
+            }
           }
         }
       },

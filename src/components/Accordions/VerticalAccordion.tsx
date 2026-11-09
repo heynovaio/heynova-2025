@@ -8,6 +8,7 @@ import { RichTextField, KeyTextField, ImageField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import { FaChevronUp } from "react-icons/fa";
 import { ResponsiveImage } from "../ResponsiveImage";
+import type { CardTone } from "../Cards/cardColors";
 
 interface VerticalAccordionProps {
   title: string | KeyTextField | RichTextField;
@@ -17,7 +18,18 @@ interface VerticalAccordionProps {
   textColorClass?: string;
   boldTitle?: boolean;
   background?: string;
+  /**
+   * Light card colour for the "Sound familiar" FAQ style: the question reads
+   * like a problem card and the answer opens inside the same card.
+   */
+  tone?: CardTone;
 }
+
+// The chevron turns with an inline transform rather than a `rotate-*` class,
+// because AnimatedSection treats any `rotate-*` element as an angled card.
+const chevronStyle = (open: boolean) => ({
+  transform: open ? "rotate(0deg)" : "rotate(180deg)",
+});
 
 export const VerticalAccordion: React.FC<VerticalAccordionProps> = ({
   title,
@@ -25,7 +37,62 @@ export const VerticalAccordion: React.FC<VerticalAccordionProps> = ({
   image,
   boldTitle = true,
   background = "default",
+  tone,
 }) => {
+  const titleNode =
+    typeof title === "string" ? (
+      title
+    ) : (
+      <PrismicRichText
+        field={title}
+        components={{
+          heading3: ({ children }) => (
+            <h3 className="text-inherit! text-[1.25rem]! md:text-[1.5rem]! font-bold! leading-snug">
+              {children}
+            </h3>
+          ),
+          heading4: ({ children }) => (
+            <h4 className="text-inherit! text-[1.25rem]! md:text-[1.5rem]! font-bold! leading-snug py-0!">
+              {children}
+            </h4>
+          ),
+        }}
+      />
+    );
+
+  if (tone) {
+    return (
+      <div className={`${background} w-full my-3 max-w-215`}>
+        <Disclosure>
+          {({ open }) => (
+            <div
+              className={`${tone.card} ${tone.title} rounded-[1.75rem] transition-shadow duration-300 ${open ? "shadow-[0_18px_40px_rgba(0,0,0,0.35)]" : ""}`}
+            >
+              <DisclosureButton className="print-reveal w-full text-left px-6 py-6 md:px-8 md:py-7 flex flex-row justify-between items-center gap-6 rounded-[1.75rem] hover:cursor-pointer focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <div className="flex items-center gap-4">
+                  {image && <ResponsiveImage image={image} />}
+                  {titleNode}
+                </div>
+                <span
+                  className="shrink-0 transition-transform duration-300 motion-reduce:transition-none"
+                  style={chevronStyle(open)}
+                >
+                  <FaChevronUp aria-hidden="true" className="h-4 w-4" />
+                </span>
+              </DisclosureButton>
+              <DisclosurePanel
+                unmount={false}
+                className={`print-reveal px-6 pb-7 md:px-8 ${tone.body} faq-answer`}
+              >
+                <PrismicRichText field={content} />
+              </DisclosurePanel>
+            </div>
+          )}
+        </Disclosure>
+      </div>
+    );
+  }
+
   return (
     <section
       className={`${background} w-full font-primary my-4 antialiased max-w-215`}
@@ -57,9 +124,10 @@ export const VerticalAccordion: React.FC<VerticalAccordionProps> = ({
                     </div>
                   </div>
                   <span
-                    className={`text-white transform transition-transform ${open ? "" : "rotate-180"}`}
+                    className="text-white transform transition-transform"
+                    style={chevronStyle(open)}
                   >
-                    <FaChevronUp className="h-4 w-4" />
+                    <FaChevronUp aria-hidden="true" className="h-4 w-4" />
                   </span>
                 </DisclosureButton>
                 <DisclosurePanel

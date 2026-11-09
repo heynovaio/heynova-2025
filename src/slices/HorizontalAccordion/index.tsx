@@ -7,6 +7,7 @@ import { Content } from "@prismicio/client";
 import { HorizontalAccordion } from "@/components/Accordions/HorizontalAccordion";
 import { Container, ContentBox, AnimatedSection, Section } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
+import { getBandPosition } from "@/utils/angledBand";
 
 type SliceContext = {
   lang: string;
@@ -21,6 +22,8 @@ export type HorizontalAccordionSliceProps = SliceComponentProps<
 const HorizontalAccordionSlice = ({
   slice,
   context,
+  slices,
+  index: sliceIndex,
 }: HorizontalAccordionSliceProps): JSX.Element | null => {
   if (!slice.primary.accordion) {
     return null;
@@ -39,6 +42,7 @@ const HorizontalAccordionSlice = ({
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}

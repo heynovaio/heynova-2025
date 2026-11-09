@@ -6,6 +6,8 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Container } from "@/components/Layout/Container";
 import { ContentBox, VerticalAccordion } from "@/components";
 import { PrismicNextLink } from "@prismicio/next";
+import { getBandPosition } from "@/utils/angledBand";
+import { ROTATING_LIGHT_TONES } from "@/components/Cards/cardColors";
 
 type SliceContext = {
   lang: string;
@@ -22,7 +24,12 @@ export type AccordionProps = SliceComponentProps<
 /**
  * Component for "Accordion" Slices.
  */
-const Accordion: FC<AccordionProps> = ({ slice, context }) => {
+const Accordion: FC<AccordionProps> = ({
+  slice,
+  context,
+  slices,
+  index: sliceIndex,
+}) => {
   const background = slice.primary.background_color;
   const bgColor =
     background === "Light" ? "bg-teal-muted/20 py-8 md:py-13" : "";
@@ -52,6 +59,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
 
   return (
     <Section
+      band={getBandPosition(slices, sliceIndex)}
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isBlogPage={isBlog}
@@ -87,6 +95,7 @@ const Accordion: FC<AccordionProps> = ({ slice, context }) => {
               content={item.description}
               key={index}
               boldTitle={true}
+              tone={ROTATING_LIGHT_TONES[index % ROTATING_LIGHT_TONES.length]}
             />
           ))}
         </Container>

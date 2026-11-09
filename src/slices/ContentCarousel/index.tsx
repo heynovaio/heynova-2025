@@ -7,14 +7,20 @@ import {
   AnimatedSection,
   Section,
   WorkExamplesCarousel,
+  FeaturedWorkGrid,
 } from "@/components";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { getBandPosition } from "@/utils/angledBand";
 
 export type ContentCarouselProps =
   SliceComponentProps<Content.ContentCarouselSlice>;
 
-const ContentCarousel = ({ slice }: ContentCarouselProps) => {
+const ContentCarousel = ({
+  slice,
+  slices,
+  index: sliceIndex,
+}: ContentCarouselProps) => {
   const background = slice.primary.background_color;
   const bgColor = background === "Light" ? "bg-teal-muted/20 py-4 md:py-8" : "";
 
@@ -30,6 +36,8 @@ const ContentCarousel = ({ slice }: ContentCarouselProps) => {
         return <PhotoCarousel slice={slice} />;
       case "workExamples":
         return <WorkExamplesCarousel slice={slice} />;
+      case "featuredWorkGrid":
+        return <FeaturedWorkGrid slice={slice} />;
 
       default:
         return <CategoryCarousel slice={slice} />;
@@ -37,7 +45,7 @@ const ContentCarousel = ({ slice }: ContentCarouselProps) => {
   })();
 
   return (
-    <Section>
+    <Section band={getBandPosition(slices, sliceIndex)}>
       <AnimatedSection className={bgColor}>{carousel}</AnimatedSection>
     </Section>
   );
