@@ -28,6 +28,7 @@ export const ManualCarouselCard = ({
           <div className="h-[12em] overflow-hidden rounded-[12px]">
             <ResponsiveImage
               image={image}
+              sizes="(min-width: 1024px) 420px, (min-width: 640px) 50vw, 90vw"
               imageHeightClassName="w-full h-full object-cover object-top rounded-none!"
               containerClassName="w-full h-full"
             />

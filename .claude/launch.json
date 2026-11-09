@@ -6,6 +6,15 @@
       "runtimeExecutable": "bash",
       "runtimeArgs": ["-c", "source ~/.nvm/nvm.sh && nvm use && npm start"],
       "port": 3000
+    },
+    {
+      "name": "heynova-prod",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "source ~/.nvm/nvm.sh && nvm use && rm -rf .next && npx next build && npx next start -p 3100"
+      ],
+      "port": 3100
     }
   ]
 }
