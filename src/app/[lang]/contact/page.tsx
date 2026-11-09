@@ -7,7 +7,9 @@ import * as prismic from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import React from "react";
-import { Layout } from "@/components";
+import { Layout, Container } from "@/components";
+import { DefaultIntro } from "@/components/Intros/DefaultIntro";
+import { ContactForm } from "@/components/ContactForm";
 import {
   buildAlternateLanguages,
   buildMetadata,
@@ -87,6 +89,16 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
+        <DefaultIntro data={page.data} />
+        <section
+          id="contact-form"
+          aria-label="Contact form"
+          className="py-8 md:py-16 scroll-mt-32"
+        >
+          <Container containerClassName="max-w-[760px] mx-auto">
+            <ContactForm />
+          </Container>
+        </section>
         <SliceZone
           slices={page.data.slices}
           components={components}

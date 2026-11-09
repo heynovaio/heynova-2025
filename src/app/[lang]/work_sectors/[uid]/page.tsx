@@ -127,7 +127,11 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         menus={menus.data}
         include_newsletter_sign_up_banner={page.data.include_newsletter_sign_up}
       >
-        <DefaultIntro data={page.data} breadcrumbs={breadcrumbs} />
+        <DefaultIntro
+          data={page.data}
+          breadcrumbs={breadcrumbs}
+          image={page.data.image}
+        />
         <SliceZone
           slices={page.data.slices}
           components={components}

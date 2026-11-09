@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { CONSENT_STORAGE_KEY } from "@/utils/consentState";
 
-const STORAGE_KEY = "heynova-consent-v1";
+const STORAGE_KEY = CONSENT_STORAGE_KEY;
 const HEADING_ID = "cookie-consent-title";
 
 type Choice = "granted" | "denied";
@@ -54,7 +55,10 @@ function applyConsent(choice: Choice): void {
 }
 
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+  // Rendered in the server HTML (visible by default) so first-time visitors
+  // see it at first paint instead of after JavaScript loads; returning
+  // visitors never see it thanks to CONSENT_STATE_SCRIPT + CSS.
+  const [visible, setVisible] = useState(true);
   const [locale, setLocale] = useState("en-ca");
   const sectionRef = useRef<HTMLElement>(null);
   const shouldFocusOnShowRef = useRef(false);
@@ -63,7 +67,10 @@ export function CookieConsent() {
     // Slice Machine renders slices in /slice-simulator outside the real
     // Layout. The consent banner has nothing to consent to there and
     // obscures the preview — bail out early on that route.
-    if (window.location.pathname.startsWith("/slice-simulator")) return;
+    if (window.location.pathname.startsWith("/slice-simulator")) {
+      setVisible(false);
+      return;
+    }
 
     const pathLocale = window.location.pathname.split("/")[1];
     if (pathLocale === "fr-ca") setLocale("fr-ca");
@@ -77,14 +84,14 @@ export function CookieConsent() {
 
     if (stored === "granted" || stored === "denied") {
       applyConsent(stored);
-    } else {
-      setVisible(true);
+      setVisible(false);
     }
 
     window.resetCookieConsent = () => {
       try {
         localStorage.removeItem(STORAGE_KEY);
       } catch {}
+      document.documentElement.classList.remove("consent-decided");
       shouldFocusOnShowRef.current = true;
       setVisible(true);
     };
@@ -117,6 +124,7 @@ export function CookieConsent() {
   return (
     <section
       ref={sectionRef}
+      data-cookie-consent=""
       role="region"
       aria-labelledby={HEADING_ID}
       tabIndex={-1}
