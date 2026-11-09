@@ -6,6 +6,7 @@ import {
   PhotoCarousel,
   AnimatedSection,
   Section,
+  WorkExamplesCarousel,
 } from "@/components";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
@@ -27,6 +28,8 @@ const ContentCarousel = ({ slice }: ContentCarouselProps) => {
 
       case "pictureCarousel":
         return <PhotoCarousel slice={slice} />;
+      case "workExamples":
+        return <WorkExamplesCarousel slice={slice} />;
 
       default:
         return <CategoryCarousel slice={slice} />;

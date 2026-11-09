@@ -33,7 +33,15 @@ export const ManualCarouselCard = ({
         )}
         <div className="flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-4">
-            {title && <PrismicRichText field={title} />}
+            {title && (
+              <PrismicRichText
+                field={title}
+                components={{
+                  heading1: ({ children }) => <h3>{children}</h3>,
+                  heading2: ({ children }) => <h3>{children}</h3>,
+                }}
+              />
+            )}
             {tags?.length > 0 && (
               <div className="flex gap-2.5 flex-wrap">
                 {tags.map((tag, index) => (
