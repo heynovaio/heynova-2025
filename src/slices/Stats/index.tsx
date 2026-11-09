@@ -19,8 +19,8 @@ const Stats: FC<StatsProps> = ({ slice, context }) => {
     background === "Teal"
       ? "bg-teal-drk"
       : background === "Blue"
-        ? "bg-aqua text-black"
-        : "bg-purple-lt text-black";
+        ? "bg-aqua text-black surface-light"
+        : "bg-purple-lt text-black surface-light";
 
   const isBlog = context?.isBlogPage ?? false;
   const verticalPadding = isBlog ? "py-6 print:my-0" : "py-8 md:py-13";

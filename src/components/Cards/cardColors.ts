@@ -20,7 +20,7 @@ const DARK: CardTone = {
 };
 
 const light = (bg: string): CardTone => ({
-  card: bg,
+  card: `${bg} surface-light`,
   title: "text-midnight",
   body: "text-midnight",
   link: "text-midnight",

@@ -10,7 +10,7 @@ export type AccessibilityFormProps =
   SliceComponentProps<Content.AccessibilityFormSlice>;
 
 const cardStyles: Record<string, string> = {
-  White: "bg-white text-black rounded-[20px] p-8 md:p-12",
+  White: "bg-white text-black surface-light rounded-[20px] p-8 md:p-12",
   Outline: "border border-white rounded-[20px] p-8 md:p-12",
 };
 
