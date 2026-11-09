@@ -3,7 +3,12 @@
 import React from "react";
 import { Container } from "../Layout";
 import { PrismicRichText } from "@prismicio/react";
-import { KeyTextField, LinkField, RichTextField } from "@prismicio/client";
+import {
+  isFilled,
+  KeyTextField,
+  LinkField,
+  RichTextField,
+} from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 
@@ -11,6 +16,8 @@ interface GeneralHeroProps {
   data: {
     title: RichTextField;
     body?: RichTextField;
+    buttons?: LinkField[];
+    /** @deprecated older name, kept for compatibility */
     button?: LinkField[];
     tagline?: string | KeyTextField;
   };
@@ -22,6 +29,9 @@ export const DefaultIntro: React.FC<GeneralHeroProps> = ({
   data,
   breadcrumbs,
 }) => {
+  const buttons = (data.buttons ?? data.button ?? []).filter((link) =>
+    isFilled.link(link),
+  );
   return (
     <section className="relative flex items-start w-full py-16 md:py-24 mb-[-36px] md:mb-[-72px]">
       <Container>
@@ -109,15 +119,24 @@ export const DefaultIntro: React.FC<GeneralHeroProps> = ({
             </div>
           )}
 
-          <div
-            style={{
-              animation: "fadeInUp 0.8s ease-out 0.6s both",
-            }}
-          >
-            {(data.button ?? []).map((link, index) => (
-              <PrismicNextLink key={index} field={link} />
-            ))}
-          </div>
+          {buttons.length > 0 && (
+            <div
+              className="flex flex-row flex-wrap justify-center gap-4"
+              style={{
+                animation: "fadeInUp 0.8s ease-out 0.6s both",
+              }}
+            >
+              {buttons.map((link, index) => (
+                <PrismicNextLink
+                  key={index}
+                  field={link}
+                  className={
+                    index === 0 ? "btn btn-primary" : "btn btn-outline"
+                  }
+                />
+              ))}
+            </div>
+          )}
         </div>
       </Container>
     </section>
